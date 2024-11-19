@@ -62,4 +62,4 @@ const skills = {
 
 ---
 
-⭐️ From [axitjaved](https://github.com/maxifjaved)
+⭐️ From [maxifjaved](https://github.com/maxifjaved)
