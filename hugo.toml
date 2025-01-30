@@ -1,0 +1,78 @@
+baseURL = 'https://v2.maxifjaved.com/'
+languageCode = "en-us"
+theme = "re-terminal"
+pagination.pagerSize = 5
+
+Copyright = "© 2024 Your Name - All rights reserved"
+
+[params]
+  contentTypeName = "posts"
+  themeColor = "blue"
+  showMenuItems = 3
+  fullWidthTheme = false
+  centerTheme = true
+#  [params.banner]
+#    dismissible = false
+#    text = "Check out my GitHub"
+#    url = "https://github.com/maxifjaved"
+
+[languages]
+  [languages.en.params]
+    title = "Muhammad Asif Javed"
+    subtitle = "Senior Software Engineer 🔹 Real-Time Apps (WebRTC/Chat/CRM) & DevOps Automation 🔹 Node.js | AWS | Python | React | Ember 🔹 10+ Years Scaling Systems"
+    keywords = ""
+    copyright = ""
+    menuMore = "Show more"
+    readMore = "Read more"
+    readOtherPosts = "Read other posts"
+    Copyright = "❤️ Muhammad Asif Javed"
+
+    [languages.en.params.logo]
+      logoText = "Muhammad Asif Javed"
+      logoHomeLink = "/"
+
+[languages.en.menu]
+#  [[languages.en.menu.main]]
+#    identifier = "submenu"
+#    name = "More"
+#    weight = 10
+#  [[languages.en.menu.main]]
+#    identifier = "subabout"
+#    name = "About"
+#    url = "/about"
+#    parent = "submenu"
+#  [[languages.en.menu.main]]
+#    identifier = "subshowcase"
+#    name = "Showcase"
+#    url = "/showcase"
+#    parent = "submenu"
+  [[languages.en.menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about"
+  [[languages.en.menu.main]]
+    identifier = "showcase"
+    name = "Showcase"
+    url = "/showcase"
+
+
+# Only for demo deploy perpous
+[module]
+  [[module.mounts]]
+    source = 'content'
+    target = 'content'
+  [[module.mounts]]
+    source = 'static'
+    target = 'static'
+  [[module.mounts]]
+    source = 'static'
+    target = 'static'
+  [[module.mounts]]
+    source = 'layouts'
+    target = 'layouts'
+  [[module.mounts]]
+    source = 'layouts'
+    target = 'layouts'
+  [[module.mounts]]
+    source = 'archetypes'
+    target = 'archetypes'
