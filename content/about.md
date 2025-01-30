@@ -1,41 +1,71 @@
 +++
 title = "About"
-date = "2024-07-30"
+date = "2025-01-30"
 author = "maxifjaved"
 hideComments=true
 +++
 
 
-# Hello in a new age
+# 👋 Hi, I'm Muhammad Asif Javed
 
-You can call me Mirus and I forked the original Terminal theme for Hugo, because Radek, the original creator of the theme stop the maintenance and archived the repo. 
+### 💻 Senior Full Stack Engineer | Technical Project Manager
 
-So I already pushed a few improvements that I did for my humble blog and I'm going to add some more features in the future, also any contribution is welcome 
+I'm a Full Stack Engineer with 10+ years of experience, specializing in MERN stack development and technical project management. I'm passionate about building efficient, scalable web applications and leading teams to deliver exceptional results.
 
-Below you can read the original about from Radek
+## 🚀 Professional Summary
 
-```text
-# Hi there
+- 📈 10+ years of software development experience
+- 👥 Technical Project Management expertise
+- 🌐 Full-stack development with MERN technologies
+- 🛠 Strong problem-solving and analytical skills
+- 🤝 Cross-functional team collaboration
 
-My name is Radek and I'm the author of this theme.
-I made it to help you present your ideas easier.
+## 💼 Work Experience
 
-We all know how hard is to start something on the web,
-especially these days. You need to prepare a bunch of stuff,
-configure them and when that’s done — create the content.
+**Technical Project Manager** @ Digital Dot *(2019 - Present)*
+- Leading cross-functional development teams
+- Implementing monitoring systems for enhanced stability
+- Managing production issues and system improvements
 
-This theme is pretty basic and covers all of the essentials.
-All you have to do is start typing!
+**Web Application Developer** @ Renesis Tech *(2017 - 2019)*
+- Developed client-focused software solutions
+- Handled customer support and maintenance
 
-The theme includes:
+**Software Engineer** @ Aala Solutions *(2016 - 2017)*
+- Built applications using React, Node.js, and Ember.js
+- Participated in full software development lifecycle
 
-- **5 duotone themes**,
-depending on your preferences (orange, red, blue, green, pink)
-- [**Fira Code**](https://github.com/tonsky/FiraCode)
-as default monospaced font. It's gorgeous!
-- **really nice, custom duotone** syntax highlighting based on
-[**PrismJS**](https://prismjs.com)
-- mobile friendly layout
+**Software Engineer** @ CoutAllure Ltd *(2015 - 2016)*
+- Frontend development specialized in React
+- Feature development and implementation
 
-So, there you have it... enjoy!
+## 🛠 Technical Skills
+
+```javascript
+const skills = {
+    frontend: ['React', 'Ember.js', 'HTML5', 'CSS3', 'JavaScript'],
+    backend: ['Node.js', 'Express.js'],
+    database: ['MongoDB', 'MySQL'],
+    tools: ['Git', 'VS Code', 'Postman'],
+    projectManagement: ['Agile', 'Scrum', 'JIRA']
+};
 ```
+
+## 📚 Education
+
+- 🎓 Masters in Computer Science - University of Punjab, Lahore (PUCIT)
+- 📜 Full Stack Web Development Certification - Free Code Camp
+
+## 📫 Let's Connect!
+
+- Email: axif.javed@gmail.com
+- LinkedIn: [Muhammad Asif Javed](https://www.linkedin.com/in/maxifjaved)
+- Portfolio: [Personal Website](https://maxifjaved.com)
+
+## 📊 GitHub Stats
+
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=maxifjaved&show_icons=true&theme=radical)
+
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=maxifjaved&layout=compact&theme=radical)
+
+---
