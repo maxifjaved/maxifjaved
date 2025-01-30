@@ -18,7 +18,7 @@ pagination.pagerSize = 5
 [languages]
   [languages.en.params]
     title = "Muhammad Asif Javed"
-    subtitle = "Senior Software Engineer 🔹 Real-Time Apps (WebRTC/Chat/CRM) & DevOps Automation 🔹 Node.js | AWS | Python | React | Ember 🔹 10+ Years Scaling Systems"
+    subtitle = "Senior Full Stack Engineer 🔹 Real-Time Apps (WebRTC/Chat/CRM) & DevOps Automation 🔹 Node.js | AWS | Python | React | Ember 🔹 10+ Years Scaling Systems"
     keywords = ""
     copyright = ""
     menuMore = "Show more"
