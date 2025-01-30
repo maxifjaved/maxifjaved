@@ -1,7 +1,6 @@
 {
   "version": "0.0.0",
   "tasks": {
-    "dev": "hugo server -D",
-    "deploy": "hugo --gc --minify && wrangler pages deploy public"
+    "dev": "hugo server -D"
   }
 }

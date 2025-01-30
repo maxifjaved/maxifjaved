@@ -3,7 +3,6 @@ languageCode = "en-us"
 theme = "re-terminal"
 pagination.pagerSize = 5
 
-Copyright = "© 2024 Your Name - All rights reserved"
 
 [params]
   contentTypeName = "posts"
@@ -28,7 +27,7 @@ Copyright = "© 2024 Your Name - All rights reserved"
     Copyright = "❤️ Muhammad Asif Javed"
 
     [languages.en.params.logo]
-      logoText = "Muhammad Asif Javed"
+      logoText = "Muhammad Asif Javed ⚡ Senior Full Stack Engineer"
       logoHomeLink = "/"
 
 [languages.en.menu]
