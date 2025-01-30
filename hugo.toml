@@ -3,7 +3,6 @@ languageCode = "en-us"
 theme = "re-terminal"
 pagination.pagerSize = 5
 
-Copyright = "© 2024 Your Name - All rights reserved"
 
 [params]
   contentTypeName = "posts"
@@ -19,7 +18,7 @@ Copyright = "© 2024 Your Name - All rights reserved"
 [languages]
   [languages.en.params]
     title = "Muhammad Asif Javed"
-    subtitle = "Senior Software Engineer 🔹 Real-Time Apps (WebRTC/Chat/CRM) & DevOps Automation 🔹 Node.js | AWS | Python | React | Ember 🔹 10+ Years Scaling Systems"
+    subtitle = "Senior Full Stack Engineer 🔹 Real-Time Apps (WebRTC/Chat/CRM) & DevOps Automation 🔹 Node.js | AWS | Python | React | Ember 🔹 10+ Years Scaling Systems"
     keywords = ""
     copyright = ""
     menuMore = "Show more"
@@ -28,7 +27,7 @@ Copyright = "© 2024 Your Name - All rights reserved"
     Copyright = "❤️ Muhammad Asif Javed"
 
     [languages.en.params.logo]
-      logoText = "Muhammad Asif Javed"
+      logoText = "Muhammad Asif Javed ⚡ Senior Full Stack Engineer"
       logoHomeLink = "/"
 
 [languages.en.menu]
