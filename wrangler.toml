@@ -1,0 +1,5 @@
+name = "maxifjaved"
+project = "maxifjaved"
+
+[site]
+bucket = "./public"
