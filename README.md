@@ -1,12 +1,12 @@
 # 👋 Hi, I'm Muhammad Asif Javed
 
-### 💻 Senior MERN Stack Developer | Technical Project Manager
+### 💻 Senior Full Stack Engineer | Technical Project Manager
 
-I'm a Software Engineer with 8+ years of experience, specializing in MERN stack development and technical project management. I'm passionate about building efficient, scalable web applications and leading teams to deliver exceptional results.
+I'm a Full Stack Engineer with 10+ years of experience, specializing in MERN stack development and technical project management. I'm passionate about building efficient, scalable web applications and leading teams to deliver exceptional results.
 
 ## 🚀 Professional Summary
 
-- 📈 8+ years of software development experience
+- 📈 10+ years of software development experience
 - 👥 Technical Project Management expertise
 - 🌐 Full-stack development with MERN technologies
 - 🛠 Strong problem-solving and analytical skills
