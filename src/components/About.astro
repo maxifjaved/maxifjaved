@@ -8,11 +8,11 @@ export interface AboutType {
     title: string;
     description: string;
   };
-  company: {
+  about: {
     name: string;
-    founded: number;
-    headquarters: string;
-    teamSize: number;
+    projects: string;
+    livesIn: string;
+    experience: string;
     expertise: string[];
     industries: string[];
   };
@@ -21,34 +21,34 @@ export interface AboutType {
 }
 
 const aboutData: AboutType = {
-  title: "About Us",
+  title: "About Me",
   mission: {
-    title: "Our Mission",
+    title: "My Mission",
     description:
-      "Since 2021, Futura AI Solutions has been at the forefront of artificial intelligence, delivering innovative solutions that empower businesses to achieve unprecedented efficiency and insight.",
+      "Hey there! 👋 I'm a software engineer who's been building things for over a decade. I focus on building QuranGallery.app, helping companies integrate AI features, writing code in React, Node.js, Python, and optimizing AI costs for maximum efficiency.",
   },
-  company: {
-    name: "Futura AI Solutions",
-    founded: 2021,
-    headquarters: "San Francisco, CA",
-    teamSize: 150,
+  about: {
+    name: "Muhammad Asif Javed",
+    projects: "25+",
+    livesIn: "Walton, Lahore, PK",
+    experience: "10+ years",
     expertise: [
-      "Machine Learning",
-      "NLP",
-      "Computer Vision",
-      "Generative AI",
-      "Cloud AI",
-      "Data Analytics",
+      "AI Integration",
+      "Prompt Engineering", 
+      "RAG Systems",
+      "Chatbots",
+      "Automated Workflows",
+      "Full-Stack Development",
     ],
-    industries: ["Healthcare", "Finance", "Retail", "Manufacturing", "Logistics"],
+    industries: ["SaaS", "E-commerce", "Healthcare", "Education", "Finance"],
   },
   competencies: [
-    { label: "Machine Learning", value: 96 },
-    { label: "Natural Language Processing", value: 87 },
-    { label: "Computer Vision", value: 92 },
-    { label: "Cloud AI Integration", value: 99 },
+    { label: "AI Integration", value: 97 },
+    { label: "Prompt Engineering", value: 98 },
+    { label: "Full-Stack Development", value: 90 },
+    { label: "Cost Optimization", value: 85 },
   ],
-  tools: ["TensorFlow", "PyTorch", "Python", "AWS SageMaker", "Azure AI"],
+  tools: ["OpenAI GPT-4", "Claude & Gemini", "React & Next.js", "Node.js", "Python", "PostgreSQL"],
 };
 ---
 
@@ -85,46 +85,46 @@ const aboutData: AboutType = {
             <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
             <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
             <div class="w-3 h-3 rounded-full bg-green-500"></div>
-            <div class="ml-4 text-cyber-blue text-sm">company.tsx</div>
+            <div class="ml-4 text-cyber-blue text-sm">about.tsx</div>
           </div>
 
           <div class="font-mono text-sm">
             <div class="mb-2">
               <span class="text-pink-400">const</span>{" "}
-              <span class="text-yellow-400">company</span>{" "}
+              <span class="text-yellow-400">about</span>{" "}
               <span class="text-blue-400">=</span>{" "}
               <span class="text-orange-400">{"{"}</span>
             </div>
             <div class="mb-2 pl-4">
               <span class="text-green-400">name</span>:{" "}
-              <span class="text-blue-300">'{aboutData.company.name}'</span>,
+              <span class="text-blue-300">'{aboutData.about.name}'</span>,
             </div>
             <div class="mb-2 pl-4">
-              <span class="text-green-400">founded</span>:{" "}
-              <span class="text-purple-400">{aboutData.company.founded}</span>,
+              <span class="text-green-400">projects</span>:{" "}
+              <span class="text-purple-400">{aboutData.about.projects}</span>,
             </div>
             <div class="mb-2 pl-4">
-              <span class="text-green-400">headquarters</span>:{" "}
+              <span class="text-green-400">Based in</span>:{" "}
               <span class="text-blue-300">
-                '{aboutData.company.headquarters}'
+                '{aboutData.about.livesIn}'
               </span>,
             </div>
             <div class="mb-2 pl-4">
-              <span class="text-green-400">teamSize</span>:{" "}
-              <span class="text-purple-400">{aboutData.company.teamSize}</span>,
+              <span class="text-green-400">experience</span>:{" "}
+              <span class="text-purple-400">{aboutData.about.experience}</span>,
             </div>
             <div class="mb-2 pl-4">
               <span class="text-green-400">expertise</span>: [
             </div>
             <div class="mb-2 pl-8">
-              {aboutData.company.expertise
+              {aboutData.about.expertise
                 .slice(0, 3)
                 .map((item) => (
                   <span class="text-blue-300">'{item}', </span>
                 ))}
             </div>
             <div class="mb-2 pl-8">
-              {aboutData.company.expertise
+              {aboutData.about.expertise
                 .slice(3)
                 .map((item) => (
                   <span class="text-blue-300">'{item}', </span>
@@ -135,14 +135,14 @@ const aboutData: AboutType = {
               <span class="text-green-400">industries</span>: [
             </div>
             <div class="mb-2 pl-8">
-              {aboutData.company.industries
+              {aboutData.about.industries
                 .slice(0, 3)
                 .map((item) => (
                   <span class="text-blue-300">'{item}', </span>
                 ))}
             </div>
             <div class="mb-2 pl-8">
-              {aboutData.company.industries
+              {aboutData.about.industries
                 .slice(3)
                 .map((item) => (
                   <span class="text-blue-300">'{item}', </span>
