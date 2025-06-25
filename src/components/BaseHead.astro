@@ -2,6 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
+import AlpineSetup from './AlpineSetup.astro';
 import { 
   SITE_TITLE, 
   SITE_URL, 
@@ -196,3 +197,6 @@ if (type === 'article' && publishedTime) {
 <!-- Performance and Security -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="referrer" content="no-referrer-when-downgrade" />
+
+<!-- Alpine.js Setup -->
+<AlpineSetup />
