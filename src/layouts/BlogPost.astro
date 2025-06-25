@@ -1,0 +1,262 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PortfolioLayout from './PortfolioLayout.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import { Image } from 'astro:assets';
+import { AUTHOR_NAME } from '../consts';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage, tags = [] } = Astro.props;
+
+// Enhanced SEO for blog posts
+const blogKeywords = [
+	'AI development blog',
+	'Machine Learning tutorials',
+	'LangChain guides',
+	'OpenAI integration',
+	'Full-stack development',
+	'Remote work tips',
+	...tags
+];
+
+const publishedTime = pubDate.toISOString();
+const modifiedTime = updatedDate?.toISOString() || publishedTime;
+---
+
+<PortfolioLayout
+	title={`${title} | ${AUTHOR_NAME}`}
+	description={description}
+	type="article"
+	keywords={blogKeywords}
+>
+	<Fragment slot="head">
+		<!-- Article-specific meta tags -->
+		<meta property="article:published_time" content={publishedTime} />
+		{updatedDate && <meta property="article:modified_time" content={modifiedTime} />}
+		<meta property="article:author" content={AUTHOR_NAME} />
+		<meta property="article:section" content="AI Development" />
+		{tags.map(tag => <meta property="article:tag" content={tag} />)}
+		
+		<!-- Enhanced styling for blog posts -->
+		<style>
+			/* Blog-specific styles */
+			.blog-container {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+			}
+			
+			.hero-image {
+				width: 100%;
+				margin: 2rem 0;
+			}
+			
+			.hero-image img {
+				display: block;
+				margin: 0 auto;
+				border-radius: 12px;
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+				width: 100%;
+				height: auto;
+			}
+			
+			.article-header {
+				text-align: center;
+				margin-bottom: 3rem;
+				padding-bottom: 2rem;
+				border-bottom: 2px solid #e9ecef;
+			}
+			
+			.article-header h1 {
+				font-size: clamp(2rem, 5vw, 3rem);
+				margin-bottom: 1rem;
+				color: #333;
+				line-height: 1.2;
+			}
+			
+			.article-meta {
+				color: #6c757d;
+				font-size: 1rem;
+				margin-bottom: 1rem;
+			}
+			
+			.last-updated {
+				font-style: italic;
+				font-size: 0.9rem;
+				margin-top: 0.5rem;
+			}
+			
+			.tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+				justify-content: center;
+				margin-top: 1rem;
+			}
+			
+			.tag {
+				background: #e3f2fd;
+				color: #1976d2;
+				padding: 0.25rem 0.75rem;
+				border-radius: 20px;
+				font-size: 0.85rem;
+				text-decoration: none;
+				transition: all 0.3s ease;
+			}
+			
+			.tag:hover {
+				background: #1976d2;
+				color: white;
+				transform: translateY(-1px);
+			}
+			
+			.prose {
+				max-width: none;
+				line-height: 1.8;
+				font-size: 1.1rem;
+				color: #333;
+			}
+			
+			.prose h2, .prose h3, .prose h4 {
+				color: #333;
+				margin-top: 2rem;
+				margin-bottom: 1rem;
+			}
+			
+			.prose h2 {
+				font-size: 1.8rem;
+				border-bottom: 2px solid #007bff;
+				padding-bottom: 0.5rem;
+			}
+			
+			.prose h3 {
+				font-size: 1.4rem;
+			}
+			
+			.prose p {
+				margin-bottom: 1.5rem;
+			}
+			
+			.prose code {
+				background: #f8f9fa;
+				padding: 0.2rem 0.4rem;
+				border-radius: 4px;
+				font-size: 0.9em;
+				color: #e83e8c;
+			}
+			
+			.prose pre {
+				background: #2d3748;
+				color: #e2e8f0;
+				padding: 1.5rem;
+				border-radius: 8px;
+				overflow-x: auto;
+				margin: 2rem 0;
+			}
+			
+			.prose pre code {
+				background: none;
+				color: inherit;
+				padding: 0;
+			}
+			
+			.prose blockquote {
+				border-left: 4px solid #007bff;
+				background: #f8f9fa;
+				padding: 1.5rem;
+				margin: 2rem 0;
+				font-style: italic;
+				border-radius: 0 8px 8px 0;
+			}
+			
+			.prose ul, .prose ol {
+				padding-left: 2rem;
+				margin-bottom: 1.5rem;
+			}
+			
+			.prose li {
+				margin-bottom: 0.5rem;
+			}
+			
+			.back-to-blog {
+				display: inline-block;
+				margin-bottom: 2rem;
+				color: #007bff;
+				text-decoration: none;
+				font-weight: 600;
+				transition: color 0.3s ease;
+			}
+			
+			.back-to-blog:hover {
+				color: #0056b3;
+			}
+			
+			.back-to-blog::before {
+				content: '← ';
+			}
+			
+			@media (max-width: 768px) {
+				.blog-container {
+					padding: 1rem;
+				}
+				
+				.article-header {
+					margin-bottom: 2rem;
+				}
+				
+				.prose {
+					font-size: 1rem;
+				}
+				
+				.tags {
+					gap: 0.25rem;
+				}
+			}
+		</style>
+	</Fragment>
+
+	<div class="blog-container">
+		<a href="/blog" class="back-to-blog">Back to Blog</a>
+		
+		<article>
+			{heroImage && (
+				<div class="hero-image">
+					<Image 
+						width={800} 
+						height={400} 
+						src={heroImage} 
+						alt={title}
+						format="webp"
+						quality={80}
+					/>
+				</div>
+			)}
+			
+			<header class="article-header">
+				<h1>{title}</h1>
+				
+				<div class="article-meta">
+					Published on <FormattedDate date={pubDate} />
+					{updatedDate && (
+						<div class="last-updated">
+							Last updated on <FormattedDate date={updatedDate} />
+						</div>
+					)}
+				</div>
+				
+				{tags.length > 0 && (
+					<div class="tags">
+						{tags.map(tag => (
+							<span class="tag">{tag}</span>
+						))}
+					</div>
+				)}
+			</header>
+			
+			<div class="prose">
+				<slot />
+			</div>
+		</article>
+	</div>
+</PortfolioLayout>
