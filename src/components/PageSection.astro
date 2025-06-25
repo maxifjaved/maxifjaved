@@ -1,0 +1,63 @@
+---
+export interface PageData {
+  title: string;
+  subtitle: string;
+  content: string;
+  lastUpdated: string;
+}
+
+interface Props {
+  pageData: PageData;
+  sectionId?: string;
+}
+
+const { pageData, sectionId = pageData.title.toLowerCase().replace(/\s+/g, '-') } = Astro.props;
+---
+
+<section
+  id={`${sectionId}-hero`}
+  class="bg-cyber-dark/50 pb-16 lg:pb-24 pt-32 lg:pt-40 relative overflow-hidden"
+>
+  <div
+    class="absolute w-96 h-96 bg-cyber-blue/10 rounded-full blur-3xl top-0 left-0 animate-pulse-slow"
+  ></div>
+  <div
+    class="absolute w-64 h-64 bg-cyber-blue/10 rounded-full blur-3xl bottom-0 right-0 animate-pulse-slow"
+    style="animation-delay: 2s;"
+  ></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative text-center">
+    <h2
+      class="text-4xl lg:text-5xl font-bold mb-6">
+      {pageData.title.split(" ")[0]}{" "}
+      <span class="text-cyber-blue text-shadow-glow">
+        {pageData.title.split(" ").slice(1).join(" ")}
+      </span>
+    </h2>
+    <p
+      class="text-gray-300 text-lg max-w-2xl mx-auto">
+      {pageData.subtitle}
+    </p>
+  </div>
+</section>
+
+<section
+  id={`${sectionId}-content`}
+  class="pb-12 relative overflow-hidden"
+  role="region"
+  aria-labelledby={`${sectionId}-content-title`}
+>
+  <div class="max-w-7xl mx-auto px-6">
+    <div
+      class="max-w-4xl mx-auto border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl py-12 px-8 opacity-0"
+      x-data="{ visible: false }"
+      x-intersect.once="visible = true"
+      x-bind:class="visible ? 'animated fadeInUp delay300' : 'opacity-0'"
+    >
+      <p class="text-sm text-gray-400 mb-8">
+        Last Updated: {pageData.lastUpdated}
+      </p>
+      <div class="post-content" set:html={pageData.content} />
+    </div>
+  </div>
+</section>

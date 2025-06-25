@@ -1,0 +1,84 @@
+---
+interface Author {
+  name: string;
+  title: string;
+  bio: string;
+  avatar: string;
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  category: string;
+  date: Date;
+  author: Author;
+  readTime: string;
+  featuredImage: string;
+}
+
+const { title, subtitle, category, date, author, readTime, featuredImage } = Astro.props;
+
+// Split title for styling (e.g., "The Future of AI: Trends to Watch")
+const [titlePart1, titlePart2] = title.split(": ");
+---
+
+<section
+  id="article-header"
+  class="relative overflow-hidden pt-12 md:pt-16 mb-6"
+>
+  <div class="relative mx-auto max-w-4xl px-6 pt-24">
+    <div class="mx-auto max-w-4xl text-center">
+      <!-- Category tag -->
+      <div class="mb-4 flex justify-center">
+        <span
+          class="rounded-md bg-cyber-blue/10 px-3 py-1 text-sm text-cyber-blue"
+        >
+          {category}
+        </span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="mb-4 text-4xl font-bold text-white lg:text-5xl">
+        {titlePart1}
+        {titlePart2 && (
+          <>
+            : <span class="text-cyber-blue text-shadow-glow">{titlePart2}</span>
+          </>
+        )}
+      </h1>
+
+      <!-- Metadata -->
+      <div
+        class="mb-8 flex flex-wrap items-center justify-center gap-4 text-sm text-gray-400"
+      >
+        <span>
+          <i class="fas fa-calendar-alt mr-2"></i>
+          {date.toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </span>
+        <span>
+          <i class="fas fa-user mr-2"></i>
+          {author.name}
+        </span>
+        <span>
+          <i class="fas fa-clock mr-2"></i>
+          {readTime}
+        </span>
+      </div>
+
+      <!-- Featured image -->
+      <div
+        class="h-96 overflow-hidden rounded-xl border border-cyber-blue/20 glow"
+      >
+        <img
+          src={featuredImage}
+          alt={title}
+          class="h-full w-full object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</section>

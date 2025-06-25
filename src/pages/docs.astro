@@ -1,0 +1,134 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import PageSection from '../components/PageSection.astro';
+
+export interface PageData {
+  title: string;
+  subtitle: string;
+  content: string;
+  lastUpdated: string;
+}
+
+const pageData: PageData = {
+  title: "Documentation",
+  subtitle: "Welcome to the documentation for Futura, a Tailwind CSS-based template designed with a cyberpunk aesthetic.",
+  lastUpdated: "April 26, 2025",
+  content: `
+    <p class="lead">This guide covers setup, installation, and customization to help you build stunning websites.</p>
+    
+    <h2 id="setup-installation">Setup and Installation</h2>
+    <p>Follow these steps to set up and run the Futura template on your local machine.</p>
+    
+    <h3>Step 1: Prepare Your Tools</h3>
+    <p>Before starting, ensure you have the following tools installed:</p>
+    <ul>
+      <li><strong>Node.js and npm:</strong> Download and install from <a href="https://nodejs.org" target="_blank">nodejs.org</a>. We recommend using the LTS version.</li>
+      <li><strong>Code Editor:</strong> Use a code editor like Visual Studio Code, Sublime Text, or your preferred IDE.</li>
+    </ul>
+    
+    <h3>Step 2: Open the Project</h3>
+    <p>Downloading the ZIP file and Navigate to the project directory:</p>
+    <pre><code>cd futura</code></pre>
+    
+    <h3>Step 3: Install Dependencies and Run the Project</h3>
+    <p>Run the following commands to install dependencies and start the development server:</p>
+    <ol>
+      <li><strong>Install Dependencies:</strong>
+        <pre><code>npm install</code></pre>
+        <p>This installs all required packages listed in <code>package.json</code>.</p>
+      </li>
+      <li><strong>Start Development Server:</strong>
+        <pre><code>npm run dev</code></pre>
+        <p>This starts the development server using Browsersync. Open <a href="http://localhost:4321" target="_blank">http://localhost:4321</a> in your browser.</p>
+      </li>
+      <li><strong>Build for Production:</strong>
+        <pre><code>npm run build</code></pre>
+        <p>This generates optimized production files in the <code>dist</code> folder, ready for deployment.</p>
+      </li>
+    </ol>
+    
+    <h3>Step 4: Customize Appearance</h3>
+    <p>Customize the template to match your brand and content:</p>
+    <ul>
+      <li><strong>Edit HTML Files:</strong> Modify the HTML files in the <code>futura</code> folder to update content, such as text, images, and links.</li>
+      <li><strong>Replace Images:</strong> Update images in the <code>public/img</code> folder with your own assets. Ensure paths in HTML files match the new filenames.</li>
+    </ul>
+    
+    <h2 id="customization">Customization</h2>
+    <p>Futura is built with Tailwind CSS, offering flexible customization options. Below are the primary ways to customize the template.</p>
+    
+    <h3>1. Customize Tailwind Styles</h3>
+    <p>You can customize Tailwind styles in two ways:</p>
+    <ul>
+      <li><strong>Modify Tailwind Configuration:</strong> Edit the <code>src/styles/global.css</code> file to adjust Tailwind's configuration. For example, add custom colors, fonts, or spacing:
+        <pre><code>@import "tailwindcss";
+@theme {
+    --font-sans: 'Poppins', sans-serif;
+    --font-future: 'Orbitron', sans-serif;
+    --color-cyber-blue: #00e5ff;
+    --color-cyber-dark: #001a2c;
+    --color-cyber-light: #0af0ff;
+    --animation-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    --animation-float: float 6s ease-in-out infinite;
+    --animation-data-stream: dataStream 10s linear infinite;
+}
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: theme(--color-gray-400);
+  }
+  button, [role="button"] {
+    cursor: pointer;
+  }
+}
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* plugins */
+@import "./vendors/theme.css";</code></pre>
+      </li>
+      <li><strong>Customize Directly in HTML:</strong> Add or modify Tailwind classes directly in HTML files to change styles. For example:
+        <pre><code>&lt;h1 class="text-4xl font-bold text-cyber-blue hover:text-white"&gt;Your Title&lt;/h1&gt;</code></pre>
+        <p>Use Tailwind's utility classes to adjust layout, colors, typography, and more without writing custom CSS.</p>
+      </li>
+    </ul>
+    
+    <h3>2. Add Custom CSS</h3>
+    <p>For styles beyond Tailwind's utilities, add custom CSS in <code>src/styles/global.css</code>. For example:</p>
+    <pre><code>/* Custom animations */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s ease-in-out infinite;
+}
+
+/* Custom button styles */
+.custom-btn {
+  background: linear-gradient(45deg, #00b7eb, #007acc);
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}</code></pre>
+    <p>Apply these custom classes in your HTML files, e.g.,</p>
+    <pre><code>&lt;button class="custom-btn"&gt;Click Me&lt;/button&gt;</code></pre>
+    
+    <h2>Need Help?</h2>
+    <p>If you encounter issues or have questions about customizing Futura, contact our support team: <strong>Lightestcode@gmail.com</strong></p>
+  `
+};
+
+const title = "Documentation | Futura AI Solutions";
+---
+
+<MainLayout title={title}>
+  <PageSection pageData={pageData} />
+</MainLayout>

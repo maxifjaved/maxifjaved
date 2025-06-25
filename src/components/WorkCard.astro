@@ -1,0 +1,43 @@
+---
+export interface WorkStepType {
+  step: number;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  step: WorkStepType;
+  index: number;
+}
+
+const { step, index } = Astro.props;
+---
+
+<div
+  class="group relative"
+  x-data="{ visible: false }"
+  x-intersect.once="visible = true"
+  x-bind:class={`visible ? 'animated fadeInUp delay${(index + 1) * 100}' : 'opacity-0'`}
+  role="article"
+  aria-labelledby={`step-title-${index}`}
+>
+  <div
+    class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+  ></div>
+  <div
+    class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 h-full relative hover:border-cyber-blue/50 transition-all duration-300 text-center"
+  >
+    <div
+      class="w-16 h-16 rounded-full bg-cyber-blue/20 border border-cyber-blue flex items-center justify-center mx-auto mb-4 glow"
+    >
+      <span class="text-cyber-blue text-2xl font-bold">{step.step}</span>
+    </div>
+    <h3
+      class="text-xl font-bold mb-2 text-cyber-blue"
+      id={`step-title-${index}`}
+    >
+      {step.title}
+    </h3>
+    <p class="text-gray-300">{step.description}</p>
+  </div>
+</div>

@@ -1,0 +1,154 @@
+---
+export interface TestimonialType {
+  quote: string;
+  author: string;
+  position: string;
+  image: string;
+}
+
+export interface PartnerType {
+  image: string;
+  alt: string;
+}
+
+const testimonialData: TestimonialType[] = [
+  {
+    quote:
+      "Futura's AI solutions transformed our supply chain, reducing costs by 30% with their PredictaFlow platform.",
+    author: "Sarah Thompson",
+    position: "COO, LogiTech Corp",
+    image: "/img/female1.jpg",
+  },
+  {
+    quote:
+      "The HealthScan AI tool has revolutionized our diagnostic process, improving accuracy and patient outcomes.",
+    author: "Dr. Michael Chen",
+    position: "Chief Radiologist, MediCare Systems",
+    image: "/img/male1.jpg",
+  },
+  {
+    quote:
+      "IntelliChat has elevated our customer service, handling 80% of inquiries autonomously.",
+    author: "Emily Rodriguez",
+    position: "Head of Customer Success, RetailX",
+    image: "/img/female3.jpg",
+  },
+];
+
+const partnerData: PartnerType[] = [
+  { image: "/img/logo1.png", alt: "Partner 1" },
+  { image: "/img/logo2.png", alt: "Partner 2" },
+  { image: "/img/logo3.png", alt: "Client 1" },
+  { image: "/img/logo4.png", alt: "Client 2" },
+  { image: "/img/logo5.png", alt: "Partner 3" },
+  { image: "/img/logo6.png", alt: "Client 3" },
+];
+---
+
+<section
+  id="testimonials"
+  class="bg-cyber-dark/60 py-24 relative overflow-hidden"
+>
+  <div
+    class="absolute w-96 h-96 bg-cyber-blue/5 rounded-full blur-3xl -top-20 -left-20 animate-pulse-slow"
+  ></div>
+  <div
+    class="absolute w-64 h-64 bg-cyber-blue/5 rounded-full blur-3xl bottom-10 right-10 animate-pulse-slow"
+    style="animation-delay: 2s;"
+  ></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="flex justify-center mb-16">
+      <div class="relative">
+        <h2 class="text-3xl md:text-4xl font-bold text-center">
+          What Our{" "}
+          <span class="text-cyber-blue text-shadow-glow">Clients Say</span>
+        </h2>
+        <div class="h-1 w-32 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div class="relative">
+        <div class="splide" id="testimonials-slider">
+          <div class="splide__track">
+            <ul class="splide__list px-6">
+              {testimonialData.map((testimonial) => (
+                <li class="splide__slide">
+                  <div
+                    class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-8 h-full relative group hover:border-cyber-blue/50 transition-all duration-300"
+                  >
+                    <div
+                      class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    ></div>
+                    <i
+                      class="fas fa-quote-left text-cyber-blue text-3xl mb-4"
+                    ></i>
+                    <p class="text-gray-300 mb-6">{testimonial.quote}</p>
+                    <div class="flex items-center">
+                      <div
+                        class="w-12 h-12 rounded-full bg-cyber-blue/20 border border-cyber-blue flex items-center justify-center glow"
+                      >
+                        <img
+                          src={testimonial.image}
+                          alt={testimonial.author}
+                          class="w-full h-full rounded-full object-cover"
+                        />
+                      </div>
+                      <div class="ml-4">
+                        <h4 class="text-cyber-blue font-bold">
+                          {testimonial.author}
+                        </h4>
+                        <p class="text-gray-400 text-sm">
+                          {testimonial.position}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="grid grid-cols-2 gap-6">
+          {partnerData.map((partner) => (
+            <div
+              class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-4 flex items-center justify-center group hover:border-cyber-blue/50 transition-all duration-300"
+            >
+              <div
+                class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
+              <img
+                src={partner.image}
+                alt={partner.alt}
+                class="h-12 opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Include Splide.js
+  import Splide from "@splidejs/splide";
+
+  document.addEventListener("DOMContentLoaded", function () {
+    new Splide("#testimonials-slider", {
+      type: "loop",
+      perPage: 1,
+      autoplay: true,
+      interval: 5000,
+      pauseOnHover: true,
+      arrows: false,
+      pagination: true,
+      speed: 800,
+      easing: "cubic-bezier(0.4, 0, 0.2, 1)",
+    }).mount();
+  });
+</script>

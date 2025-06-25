@@ -1,0 +1,44 @@
+---
+export interface BlogPaginationType {
+  pages: { label: string | number; href: string; isActive?: boolean }[];
+  prev: { href: string };
+  next: { href: string };
+}
+
+const paginationData: BlogPaginationType = {
+  pages: [
+    { label: 1, href: "/blogs?page=1", isActive: true },
+    { label: 2, href: "/blogs?page=2" },
+    { label: 3, href: "/blogs?page=3" },
+  ],
+  prev: { href: "/blogs?page=0" },
+  next: { href: "/blogs?page=2" },
+};
+---
+
+<div class="mt-12 flex justify-center gap-2">
+  <a
+    href={paginationData.prev.href}
+    class="cyber-btn bg-transparent border border-cyber-blue text-cyber-blue hover:bg-cyber-blue/10 font-bold py-2 px-4 transition-all duration-300"
+  >
+    <i class="fas fa-chevron-left"></i>
+  </a>
+  {paginationData.pages.map((page) => (
+    <a
+      href={page.href}
+      class={`cyber-btn ${
+        page.isActive
+          ? "bg-cyber-blue text-cyber-dark"
+          : "bg-transparent border border-cyber-blue text-cyber-blue hover:bg-cyber-blue/10"
+      } font-bold py-2 px-4 transition-all duration-300`}
+    >
+      {page.label}
+    </a>
+  ))}
+  <a
+    href={paginationData.next.href}
+    class="cyber-btn bg-transparent border border-cyber-blue text-cyber-blue hover:bg-cyber-blue/10 font-bold py-2 px-4 transition-all duration-300"
+  >
+    <i class="fas fa-chevron-right"></i>
+  </a>
+</div>

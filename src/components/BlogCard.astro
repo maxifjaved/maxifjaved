@@ -1,0 +1,61 @@
+---
+export interface BlogCardType {
+  image: { src: string; alt: string };
+  date: string;
+  category: string;
+  title: string;
+  excerpt: string;
+  link: string;
+  delay: number;
+}
+
+interface Props {
+  blog: BlogCardType;
+}
+
+const { blog } = Astro.props;
+---
+
+<div
+  class="group relative opacity-0"
+  x-data="{ visible: false }"
+  x-intersect.once="visible = true"
+  x-bind:class={`visible ? 'animated fadeInUp delay${blog.delay}' : 'opacity-0'`}
+>
+  <div
+    class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+  ></div>
+  <div
+    class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl overflow-hidden h-full relative hover:border-cyber-blue/50 transition-all duration-300"
+  >
+    <div class="h-48 overflow-hidden">
+      <a href={blog.link}>
+        <img
+          src={blog.image.src}
+          alt={blog.image.alt}
+          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+        />
+      </a>
+    </div>
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-2">
+        <span class="text-xs text-gray-400">{blog.date}</span>
+        <span
+          class="px-2 py-1 bg-cyber-blue/10 rounded-md text-xs text-cyber-blue"
+        >
+          {blog.category}
+        </span>
+      </div>
+      <a href={blog.link}>
+        <h3 class="text-xl font-bold mb-2 text-cyber-blue">{blog.title}</h3>
+      </a>
+      <p class="text-gray-300 mb-4 line-clamp-3">{blog.excerpt}</p>
+      <a
+        href={blog.link}
+        class="text-cyber-blue hover:text-white transition-colors"
+      >
+        Read More <i class="fas fa-arrow-right ml-2"></i>
+      </a>
+    </div>
+  </div>
+</div>

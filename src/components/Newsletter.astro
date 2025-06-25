@@ -1,0 +1,75 @@
+---
+export interface NewsletterType {
+  title: string;
+  subtitle: string;
+  description: string;
+  form: {
+    action: string;
+    method: string;
+    placeholder: string;
+    buttonLabel: string;
+  };
+}
+
+const newsletterData: NewsletterType = {
+  title: "Stay Ahead",
+  subtitle: "with Our Insights",
+  description:
+    "Subscribe to Futura AI’s newsletter for the latest AI trends, innovations, and exclusive updates delivered straight to your inbox.",
+  form: {
+    action: "#",
+    method: "POST",
+    placeholder: "Enter your email",
+    buttonLabel: "Subscribe",
+  },
+};
+---
+
+<section
+  id="newsletter"
+  class="bg-cyber-dark/50 py-24 relative overflow-hidden"
+>
+  <div
+    class="absolute w-96 h-96 bg-cyber-blue/10 rounded-full blur-3xl top-0 left-0 animate-pulse-slow"
+  ></div>
+  <div
+    class="absolute w-64 h-64 bg-cyber-blue/10 rounded-full blur-3xl bottom-0 right-0 animate-pulse-slow"
+    style="animation-delay: 2s;"
+  ></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative text-center">
+    <h2 class="text-3xl lg:text-4xl font-bold mb-6">
+      <span class="text-cyber-blue text-shadow-glow">{newsletterData.title}</span>{" "}
+      {newsletterData.subtitle}
+    </h2>
+    <p class="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+      {newsletterData.description}
+    </p>
+
+    <div
+      x-data="{ visible: false }"
+      x-intersect.once="visible = true"
+      x-bind:class="visible ? 'animated fadeInUp delay100' : 'opacity-0'"
+    >
+      <form
+        action={newsletterData.form.action}
+        method={newsletterData.form.method}
+        class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto"
+      >
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder={newsletterData.form.placeholder}
+          class="flex-1 px-4 py-3 bg-cyber-dark/50 border border-cyber-blue/20 rounded-md text-gray-300 focus:border-cyber-blue focus:ring-cyber-blue/50 transition-all duration-300"
+        />
+        <button
+          type="submit"
+          class="cyber-btn bg-cyber-blue hover:bg-cyber-blue/80 text-cyber-dark font-bold py-3 px-8 transition-all duration-300 glow"
+        >
+          {newsletterData.form.buttonLabel}
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

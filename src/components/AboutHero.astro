@@ -1,0 +1,91 @@
+---
+export interface AboutHeroType {
+  title: string;
+  subtitle: string;
+  description: string;
+  buttons: { label: string; href: string; isPrimary: boolean }[];
+  image: { src: string; alt: string };
+}
+
+const aboutHeroData: AboutHeroType = {
+  title: "About",
+  subtitle: "Futura AI",
+  description:
+    "Since 2021, Futura AI has been pioneering AI-driven solutions, empowering businesses worldwide with intelligent automation, advanced analytics, and cutting-edge technologies.",
+  buttons: [
+    { label: "Contact Us", href: "/contact", isPrimary: true },
+    { label: "View Projects", href: "/#projects", isPrimary: false },
+  ],
+  image: { src: "/img/future-ai.png", alt: "Futura AI" },
+};
+---
+
+<section
+  id="about-hero"
+  class="min-h-screen flex items-center pt-12 md:pt-20 relative overflow-hidden"
+>
+  <div class="max-w-7xl mx-auto px-6 py-24 relative">
+    <div
+      class="absolute w-96 h-96 bg-cyber-blue/10 rounded-full blur-3xl -top-20 -left-20 animate-pulse-slow"
+    ></div>
+    <div
+      class="absolute w-64 h-64 bg-cyber-blue/10 rounded-full blur-3xl bottom-10 right-10 animate-pulse-slow"
+      style="animation-delay: 2s;"
+    ></div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative">
+      <div class="max-lg:order-2">
+        <h1 class="text-4xl lg:text-6xl font-bold mb-4">
+          {aboutHeroData.title}{" "}
+          <span class="text-cyber-blue text-shadow-glow">
+            {aboutHeroData.subtitle}
+          </span>
+        </h1>
+        <p class="text-gray-300 text-lg mb-8">{aboutHeroData.description}</p>
+
+        <div class="flex flex-wrap gap-4 font-future">
+          {aboutHeroData.buttons.map((button) => (
+            <a
+              href={button.href}
+              class={`max-sm:w-full inline-flex items-start justify-center gap-2 cyber-btn ${
+                button.isPrimary
+                  ? "bg-cyber-blue hover:bg-cyber-blue/80 text-cyber-dark"
+                  : "bg-transparent border border-cyber-blue text-cyber-blue hover:bg-cyber-blue/10"
+              } font-bold py-3 px-8 transition-all duration-300 glow`}
+            >
+              {button.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="flex justify-center relative max-lg:order-1">
+        <div class="w-64 h-64 md:w-96 md:h-96 relative">
+          <div
+            class="absolute inset-0 rounded-full border-4 border-cyber-blue/20 animate-pulse"
+          ></div>
+          <div
+            class="absolute inset-0 rounded-full border border-cyber-blue/40 animate-spin"
+            style="animation-duration: 20s;"
+          ></div>
+          <div
+            class="absolute inset-4 rounded-full bg-cyber-blue/5 backdrop-blur-sm border border-cyber-blue glow"
+          >
+            <div
+              class="relative w-full h-full rounded-full overflow-hidden border border-cyber-blue glow"
+            >
+              <div class="absolute inset-0 bg-cyber-dark blur-3xl"></div>
+              <div class="relative">
+                <img
+                  src={aboutHeroData.image.src}
+                  alt={aboutHeroData.image.alt}
+                  class="w-full h-full"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,133 @@
+---
+export interface ContactFormType {
+  title: string;
+  form: {
+    action: string;
+    method: string;
+    fields: {
+      id: string;
+      name: string;
+      label: string;
+      type: string;
+      placeholder: string;
+      required: boolean;
+      rows?: number;
+    }[];
+    buttonLabel: string;
+  };
+}
+
+const contactFormData: ContactFormType = {
+  title: "Send Message",
+  form: {
+    action: "#",
+    method: "POST",
+    fields: [
+      {
+        id: "name",
+        name: "name",
+        label: "Full Name",
+        type: "text",
+        placeholder: "John Doe",
+        required: true,
+      },
+      {
+        id: "email",
+        name: "email",
+        label: "Email Address",
+        type: "email",
+        placeholder: "you@example.com",
+        required: true,
+      },
+      {
+        id: "subject",
+        name: "subject",
+        label: "Subject",
+        type: "text",
+        placeholder: "Project Inquiry",
+        required: true,
+      },
+      {
+        id: "message",
+        name: "message",
+        label: "Message",
+        type: "textarea",
+        placeholder: "Tell us about your project...",
+        required: true,
+        rows: 5,
+      },
+    ],
+    buttonLabel: "Send Message",
+  },
+};
+---
+
+<section id="contact-form" class="pt-24 pb-16 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="flex justify-center mb-16">
+      <div class="relative">
+        <h2 class="text-3xl md:text-4xl font-bold text-center">
+          {contactFormData.title.split(" ")[0]}{" "}
+          <span class="text-cyber-blue text-shadow-glow">
+            {contactFormData.title.split(" ")[1]}
+          </span>
+        </h2>
+        <div class="h-1 w-24 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>
+      </div>
+    </div>
+
+    <div
+      x-data="{ visible: false }"
+      x-intersect.once="visible = true"
+      x-bind:class="visible ? 'animated fadeInUp delay100' : 'opacity-0'"
+    >
+      <div
+        class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-8 max-w-2xl mx-auto"
+      >
+        <form
+          action={contactFormData.form.action}
+          method={contactFormData.form.method}
+          class="space-y-6"
+        >
+          {contactFormData.form.fields.map((field) => (
+            <div>
+              <label
+                for={field.id}
+                class="block text-sm font-medium text-gray-300"
+              >
+                {field.label}
+              </label>
+              {field.type === "textarea" ? (
+                <textarea
+                  id={field.id}
+                  name={field.name}
+                  rows={field.rows}
+                  required={field.required}
+                  class="mt-1 w-full px-4 py-3 bg-cyber-dark/50 border border-cyber-blue/20 rounded-md text-gray-300 focus:border-cyber-blue focus:ring-cyber-blue/50 transition-all duration-300"
+                  placeholder={field.placeholder}
+                ></textarea>
+              ) : (
+                <input
+                  type="text"
+                  id={field.id}
+                  name={field.name}
+                  required={field.required}
+                  class="mt-1 w-full px-4 py-3 bg-cyber-dark/50 border border-cyber-blue/20 rounded-md text-gray-300 focus:border-cyber-blue focus:ring-cyber-blue/50 transition-all duration-300"
+                  placeholder={field.placeholder}
+                />
+              )}
+            </div>
+          ))}
+          <div class="text-center">
+            <button
+              type="submit"
+              class="inline-flex items-center justify-center cyber-btn bg-cyber-blue hover:bg-cyber-blue/80 text-cyber-dark font-bold py-3 px-8 transition-all duration-300 glow"
+            >
+              {contactFormData.form.buttonLabel}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

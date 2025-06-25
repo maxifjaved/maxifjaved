@@ -1,0 +1,195 @@
+---
+export interface ProjectType {
+  title: string;
+  description: string;
+  image: string;
+  category: string;
+  tags: string[];
+  links: { label: string; href: string; icon: string }[];
+}
+
+const projectData: ProjectType[] = [
+  {
+    title: "VisionSense AI",
+    description:
+      "A real-time computer vision platform for object detection and image analysis, enhancing retail inventory and security systems.",
+    image: "/img/project1.jpg",
+    category: "vision",
+    tags: ["TensorFlow", "PyTorch", "AWS", "Python"],
+    links: [
+      { label: "Demo", href: "#", icon: "fas fa-link" },
+      { label: "Code", href: "#", icon: "fab fa-github" },
+    ],
+  },
+  {
+    title: "PredictaFlow",
+    description:
+      "A predictive analytics engine for supply chain optimization, forecasting demand with high accuracy for logistics firms.",
+    image: "/img/project2.jpg",
+    category: "ml",
+    tags: ["Scikit-learn", "AWS SageMaker", "Kubernetes"],
+    links: [
+      { label: "Demo", href: "#", icon: "fas fa-link" },
+      { label: "Code", href: "#", icon: "fab fa-github" },
+    ],
+  },
+  {
+    title: "IntelliChat",
+    description:
+      "An advanced NLP-powered chatbot for customer service, capable of handling complex queries with human-like understanding.",
+    image: "/img/project3.jpg",
+    category: "nlp",
+    tags: ["Hugging Face", "Python", "Azure AI", "React"],
+    links: [
+      { label: "Demo", href: "#", icon: "fas fa-link" },
+      { label: "Code", href: "#", icon: "fab fa-github" },
+    ],
+  },
+  {
+    title: "HealthScan AI",
+    description:
+      "A medical imaging analysis tool using deep learning to detect anomalies in X-rays and MRIs with high precision.",
+    image: "/img/project4.jpg",
+    category: "vision",
+    tags: ["TensorFlow", "Python", "AWS", "Docker"],
+    links: [
+      { label: "Demo", href: "#", icon: "fas fa-link" },
+      { label: "Code", href: "#", icon: "fab fa-github" },
+    ],
+  },
+  {
+    title: "SentimentScope",
+    description:
+      "A sentiment analysis platform for social media, providing real-time insights into customer opinions and trends.",
+    image: "/img/project5.jpg",
+    category: "nlp",
+    tags: ["NLTK", "Python", "Azure AI", "Node.js"],
+    links: [
+      { label: "Demo", href: "#", icon: "fas fa-link" },
+      { label: "Code", href: "#", icon: "fab fa-github" },
+    ],
+  },
+  {
+    title: "FraudGuard AI",
+    description:
+      "A machine learning system for detecting and preventing fraudulent transactions in real-time for financial institutions.",
+    image: "/img/project6.jpg",
+    category: "ml",
+    tags: ["XGBoost", "Python", "AWS SageMaker"],
+    links: [
+      { label: "Demo", href: "#", icon: "fas fa-link" },
+      { label: "Code", href: "#", icon: "fab fa-github" },
+    ],
+  },
+];
+
+const filterTabs = [
+  { label: "All", value: "all" },
+  { label: "Machine Learning", value: "ml" },
+  { label: "NLP", value: "nlp" },
+  { label: "Computer Vision", value: "vision" },
+];
+---
+
+<section id="projects" class="py-24 relative overflow-hidden">
+  <div
+    class="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-cyber-dark to-transparent"
+  ></div>
+  <div
+    class="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-cyber-dark to-transparent"
+  ></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="flex justify-center mb-16">
+      <div class="relative">
+        <h2 class="text-3xl md:text-4xl font-bold text-center">
+          Featured{" "}
+          <span class="text-cyber-blue text-shadow-glow">Projects</span>
+        </h2>
+        <div class="h-1 w-32 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>
+      </div>
+    </div>
+
+    <div x-data="{ activeTab: 'all' }">
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        {filterTabs.map((tab) => (
+          <button
+            x-on:click={`activeTab = '${tab.value}'`}
+            x-bind:class={`{
+              'bg-cyber-blue text-cyber-dark': activeTab === '${tab.value}', 
+              'bg-transparent border border-cyber-blue text-cyber-blue': activeTab !== '${tab.value}'
+            }`}
+            class="cyber-btn py-2 px-6 transition-all duration-300"
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projectData.map((project, index) => (
+          <div
+            x-show={`activeTab === 'all' || activeTab === '${project.category}'`}
+            x-transition
+            class="group relative opacity-0"
+            x-data="{ visible: false }"
+            x-intersect.once="visible = true"
+            x-bind:class={`visible ? 'animated fadeInUp delay-${(index + 1) * 100}' : 'opacity-0'`}
+          >
+            <div
+              class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            ></div>
+            <div
+              class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl overflow-hidden h-full relative hover:border-cyber-blue/50 transition-all duration-300"
+            >
+              <div class="h-48 overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div
+                  class="absolute top-4 right-4 px-3 py-1 bg-cyber-dark/80 backdrop-blur-sm rounded-full border border-cyber-blue/30 text-xs text-cyber-blue"
+                >
+                  {project.category === "ml"
+                    ? "Machine Learning"
+                    : project.category === "nlp"
+                    ? "NLP"
+                    : "Computer Vision"}
+                </div>
+              </div>
+
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2 text-cyber-blue">
+                  {project.title}
+                </h3>
+                <p class="text-gray-300 mb-4">{project.description}</p>
+
+                <div class="flex flex-wrap gap-2 mb-6">
+                  {project.tags.map((tag) => (
+                    <span
+                      class="px-2 py-1 bg-cyber-blue/10 rounded-md text-xs text-cyber-blue"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div class="flex gap-4">
+                  {project.links.map((link) => (
+                    <a
+                      href={link.href}
+                      class="text-cyber-blue hover:text-white transition-colors"
+                    >
+                      <i class={link.icon}></i> {link.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

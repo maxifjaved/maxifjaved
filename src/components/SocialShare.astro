@@ -1,0 +1,62 @@
+---
+interface Props {
+  title: string;
+  url: string;
+}
+
+const { title, url } = Astro.props;
+
+const encodedUrl = encodeURIComponent(url);
+const encodedTitle = encodeURIComponent(title);
+---
+
+<section
+  id="social-share"
+  class="relative mb-6"
+  x-data="{ visible: false }"
+  x-intersect.once="visible = true"
+  x-bind:class="visible ? 'animated fadeInUp delay300' : 'opacity-0'"
+>
+  <div class="mx-auto max-w-4xl px-6">
+    <div
+      class="flex items-center justify-between gap-2 border-t border-cyber-blue/20 py-6"
+    >
+      <h3 class="text-xl font-bold text-cyber-blue">Share</h3>
+      <div class="flex gap-4">
+        <a
+          href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
+          class="text-cyber-blue transition-colors hover:text-white"
+          aria-label="Share on Twitter"
+        >
+          <i class="fab fa-twitter text-2xl"></i>
+        </a>
+        <a
+          href={`https://www.linkedin.com/shareArticle?url=${encodedUrl}&title=${encodedTitle}`}
+          class="text-cyber-blue transition-colors hover:text-white"
+          aria-label="Share on LinkedIn"
+        >
+          <i class="fab fa-linkedin text-2xl"></i>
+        </a>
+        <a
+          href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
+          class="text-cyber-blue transition-colors hover:text-white"
+          aria-label="Share on Facebook"
+        >
+          <i class="fab fa-facebook text-2xl"></i>
+        </a>
+        <a
+          href="#"
+          class="text-cyber-blue transition-colors hover:text-white"
+          aria-label="Copy link"
+          x-data="{ copied: false }"
+          @click="navigator.clipboard.writeText(window.location.href); copied = true; setTimeout(() => copied = false, 2000)"
+        >
+          <i
+            class="fas text-2xl"
+            x-bind:class="copied ? 'fa-check' : 'fa-link'"
+          ></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

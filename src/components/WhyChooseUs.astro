@@ -1,0 +1,97 @@
+---
+export interface FeatureType {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const featureData: FeatureType[] = [
+  {
+    icon: "fas fa-brain",
+    title: "Unmatched AI Expertise",
+    description:
+      "Our team of 150+ AI specialists leverages cutting-edge technologies to deliver tailored solutions in machine learning, NLP, and computer vision.",
+  },
+  {
+    icon: "fas fa-lightbulb",
+    title: "Pioneering Innovation",
+    description:
+      "We push the boundaries of AI with award-winning solutions, recognized as 'Top AI Innovator' at AI Summit 2022.",
+  },
+  {
+    icon: "fas fa-expand-arrows-alt",
+    title: "Scalable Solutions",
+    description:
+      "Our cloud-native AI platforms are designed to scale seamlessly, supporting businesses from startups to global enterprises.",
+  },
+  {
+    icon: "fas fa-users",
+    title: "Proven Client Success",
+    description:
+      "Serving 100+ enterprise clients across industries like healthcare, finance, and retail with measurable ROI.",
+  },
+  {
+    icon: "fas fa-rocket",
+    title: "Agile Delivery",
+    description:
+      "Our agile methodology ensures rapid deployment and iterative improvements, delivering value at every stage.",
+  },
+  {
+    icon: "fas fa-globe",
+    title: "Global Reach",
+    description:
+      "With offices in North America, Europe, and Asia, we provide localized support and global expertise.",
+  },
+];
+---
+
+<section
+  id="why-choose-us"
+  class="bg-cyber-dark/20 py-24 relative overflow-hidden"
+>
+  <div
+    class="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-cyber-dark to-transparent"
+  ></div>
+  <div
+    class="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-cyber-dark to-transparent"
+  ></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="flex justify-center mb-16">
+      <div class="relative">
+        <h2 class="text-3xl md:text-4xl font-bold text-center">
+          Why <span class="text-cyber-blue text-shadow-glow">Choose Us</span>
+        </h2>
+        <div class="h-1 w-32 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {featureData.map((feature, index) => (
+        <div
+          class="group relative"
+          x-data="{ visible: false }"
+          x-intersect.once="visible = true"
+          x-bind:class={`visible ? 'animated fadeInUp delay${(index + 1) * 100}' : 'opacity-0'`}
+        >
+          <div
+            class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          ></div>
+          <div
+            class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 h-full relative hover:border-cyber-blue/50 transition-all duration-300"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-cyber-blue/20 border border-cyber-blue flex items-center justify-center mb-4 glow"
+            >
+              <i class={feature.icon + " text-cyber-blue text-xl"}></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-cyber-blue">
+              {feature.title}
+            </h3>
+            <p class="text-gray-300">{feature.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
