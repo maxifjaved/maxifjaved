@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     
     <!-- Performance optimizations -->
-    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
     <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <link rel="preload" as="image" href="https://maxifjaved.com/profile-image.jpg">
     
     <!-- Google tag (gtag.js) --> 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VC7TMWR4LZ"></script> 
@@ -106,15 +107,13 @@
         color: white;
         margin: 5px;
         text-decoration: none;
+        transition: transform 0.2s ease;
       }
       .btn:hover {
         text-decoration: none;
         transform: translateY(-2px);
       }
       .btn-primary { background-color: #007bff; }
-      .btn-success { background-color: #28a745; }
-      .btn-danger { background-color: #dc3545; }
-      .btn-info { background-color: #17a2b8; }
       .btn-linkedin { background-color: #0077B5; }
       
       /* CSS for inline styles */
@@ -213,14 +212,17 @@
       .highlight-box.info > h3 {
         color: #1565c0;
       }
+      
+      .footer-note {
+        opacity: 0.8;
+      }
     </style>
     
     <!-- SEO Meta Tags -->
     <title>Muhammad Asif Javed - AI Integration Expert, Full-Stack Developer & Founder of QuranGallery.app</title>
-    <meta name="description" content="Muhammad Asif Javed is an AI Integration Expert, Full-Stack Developer, and Founder of QuranGallery.app serving 25K+ users. 10+ years experience in React, Node.js, Python, and AI solutions. Available for hire.">
+    <meta name="description" content="AI Integration Expert & Full-Stack Developer. Founder of QuranGallery.app (25K+ users). 10+ years in React, Node.js, Python & AI solutions.">
     <meta name="author" content="Muhammad Asif Javed">
     <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
-    <meta name="googlebot" content="index, follow">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://maxifjaved.com">
@@ -259,6 +261,7 @@
         },
         {
           "@type": "Person",
+          "@id": "https://maxifjaved.com/#person",
         "name": "Muhammad Asif Javed",
         "givenName": "Muhammad Asif",
         "familyName": "Javed",
@@ -319,6 +322,19 @@
           "@type": "CollegeOrUniversity",
           "name": "PUCIT"
         }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://maxifjaved.com/#project-qurangallery",
+          "name": "QuranGallery.app",
+          "description": "An AI-powered digital Islamic learning Progressive Web App built with Next.js, React, and Node.js, serving 25,000+ users globally.",
+          "url": "https://qurangallery.app",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "Web, iOS, Android (PWA)",
+          "programmingLanguage": ["JavaScript", "TypeScript", "React", "Node.js", "Next.js"],
+          "author": { "@id": "https://maxifjaved.com/#person" },
+          "datePublished": "2024-08-15",
+          "keywords": "PWA, Islamic learning, Next.js, React, digital Quran"
         },
         {
           "@type": "ProfessionalService",
@@ -397,6 +413,7 @@
              alt="Portrait of Muhammad Asif Javed"
              width="150"
              height="150"
+             fetchpriority="high"
              class="profile-img"
              srcset="https://maxifjaved.com/profile-image.jpg 1x, https://maxifjaved.com/profile-image@2x.jpg 2x"
              sizes="(max-width: 600px) 100px, 150px">
@@ -574,8 +591,8 @@
     </main>
 
     <footer>
-        <p>© <span id="current-year"></span> Muhammad Asif Javed. Built with ❤️ and lots of ☕</p>
-        <p style="opacity:0.8;"><small>Available for AI Integration Projects Worldwide</small></p>
+        <p>© <span id="current-year">2025</span> Muhammad Asif Javed. Built with ❤️ and lots of ☕</p>
+        <p class="footer-note"><small>Available for AI Integration Projects Worldwide</small></p>
     </footer>
 
     <script>
