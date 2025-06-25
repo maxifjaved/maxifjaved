@@ -2,17 +2,20 @@
 import "../styles/global.css";
 import "@splidejs/splide/dist/css/splide.min.css";
 import "glightbox/dist/css/glightbox.min.css";
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
-import BackToTop from '../components/BackToTop.astro';
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import BackToTop from "../components/BackToTop.astro";
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Futura AI | AI Software Solutions</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png" />
+    <title>
+      Muhammad Asif Javed - AI Integration Expert, Full-Stack Developer
+    </title>
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -32,187 +35,198 @@ import BackToTop from '../components/BackToTop.astro';
 
     <script src="/src/scripts/vendors.js"></script>
     <script>
-import Alpine from 'alpinejs';
-import GLightbox from 'glightbox';
+      import Alpine from "alpinejs";
+      import GLightbox from "glightbox";
 
-// Initialize GLightbox
-const lightbox = GLightbox({
-  selector: '.glightbox',
-});
+      // Initialize GLightbox
+      const lightbox = GLightbox({
+        selector: ".glightbox",
+      });
 
-// Counter Alpine.js Component
-document.addEventListener('alpine:init', () => {
-  Alpine.data('counter', (endValue: any, duration: number = 2) => ({
-    current: 0,
-    counting: false,
-    end: parseInt(String(endValue).replace(/,/g, ''), 10),
-    init() {
-      // Trigger counting when element enters viewport
-      this.$root.addEventListener('intersect', () => {
-        if (!this.counting && this.current < this.end) {
-          this.startCounting();
+      // Counter Alpine.js Component
+      document.addEventListener("alpine:init", () => {
+        Alpine.data("counter", (endValue: any, duration: number = 2) => ({
+          current: 0,
+          counting: false,
+          end: parseInt(String(endValue).replace(/,/g, ""), 10),
+          init() {
+            // Trigger counting when element enters viewport
+            this.$root.addEventListener("intersect", () => {
+              if (!this.counting && this.current < this.end) {
+                this.startCounting();
+              }
+            });
+          },
+          formatNumber(num: { toLocaleString: (arg0: string) => any }) {
+            return num.toLocaleString("en-US");
+          },
+          startCounting() {
+            if (this.counting || this.current >= this.end) return;
+            this.counting = true;
+            const start = this.current;
+            const range = this.end - start;
+            const startTime = performance.now();
+            const update = (now: number) => {
+              const elapsedTime = now - startTime;
+              if (elapsedTime < duration * 1000) {
+                const progress = elapsedTime / (duration * 1000);
+                this.current = Math.round(start + progress * range);
+                requestAnimationFrame(update.bind(this));
+              } else {
+                this.current = this.end;
+                this.counting = false;
+              }
+            };
+            requestAnimationFrame(update);
+          },
+        }));
+      });
+
+      // Smooth Scroll and Active Class Handling
+      document.addEventListener("DOMContentLoaded", () => {
+        const navLinks = document.querySelectorAll('a[data-type="smooth"]');
+        const sections = document.querySelectorAll("section[id]");
+
+        const removeActiveClasses = () => {
+          navLinks.forEach((link) => link.classList.remove("active"));
+        };
+
+        const setActiveLink = (targetId: string) => {
+          removeActiveClasses();
+          const activeLink = Array.from(navLinks).find(
+            (link) => link.getAttribute("href") === `#${targetId}`
+          );
+          if (activeLink) activeLink.classList.add("active");
+        };
+
+        const checkCurrentSection = () => {
+          let current = "";
+          sections.forEach((section) => {
+            const sectionTop = (section as HTMLElement).offsetTop - 80;
+            const sectionHeight = section.clientHeight;
+            if (
+              window.pageYOffset >= sectionTop &&
+              window.pageYOffset < sectionTop + sectionHeight
+            ) {
+              current = section.getAttribute("id") || "";
+            }
+          });
+          if (current) {
+            setActiveLink(current);
+          } else if (
+            window.pageYOffset <
+            ((sections[0] as HTMLElement)?.offsetTop || 0) - 80
+          ) {
+            setActiveLink("home");
+          }
+        };
+
+        window.addEventListener("scroll", checkCurrentSection);
+
+        navLinks.forEach((anchor) => {
+          anchor.addEventListener("click", (e) => {
+            e.preventDefault();
+            const href = anchor.getAttribute("href");
+            const targetId = href ? href.substring(1) : "";
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+              const yOffset = -70;
+              if (targetElement) {
+                const y = targetElement
+                  ? targetElement.getBoundingClientRect().top +
+                    window.pageYOffset +
+                    yOffset
+                  : 0;
+                window.scrollTo({ top: y, behavior: "smooth" });
+                setActiveLink(targetId);
+              }
+            }
+          });
+        });
+
+        const initializeActiveLink = () => {
+          const hash = window.location.hash.substring(1);
+          if (hash && document.getElementById(hash)) {
+            setActiveLink(hash);
+            const targetElement = document.getElementById(hash);
+            const yOffset = -70;
+            const y = targetElement
+              ? targetElement.getBoundingClientRect().top +
+                window.pageYOffset +
+                yOffset
+              : 0;
+            window.scrollTo({ top: y, behavior: "instant" });
+          } else {
+            checkCurrentSection();
+          }
+        };
+
+        initializeActiveLink();
+        window.addEventListener("hashchange", initializeActiveLink);
+      });
+
+      // Back to Top Button Functionality
+      document.addEventListener("DOMContentLoaded", () => {
+        const backToTopButton = document.getElementById("back-to-top");
+        if (backToTopButton) {
+          window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+              backToTopButton.style.display = "block";
+              backToTopButton.classList.remove("opacity-0", "invisible");
+              backToTopButton.classList.add("opacity-100", "visible");
+            } else {
+              backToTopButton.classList.remove("opacity-100", "visible");
+              backToTopButton.classList.add("opacity-0", "invisible");
+              setTimeout(() => {
+                if (window.scrollY <= 300) {
+                  backToTopButton.style.display = "none";
+                }
+              }, 300);
+            }
+          });
+
+          backToTopButton.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
         }
       });
-    },
-    formatNumber(num: { toLocaleString: (arg0: string) => any; }) {
-      return num.toLocaleString('en-US');
-    },
-    startCounting() {
-      if (this.counting || this.current >= this.end) return;
-      this.counting = true;
-      const start = this.current;
-      const range = this.end - start;
-      const startTime = performance.now();
-      const update = (now: number) => {
-        const elapsedTime = now - startTime;
-        if (elapsedTime < duration * 1000) {
-          const progress = elapsedTime / (duration * 1000);
-          this.current = Math.round(start + progress * range);
-          requestAnimationFrame(update.bind(this));
-        } else {
-          this.current = this.end;
-          this.counting = false;
-        }
-      };
-      requestAnimationFrame(update);
-    },
-  }));
-});
 
-// Smooth Scroll and Active Class Handling
-document.addEventListener('DOMContentLoaded', () => {
-  const navLinks = document.querySelectorAll('a[data-type="smooth"]');
-  const sections = document.querySelectorAll('section[id]');
-
-  const removeActiveClasses = () => {
-    navLinks.forEach((link) => link.classList.remove('active'));
-  };
-
-  const setActiveLink = (targetId: string) => {
-    removeActiveClasses();
-    const activeLink = Array.from(navLinks).find(
-      (link) => link.getAttribute('href') === `#${targetId}`
-    );
-    if (activeLink) activeLink.classList.add('active');
-  };
-
-  const checkCurrentSection = () => {
-    let current = '';
-    sections.forEach((section) => {
-      const sectionTop = (section as HTMLElement).offsetTop - 80;
-      const sectionHeight = section.clientHeight;
-      if (
-        window.pageYOffset >= sectionTop &&
-        window.pageYOffset < sectionTop + sectionHeight
-      ) {
-        current = section.getAttribute('id') || '';
-      }
-    });
-    if (current) {
-      setActiveLink(current);
-    } else if (window.pageYOffset < ((sections[0] as HTMLElement)?.offsetTop || 0) - 80) {
-      setActiveLink('home');
-    }
-  };
-
-  window.addEventListener('scroll', checkCurrentSection);
-
-  navLinks.forEach((anchor) => {
-    anchor.addEventListener('click', (e) => {
-      e.preventDefault();
-      const href = anchor.getAttribute('href');
-      const targetId = href ? href.substring(1) : '';
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        const yOffset = -70;
-        if (targetElement) {
-          const y = targetElement ? targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset : 0;
-          window.scrollTo({ top: y, behavior: 'smooth' });
-          setActiveLink(targetId);
+      // Twinkling Stars and Matrix Code
+      function createStars() {
+        const starCount = 50;
+        for (let i = 0; i < starCount; i++) {
+          const star = document.createElement("div");
+          star.className = "star";
+          star.style.left = `${Math.random() * 100}vw`;
+          star.style.top = `${Math.random() * 100}vh`;
+          star.style.animationDelay = `${Math.random() * 5}s`;
+          star.style.animationDuration = `${3 + Math.random() * 7}s`;
+          document.body.appendChild(star);
         }
       }
-    });
-  });
 
-  const initializeActiveLink = () => {
-    const hash = window.location.hash.substring(1);
-    if (hash && document.getElementById(hash)) {
-      setActiveLink(hash);
-      const targetElement = document.getElementById(hash);
-      const yOffset = -70;
-      const y = targetElement ? targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset : 0;
-      window.scrollTo({ top: y, behavior: 'instant' });
-    } else {
-      checkCurrentSection();
-    }
-  };
+      function createMatrixEffect() {
+        const matrixContainer = document.createElement("div");
+        matrixContainer.className = "matrix-code";
+        document.body.appendChild(matrixContainer);
 
-  initializeActiveLink();
-  window.addEventListener('hashchange', initializeActiveLink);
-});
-
-// Back to Top Button Functionality
-document.addEventListener('DOMContentLoaded', () => {
-  const backToTopButton = document.getElementById('back-to-top');
-  if (backToTopButton) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTopButton.style.display = 'block';
-        backToTopButton.classList.remove('opacity-0', 'invisible');
-        backToTopButton.classList.add('opacity-100', 'visible');
-      } else {
-        backToTopButton.classList.remove('opacity-100', 'visible');
-        backToTopButton.classList.add('opacity-0', 'invisible');
-        setTimeout(() => {
-          if (window.scrollY <= 300) {
-            backToTopButton.style.display = 'none';
-          }
-        }, 300);
+        const charCount = 100;
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*+-=<>?";
+        for (let i = 0; i < charCount; i++) {
+          const char = document.createElement("span");
+          char.className = "matrix-char";
+          char.textContent = chars[Math.floor(Math.random() * chars.length)];
+          char.style.left = `${Math.random() * 100}vw`;
+          char.style.animationDelay = `${Math.random() * 5}s`;
+          char.style.animationDuration = `${3 + Math.random() * 3}s`;
+          matrixContainer.appendChild(char);
+        }
       }
-    });
 
-    backToTopButton.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-});
-
-// Twinkling Stars and Matrix Code
-function createStars() {
-  const starCount = 50;
-  for (let i = 0; i < starCount; i++) {
-    const star = document.createElement('div');
-    star.className = 'star';
-    star.style.left = `${Math.random() * 100}vw`;
-    star.style.top = `${Math.random() * 100}vh`;
-    star.style.animationDelay = `${Math.random() * 5}s`;
-    star.style.animationDuration = `${3 + Math.random() * 7}s`;
-    document.body.appendChild(star);
-  }
-}
-
-function createMatrixEffect() {
-  const matrixContainer = document.createElement('div');
-  matrixContainer.className = 'matrix-code';
-  document.body.appendChild(matrixContainer);
-
-  const charCount = 100;
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*+-=<>?';
-  for (let i = 0; i < charCount; i++) {
-    const char = document.createElement('span');
-    char.className = 'matrix-char';
-    char.textContent = chars[Math.floor(Math.random() * chars.length)];
-    char.style.left = `${Math.random() * 100}vw`;
-    char.style.animationDelay = `${Math.random() * 5}s`;
-    char.style.animationDuration = `${3 + Math.random() * 3}s`;
-    matrixContainer.appendChild(char);
-  }
-}
-
-window.addEventListener('load', () => {
-  createStars();
-  createMatrixEffect();
-});
+      window.addEventListener("load", () => {
+        createStars();
+        createMatrixEffect();
+      });
     </script>
   </body>
 </html>
