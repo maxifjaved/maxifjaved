@@ -15,7 +15,7 @@ export interface FooterType {
 
 const footerData: FooterType = {
   description:
-    "Pioneering AI-driven solutions to transform industries with intelligent automation and advanced analytics since 2021.",
+    "AI Integration Expert helping businesses transform with intelligent solutions. 10+ years experience | Available for remote work at $85/hour.",
   links: [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
@@ -29,14 +29,20 @@ const footerData: FooterType = {
     { label: "Docs", href: "/docs" },
   ],
   contact: {
-    email: { label: "info@futura.ai", href: "#" },
-    phone: { label: "+1 (800) 555-1234", href: "tel:+1-800-555-1234" },
-    address: "123 AI Innovation St, San Francisco, CA",
+    email: {
+      label: "axif.javed@gmail.com",
+      href: "mailto:axif.javed@gmail.com",
+    },
+    phone: {
+      label: "+92 332 464 7331",
+      href: "https://api.whatsapp.com/send?phone=923324647331&text=%F0%9F%93%9E%20Hi%20Asif.%20How%20are%20you%3F",
+    },
+    address: "Walton, Lahore, PK",
   },
   social: [
-    { icon: "fab fa-github", href: "https://github.com/Futura" },
-    { icon: "fab fa-linkedin", href: "https://linkedin.com/company/Futura" },
-    { icon: "fab fa-twitter", href: "https://twitter.com/Futura" },
+    { icon: "fab fa-github", href: "https://github.com/maxifjaved" },
+    { icon: "fab fa-linkedin", href: "https://linkedin.com/in/maxifjaved" },
+    { icon: "fas fa-globe", href: "https://maxifjaved.com" },
   ],
 };
 ---
@@ -46,11 +52,13 @@ const footerData: FooterType = {
 >
   <div
     class="absolute w-96 h-96 bg-cyber-blue/5 rounded-full blur-3xl -top-20 -left-20 animate-pulse-slow"
-  ></div>
+  >
+  </div>
   <div
     class="absolute w-64 h-64 bg-cyber-blue/5 rounded-full blur-3xl -bottom-20 -right-20 animate-pulse-slow"
     style="animation-delay: 2s;"
-  ></div>
+  >
+  </div>
 
   <div class="max-w-7xl mx-auto px-6 relative">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
@@ -65,38 +73,42 @@ const footerData: FooterType = {
         <div>
           <h3 class="text-xl font-bold text-cyber-blue mb-6">Links</h3>
           <ul class="space-y-3">
-            {footerData.links.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  class="text-gray-300 hover:text-cyber-blue transition-colors"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {
+              footerData.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="text-gray-300 hover:text-cyber-blue transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))
+            }
           </ul>
         </div>
         <div>
           <h3 class="text-xl font-bold text-cyber-blue mb-6">Pages</h3>
           <ul class="space-y-3">
-            {footerData.pages.map((page) => (
-              <li>
-                <a
-                  href={page.href}
-                  class="text-gray-300 hover:text-cyber-blue transition-colors"
-                >
-                  {page.label}
-                </a>
-              </li>
-            ))}
+            {
+              footerData.pages.map((page) => (
+                <li>
+                  <a
+                    href={page.href}
+                    class="text-gray-300 hover:text-cyber-blue transition-colors"
+                  >
+                    {page.label}
+                  </a>
+                </li>
+              ))
+            }
           </ul>
         </div>
       </div>
 
       <div>
         <div class="mb-4">
-          <h3 class="text-xl font-bold text-cyber-blue mb-6">Contact Us</h3>
+          <h3 class="text-xl font-bold text-cyber-blue mb-6">Contact Me</h3>
           <ul class="space-y-3 text-gray-300">
             <li class="flex items-center">
               <i class="fas fa-envelope text-cyber-blue mr-3"></i>
@@ -124,22 +136,24 @@ const footerData: FooterType = {
         </div>
 
         <div class="flex gap-6">
-          {footerData.social.map((social) => (
-            <a
-              href={social.href}
-              target="_blank"
-              class="text-cyber-blue hover:text-white transition-colors"
-            >
-              <i class={social.icon + " text-2xl"}></i>
-            </a>
-          ))}
+          {
+            footerData.social.map((social) => (
+              <a
+                href={social.href}
+                target="_blank"
+                class="text-cyber-blue hover:text-white transition-colors"
+              >
+                <i class={social.icon + " text-2xl"} />
+              </a>
+            ))
+          }
         </div>
       </div>
     </div>
 
     <div class="mt-12 pt-8 border-t border-cyber-blue/20 text-center">
       <p class="text-gray-400">
-        © {new Date().getFullYear()} Futura AI Solutions. All rights reserved.
+        © {new Date().getFullYear()} Muhammad Asif Javed. All rights reserved.
       </p>
     </div>
   </div>
