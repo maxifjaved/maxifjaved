@@ -1,0 +1,52 @@
+---
+export interface ServiceType {
+  title: string;
+  description: string;
+  icon: string;
+  features: string[];
+}
+
+interface Props {
+  service: ServiceType;
+  index: number;
+}
+
+const { service, index } = Astro.props;
+---
+
+<div
+  class="group relative opacity-0"
+  x-data="{ visible: false }"
+  x-intersect.once="visible = true"
+  x-bind:class={`visible ? 'animated fadeInUp delay${(index + 1) * 100}' : 'opacity-0'`}
+  role="article"
+  aria-labelledby={`service-title-${index}`}
+>
+  <div
+    class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+  ></div>
+  <div
+    class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 h-full relative hover:border-cyber-blue/50 transition-all duration-300"
+  >
+    <div
+      class="w-12 h-12 rounded-full bg-cyber-blue/20 border border-cyber-blue flex items-center justify-center mb-4 glow"
+    >
+      <i class={`${service.icon} text-cyber-blue text-xl`}></i>
+    </div>
+    <h3
+      class="text-xl font-bold mb-2 text-cyber-blue"
+      id={`service-title-${index}`}
+    >
+      {service.title}
+    </h3>
+    <p class="text-gray-300 mb-4">{service.description}</p>
+    <ul class="text-gray-300 text-sm space-y-2" aria-label="Service features">
+      {service.features.map((feature) => (
+        <li>
+          <i class="fas fa-check text-cyber-blue mr-2"></i>
+          {feature}
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>

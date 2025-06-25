@@ -1,0 +1,75 @@
+---
+export interface TimelineItemType {
+  period: string;
+  title: string;
+  description: string;
+  position: "left" | "right";
+}
+
+const timelineData: TimelineItemType[] = [
+  {
+    period: "2023 - Present",
+    title: "Global Expansion",
+    description:
+      "Opened offices in Europe and Asia, serving over 100 enterprise clients with tailored AI solutions.",
+    position: "right",
+  },
+  {
+    period: "2022 - 2023",
+    title: "Industry Leadership",
+    description:
+      "Recognized as 'Top AI Innovator' at AI Summit 2022, delivering solutions to millions of users.",
+    position: "left",
+  },
+  {
+    period: "2021 - 2022",
+    title: "Foundation & Growth",
+    description:
+      "Founded Futura, growing to a team of 50 and pioneering AI applications in healthcare and finance.",
+    position: "right",
+  },
+];
+---
+
+<div class="relative mb-8 md:mb-24">
+  <h3 class="text-2xl font-bold mb-12 text-center">
+    Our <span class="text-cyber-blue text-shadow-glow">Milestones</span>
+  </h3>
+
+  <div class="relative">
+    <div
+      class="absolute max-md:hidden left-1/2 transform -translate-x-1/2 h-full w-1 bg-cyber-blue/30"
+    ></div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {timelineData.map((item, index) => (
+        <>
+          {item.position === "right" && <div class="hidden md:block"></div>}
+          <div
+            x-data="{ visible: false }"
+            x-intersect.once="visible = true"
+            x-bind:class="visible ? 'animated fadeInUp delay100' : 'opacity-0'"
+            class={`${item.position === "right" ? "md:pl-12" : "md:pr-12 md:text-right"
+            } relative`}
+          >
+            <div
+              class={`hidden md:block absolute ${
+                item.position === "right"
+                  ? "left-0 -translate-x-1/2"
+                  : "right-0 translate-x-1/2"
+              } top-5 w-4 h-4 rounded-full bg-cyber-blue glow`}
+            ></div>
+            <div
+              class="p-6 bg-cyber-dark/50 backdrop-blur-sm border border-cyber-blue/20 rounded-xl hover:border-cyber-blue/50 transition-all duration-300"
+            >
+              <h4 class="text-cyber-blue font-bold">{item.period}</h4>
+              <h5 class="text-xl font-semibold mb-2">{item.title}</h5>
+              <p class="text-gray-300">{item.description}</p>
+            </div>
+          </div>
+          {item.position === "left" && <div class="hidden md:block"></div>}
+        </>
+      ))}
+    </div>
+  </div>
+</div>

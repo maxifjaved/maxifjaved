@@ -1,0 +1,103 @@
+---
+export interface ContactInfoType {
+  title: string;
+  contacts: {
+    icon: string;
+    title: string;
+    description: string;
+    value: string;
+    href?: string;
+    delay: number;
+  }[];
+}
+
+const contactInfoData: ContactInfoType = {
+  title: "Contact Us",
+  contacts: [
+    {
+      icon: "fas fa-envelope",
+      title: "Email Us",
+      description: "Drop us a line, and we’ll get back to you within 24 hours.",
+      value: "info@futura.ai",
+      href: "mailto:info@futura.ai",
+      delay: 100,
+    },
+    {
+      icon: "fas fa-phone",
+      title: "Call Us",
+      description: "Speak directly with our team during business hours.",
+      value: "+1 (800) 555-1234",
+      href: "tel:+1-800-555-1234",
+      delay: 200,
+    },
+    {
+      icon: "fas fa-map-marker-alt",
+      title: "Visit Us",
+      description: "Stop by our office in San Francisco for a chat.",
+      value: "123 AI Innovation St, San Francisco, CA",
+      delay: 300,
+    },
+  ],
+};
+---
+
+<section
+  id="contact-info"
+  class="bg-cyber-dark/60 pb-16 lg:pb-24 pt-32 lg:pt-40 relative overflow-hidden"
+>
+  <div class="max-w-7xl mx-auto px-6">
+    <div
+      class="absolute w-96 h-96 bg-cyber-blue/5 rounded-full blur-3xl -bottom-20 -right-20"
+    ></div>
+
+    <div class="flex justify-center mb-16">
+      <div class="relative">
+        <h2 class="text-4xl md:text-5xl font-bold text-center">
+          {contactInfoData.title.split(" ")[0]}{" "}
+          <span class="text-cyber-blue text-shadow-glow">
+            {contactInfoData.title.split(" ")[1]}
+          </span>
+        </h2>
+        <div class="h-1 w-24 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {contactInfoData.contacts.map((contact) => (
+        <div
+          class="group relative opacity-0"
+          x-data="{ visible: false }"
+          x-intersect.once="visible = true"
+          x-bind:class={`visible ? 'animated fadeInUp delay${contact.delay}' : 'opacity-0'`}
+        >
+          <div
+            class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          ></div>
+          <div
+            class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 h-full relative hover:border-cyber-blue/50 transition-all duration-300 text-center"
+          >
+            <div
+              class="w-12 h-12 rounded-full bg-cyber-blue/20 border border-cyber-blue flex items-center justify-center mx-auto mb-4 glow"
+            >
+              <i class={`${contact.icon} text-cyber-blue text-xl`}></i>
+            </div>
+            <h3 class="text-xl font-bold mb-2 text-cyber-blue">
+              {contact.title}
+            </h3>
+            <p class="text-gray-300 mb-4">{contact.description}</p>
+            {contact.href ? (
+              <a
+                href={contact.href}
+                class="text-cyber-blue hover:text-white transition-colors"
+              >
+                {contact.value}
+              </a>
+            ) : (
+              <p class="text-gray-300">{contact.value}</p>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

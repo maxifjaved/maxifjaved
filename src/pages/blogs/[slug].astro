@@ -1,0 +1,45 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import ArticleHeader from "../../components/ArticleHeader.astro";
+import ArticleContent from "../../components/ArticleContent.astro";
+import SocialShare from "../../components/SocialShare.astro";
+import AuthorInfo from "../../components/AuthorInfo.astro";
+import RelatedPosts from "../../components/RelatedPosts.astro";
+import { blogItems } from "../../data/blogItems";
+
+// Generate static paths for all blog posts
+export function getStaticPaths() {
+  const paths = blogItems.map((item) => ({
+    params: { slug: item.slug },
+    props: {
+      blog: item,
+      title: item.title,
+      description: item.metaDescription || item.subtitle,
+    },
+  }));
+  
+  return paths;
+}
+
+// Get props from getStaticPaths
+const { blog, title, description } = Astro.props;
+const { title: blogTitle, subtitle, category, date, author, readTime, featuredImage, content, relatedPosts } = blog;
+
+const currentUrl = new URL(Astro.url).toString();
+---
+
+<MainLayout title={`${title} | Futura AI Blog`} description={description}>
+  <ArticleHeader
+    title={blogTitle}
+    subtitle={subtitle}
+    category={category}
+    date={date}
+    author={author}
+    readTime={readTime}
+    featuredImage={featuredImage}
+  />
+  <ArticleContent content={content} />
+  <SocialShare title={blogTitle} url={currentUrl} />
+  <AuthorInfo author={author} />
+  <RelatedPosts relatedPosts={relatedPosts} />
+</MainLayout>

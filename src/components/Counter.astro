@@ -1,0 +1,68 @@
+---
+export interface CounterType {
+  value: number;
+  label: string;
+}
+
+const counterData: CounterType[] = [
+  { value: 78, label: "Enterprise Clients" },
+  { value: 250, label: "Completed Projects" },
+  { value: 62, label: "Ongoing Projects" },
+  { value: 22, label: "Team Members" },
+];
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+  {counterData.map((counter) => (
+    <div class="group relative text-center">
+      <div
+        class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      ></div>
+      <div
+        class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 relative hover:border-cyber-blue/50 transition-all duration-300"
+      >
+        <h3
+          class="text-4xl font-bold text-cyber-blue mb-2"
+          x-data={`counter(${counter.value}, 3)`}
+          x-intersect="startCounting"
+        >
+          <span x-text="current"></span>
+        </h3>
+        <p class="text-gray-300 text-sm">{counter.label}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  // Counter function
+  function counter(end: number, duration: number) {
+    return {
+      current: 0,
+      counting: false,
+      formatNumber(num: { toString: () => string; }) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      },
+      startCounting() {
+        end = parseInt(end.toString().replace(/,/g, ""), 10);
+        if (this.counting || this.current >= end) return;
+        this.counting = true;
+        const start = this.current;
+        const range = end - start;
+        const startTime = performance.now();
+        const update = (now: number) => {
+          const elapsedTime = now - startTime;
+          if (elapsedTime < duration * 1000) {
+            const progress = elapsedTime / (duration * 1000);
+            this.current = Math.round(start + progress * range);
+            requestAnimationFrame(update);
+          } else {
+            this.current = end;
+            this.counting = false;
+          }
+        };
+        requestAnimationFrame(update);
+      },
+    };
+  }
+</script>

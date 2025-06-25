@@ -1,7 +1,7 @@
 {
-  "name": "astro-portfolio",
+  "name": "futura-astro",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -9,15 +9,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.0",
-    "@astrojs/rss": "^4.0.12",
-    "@astrojs/sitemap": "^3.4.1",
+    "@alpinejs/intersect": "^3.14.9",
+    "@splidejs/splide": "^4.1.4",
+    "@tailwindcss/vite": "^4.1.4",
     "alpinejs": "^3.14.9",
-    "astro": "^5.10.1",
-    "sharp": "^0.34.2"
+    "astro": "^5.7.8",
+    "glightbox": "^3.3.1",
+    "tailwindcss": "^4.1.4"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.1.10",
-    "tailwindcss": "^4.0.0"
+    "@types/alpinejs": "^3.13.11"
   }
 }

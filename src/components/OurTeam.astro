@@ -1,0 +1,89 @@
+---
+export interface TeamMemberType {
+  name: string;
+  role: string;
+  description: string;
+  image: { src: string; alt: string };
+}
+
+export interface OurTeamType {
+  title: string;
+  members: TeamMemberType[];
+}
+
+const ourTeamData: OurTeamType = {
+  title: "Our Team",
+  members: [
+    {
+      name: "Dr. Anna Lee",
+      role: "Chief AI Scientist",
+      description:
+        "Leading our AI research with over 15 years of experience in machine learning and data science.",
+      image: { src: "/img/female4.jpg", alt: "Dr. Anna Lee" },
+    },
+    {
+      name: "James Carter",
+      role: "Head of Engineering",
+      description:
+        "Overseeing the development of scalable AI platforms with expertise in cloud infrastructure.",
+      image: { src: "/img/male1.jpg", alt: "James Carter" },
+    },
+    {
+      name: "Sofia Patel",
+      role: "Director of Innovation",
+      description:
+        "Driving creative AI solutions to transform industries and deliver measurable impact.",
+      image: { src: "/img/female3.jpg", alt: "Sofia Patel" },
+    },
+  ],
+};
+---
+
+<section id="our-team" class="py-24 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="flex justify-center mb-16">
+      <div class="relative">
+        <h2 class="text-3xl md:text-4xl font-bold text-center">
+          {ourTeamData.title.split(" ")[0]}{" "}
+          <span class="text-cyber-blue text-shadow-glow">
+            {ourTeamData.title.split(" ")[1]}
+          </span>
+        </h2>
+        <div class="h-1 w-24 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {ourTeamData.members.map((member, index) => (
+        <div
+          class="group relative"
+          x-data="{ visible: false }"
+          x-intersect.once="visible = true"
+          x-bind:class={`visible ? 'animated fadeInUp delay${(index + 1) * 100}' : 'opacity-0'`}
+        >
+          <div
+            class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          ></div>
+          <div
+            class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 h-full relative hover:border-cyber-blue/50 transition-all duration-300"
+          >
+            <div
+              class="w-24 h-24 rounded-full bg-cyber-blue/20 border border-cyber-blue mx-auto mb-4 overflow-hidden glow"
+            >
+              <img
+                src={member.image.src}
+                alt={member.image.alt}
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="text-xl font-bold text-center text-cyber-blue">
+              {member.name}
+            </h3>
+            <p class="text-gray-300 text-center text-sm">{member.role}</p>
+            <p class="text-gray-300 text-center mt-2">{member.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

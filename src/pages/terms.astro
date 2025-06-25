@@ -1,0 +1,106 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import PageSection from '../components/PageSection.astro';
+
+export interface PageData {
+  title: string;
+  subtitle: string;
+  content: string;
+  lastUpdated: string;
+}
+
+const pageData: PageData = {
+  title: "Terms of Service",
+  subtitle: "Welcome to Futura AI Solutions. These terms govern your use of our website and services.",
+  lastUpdated: "April 26, 2025",
+  content: `
+    <p>By accessing or using Futura AI Solutions' website and services, you agree to be bound by these Terms of Service. If you disagree with any part of these terms, you may not access our services.</p>
+
+    <h2>1. Acceptance of Terms</h2>
+    <p>These Terms of Service ("Terms") constitute a legally binding agreement between you and Futura AI Solutions ("Company", "we", or "us") regarding your use of our website and AI services.</p>
+
+    <h2>2. Services Description</h2>
+    <p>Futura AI Solutions provides artificial intelligence services including but not limited to:</p>
+    <ul>
+      <li>AI-powered analytics tools</li>
+      <li>Machine learning models</li>
+      <li>Natural language processing services</li>
+      <li>Custom AI solutions</li>
+    </ul>
+    <p>We reserve the right to modify or discontinue any service at any time without notice.</p>
+
+    <h2>3. User Responsibilities</h2>
+    <p>When using our services, you agree to:</p>
+    <ul>
+      <li>Provide accurate and complete registration information</li>
+      <li>Maintain the security of your account credentials</li>
+      <li>Use the services only for lawful purposes</li>
+      <li>Not attempt to reverse engineer or disrupt our services</li>
+      <li>Comply with all applicable laws and regulations</li>
+    </ul>
+
+    <h2>4. Prohibited Uses</h2>
+    <p>You may not use our services to:</p>
+    <ul>
+      <li>Violate any laws or infringe on others' rights</li>
+      <li>Create harmful or malicious content</li>
+      <li>Engage in fraudulent activities</li>
+      <li>Transmit viruses or malicious code</li>
+      <li>Harass, threaten, or discriminate against others</li>
+    </ul>
+
+    <h2>5. Intellectual Property</h2>
+    <p>All content, trademarks, and proprietary information on our platform are owned by or licensed to Futura AI Solutions. You may not:</p>
+    <ul>
+      <li>Copy, modify, or create derivative works without permission</li>
+      <li>Use our branding without express written consent</li>
+      <li>Remove any copyright or proprietary notices</li>
+    </ul>
+
+    <h2>6. Payments and Subscriptions</h2>
+    <p>For paid services:</p>
+    <ul>
+      <li>You agree to pay all applicable fees</li>
+      <li>Fees are non-refundable unless otherwise stated</li>
+      <li>We may change pricing with 30 days notice</li>
+      <li>Late payments may result in service suspension</li>
+    </ul>
+
+    <h2>7. Limitation of Liability</h2>
+    <p>To the maximum extent permitted by law, Futura AI Solutions shall not be liable for:</p>
+    <ul>
+      <li>Any indirect, incidental, or consequential damages</li>
+      <li>Loss of data, profits, or business opportunities</li>
+      <li>Service interruptions beyond our reasonable control</li>
+    </ul>
+
+    <h2>8. Termination</h2>
+    <p>We may terminate or suspend your access to our services:</p>
+    <ul>
+      <li>For violation of these Terms</li>
+      <li>For prolonged inactivity</li>
+      <li>For any reason with 30 days notice</li>
+    </ul>
+
+    <h2>9. Governing Law</h2>
+    <p>These Terms shall be governed by the laws of the State of California, without regard to its conflict of law provisions.</p>
+
+    <h2>10. Changes to Terms</h2>
+    <p>We may modify these Terms at any time. Continued use after changes constitutes acceptance. We will notify users of material changes.</p>
+
+    <h2>11. Contact Information</h2>
+    <p>For questions about these Terms, contact us at:</p>
+    <ul>
+      <li>Email: <a href="mailto:legal@futura.ai">legal@futura.ai</a></li>
+      <li>Phone: <a href="tel:+1-800-555-1234">+1 (800) 555-1234</a></li>
+      <li>Address: 123 AI Innovation St, San Francisco, CA</li>
+    </ul>
+  `
+};
+
+const title = "Legal Information | Futura AI Solutions";
+---
+
+<MainLayout title={title}>
+  <PageSection pageData={pageData} />
+</MainLayout>

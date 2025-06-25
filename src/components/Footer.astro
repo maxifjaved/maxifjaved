@@ -1,51 +1,146 @@
 ---
-import { AUTHOR_NAME } from '../consts';
-const today = new Date();
+import Logo from "./Logo.astro";
+
+export interface FooterType {
+  description: string;
+  links: { label: string; href: string }[];
+  pages: { label: string; href: string }[];
+  contact: {
+    email: { label: string; href: string };
+    phone: { label: string; href: string };
+    address: string;
+  };
+  social: { icon: string; href: string }[];
+}
+
+const footerData: FooterType = {
+  description:
+    "Pioneering AI-driven solutions to transform industries with intelligent automation and advanced analytics since 2021.",
+  links: [
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Projects", href: "/projects" },
+    { label: "Contact", href: "/contact" },
+  ],
+  pages: [
+    { label: "Privacy", href: "/privacy" },
+    { label: "Terms", href: "/terms" },
+    { label: "Blogs", href: "/blogs" },
+    { label: "Docs", href: "/docs" },
+  ],
+  contact: {
+    email: { label: "info@futura.ai", href: "#" },
+    phone: { label: "+1 (800) 555-1234", href: "tel:+1-800-555-1234" },
+    address: "123 AI Innovation St, San Francisco, CA",
+  },
+  social: [
+    { icon: "fab fa-github", href: "https://github.com/Futura" },
+    { icon: "fab fa-linkedin", href: "https://linkedin.com/company/Futura" },
+    { icon: "fab fa-twitter", href: "https://twitter.com/Futura" },
+  ],
+};
 ---
 
-<footer>
-	<div class="footer-content">
-		<p>© <span id="current-year">{today.getFullYear()}</span> {AUTHOR_NAME}. Built with ❤️ and lots of ☕</p>
-		<p class="footer-note"><small>Available for AI Integration Projects Worldwide | Remote AI Developer | LangChain Expert</small></p>
-		<p class="footer-note"><small>Keywords: AI Engineer, LangChain Specialist, RAG Developer, OpenAI Integration, Full-Stack Developer, React Node Python, AI Consultant, Remote Tech Talent</small></p>
-	</div>
+<footer
+  class="z-10 bg-cyber-dark py-16 relative border-t border-cyber-blue/20 overflow-hidden"
+>
+  <div
+    class="absolute w-96 h-96 bg-cyber-blue/5 rounded-full blur-3xl -top-20 -left-20 animate-pulse-slow"
+  ></div>
+  <div
+    class="absolute w-64 h-64 bg-cyber-blue/5 rounded-full blur-3xl -bottom-20 -right-20 animate-pulse-slow"
+    style="animation-delay: 2s;"
+  ></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+      <div>
+        <div class="mb-6">
+          <Logo />
+        </div>
+        <p class="text-gray-300">{footerData.description}</p>
+      </div>
+
+      <div class="relative grid grid-cols-2 gap-4 lg:ps-12">
+        <div>
+          <h3 class="text-xl font-bold text-cyber-blue mb-6">Links</h3>
+          <ul class="space-y-3">
+            {footerData.links.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-gray-300 hover:text-cyber-blue transition-colors"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-cyber-blue mb-6">Pages</h3>
+          <ul class="space-y-3">
+            {footerData.pages.map((page) => (
+              <li>
+                <a
+                  href={page.href}
+                  class="text-gray-300 hover:text-cyber-blue transition-colors"
+                >
+                  {page.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <div class="mb-4">
+          <h3 class="text-xl font-bold text-cyber-blue mb-6">Contact Us</h3>
+          <ul class="space-y-3 text-gray-300">
+            <li class="flex items-center">
+              <i class="fas fa-envelope text-cyber-blue mr-3"></i>
+              <a
+                href={footerData.contact.email.href}
+                class="hover:text-cyber-blue transition-colors"
+              >
+                {footerData.contact.email.label}
+              </a>
+            </li>
+            <li class="flex items-center">
+              <i class="fas fa-phone text-cyber-blue mr-3"></i>
+              <a
+                href={footerData.contact.phone.href}
+                class="hover:text-cyber-blue transition-colors"
+              >
+                {footerData.contact.phone.label}
+              </a>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt text-cyber-blue mr-3 mt-1"></i>
+              <span>{footerData.contact.address}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex gap-6">
+          {footerData.social.map((social) => (
+            <a
+              href={social.href}
+              target="_blank"
+              class="text-cyber-blue hover:text-white transition-colors"
+            >
+              <i class={social.icon + " text-2xl"}></i>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-cyber-blue/20 text-center">
+      <p class="text-gray-400">
+        © {new Date().getFullYear()} Futura AI Solutions. All rights reserved.
+      </p>
+    </div>
+  </div>
 </footer>
-
-<style>
-	footer {
-		background: #343a40;
-		color: white;
-		text-align: center;
-		padding: 3rem 1rem;
-		margin-top: 4rem;
-	}
-
-	.footer-content {
-		max-width: 1200px;
-		margin: 0 auto;
-	}
-
-	footer p {
-		margin: 0.5rem 0;
-		line-height: 1.5;
-	}
-
-	.footer-note {
-		opacity: 0.8;
-		margin-top: 1rem;
-	}
-
-	.footer-note small {
-		font-size: 0.875rem;
-	}
-
-	@media (max-width: 768px) {
-		footer {
-			padding: 2rem 1rem;
-		}
-		
-		.footer-note small {
-			font-size: 0.8rem;
-		}
-	}
-</style>

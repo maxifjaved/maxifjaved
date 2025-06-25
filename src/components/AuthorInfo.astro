@@ -1,0 +1,45 @@
+---
+interface Author {
+  name: string;
+  title: string;
+  bio: string;
+  avatar: string;
+}
+
+interface Props {
+  author: Author;
+}
+
+const { author } = Astro.props;
+---
+
+<section
+  id="author-info"
+  class="relative mb-6"
+  x-data="{ visible: false }"
+  x-intersect.once="visible = true"
+  x-bind:class="visible ? 'animated fadeInUp delay400' : 'opacity-0'"
+>
+  <div class="mx-auto max-w-4xl px-6">
+    <div
+      class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 text-left backdrop-blur-sm"
+    >
+      <div class="mb-4 flex items-center">
+        <div
+          class="h-16 w-16 overflow-hidden rounded-full border border-cyber-blue bg-cyber-blue/20 glow"
+        >
+          <img
+            src={author.avatar}
+            alt={author.name}
+            class="h-full w-full object-cover"
+          />
+        </div>
+        <div class="ml-4">
+          <h3 class="text-xl font-bold text-cyber-blue">{author.name}</h3>
+          <p class="text-sm text-gray-400">{author.title}</p>
+        </div>
+      </div>
+      <p class="text-sm text-gray-300">{author.bio}</p>
+    </div>
+  </div>
+</section>
