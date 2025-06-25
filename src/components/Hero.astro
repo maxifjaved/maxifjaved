@@ -6,26 +6,44 @@ export interface HeroType {
   img: string;
   label1: string;
   label2: string;
-  buttons: { label: string; href: string; isPrimary: boolean, isSmooth: boolean }[];
+  buttons: {
+    label: string;
+    href: string;
+    isPrimary: boolean;
+    isSmooth: boolean;
+  }[];
   socialLinks: { icon: string; href: string }[];
 }
 
 const heroData: HeroType = {
-  title: "AI Software",
-  subtitle: "Development for the World",
+  title: "Asif Javed",
+  subtitle: "AI Integration Expert & Full-Stack Developer",
   description:
-    "Transforming industries with intelligent automation, advanced analytics, and cutting-edge AI technologies tailored to your business needs.",
+    "Transforming businesses with AI-powered solutions | 10+ years experience | Founder of QuranGallery.app | Available for remote work at $85/hour",
   img: "/img/future-ai.png",
-  label1: "Machine Learning",
-  label2: "Computer Vision",
+  label1: "AI Integration",
+  label2: "Full-Stack Dev",
   buttons: [
-    { label: "View Projects", href: "#projects", isPrimary: true, isSmooth: true },
-    { label: "Contact Us", href: "/contact", isPrimary: false, isSmooth: false },
+    {
+      label: "View Projects",
+      href: "#projects",
+      isPrimary: true,
+      isSmooth: true,
+    },
+    {
+      label: "Contact ME",
+      href: "/contact",
+      isPrimary: false,
+      isSmooth: false,
+    },
   ],
   socialLinks: [
-    { icon: "fab fa-github", href: "#" },
-    { icon: "fab fa-linkedin", href: "#" },
-    { icon: "fab fa-twitter", href: "#" },
+    { icon: "fab fa-github", href: "https://github.com/maxifjaved" },
+    { icon: "fab fa-linkedin", href: "https://linkedin.com/in/maxifjaved" },
+    {
+      icon: "fab fa-whatsapp",
+      href: "https://api.whatsapp.com/send?phone=923324647331&text=%F0%9F%93%9E%20Hi%20Asif.%20How%20are%20you%3F",
+    },
   ],
 };
 ---
@@ -37,45 +55,52 @@ const heroData: HeroType = {
   <div class="max-w-7xl mx-auto px-6 py-24 relative">
     <div
       class="absolute w-96 h-96 bg-cyber-blue/10 rounded-full blur-3xl -top-20 -left-20 animate-pulse-slow"
-    ></div>
+    >
+    </div>
     <div
       class="absolute w-64 h-64 bg-cyber-blue/10 rounded-full blur-3xl bottom-10 right-10 animate-pulse-slow"
       style="animation-delay: 2s;"
-    ></div>
+    >
+    </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative">
       <div class="order-2 lg:order-1">
         <h1 class="text-4xl lg:text-6xl font-bold mb-4">
-          <span class="text-cyber-blue text-shadow-glow">{heroData.title}</span>{" "}
+          <span class="text-cyber-blue text-shadow-glow">{heroData.title}</span>
+          <br />
           {heroData.subtitle}
         </h1>
         <p class="text-gray-300 text-lg mb-8">{heroData.description}</p>
 
         <div class="flex flex-wrap gap-4 font-future">
-          {heroData.buttons.map((button) => (
-            <a
-              href={button.href}
-              data-type={button.isSmooth ? "smooth" : "link"}
-              class={`max-sm:w-full inline-flex items-start justify-center gap-2 cyber-btn ${
-                button.isPrimary
-                  ? "bg-cyber-blue hover:bg-cyber-blue/80 text-cyber-dark"
-                  : "bg-transparent border border-cyber-blue text-cyber-blue hover:bg-cyber-blue/10"
-              } font-bold py-3 px-8 transition-all duration-300 glow`}
-            >
-              {button.label}
-            </a>
-          ))}
+          {
+            heroData.buttons.map((button) => (
+              <a
+                href={button.href}
+                data-type={button.isSmooth ? "smooth" : "link"}
+                class={`max-sm:w-full inline-flex items-start justify-center gap-2 cyber-btn ${
+                  button.isPrimary
+                    ? "bg-cyber-blue hover:bg-cyber-blue/80 text-cyber-dark"
+                    : "bg-transparent border border-cyber-blue text-cyber-blue hover:bg-cyber-blue/10"
+                } font-bold py-3 px-8 transition-all duration-300 glow`}
+              >
+                {button.label}
+              </a>
+            ))
+          }
         </div>
 
         <div class="mt-12 flex gap-6">
-          {heroData.socialLinks.map((link) => (
-            <a
-              href={link.href}
-              class="text-cyber-blue hover:text-white transition-colors"
-            >
-              <i class={link.icon + " text-2xl"}></i>
-            </a>
-          ))}
+          {
+            heroData.socialLinks.map((link) => (
+              <a
+                href={link.href}
+                class="text-cyber-blue hover:text-white transition-colors"
+              >
+                <i class={link.icon + " text-2xl"} />
+              </a>
+            ))
+          }
         </div>
       </div>
 
@@ -83,11 +108,13 @@ const heroData: HeroType = {
         <div class="w-64 h-64 md:w-96 md:h-96 relative">
           <div
             class="absolute inset-0 rounded-full border-4 border-cyber-blue/20 animate-pulse"
-          ></div>
+          >
+          </div>
           <div
             class="absolute inset-0 rounded-full border border-cyber-blue/40 animate-spin"
             style="animation-duration: 20s;"
-          ></div>
+          >
+          </div>
 
           <div
             class="absolute inset-4 rounded-full bg-cyber-blue/5 backdrop-blur-sm border border-cyber-blue glow"
@@ -152,8 +179,8 @@ const heroData: HeroType = {
     const phaseOffset = Math.PI / 2;
 
     function updateProgress() {
-      width1 = 50 + Math.sin(Date.now() * speed1 / 200) * range;
-      width2 = 70 + Math.sin(Date.now() * speed2 / 150 + phaseOffset) * range;
+      width1 = 50 + Math.sin((Date.now() * speed1) / 200) * range;
+      width2 = 70 + Math.sin((Date.now() * speed2) / 150 + phaseOffset) * range;
       if (progress1) {
         progress1.style.width = `${width1}%`;
       }
