@@ -1,11 +1,61 @@
-# ManageMyLED - Central Remote Management Platform for Interactive Displays
+---
+title: "ManageMyLED - Central Remote Management Platform"
+description: "Developed a comprehensive remote management platform for TouchIT Interactive LED displays, enabling centralized control, real-time monitoring, and mass deployment capabilities across global installations."
+category: "interactive-displays"
+featured: true
+status: "completed"
 
-- **Duration**: [Please provide start and end dates]
-- **Role**: Full-Stack Developer (Solo)
-- **Technologies**: Node.js, React, MongoDB, Digital Ocean, Pusher, Socket.io, Fabric.js (Canvas), OpenVidu/Agora (WebRTC), Kotlin (Android)
-- **Team Size**: Solo Developer (except design)
-- **Live Platform**: https://managemyled.com/
-- **Company**: TouchIT Technologies
+# Dates and duration
+startDate: "2018-04"
+endDate: "2019-07"
+duration: "15 months"
+
+# Technical details
+role: "Full-Stack Developer (Solo)"
+teamSize: "Solo Developer (except design)"
+technologies: ["Node.js", "React", "MongoDB", "Digital Ocean", "Pusher", "Socket.io", "Fabric.js", "WebRTC", "Kotlin"]
+tags: ["Device Management", "Remote Control", "Real-time Monitoring", "Interactive Displays", "Mass Deployment", "Android Development"]
+
+# Links and resources
+liveUrl: "https://managemyled.com/"
+companyUrl: "https://touchittechnologies.com/managemyled/"
+
+# Visual assets
+featuredImage: "/img/projects/managemyled-hero.jpg"
+images: ["/img/projects/managemyled-dashboard.jpg", "/img/projects/managemyled-monitoring.jpg", "/img/projects/managemyled-deployment.jpg"]
+thumbnail: "/img/projects/managemyled-thumb.jpg"
+
+# SEO and metadata
+seoTitle: "ManageMyLED: Interactive Display Management Platform | Muhammad Asif Javed"
+seoDescription: "Built centralized remote management platform for TouchIT LED displays with real-time monitoring, mass deployment, and comprehensive device control capabilities."
+keywords: ["device management", "remote control platform", "LED display management", "real-time monitoring", "mass deployment", "TouchIT technology", "interactive displays"]
+
+# Business context
+client: "TouchIT Technologies"
+company: "TouchIT Technologies"
+industry: "Educational Technology / Interactive Displays"
+userBase: "IT Administrators, Educational Institutions, Corporate Clients"
+
+# Results and impact
+keyAchievements: [
+  "Built centralized management for thousands of global LED displays",
+  "Implemented real-time device monitoring and health tracking",
+  "Created mass deployment system for software updates",
+  "Developed remote troubleshooting and diagnostic capabilities",
+  "Achieved scalable architecture supporting global installations"
+]
+metrics: [
+  {"label": "Device Management", "value": "Global Scale", "description": "Thousands of LED displays worldwide"},
+  {"label": "Real-time Monitoring", "value": "24/7", "description": "Continuous device health tracking"},
+  {"label": "Development Approach", "value": "100% Solo", "description": "Complete solo development"}
+]
+
+# Content organization
+priority: 6
+isPublic: true
+---
+
+# ManageMyLED - Central Remote Management Platform for Interactive Displays
 
 ## Overview
 

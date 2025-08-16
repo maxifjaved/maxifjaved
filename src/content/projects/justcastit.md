@@ -1,11 +1,61 @@
-# JustCastIt - Browser-Based Wireless Screen Casting Platform
+---
+title: "JustCastIt - Browser-Based Wireless Screen Casting Platform"
+description: "Developed a revolutionary browser-based wireless screen casting platform eliminating software installation while enabling unlimited simultaneous screen sharing to TouchIT Interactive LED displays."
+category: "interactive-displays"
+featured: true
+status: "completed"
 
-- **Duration**: [Please provide start and end dates]
-- **Role**: Full-Stack Developer (Solo)
-- **Technologies**: React, Node.js, OpenVidu (WebRTC), Fabric.js (Canvas), PWA (Android LEDs), Digital Ocean
-- **Team Size**: Solo Developer (except design)
-- **Live Platform**: https://justcastit.com/
-- **Company**: TouchIT Technologies
+# Dates and duration
+startDate: "2019-08"
+endDate: "2020-12"
+duration: "16 months"
+
+# Technical details
+role: "Full-Stack Developer (Solo)"
+teamSize: "Solo Developer (except design)"
+technologies: ["React", "Node.js", "OpenVidu WebRTC", "Fabric.js", "PWA", "Digital Ocean"]
+tags: ["Screen Casting", "WebRTC", "Real-time Collaboration", "Browser-based", "Cross-platform", "Educational Technology"]
+
+# Links and resources
+liveUrl: "https://justcastit.com/"
+companyUrl: "https://touchittechnologies.com/justcastit/"
+
+# Visual assets
+featuredImage: "/img/projects/justcastit-hero.jpg"
+images: ["/img/projects/justcastit-multicasting.jpg", "/img/projects/justcastit-interface.jpg", "/img/projects/justcastit-devices.jpg"]
+thumbnail: "/img/projects/justcastit-thumb.jpg"
+
+# SEO and metadata
+seoTitle: "JustCastIt: Browser-Based Screen Casting Platform | Muhammad Asif Javed"
+seoDescription: "Built revolutionary wireless screen casting platform with unlimited simultaneous sharing, cross-platform compatibility, and zero software installation required."
+keywords: ["screen casting", "wireless display", "browser-based casting", "WebRTC", "educational technology", "real-time collaboration", "TouchIT displays"]
+
+# Business context
+client: "TouchIT Technologies"
+company: "TouchIT Technologies"
+industry: "Educational Technology / Interactive Displays"
+userBase: "Educational Institutions, Corporate Training"
+
+# Results and impact
+keyAchievements: [
+  "Eliminated software installation requirements for screen casting",
+  "Built unlimited simultaneous screen sharing capabilities",
+  "Achieved cross-platform compatibility (PC, Mac, Chromebook, Linux)",
+  "Implemented revolutionary browser-based wireless casting solution",
+  "Created real-time multi-user collaboration features"
+]
+metrics: [
+  {"label": "Platform Compatibility", "value": "Universal Browser-based", "description": "Works on any device with web browser"},
+  {"label": "Simultaneous Casting", "value": "Unlimited", "description": "Multiple screens casting at once"},
+  {"label": "Installation Required", "value": "Zero", "description": "Completely browser-based solution"}
+]
+
+# Content organization
+priority: 4
+isPublic: true
+---
+
+# JustCastIt - Browser-Based Wireless Screen Casting Platform
 
 ## Overview
 

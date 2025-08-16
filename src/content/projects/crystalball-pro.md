@@ -1,13 +1,63 @@
-# CrystalBall.pro - AI-Powered Business Intelligence & Marketing Analytics Platform
+---
+title: "CrystalBall.pro - AI-Powered Business Intelligence Platform"
+description: "Led frontend development and evolved into lead developer for an AI-powered business intelligence platform that automates marketing analytics through intelligent data annotations and insights."
+category: "business-intelligence"
+featured: true
+status: "completed"
 
-- **Duration**: [Please provide start and end dates]
-- **Role**: Frontend Developer → Lead Developer
-- **Technologies**: React, Laravel, MySQL, Google Cloud Platform (GCP), Chrome Extension Development, AI Insights Integration, Zapier API, Google Analytics 4, Google Ads APIs
-- **Team Size**: 3 Developers + DevOps Engineer (later managed by developer)
-- **Live Platform**: https://crystalball.pro/
-- **User Portal**: https://app.crystalballinsight.com/
-- **Chrome Extension**: Available on Chrome Web Store
-- **AppSumo Listing**: https://appsumo.com/products/crystal-ball/
+# Dates and duration
+startDate: "2022-03"
+endDate: "2023-08"
+duration: "17 months"
+
+# Technical details
+role: "Frontend Developer → Lead Developer"
+teamSize: "3 Developers + DevOps Engineer (later managed by developer)"
+technologies: ["React", "Laravel", "MySQL", "Google Cloud Platform", "Chrome Extension", "AI Integration", "Zapier API", "Google Analytics 4", "Google Ads APIs"]
+tags: ["AI", "Business Intelligence", "Marketing Analytics", "Chrome Extension", "React", "Laravel", "Leadership"]
+
+# Links and resources
+liveUrl: "https://crystalball.pro/"
+demoUrl: "https://app.crystalballinsight.com/"
+caseStudyUrl: "https://appsumo.com/products/crystal-ball/"
+companyUrl: "https://crystalball.pro/"
+
+# Visual assets
+featuredImage: "/img/projects/crystalball-hero.jpg"
+images: ["/img/projects/crystalball-dashboard.jpg", "/img/projects/crystalball-extension.jpg", "/img/projects/crystalball-analytics.jpg"]
+thumbnail: "/img/projects/crystalball-thumb.jpg"
+
+# SEO and metadata
+seoTitle: "CrystalBall.pro: AI-Powered Marketing Analytics Platform | Muhammad Asif Javed"
+seoDescription: "Led development of AI-powered business intelligence platform automating marketing analytics with intelligent annotations, Chrome extension, and 4000+ app integrations."
+keywords: ["AI business intelligence", "marketing analytics", "Chrome extension development", "React development", "Laravel backend", "Google Analytics integration", "automated insights"]
+
+# Business context
+client: "CrystalBall Technologies"
+company: "CrystalBall.pro"
+industry: "Marketing Technology"
+userBase: "Marketers and Agencies"
+
+# Results and impact
+keyAchievements: [
+  "Architected complete V2 frontend based on Figma designs",
+  "Implemented AI insights feature for automated pattern recognition",
+  "Developed Chrome extension for real-time analytics annotation",
+  "Led cross-functional team managing backend, frontend, and DevOps",
+  "Integrated 4000+ applications through Zapier API"
+]
+metrics: [
+  {"label": "Time-to-Insight Reduction", "value": "Hours to Minutes", "description": "Automated analytics processing"},
+  {"label": "App Integrations", "value": "4000+", "description": "Connected applications via Zapier"},
+  {"label": "Platform Versions", "value": "V2 Complete Rebuild", "description": "Led frontend architecture redesign"}
+]
+
+# Content organization
+priority: 1
+isPublic: true
+---
+
+# CrystalBall.pro - AI-Powered Business Intelligence & Marketing Analytics Platform
 
 ## Overview
 

@@ -1,10 +1,60 @@
-# Contribute Signage - Digital Signage Management Platform
+---
+title: "Contribute Signage - Digital Signage Management Platform"
+description: "Developed a comprehensive digital signage management platform with cloud-based content management, multi-format support, and cross-platform applications for TouchIT Interactive LED displays."
+category: "edtech"
+featured: false
+status: "completed"
 
-- **Duration**: [Please provide start and end dates]
-- **Role**: Full-Stack Developer (Solo)
-- **Technologies**: PHP (CodeIgniter), Node.js, React, Fabric.js (Canvas), MySQL, Electron (Desktop Apps), Ionic (Android), Long Polling, Digital Ocean, Digital Ocean Spaces
-- **Team Size**: Solo Developer (except design)
-- **Company**: TouchIT Technologies
+# Dates and duration
+startDate: "2017-08"
+endDate: "2018-03"
+duration: "7 months"
+
+# Technical details
+role: "Full-Stack Developer (Solo)"
+teamSize: "Solo Developer (except design)"
+technologies: ["PHP", "CodeIgniter", "Node.js", "React", "Fabric.js", "MySQL", "Electron", "Ionic", "Digital Ocean"]
+tags: ["Digital Signage", "Content Management", "Multi-platform", "Cloud Storage", "Electron", "Ionic", "Educational Technology"]
+
+# Links and resources
+companyUrl: "https://touchittechnologies.com/"
+
+# Visual assets
+featuredImage: "/img/projects/contribute-signage-hero.jpg"
+images: ["/img/projects/signage-dashboard.jpg", "/img/projects/signage-content.jpg", "/img/projects/signage-apps.jpg"]
+thumbnail: "/img/projects/signage-thumb.jpg"
+
+# SEO and metadata
+seoTitle: "Contribute Signage: Digital Signage Platform | Muhammad Asif Javed"
+seoDescription: "Built comprehensive digital signage management platform with cloud-based content management, Electron desktop apps, and Ionic mobile applications for TouchIT displays."
+keywords: ["digital signage", "content management", "Electron app", "Ionic development", "cloud storage", "educational signage", "TouchIT technology"]
+
+# Business context
+client: "TouchIT Technologies"
+company: "TouchIT Technologies"
+industry: "Educational Technology / Digital Signage"
+userBase: "Educational Institutions, Corporate Communications"
+
+# Results and impact
+keyAchievements: [
+  "Built comprehensive cloud-based digital signage platform",
+  "Developed cross-platform applications (Electron + Ionic)",
+  "Implemented multi-format content management system",
+  "Created automated content scheduling and deployment",
+  "Achieved seamless integration with TouchIT LED ecosystem"
+]
+metrics: [
+  {"label": "Platform Support", "value": "Multi-platform", "description": "Desktop and mobile applications"},
+  {"label": "Content Formats", "value": "Universal", "description": "Images, videos, documents, web content"},
+  {"label": "Development Stack", "value": "Full-stack", "description": "PHP backend, React frontend, mobile apps"}
+]
+
+# Content organization
+priority: 8
+isPublic: true
+---
+
+# Contribute Signage - Digital Signage Management Platform
 
 ## Overview
 
