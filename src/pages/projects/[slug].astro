@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+import ProjectHeader from '../../components/ProjectHeader.astro';
+import ProjectContent from '../../components/ProjectContent.astro';
+import ProjectMeta from '../../components/ProjectMeta.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  
+  return projects.map((project) => {
+    // Generate slug from the id if slug is not available
+    const slug = project.slug || project.id;
+    return {
+      params: { slug },
+      props: { 
+        project,
+        title: project.data.title,
+        description: project.data.description,
+      },
+    };
+  });
+}
+
+const { project, title, description } = Astro.props;
+---
+
+<MainLayout title={`${title} | Muhammad Asif Javed`} description={description}>
+  <ProjectHeader
+    title={project.data.title}
+    description={project.data.description}
+    category={project.data.category}
+    startDate={project.data.startDate}
+    endDate={project.data.endDate}
+    duration={project.data.duration}
+    featuredImage={project.data.featuredImage}
+    status={project.data.status}
+  />
+  <ProjectContent content={project.data.body} />
+  <ProjectMeta project={project} />
+</MainLayout>

@@ -1,93 +1,25 @@
 ---
-export interface ProjectType {
-  title: string;
-  description: string;
-  image: string;
-  category: string;
-  tags: string[];
-  links: { label: string; href: string; icon: string }[];
-}
+import { getCollection } from 'astro:content';
 
-const projectData: ProjectType[] = [
-  {
-    title: "VisionSense AI",
-    description:
-      "A real-time computer vision platform for object detection and image analysis, enhancing retail inventory and security systems.",
-    image: "/img/project1.jpg",
-    category: "vision",
-    tags: ["TensorFlow", "PyTorch", "AWS", "Python"],
-    links: [
-      { label: "Demo", href: "#", icon: "fas fa-link" },
-      { label: "Code", href: "#", icon: "fab fa-github" },
-    ],
-  },
-  {
-    title: "PredictaFlow",
-    description:
-      "A predictive analytics engine for supply chain optimization, forecasting demand with high accuracy for logistics firms.",
-    image: "/img/project2.jpg",
-    category: "ml",
-    tags: ["Scikit-learn", "AWS SageMaker", "Kubernetes"],
-    links: [
-      { label: "Demo", href: "#", icon: "fas fa-link" },
-      { label: "Code", href: "#", icon: "fab fa-github" },
-    ],
-  },
-  {
-    title: "IntelliChat",
-    description:
-      "An advanced NLP-powered chatbot for customer service, capable of handling complex queries with human-like understanding.",
-    image: "/img/project3.jpg",
-    category: "nlp",
-    tags: ["Hugging Face", "Python", "Azure AI", "React"],
-    links: [
-      { label: "Demo", href: "#", icon: "fas fa-link" },
-      { label: "Code", href: "#", icon: "fab fa-github" },
-    ],
-  },
-  {
-    title: "HealthScan AI",
-    description:
-      "A medical imaging analysis tool using deep learning to detect anomalies in X-rays and MRIs with high precision.",
-    image: "/img/project4.jpg",
-    category: "vision",
-    tags: ["TensorFlow", "Python", "AWS", "Docker"],
-    links: [
-      { label: "Demo", href: "#", icon: "fas fa-link" },
-      { label: "Code", href: "#", icon: "fab fa-github" },
-    ],
-  },
-  {
-    title: "SentimentScope",
-    description:
-      "A sentiment analysis platform for social media, providing real-time insights into customer opinions and trends.",
-    image: "/img/project5.jpg",
-    category: "nlp",
-    tags: ["NLTK", "Python", "Azure AI", "Node.js"],
-    links: [
-      { label: "Demo", href: "#", icon: "fas fa-link" },
-      { label: "Code", href: "#", icon: "fab fa-github" },
-    ],
-  },
-  {
-    title: "FraudGuard AI",
-    description:
-      "A machine learning system for detecting and preventing fraudulent transactions in real-time for financial institutions.",
-    image: "/img/project6.jpg",
-    category: "ml",
-    tags: ["XGBoost", "Python", "AWS SageMaker"],
-    links: [
-      { label: "Demo", href: "#", icon: "fas fa-link" },
-      { label: "Code", href: "#", icon: "fab fa-github" },
-    ],
-  },
-];
+// Get featured projects from content collection
+const allProjects = await getCollection('projects', ({ data }) => {
+  return data.isPublic && !data.isDraft;
+});
+
+// Sort by priority and get featured projects (limit to 6 for homepage)
+const featuredProjects = allProjects
+  .filter(project => project.data.featured)
+  .sort((a, b) => a.data.priority - b.data.priority)
+  .slice(0, 6);
 
 const filterTabs = [
   { label: "All", value: "all" },
-  { label: "Machine Learning", value: "ml" },
-  { label: "NLP", value: "nlp" },
-  { label: "Computer Vision", value: "vision" },
+  { label: "EdTech", value: "edtech" },
+  { label: "Interactive Displays", value: "interactive-displays" },
+  { label: "Business Intelligence", value: "business-intelligence" },
+  { label: "Cybersecurity", value: "cybersecurity" },
+  { label: "Insurance Tech", value: "insurance-tech" },
+  { label: "Full-Stack", value: "full-stack" },
 ];
 ---
 
@@ -127,68 +59,77 @@ const filterTabs = [
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projectData.map((project, index) => (
-          <div
-            x-show={`activeTab === 'all' || activeTab === '${project.category}'`}
-            x-transition
-            class="group relative opacity-0"
-            x-data="{ visible: false }"
-            x-intersect.once="visible = true"
-            x-bind:class={`visible ? 'animated fadeInUp delay-${(index + 1) * 100}' : 'opacity-0'`}
-          >
+        {featuredProjects.map((project, index) => {
+          const categoryDisplay = {
+            'edtech': 'EdTech',
+            'interactive-displays': 'Interactive Displays',
+            'business-intelligence': 'Business Intelligence',
+            'cybersecurity': 'Cybersecurity',
+            'insurance-tech': 'Insurance Tech',
+            'full-stack': 'Full-Stack'
+          }[project.data.category] || project.data.category;
+          
+          
+          return (
             <div
-              class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            ></div>
-            <div
-              class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl overflow-hidden h-full relative hover:border-cyber-blue/50 transition-all duration-300"
+              x-show={`activeTab === 'all' || activeTab === '${project.data.category}'`}
+              x-transition
+              class="group relative opacity-0"
+              x-data="{ visible: false }"
+              x-intersect.once="visible = true"
+              x-bind:class={`visible ? 'animated fadeInUp delay-${(index + 1) * 100}' : 'opacity-0'`}
             >
-              <div class="h-48 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div
-                  class="absolute top-4 right-4 px-3 py-1 bg-cyber-dark/80 backdrop-blur-sm rounded-full border border-cyber-blue/30 text-xs text-cyber-blue"
-                >
-                  {project.category === "ml"
-                    ? "Machine Learning"
-                    : project.category === "nlp"
-                    ? "NLP"
-                    : "Computer Vision"}
-                </div>
-              </div>
-
-              <div class="p-6">
-                <h3 class="text-xl font-bold mb-2 text-cyber-blue">
-                  {project.title}
-                </h3>
-                <p class="text-gray-300 mb-4">{project.description}</p>
-
-                <div class="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag) => (
-                    <span
-                      class="px-2 py-1 bg-cyber-blue/10 rounded-md text-xs text-cyber-blue"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+              <div
+                class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
+              <a 
+                href={`/projects/${project.slug || project.id}`}
+                class="block border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl overflow-hidden h-full relative hover:border-cyber-blue/50 transition-all duration-300 cursor-pointer"
+              >
+                <div class="h-48 overflow-hidden">
+                  <img
+                    src={project.data.featuredImage}
+                    alt={project.data.title}
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div
+                    class="absolute top-4 right-4 px-3 py-1 bg-cyber-dark/80 backdrop-blur-sm rounded-full border border-cyber-blue/30 text-xs text-cyber-blue"
+                  >
+                    {categoryDisplay}
+                  </div>
                 </div>
 
-                <div class="flex gap-4">
-                  {project.links.map((link) => (
-                    <a
-                      href={link.href}
-                      class="text-cyber-blue hover:text-white transition-colors"
-                    >
-                      <i class={link.icon}></i> {link.label}
-                    </a>
-                  ))}
+                <div class="p-6">
+                  <h3 class="text-xl font-bold mb-2 text-cyber-blue">
+                    {project.data.title}
+                  </h3>
+                  <p class="text-gray-300 mb-4">{project.data.description}</p>
+
+                  <div class="flex flex-wrap gap-2 mb-6">
+                    {project.data.technologies.slice(0, 4).map((tech) => (
+                      <span
+                        class="px-2 py-1 bg-cyber-blue/10 rounded-md text-xs text-cyber-blue"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
                 </div>
-              </div>
+              </a>
             </div>
-          </div>
-        ))}
+          )
+        })}
+      </div>
+
+      <div class="flex justify-center mt-12">
+        <a 
+          href="/projects" 
+          class="cyber-btn bg-cyber-blue text-cyber-dark hover:bg-white transition-all duration-300 px-8 py-3 inline-flex items-center gap-2"
+        >
+          View All Projects
+          <i class="fas fa-arrow-right"></i>
+        </a>
       </div>
     </div>
   </div>

@@ -1,0 +1,69 @@
+---
+interface Props {
+  content: string;
+}
+
+const { content } = Astro.props;
+---
+
+<section
+  id="project-content"
+  class="relative mb-6"
+>
+  <div class="mx-auto max-w-4xl px-6">
+    <div
+      class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-8 text-left backdrop-blur-sm"
+    >
+      <div class="prose prose-invert prose-cyan max-w-none project-content" set:html={content} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .project-content :global(h1),
+  .project-content :global(h2),
+  .project-content :global(h3),
+  .project-content :global(h4) {
+    color: #00d9ff;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .project-content :global(h2) {
+    border-bottom: 1px solid #00d9ff33;
+    padding-bottom: 0.5rem;
+  }
+  
+  .project-content :global(strong) {
+    color: #00d9ff;
+  }
+  
+  .project-content :global(ul li) {
+    margin-bottom: 0.5rem;
+  }
+  
+  .project-content :global(a) {
+    color: #00d9ff;
+    text-decoration: underline;
+  }
+  
+  .project-content :global(a:hover) {
+    color: white;
+  }
+  
+  .project-content :global(code) {
+    background: #00d9ff20;
+    color: #00d9ff;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.9em;
+  }
+  
+  .project-content :global(blockquote) {
+    border-left: 3px solid #00d9ff;
+    background: #00d9ff10;
+    margin: 1.5rem 0;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+  }
+</style>
