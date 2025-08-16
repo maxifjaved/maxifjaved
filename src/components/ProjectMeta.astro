@@ -1,0 +1,234 @@
+---
+interface Props {
+  project: any;
+}
+
+const { project } = Astro.props;
+---
+
+<section id="project-meta" class="relative mb-6">
+  <div class="mx-auto max-w-4xl px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Technologies -->
+      <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 backdrop-blur-sm">
+        <h3 class="text-xl font-bold text-cyber-blue mb-4">
+          <i class="fas fa-code mr-2"></i>
+          Technologies
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          {project.data.technologies.map((tech: string) => (
+            <span class="px-3 py-1 bg-cyber-blue/10 rounded-full text-sm text-cyber-blue border border-cyber-blue/20">
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Project Details -->
+      <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 backdrop-blur-sm">
+        <h3 class="text-xl font-bold text-cyber-blue mb-4">
+          <i class="fas fa-info-circle mr-2"></i>
+          Project Details
+        </h3>
+        <div class="space-y-3 text-sm">
+          <div class="flex justify-between">
+            <span class="text-gray-400">Role:</span>
+            <span class="text-white">{project.data.role}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-400">Team:</span>
+            <span class="text-white">{project.data.teamSize}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-400">Duration:</span>
+            <span class="text-white">{project.data.duration}</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-400">Status:</span>
+            <span class="text-white capitalize">{project.data.status}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Business Context -->
+      {(project.data.client || project.data.company || project.data.industry || project.data.userBase) && (
+        <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 backdrop-blur-sm">
+          <h3 class="text-xl font-bold text-cyber-blue mb-4">
+            <i class="fas fa-briefcase mr-2"></i>
+            Business Context
+          </h3>
+          <div class="space-y-3 text-sm">
+            {project.data.client && (
+              <div class="flex justify-between">
+                <span class="text-gray-400">Client:</span>
+                <span class="text-white">{project.data.client}</span>
+              </div>
+            )}
+            {project.data.company && (
+              <div class="flex justify-between">
+                <span class="text-gray-400">Company:</span>
+                <span class="text-white">{project.data.company}</span>
+              </div>
+            )}
+            {project.data.industry && (
+              <div class="flex justify-between">
+                <span class="text-gray-400">Industry:</span>
+                <span class="text-white">{project.data.industry}</span>
+              </div>
+            )}
+            {project.data.userBase && (
+              <div class="flex justify-between">
+                <span class="text-gray-400">User Base:</span>
+                <span class="text-white">{project.data.userBase}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      <!-- Tags -->
+      {project.data.tags && project.data.tags.length > 0 && (
+        <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 backdrop-blur-sm">
+          <h3 class="text-xl font-bold text-cyber-blue mb-4">
+            <i class="fas fa-tags mr-2"></i>
+            Tags
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {project.data.tags.map((tag: string) => (
+              <span class="px-2 py-1 bg-cyber-blue/5 rounded text-xs text-cyber-blue border border-cyber-blue/20">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- External Links -->
+      {(project.data.liveUrl || project.data.companyUrl || project.data.demoUrl || project.data.githubUrl || project.data.caseStudyUrl) && (
+        <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 backdrop-blur-sm">
+          <h3 class="text-xl font-bold text-cyber-blue mb-4">
+            <i class="fas fa-external-link-alt mr-2"></i>
+            Links
+          </h3>
+          <div class="space-y-3">
+            {project.data.liveUrl && (
+              <a 
+                href={project.data.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-2 text-cyber-blue hover:text-white transition-colors"
+              >
+                <i class="fas fa-globe"></i>
+                Live Project
+              </a>
+            )}
+            {project.data.demoUrl && (
+              <a 
+                href={project.data.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-2 text-cyber-blue hover:text-white transition-colors"
+              >
+                <i class="fas fa-play"></i>
+                Demo
+              </a>
+            )}
+            {project.data.caseStudyUrl && (
+              <a 
+                href={project.data.caseStudyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-2 text-cyber-blue hover:text-white transition-colors"
+              >
+                <i class="fas fa-file-alt"></i>
+                Case Study
+              </a>
+            )}
+            {project.data.companyUrl && (
+              <a 
+                href={project.data.companyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-2 text-cyber-blue hover:text-white transition-colors"
+              >
+                <i class="fas fa-building"></i>
+                Company Page
+              </a>
+            )}
+            {project.data.githubUrl && (
+              <a 
+                href={project.data.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-2 text-cyber-blue hover:text-white transition-colors"
+              >
+                <i class="fab fa-github"></i>
+                Source Code
+              </a>
+            )}
+          </div>
+        </div>
+      )}
+
+      <!-- Additional Images -->
+      {project.data.images && project.data.images.length > 0 && (
+        <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 backdrop-blur-sm">
+          <h3 class="text-xl font-bold text-cyber-blue mb-4">
+            <i class="fas fa-images mr-2"></i>
+            Project Gallery
+          </h3>
+          <div class="grid grid-cols-2 gap-2">
+            {project.data.images.map((image: string, index: number) => (
+              <div class="aspect-video rounded-lg overflow-hidden border border-cyber-blue/20">
+                <img
+                  src={image}
+                  alt={`${project.data.title} - Image ${index + 1}`}
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+
+    <!-- Key Achievements -->
+    {project.data.keyAchievements && project.data.keyAchievements.length > 0 && (
+      <div class="mt-6 rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 backdrop-blur-sm">
+        <h3 class="text-xl font-bold text-cyber-blue mb-4">
+          <i class="fas fa-trophy mr-2"></i>
+          Key Achievements
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {project.data.keyAchievements.map((achievement: string) => (
+            <div class="flex items-start gap-3">
+              <i class="fas fa-check text-cyber-blue mt-1 text-sm"></i>
+              <span class="text-gray-300">{achievement}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Metrics -->
+    {project.data.metrics && project.data.metrics.length > 0 && (
+      <div class="mt-6 rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 backdrop-blur-sm">
+        <h3 class="text-xl font-bold text-cyber-blue mb-4">
+          <i class="fas fa-chart-line mr-2"></i>
+          Project Metrics
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {project.data.metrics.map((metric: any) => (
+            <div class="text-center p-4 rounded-lg bg-cyber-blue/5 border border-cyber-blue/20">
+              <div class="text-2xl font-bold text-cyber-blue mb-1">{metric.value}</div>
+              <div class="text-sm font-medium text-white mb-1">{metric.label}</div>
+              {metric.description && (
+                <div class="text-xs text-gray-400">{metric.description}</div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</section>
