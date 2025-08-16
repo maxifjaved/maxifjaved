@@ -1,7 +1,25 @@
 {
-  "name": "futura-astro",
-  "type": "module",
+  "name": "maxifjaved",
+  "description": "Muhammad Asif Javed's portfolio - AI Integration Expert & Full-Stack Developer",
   "version": "1.0.0",
+  "type": "module",
+  "author": {
+    "name": "Muhammad Asif Javed",
+    "email": "axif.javed@gmail.com",
+    "url": "https://maxifjaved.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxifjaved/maxifjaved"
+  },
+  "keywords": [
+    "portfolio",
+    "astro",
+    "ai-integration",
+    "full-stack",
+    "developer",
+    "maxifjaved"
+  ],
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
