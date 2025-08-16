@@ -29,11 +29,11 @@
   "dependencies": {
     "@alpinejs/intersect": "^3.14.9",
     "@splidejs/splide": "^4.1.4",
-    "@tailwindcss/vite": "^4.1.4",
+    "@tailwindcss/vite": "^4.1.12",
     "alpinejs": "^3.14.9",
-    "astro": "^5.7.8",
+    "astro": "^5.13.2",
     "glightbox": "^3.3.1",
-    "tailwindcss": "^4.1.4"
+    "tailwindcss": "^4.1.12"
   },
   "devDependencies": {
     "@types/alpinejs": "^3.13.11"
