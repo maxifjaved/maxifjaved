@@ -101,29 +101,6 @@ I'm always interested in discussing new opportunities, innovative projects, and 
 - 🌐 **Portfolio**: [maxifjaved.com](https://maxifjaved.com)
 - 📱 **Available for**: Full-time, Contract, Consulting
 
----
-
-## 🏗️ This Portfolio
-
-This portfolio website is built with:
-- **Framework**: Astro
-- **Styling**: Tailwind CSS
-- **Interactions**: Alpine.js
-- **Deployment**: Cloudflare
-
-### Local Development
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-```
-
----
 
 ### 🎯 Ready to Build Something Amazing?
 
