@@ -1,11 +1,62 @@
-# TIPX - Custom Threat Intelligence Platform
+---
+title: "TIPX - Custom Threat Intelligence Platform"
+description: "Developed a comprehensive white-labeled threat intelligence platform integrating MISP and OpenCTI with custom features, APIs, and innovative World Globe visualization for enterprise cybersecurity operations."
+category: "cybersecurity"
+featured: true
+status: "completed"
 
-- **Duration**: [Please provide start and end dates]
-- **Role**: Full-Stack Developer (Solo)
-- **Technologies**: MISP (Open Source), OpenCTI (Open Source), Custom APIs, World Globe Visualization, White-label UI/UX
-- **Team Size**: Solo Developer (except design provided via Figma)
-- **Platform Type**: Internal Enterprise Threat Intelligence System
-- **Client**: Confidential Enterprise Organization
+# Dates and duration
+startDate: "2021-09"
+endDate: "2022-11"
+duration: "14 months"
+
+# Technical details
+role: "Full-Stack Developer (Solo)"
+teamSize: "Solo Developer (except design provided via Figma)"
+technologies: ["MISP", "OpenCTI", "Custom APIs", "World Globe Visualization", "White-label UI/UX", "GraphQL", "RESTful APIs", "React", "Node.js"]
+tags: ["Cybersecurity", "Threat Intelligence", "MISP", "OpenCTI", "Data Visualization", "Enterprise Security", "Solo Development"]
+
+# Links and resources
+# Note: Confidential enterprise platform - no public URLs
+companyUrl: "https://github.com/MISP/MISP"
+caseStudyUrl: "https://github.com/OpenCTI-Platform/opencti"
+
+# Visual assets
+featuredImage: "/img/projects/tipx-hero.jpg"
+images: ["/img/projects/tipx-globe.jpg", "/img/projects/tipx-dashboard.jpg", "/img/projects/tipx-integration.jpg"]
+thumbnail: "/img/projects/tipx-thumb.jpg"
+
+# SEO and metadata
+seoTitle: "TIPX: Custom Threat Intelligence Platform | Muhammad Asif Javed"
+seoDescription: "Built enterprise threat intelligence platform integrating MISP and OpenCTI with custom APIs, World Globe visualization, and white-label UI for cybersecurity operations."
+keywords: ["threat intelligence", "cybersecurity platform", "MISP integration", "OpenCTI", "security visualization", "enterprise security", "custom APIs", "solo development"]
+
+# Business context
+client: "Confidential Enterprise Organization"
+company: "Internal Enterprise Platform"
+industry: "Cybersecurity"
+userBase: "Enterprise Security Teams"
+
+# Results and impact
+keyAchievements: [
+  "Architected complete integration between MISP and OpenCTI platforms",
+  "Built innovative World Globe visualization for geographical threat intelligence",
+  "Implemented complete white-label solution with custom branding",
+  "Created unified threat intelligence dashboard combining both platforms",
+  "Developed real-time data synchronization engine"
+]
+metrics: [
+  {"label": "Platform Integration", "value": "MISP + OpenCTI", "description": "Unified two major open source platforms"},
+  {"label": "Development Approach", "value": "100% Solo", "description": "Complete solo development except design"},
+  {"label": "Custom Features", "value": "World Globe Viz", "description": "Innovative geographical threat mapping"}
+]
+
+# Content organization
+priority: 2
+isPublic: true
+---
+
+# TIPX - Custom Threat Intelligence Platform
 
 ## Overview
 

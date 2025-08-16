@@ -1,10 +1,60 @@
-# TouchIT Air - iOS Screen Mirroring Receiver for Interactive Displays
+---
+title: "TouchIT Air - iOS Screen Mirroring Receiver"
+description: "Developed an iOS screen mirroring receiver for TouchIT Interactive LED displays by implementing AirPlay protocol, enabling seamless wireless display from Apple devices."
+category: "interactive-displays"
+featured: false
+status: "completed"
 
-- **Duration**: [Please provide start and end dates]
-- **Role**: Full-Stack Developer (Solo)
-- **Technologies**: Java (Android), AirplayServer (Open Source), AirPlay Protocol Implementation
-- **Team Size**: Solo Developer (except design)
-- **Company**: TouchIT Technologies
+# Dates and duration
+startDate: "2018-01"
+endDate: "2018-06"
+duration: "5 months"
+
+# Technical details
+role: "Full-Stack Developer (Solo)"
+teamSize: "Solo Developer (except design)"
+technologies: ["Java", "Android", "AirPlay Protocol", "AirplayServer", "iOS Integration"]
+tags: ["Screen Mirroring", "AirPlay", "iOS Integration", "Android Development", "Wireless Display", "Apple Ecosystem"]
+
+# Links and resources
+companyUrl: "https://touchittechnologies.com/"
+
+# Visual assets
+featuredImage: "/img/projects/touchit-air-hero.jpg"
+images: ["/img/projects/touchit-air-mirroring.jpg", "/img/projects/touchit-air-interface.jpg"]
+thumbnail: "/img/projects/touchit-air-thumb.jpg"
+
+# SEO and metadata
+seoTitle: "TouchIT Air: iOS Screen Mirroring Solution | Muhammad Asif Javed"
+seoDescription: "Built iOS screen mirroring receiver implementing AirPlay protocol for TouchIT LED displays, enabling seamless wireless display from Apple devices."
+keywords: ["iOS screen mirroring", "AirPlay protocol", "wireless display", "Apple integration", "Android development", "TouchIT technology", "screen sharing"]
+
+# Business context
+client: "TouchIT Technologies"
+company: "TouchIT Technologies"
+industry: "Educational Technology / Interactive Displays"
+userBase: "iOS Users, Educational Institutions"
+
+# Results and impact
+keyAchievements: [
+  "Successfully implemented AirPlay protocol on Android platform",
+  "Enabled seamless iOS device integration with TouchIT displays",
+  "Created wireless screen mirroring solution for Apple ecosystem",
+  "Bridged iOS and Android platforms for educational technology",
+  "Enhanced TouchIT display compatibility with Apple devices"
+]
+metrics: [
+  {"label": "Protocol Implementation", "value": "AirPlay", "description": "Native Apple screen mirroring protocol"},
+  {"label": "Platform Bridge", "value": "iOS to Android", "description": "Cross-platform compatibility"},
+  {"label": "Development Time", "value": "5 months", "description": "Rapid protocol implementation"}
+]
+
+# Content organization
+priority: 7
+isPublic: true
+---
+
+# TouchIT Air - iOS Screen Mirroring Receiver for Interactive Displays
 
 ## Overview
 

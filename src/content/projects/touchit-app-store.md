@@ -1,11 +1,61 @@
-# TouchIT App Store 3.0 - Custom Android APK Distribution Platform
+---
+title: "TouchIT App Store 3.0 - Custom Android APK Distribution Platform"
+description: "Developed a custom Android APK distribution platform serving as an alternative app store for TouchIT Interactive LED displays with automated content acquisition and curated educational applications."
+category: "interactive-displays"
+featured: false
+status: "completed"
 
-- **Duration**: [Please provide start and end dates]
-- **Role**: Full-Stack Developer (Solo)
-- **Technologies**: React, Node.js, Java (Android v1), React Native (Android v2), Content Acquisition Scripts, Digital Ocean, Digital Ocean Spaces
-- **Team Size**: Solo Developer (except design)
-- **Live Platform**: https://www.touchitappstore.com/
-- **Company**: TouchIT Technologies
+# Dates and duration
+startDate: "2017-02"
+endDate: "2017-07"
+duration: "5 months"
+
+# Technical details
+role: "Full-Stack Developer (Solo)"
+teamSize: "Solo Developer (except design)"
+technologies: ["React", "Node.js", "Java", "React Native", "Android Development", "Digital Ocean", "Content Acquisition"]
+tags: ["Android Development", "App Distribution", "APK Management", "Content Acquisition", "Educational Apps", "Custom App Store"]
+
+# Links and resources
+liveUrl: "https://www.touchitappstore.com/"
+companyUrl: "https://touchittechnologies.com/"
+
+# Visual assets
+featuredImage: "/img/projects/touchit-appstore-hero.jpg"
+images: ["/img/projects/appstore-interface.jpg", "/img/projects/appstore-catalog.jpg", "/img/projects/appstore-mobile.jpg"]
+thumbnail: "/img/projects/appstore-thumb.jpg"
+
+# SEO and metadata
+seoTitle: "TouchIT App Store: Custom Android Distribution Platform | Muhammad Asif Javed"
+seoDescription: "Built custom Android APK distribution platform with automated content acquisition, curated educational applications, and seamless integration with TouchIT LED displays."
+keywords: ["Android app store", "APK distribution", "educational apps", "content acquisition", "custom app store", "TouchIT technology", "Android development"]
+
+# Business context
+client: "TouchIT Technologies"
+company: "TouchIT Technologies"
+industry: "Educational Technology / Interactive Displays"
+userBase: "Educational Institutions, TouchIT Device Users"
+
+# Results and impact
+keyAchievements: [
+  "Built custom Android APK distribution platform",
+  "Implemented automated content acquisition scripts",
+  "Created curated catalog of educational applications",
+  "Developed both native Java and React Native versions",
+  "Achieved seamless integration with TouchIT LED ecosystem"
+]
+metrics: [
+  {"label": "Platform Type", "value": "Custom App Store", "description": "Alternative to Google Play Store"},
+  {"label": "Content Acquisition", "value": "Automated", "description": "Scripted app discovery and cataloging"},
+  {"label": "Development Versions", "value": "Java + React Native", "description": "Multiple technology implementations"}
+]
+
+# Content organization
+priority: 9
+isPublic: true
+---
+
+# TouchIT App Store 3.0 - Custom Android APK Distribution Platform
 
 ## Overview
 

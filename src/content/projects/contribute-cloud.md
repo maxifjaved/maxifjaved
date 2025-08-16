@@ -1,11 +1,63 @@
-# Contribute Cloud - Educational Collaboration Platform
+---
+title: "Contribute Cloud - Educational Collaboration Platform"
+description: "Developed a comprehensive cloud-based educational collaboration platform revolutionizing classroom interaction with real-time content sharing, screen casting, and interactive learning across any device."
+category: "edtech"
+featured: true
+status: "completed"
 
-- **Duration**: [Please provide start and end dates]
-- **Role**: Full-Stack Developer (Solo)
-- **Technologies**: Node.js, React, MongoDB, Socket.io, OpenVidu (WebRTC), Fabric.js (Canvas), AWS S3, Digital Ocean
-- **Team Size**: Solo Developer (except design)
-- **Live Platform**: https://contribute.cloud/
-- **Company**: TouchIT Technologies
+# Dates and duration
+startDate: "2020-01"
+endDate: "2021-06"
+duration: "18 months"
+
+# Technical details
+role: "Full-Stack Developer (Solo)"
+teamSize: "Solo Developer (except design)"
+technologies: ["Node.js", "React", "MongoDB", "Socket.io", "OpenVidu WebRTC", "Fabric.js", "AWS S3", "Digital Ocean"]
+tags: ["EdTech", "Real-time Collaboration", "WebRTC", "Interactive Learning", "Canvas", "Educational Games", "Cloud Platform"]
+
+# Links and resources
+liveUrl: "https://contribute.cloud/"
+companyUrl: "https://touchittechnologies.com/contribute_cloud/"
+caseStudyUrl: "https://contribute.cloud/"
+
+# Visual assets
+featuredImage: "/img/projects/contribute-hero.jpg"
+images: ["/img/projects/contribute-whiteboard.jpg", "/img/projects/contribute-games.jpg", "/img/projects/contribute-casting.jpg"]
+thumbnail: "/img/projects/contribute-thumb.jpg"
+
+# SEO and metadata
+seoTitle: "Contribute Cloud: Educational Collaboration Platform | Muhammad Asif Javed"
+seoDescription: "Built cloud-based educational platform with real-time screen casting, interactive whiteboarding, 40+ learning games, and cross-platform compatibility for modern digital classrooms."
+keywords: ["educational technology", "classroom collaboration", "real-time screen sharing", "interactive whiteboard", "WebRTC", "educational games", "cloud platform", "K-12 education"]
+
+# Business context
+client: "TouchIT Technologies"
+company: "TouchIT Technologies"
+industry: "Educational Technology"
+userBase: "K-12 Schools, Higher Education, Corporate Training"
+
+# Results and impact
+keyAchievements: [
+  "Deployed across numerous schools as part of TouchIT LED display suite",
+  "Built 40+ interactive learning games with multi-zone gamification",
+  "Implemented real-time collaboration supporting 50+ concurrent users",
+  "Created 1.5 million+ searchable image gallery",
+  "Achieved ultra-low latency WebRTC video conferencing"
+]
+metrics: [
+  {"label": "Concurrent Users", "value": "50+ per session", "description": "Ultra-low latency WebRTC implementation"},
+  {"label": "Interactive Games", "value": "40+", "description": "Multi-zone collaborative gamification"},
+  {"label": "Image Gallery", "value": "1.5M+", "description": "Searchable educational content library"},
+  {"label": "Platform Access", "value": "100% Browser-based", "description": "No installation required"}
+]
+
+# Content organization
+priority: 3
+isPublic: true
+---
+
+# Contribute Cloud - Educational Collaboration Platform
 
 ## Overview
 

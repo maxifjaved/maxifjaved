@@ -1,10 +1,61 @@
-# LifeMIB - Insurance Lead Management and CRM Platform
+---
+title: "LifeMIB - Insurance Lead Management and CRM Platform"
+description: "Led full-stack development for an innovative insurance platform streamlining the insurance buying process by connecting agents and customers with automated workflows and CRM capabilities."
+category: "insurance-tech"
+featured: true
+status: "completed"
 
-- **Duration**: [Please provide start and end dates]
-- **Role**: Full-Stack Developer (Team Member)
-- **Technologies**: Next.js, MongoDB, Vercel, Vue.js (Internal Dashboard), Twilio Automation
-- **Team Size**: 3 Developers
-- **Live Platform**: https://lifemib.com/ (Currently Offline)
+# Dates and duration
+startDate: "2022-06"
+endDate: "2023-02"
+duration: "8 months"
+
+# Technical details
+role: "Full-Stack Developer (Team Member)"
+teamSize: "3 Developers"
+technologies: ["Next.js", "MongoDB", "Vercel", "Vue.js", "Twilio", "Zapier API"]
+tags: ["Insurance Technology", "CRM", "Lead Management", "Automation", "Next.js", "Vue.js", "Team Development"]
+
+# Links and resources
+# Note: Platform currently offline
+caseStudyUrl: "https://lifemib.com/"
+
+# Visual assets
+featuredImage: "/img/projects/lifemib-hero.jpg"
+images: ["/img/projects/lifemib-dashboard.jpg", "/img/projects/lifemib-crm.jpg", "/img/projects/lifemib-automation.jpg"]
+thumbnail: "/img/projects/lifemib-thumb.jpg"
+
+# SEO and metadata
+seoTitle: "LifeMIB: Insurance CRM Platform | Muhammad Asif Javed"
+seoDescription: "Built comprehensive insurance lead management platform with automated workflows, CRM capabilities, and Zapier integration connecting 8000+ apps for streamlined insurance processes."
+keywords: ["insurance technology", "CRM platform", "lead management", "automated workflows", "Next.js development", "insurance marketplace", "Zapier integration"]
+
+# Business context
+client: "LifeMIB"
+company: "LifeMIB Insurance Platform"
+industry: "Insurance Technology"
+userBase: "Insurance Agents, Customers, Insurance Professionals"
+
+# Results and impact
+keyAchievements: [
+  "Reduced insurance buying process from hours to minutes",
+  "Built comprehensive lead management and CRM solution",
+  "Integrated Zapier connectivity with 8000+ applications",
+  "Developed automated appointment scheduling system",
+  "Created dual-platform architecture (Next.js + Vue.js dashboards)"
+]
+metrics: [
+  {"label": "Process Time Reduction", "value": "Hours to Minutes", "description": "Streamlined insurance buying workflow"},
+  {"label": "App Integrations", "value": "8000+", "description": "Zapier connectivity options"},
+  {"label": "Platform Architecture", "value": "Dual Dashboard", "description": "Customer-facing + Internal admin systems"}
+]
+
+# Content organization
+priority: 5
+isPublic: true
+---
+
+# LifeMIB - Insurance Lead Management and CRM Platform
 
 ## Overview
 
