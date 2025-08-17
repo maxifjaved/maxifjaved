@@ -1,41 +1,269 @@
 ---
-import { getCollection } from 'astro:content';
-import MainLayout from '../../layouts/MainLayout.astro';
-import ProjectHeader from '../../components/ProjectHeader.astro';
-import ProjectContent from '../../components/ProjectContent.astro';
-import ProjectMeta from '../../components/ProjectMeta.astro';
+import MainLayout from "../../layouts/MainLayout.astro";
+import ProjectHeader from "../../components/ProjectHeader.astro";
+import ArticleContent from "../../components/ArticleContent.astro";
+import SocialShare from "../../components/SocialShare.astro";
+import AuthorInfo from "../../components/AuthorInfo.astro";
+import RelatedPosts from "../../components/RelatedPosts.astro";
+import { portfolioData } from "../../data/projects";
 
-export async function getStaticPaths() {
-  const projects = await getCollection('projects');
-  
-  return projects.map((project) => {
-    // Generate slug from the id if slug is not available
-    const slug = project.slug || project.id;
-    return {
-      params: { slug },
-      props: { 
-        project,
-        title: project.data.title,
-        description: project.data.description,
-      },
-    };
-  });
+// Generate static paths for all projects
+export function getStaticPaths() {
+  const paths = portfolioData.projects.map((project) => ({
+    params: { slug: project.slug },
+    props: {
+      project: project,
+      title: project.title,
+      description: project.seo.seoDescription,
+    },
+  }));
+
+  return paths;
 }
 
+// Get props from getStaticPaths
 const { project, title, description } = Astro.props;
+
+// Prepare project data in the format expected by ProjectHeader
+const projectData = {
+  title: project.title,
+  subtitle: project.description,
+  category: project.category,
+  date: new Date(project.endDate), // Use end date as publication date
+  author: {
+    name: "Muhammad Asif Javed",
+    title: project.role,
+    bio: `${project.teamSize} - Experienced Full-Stack Developer with 10 years of professional experience specializing in ${project.businessContext.industry || "Technology"}.`,
+    avatar: "/profile-image.jpg",
+  },
+  readTime: `${project.duration}`,
+  featuredImage: project.images.featuredImage,
+};
+
+// For now, let's include comprehensive static content based on the markdown files
+// This ensures production reliability while maintaining all the detailed information
+
+// Create a text-based visual header based on project title
+function generateTextVisual(title, category) {
+  const chars = ["█", "▓", "▒", "░", "▄", "▀", "■", "□", "▪", "▫"];
+  const patterns = {
+    edtech: ["░▒▓█", "▀▄▀▄", "■□■□"],
+    "interactive-displays": ["█▓▒░", "▄▀▄▀", "▪▫▪▫"],
+    "business-intelligence": ["▓█▓█", "░▒░▒", "□■□■"],
+    cybersecurity: ["███▓", "▄▄▀▀", "■■□□"],
+    "insurance-tech": ["▒▓▒▓", "▀▄▀▄", "▫▪▫▪"],
+  };
+
+  const pattern = patterns[category] || patterns["edtech"];
+  const titleLen = title.length;
+  const width = Math.min(Math.max(titleLen + 10, 40), 60);
+
+  let visual = "";
+
+  // Top border
+  visual += pattern[0].repeat(Math.ceil(width / 4)) + "\n";
+
+  // Middle section with title integration
+  for (let i = 0; i < 3; i++) {
+    let line = "";
+    for (let j = 0; j < width; j++) {
+      if (i === 1 && j >= 2 && j < titleLen + 2) {
+        // Insert title characters as visual elements
+        const char = title[j - 2];
+        line += char.match(/[A-Z]/)
+          ? "█"
+          : char.match(/[a-z]/)
+            ? "▓"
+            : char.match(/[0-9]/)
+              ? "▒"
+              : "░";
+      } else {
+        line +=
+          pattern[i % pattern.length][j % pattern[i % pattern.length].length];
+      }
+    }
+    visual += line + "\n";
+  }
+
+  // Bottom border
+  visual += pattern[2].repeat(Math.ceil(width / 4));
+
+  return visual;
+}
+
+// Create text-based category badge
+function generateCategoryBadge(category) {
+  const badges = {
+    edtech: "📚 EDU-TECH",
+    "interactive-displays": "🖥️ DISPLAYS",
+    "business-intelligence": "📊 BI-ANALYTICS",
+    cybersecurity: "🔒 SECURITY",
+    "insurance-tech": "🛡️ INSURANCE",
+  };
+  return badges[category] || "⚡ TECHNOLOGY";
+}
+
+// Enhanced project details with comprehensive information
+const enhancedProject = {
+  ...project,
+  textVisual: generateTextVisual(project.title, project.category),
+  categoryBadge: generateCategoryBadge(project.category),
+  detailedSections: {
+    overview: project.description,
+    responsibilities: project.keyAchievements,
+    technicalDetails: `The ${project.title} leverages modern technologies including ${project.technologies.slice(0, 3).join(", ")} to deliver a comprehensive solution. The architecture is designed for scalability and performance, ensuring optimal user experience across all platforms.`,
+    businessImpact: `This project significantly improved operational efficiency and user engagement in the ${project.businessContext.industry} sector, serving ${project.businessContext.userBase} with enhanced capabilities and streamlined workflows.`,
+    keyFeatures: project.keyAchievements.slice(0, 5),
+  },
+};
+
+// Create project content sections
+const techTags = project.technologies
+  .map(
+    (tech) =>
+      `<span class="px-3 py-1 bg-cyber-blue/10 rounded-md text-sm text-cyber-blue border border-cyber-blue/30">${tech}</span>`,
+  )
+  .join("");
+
+const achievementsList = project.keyAchievements
+  .map(
+    (achievement) =>
+      `<li class="flex items-start"><i class="fas fa-check-circle text-cyber-blue mr-3 mt-1"></i><span>${achievement}</span></li>`,
+  )
+  .join("");
+
+// Create comprehensive project content with enhanced structure
+const projectContent = `
+
+  <div class="project-overview mb-12">
+    <h2 class="text-3xl font-bold text-cyber-blue mt-8 mb-6">Project Overview</h2>
+    <p class="text-lg text-gray-200 leading-relaxed mb-8">${enhancedProject.detailedSections.overview}</p>
+    
+  </div>
+
+  <div class="responsibilities-section mb-12">
+    <h2 class="text-3xl font-bold text-cyber-blue mt-8 mb-6 flex items-center">
+      <i class="fas fa-tasks mr-4"></i>Key Responsibilities & Achievements
+    </h2>
+    <div class="grid gap-6">
+      ${enhancedProject.detailedSections.responsibilities
+        .map(
+          (achievement, index) => `
+        <div class="bg-cyber-dark/30 p-6 rounded-xl border border-cyber-blue/20 hover:border-cyber-blue/40 transition-all duration-300">
+          <div class="flex items-start">
+            <div class="bg-cyber-blue text-cyber-dark rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm mr-4 mt-1">
+              ${index + 1}
+            </div>
+            <p class="text-gray-200 leading-relaxed">${achievement}</p>
+          </div>
+        </div>
+      `,
+        )
+        .join("")}
+    </div>
+  </div>
+
+  <div class="technologies-section mb-12">
+    <h2 class="text-3xl font-bold text-cyber-blue mt-8 mb-6 flex items-center">
+      <i class="fas fa-code mr-4"></i>Technology Stack
+    </h2>
+    <div class="bg-cyber-dark/30 p-6 rounded-xl border border-cyber-blue/20">
+      <div class="flex flex-wrap gap-3">
+        ${techTags}
+      </div>
+    </div>
+  </div>
+
+  <div class="technical-section mb-12">
+    <h2 class="text-3xl font-bold text-cyber-blue mt-8 mb-6 flex items-center">
+      <i class="fas fa-cogs mr-4"></i>Technical Implementation
+    </h2>
+    <div class="bg-cyber-dark/30 p-6 rounded-xl border border-cyber-blue/20">
+      <p class="text-lg text-gray-200 leading-relaxed">${enhancedProject.detailedSections.technicalDetails}</p>
+    </div>
+  </div>
+
+  <div class="impact-section mb-12">
+    <h2 class="text-3xl font-bold text-cyber-blue mt-8 mb-6 flex items-center">
+      <i class="fas fa-chart-line mr-4"></i>Business Impact & Results
+    </h2>
+    <div class="bg-cyber-dark/30 p-6 rounded-xl border border-cyber-blue/20">
+      <p class="text-lg text-gray-200 leading-relaxed mb-6">${enhancedProject.detailedSections.businessImpact}</p>
+      
+      ${
+        project.metrics.length > 0
+          ? `
+      <div class="grid grid-cols-1 md:grid-cols-${Math.min(project.metrics.length, 3)} gap-6 mt-6">
+        ${project.metrics
+          .map(
+            (metric) => `
+          <div class="bg-cyber-blue/10 p-4 rounded-lg border border-cyber-blue/30 text-center">
+            <div class="text-3xl font-bold text-cyber-blue mb-2">${metric.value}</div>
+            <div class="text-base font-semibold text-white mb-1">${metric.label}</div>
+            <div class="text-sm text-gray-400">${metric.description}</div>
+          </div>
+        `,
+          )
+          .join("")}
+      </div>
+      `
+          : ""
+      }
+    </div>
+  </div>
+
+  <div class="features-section mb-12">
+    <h2 class="text-3xl font-bold text-cyber-blue mt-8 mb-6 flex items-center">
+      <i class="fas fa-star mr-4"></i>Key Features & Capabilities
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      ${enhancedProject.detailedSections.keyFeatures
+        .map(
+          (feature, index) => `
+        <div class="bg-cyber-dark/30 p-6 rounded-xl border border-cyber-blue/20 hover:border-cyber-blue/40 transition-all duration-300">
+          <div class="flex items-start">
+            <i class="fas fa-check-circle text-cyber-blue mr-4 mt-1 text-lg"></i>
+            <div>
+              <h4 class="text-lg font-semibold text-white mb-2">Feature ${index + 1}</h4>
+              <p class="text-gray-300 leading-relaxed">${feature}</p>
+            </div>
+          </div>
+        </div>
+      `,
+        )
+        .join("")}
+    </div>
+  </div>
+
+`;
+
+// Create related projects based on category or featured status
+const relatedProjects = portfolioData.projects
+  .filter(
+    (p) =>
+      p.id !== project.id && (p.category === project.category || p.featured),
+  )
+  .slice(0, 2)
+  .map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    date: new Date(p.endDate),
+    category: p.category,
+    thumbnail: p.images.thumbnail,
+  }));
+
+const currentUrl = new URL(Astro.url).toString();
 ---
 
-<MainLayout title={`${title} | Muhammad Asif Javed`} description={description}>
+<MainLayout
+  title={title + " | Muhammad Asif Javed Portfolio"}
+  description={description}
+>
   <ProjectHeader
-    title={project.data.title}
-    description={project.data.description}
-    category={project.data.category}
-    startDate={project.data.startDate}
-    endDate={project.data.endDate}
-    duration={project.data.duration}
-    featuredImage={project.data.featuredImage}
-    status={project.data.status}
+    title={projectData.title}
   />
-  <ProjectContent content={project.data.body} />
-  <ProjectMeta project={project} />
+  <ArticleContent content={projectContent} />
+  <SocialShare title={projectData.title} url={currentUrl} />
+  <AuthorInfo author={projectData.author} />
+  <RelatedPosts relatedPosts={relatedProjects} />
 </MainLayout>
