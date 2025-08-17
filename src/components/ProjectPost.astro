@@ -1,0 +1,66 @@
+---
+import BlogCard from "../components/BlogCard.astro";
+import BlogPagination from "../components/BlogPagination.astro";
+import { portfolioData } from "../data/projects";
+
+export interface ProjectType {
+  title: string;
+  posts: {
+    image: { src: string; alt: string };
+    date: string;
+    category: string;
+    title: string;
+    excerpt: string;
+    link: string;
+    delay: number;
+  }[];
+}
+
+// Map projects to ProjectType (reusing blog structure)
+const projectData: ProjectType = {
+  title: "Featured Projects",
+  posts: portfolioData.projects.map((project, index) => ({
+    image: { src: project.images.featuredImage, alt: project.title },
+    date: new Date(project.endDate).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }),
+    category: project.category,
+    title: project.title,
+    excerpt: project.description,
+    link: `/projects/${project.slug}`,
+    delay: 100 * (index + 1),
+  })),
+};
+---
+
+<section
+    id="project-posts"
+    class="pb-16 lg:pb-24 pt-32 lg:pt-40 relative overflow-hidden"
+  >
+    <div
+      class="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-cyber-dark to-transparent"
+    ></div>
+    <div
+      class="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-cyber-dark to-transparent"
+    ></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative">
+      <div class="flex justify-center mb-16">
+        <div class="relative">
+          <h2 class="text-4xl md:text-5xl font-bold text-center">
+            {projectData.title.split(" ")[0]}{" "}
+            <span class="text-cyber-blue text-shadow-glow">
+              {projectData.title.split(" ")[1]}
+            </span>
+          </h2>
+          <div class="h-1 w-32 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projectData.posts.map((post) => (
+          <BlogCard blog={post} />
+        ))}
+      </div>
+
+      <BlogPagination />
+    </div>
+  </section>
