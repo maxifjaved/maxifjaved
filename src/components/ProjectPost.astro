@@ -1,34 +1,9 @@
 ---
-import BlogCard from "../components/BlogCard.astro";
-import BlogPagination from "../components/BlogPagination.astro";
+import ProjectHeader from "./ProjectHeader.astro";
 import { portfolioData } from "../data/projects";
 
-export interface ProjectType {
-  title: string;
-  posts: {
-    image: { src: string; alt: string };
-    date: string;
-    category: string;
-    title: string;
-    excerpt: string;
-    link: string;
-    delay: number;
-  }[];
-}
-
-// Map projects to ProjectType (reusing blog structure)
-const projectData: ProjectType = {
-  title: "Featured Projects",
-  posts: portfolioData.projects.map((project, index) => ({
-    image: { src: project.images.featuredImage, alt: project.title },
-    date: new Date(project.endDate).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }),
-    category: project.category,
-    title: project.title,
-    excerpt: project.description,
-    link: `/projects/${project.slug}`,
-    delay: 100 * (index + 1),
-  })),
-};
+// Get all projects for display
+const allProjects = portfolioData?.projects || [];
 ---
 
 <section
@@ -46,21 +21,67 @@ const projectData: ProjectType = {
       <div class="flex justify-center mb-16">
         <div class="relative">
           <h2 class="text-4xl md:text-5xl font-bold text-center">
-            {projectData.title.split(" ")[0]}{" "}
+            All{" "}
             <span class="text-cyber-blue text-shadow-glow">
-              {projectData.title.split(" ")[1]}
+              Projects
             </span>
           </h2>
           <div class="h-1 w-32 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projectData.posts.map((post) => (
-          <BlogCard blog={post} />
-        ))}
-      </div>
+      <div class="flex flex-wrap justify-center gap-8">
+        {portfolioData.projects.map((project, index) => {
+          const categoryDisplay = {
+            'edtech': 'EdTech',
+            'interactive-displays': 'Interactive Displays',
+            'business-intelligence': 'Business Intelligence',
+            'cybersecurity': 'Cybersecurity',
+            'insurance-tech': 'Insurance Tech',
+          }[project.category] || project.category;
+          
+          return (
+            <div
+              class="group relative w-full max-w-sm"
+            >
+              <div
+                class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              ></div>
+              <a 
+                href={`/projects/${project.slug}`}
+                class="flex flex-col border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl overflow-hidden h-full relative hover:border-cyber-blue/50 transition-all duration-300 cursor-pointer group"
+              >
+                <div class="relative">
+                  <ProjectHeader 
+                    title={project.title || 'Untitled Project'}
+                    image={project.images?.featuredImage}
+                    variant="card"
+                    size="md"
+                  />
+                  <div
+                    class="absolute top-4 right-4 px-3 py-1 bg-cyber-dark/80 backdrop-blur-sm rounded-full border border-cyber-blue/30 text-xs text-cyber-blue z-10"
+                  >
+                    {categoryDisplay}
+                  </div>
+                </div>
 
-      <BlogPagination />
+                <div class="p-6 flex flex-col flex-1">
+                  <p class="text-gray-300 mb-4 flex-grow">{project.description || 'No description available'}</p>
+
+                  <div class="flex flex-wrap gap-2 mt-auto">
+                    {(project.technologies || []).slice(0, 4).map((tech) => (
+                      <span
+                        class="px-2 py-1 bg-cyber-blue/10 rounded-md text-xs text-cyber-blue"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </a>
+            </div>
+          )
+        })}
+      </div>
     </div>
   </section>
