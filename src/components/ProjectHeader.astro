@@ -1,9 +1,17 @@
 ---
 interface Props {
   title: string;
+  image?: string;
+  variant?: 'hero' | 'card';
+  size?: 'sm' | 'md' | 'lg';
 }
 
-const { title } = Astro.props;
+const { 
+  title, 
+  image,
+  variant = 'hero',
+  size = 'lg'
+} = Astro.props;
 
 // Simple hash function to select background image based on project name
 function hashString(str: string): number {
@@ -16,23 +24,47 @@ function hashString(str: string): number {
   return Math.abs(hash);
 }
 
-// Select background image based on project title
+// Select background image based on project title or use provided image
 const backgroundImages = ['/img/project5.jpg', '/img/blog5.jpg', '/img/blog6.jpg'];
-const selectedBg = backgroundImages[hashString(title) % backgroundImages.length];
+const selectedBg = image || backgroundImages[hashString(title) % backgroundImages.length];
+
+// Define size classes
+const sizeClasses = {
+  sm: 'h-32',
+  md: 'h-48', 
+  lg: 'h-96'
+};
+
+const textSizeClasses = {
+  sm: 'text-lg md:text-xl',
+  md: 'text-xl md:text-2xl',
+  lg: 'text-4xl md:text-6xl'
+};
+
+const containerClasses = variant === 'hero' 
+  ? 'relative overflow-hidden pt-12 md:pt-16 mb-6'
+  : 'relative overflow-hidden';
+
+const wrapperClasses = variant === 'hero'
+  ? 'relative mx-auto max-w-4xl px-6 pt-24'
+  : 'relative';
+
+const innerClasses = variant === 'hero'
+  ? 'mx-auto max-w-4xl text-center'
+  : 'text-center';
+
+const sectionId = variant === 'hero' ? 'article-header' : undefined;
 ---
 
 <section
-  id="article-header"
-  class="relative overflow-hidden pt-12 md:pt-16 mb-6"
+  id={sectionId}
+  class={containerClasses}
 >
-  <div class="relative mx-auto max-w-4xl px-6 pt-24">
-    <div class="mx-auto max-w-4xl text-center">
-
-
-
+  <div class={wrapperClasses}>
+    <div class={innerClasses}>
       <!-- Background image with project name overlay -->
       <div
-        class="h-96 overflow-hidden rounded-xl border border-cyber-blue/20 glow relative"
+        class={`${sizeClasses[size]} overflow-hidden ${variant === 'hero' ? 'rounded-xl border border-cyber-blue/20 glow' : 'rounded-t-xl'} relative ${variant === 'card' ? 'bg-cover bg-center transition-transform duration-500 group-hover:scale-110' : ''}`}
         style={`background-image: url('${selectedBg}'); background-size: cover; background-position: center;`}
       >
         <!-- Dark overlay for text readability -->
@@ -40,7 +72,7 @@ const selectedBg = backgroundImages[hashString(title) % backgroundImages.length]
         
         <!-- Project name overlay -->
         <div class="absolute inset-0 flex items-center justify-center">
-          <h2 class="text-4xl md:text-6xl font-bold text-white text-center px-4 drop-shadow-2xl">
+          <h2 class={`${textSizeClasses[size]} font-bold text-white text-center px-4 drop-shadow-2xl`}>
             {title}
           </h2>
         </div>
