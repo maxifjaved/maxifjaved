@@ -7,72 +7,159 @@ const allProjects = portfolioData?.projects || [];
 ---
 
 <section
-    id="project-posts"
-    class="pb-16 lg:pb-24 pt-32 lg:pt-40 relative overflow-hidden"
+  id="project-posts"
+  class="pb-16 lg:pb-24 pt-32 lg:pt-40 relative overflow-hidden"
+>
+  <div
+    class="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-cyber-dark to-transparent"
   >
-    <div
-      class="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-cyber-dark to-transparent"
-    ></div>
-    <div
-      class="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-cyber-dark to-transparent"
-    ></div>
+  </div>
+  <div
+    class="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-cyber-dark to-transparent"
+  >
+  </div>
 
-    <div class="max-w-7xl mx-auto px-6 relative">
-      <div class="flex justify-center mb-16">
-        <div class="relative">
-          <h2 class="text-4xl md:text-5xl font-bold text-center">
-            All{" "}
-            <span class="text-cyber-blue text-shadow-glow">
-              Projects
-            </span>
-          </h2>
-          <div class="h-1 w-32 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="flex justify-center mb-8">
+      <div class="relative">
+        <h2 class="text-4xl md:text-5xl font-bold text-center">
+          My{" "}
+          <span class="text-cyber-blue text-shadow-glow"> Portfolio </span>
+        </h2>
+        <div class="h-1 w-32 bg-cyber-blue mt-4 mx-auto rounded-full glow">
         </div>
       </div>
+    </div>
 
-      <div class="flex flex-wrap justify-center gap-8">
-        {portfolioData.projects.map((project, index) => {
-          const categoryDisplay = {
-            'edtech': 'EdTech',
-            'interactive-displays': 'Interactive Displays',
-            'business-intelligence': 'Business Intelligence',
-            'cybersecurity': 'Cybersecurity',
-            'insurance-tech': 'Insurance Tech',
-          }[project.category] || project.category;
-          
-          return (
-            <div
-              class="group relative w-full max-w-sm"
+    <div class="max-w-4xl mx-auto text-center mb-16">
+      <p class="text-gray-300 text-lg leading-relaxed mb-8">
+        A collection of enterprise-grade solutions I've built over 10+ years,
+        spanning educational technology, cybersecurity platforms, real-time
+        collaboration systems, and business intelligence tools. Each project
+        represents months of solo development, from initial concept to
+        production deployment.
+      </p>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+      >
+        <div class="group relative text-center">
+          <div
+            class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+          </div>
+          <div
+            class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 relative hover:border-cyber-blue/50 transition-all duration-300"
+          >
+            <h3
+              class="text-4xl font-bold text-cyber-blue mb-2"
+              x-data={`counter(10, 3)`}
+              x-intersect="startCounting"
             >
-              <div
-                class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              ></div>
-              <a 
+              <span x-text="current"></span>
+            </h3>
+            <p class="text-gray-300 text-sm">Years Experience</p>
+          </div>
+        </div>
+
+        <div class="group relative text-center">
+          <div
+            class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+          </div>
+          <div
+            class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 relative hover:border-cyber-blue/50 transition-all duration-300"
+          >
+            <h3
+              class="text-4xl font-bold text-cyber-blue mb-2"
+              x-data={`counter(9, 3)`}
+              x-intersect="startCounting"
+            >
+              <span x-text="current"></span>
+            </h3>
+            <p class="text-gray-300 text-sm">Major Projects</p>
+          </div>
+        </div>
+
+        <div class="group relative text-center">
+          <div
+            class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+          </div>
+          <div
+            class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 relative hover:border-cyber-blue/50 transition-all duration-300"
+          >
+            <h3
+              class="text-4xl font-bold text-cyber-blue mb-2"
+              x-data={`counter(47, 3)`}
+              x-intersect="startCounting"
+            >
+              <span x-text="current"></span>
+            </h3>
+            <p class="text-gray-300 text-sm">Technologies Used</p>
+          </div>
+        </div>
+
+        <div class="group relative text-center">
+          <div
+            class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+          </div>
+          <div
+            class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 relative hover:border-cyber-blue/50 transition-all duration-300"
+          >
+            <h3
+              class="text-4xl font-bold text-cyber-blue mb-2"
+              x-data={`counter(5, 3)`}
+              x-intersect="startCounting"
+            >
+              <span x-text="current"></span>
+            </h3>
+            <p class="text-gray-300 text-sm">Industries Served</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-8">
+      {
+        portfolioData.projects.map((project, index) => {
+          const categoryDisplay =
+            {
+              edtech: "EdTech",
+              "interactive-displays": "Interactive Displays",
+              "business-intelligence": "Business Intelligence",
+              cybersecurity: "Cybersecurity",
+              "insurance-tech": "Insurance Tech",
+            }[project.category] || project.category;
+
+          return (
+            <div class="group relative w-full max-w-sm">
+              <div class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <a
                 href={`/projects/${project.slug}`}
                 class="flex flex-col border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl overflow-hidden h-full relative hover:border-cyber-blue/50 transition-all duration-300 cursor-pointer group"
               >
                 <div class="relative">
-                  <ProjectHeader 
-                    title={project.title || 'Untitled Project'}
+                  <ProjectHeader
+                    title={project.title || "Untitled Project"}
                     image={project.images?.featuredImage}
                     variant="card"
                     size="md"
                   />
-                  <div
-                    class="absolute top-4 right-4 px-3 py-1 bg-cyber-dark/80 backdrop-blur-sm rounded-full border border-cyber-blue/30 text-xs text-cyber-blue z-10"
-                  >
+                  <div class="absolute top-4 right-4 px-3 py-1 bg-cyber-dark/80 backdrop-blur-sm rounded-full border border-cyber-blue/30 text-xs text-cyber-blue z-10">
                     {categoryDisplay}
                   </div>
                 </div>
 
                 <div class="p-6 flex flex-col flex-1">
-                  <p class="text-gray-300 mb-4 flex-grow">{project.description || 'No description available'}</p>
+                  <p class="text-gray-300 mb-4 flex-grow">
+                    {project.description || "No description available"}
+                  </p>
 
                   <div class="flex flex-wrap gap-2 mt-auto">
                     {(project.technologies || []).slice(0, 4).map((tech) => (
-                      <span
-                        class="px-2 py-1 bg-cyber-blue/10 rounded-md text-xs text-cyber-blue"
-                      >
+                      <span class="px-2 py-1 bg-cyber-blue/10 rounded-md text-xs text-cyber-blue">
                         {tech}
                       </span>
                     ))}
@@ -80,8 +167,9 @@ const allProjects = portfolioData?.projects || [];
                 </div>
               </a>
             </div>
-          )
-        })}
-      </div>
+          );
+        })
+      }
     </div>
-  </section>
+  </div>
+</section>
