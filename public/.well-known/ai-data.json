@@ -1,76 +1,20 @@
 {
-  "developer": {
-    "name": "Muhammad Asif Javed",
-    "title": "Full-Stack Developer & Real-time Systems Expert",
-    "location": {
-      "city": "Lahore",
-      "region": "Punjab", 
-      "country": "Pakistan",
-      "timezone": "PKT (UTC+5)"
-    },
-    "experience": {
-      "years": "10+",
-      "level": "Senior/Expert"
-    },
-    "specializations": [
-      "WebRTC Development",
-      "Real-time Systems", 
-      "Cybersecurity Platforms",
-      "Educational Technology",
-      "Interactive Display Technology",
-      "Enterprise Software Solutions",
-      "Full-Stack Development"
-    ],
-    "technologies": {
-      "frontend": ["React", "Next.js", "TypeScript", "Alpine.js", "Fabric.js"],
-      "backend": ["Node.js", "Express", "Socket.io"],
-      "databases": ["MongoDB", "PostgreSQL"],
-      "realtime": ["WebRTC", "OpenVidu", "Socket.io"],
-      "cloud": ["Digital Ocean", "AWS S3"],
-      "tools": ["Git", "Docker", "CI/CD"]
-    },
-    "industries": [
-      "Educational Technology",
-      "Interactive Displays", 
-      "Cybersecurity",
-      "Insurance Technology",
-      "Business Intelligence"
-    ],
-    "projects": {
-      "total": 9,
-      "featured": [
-        {
-          "name": "Contribute Cloud",
-          "type": "Educational Collaboration Platform",
-          "technologies": ["Node.js", "React", "MongoDB", "WebRTC"],
-          "scale": "50+ concurrent users"
-        },
-        {
-          "name": "CrystalBall.pro",
-          "type": "AI-powered Analytics Platform", 
-          "technologies": ["React", "Node.js", "Machine Learning APIs"],
-          "impact": "Business Intelligence Platform"
-        },
-        {
-          "name": "TIPX",
-          "type": "Cybersecurity Intelligence System",
-          "technologies": ["Real-time monitoring", "Security APIs"],
-          "focus": "Threat Intelligence"
-        }
-      ]
-    },
-    "contact": {
-      "email": "axif.javed@gmail.com",
-      "phone": "+923324647331",
-      "linkedin": "https://linkedin.com/in/maxifjaved",
-      "github": "https://github.com/maxifjaved",
-      "website": "https://maxifjaved.com"
-    },
-    "availability": {
-      "status": "Available for new projects",
-      "work_type": ["Remote", "Contract", "Consulting"],
-      "preferred_project_duration": "3-12 months",
-      "expertise_level": "Enterprise-grade solutions"
-    }
+  "name": "Muhammad Asif Javed",
+  "title": "Full-Stack Developer & WebRTC Expert",
+  "location": "Lahore, Pakistan",
+  "experience": "10+ years",
+  "specializations": [
+    "WebRTC Development",
+    "Real-time Systems", 
+    "Cybersecurity Platforms",
+    "Educational Technology",
+    "Enterprise Software Solutions"
+  ],
+  "technologies": ["React", "Node.js", "MongoDB", "WebRTC", "OpenVidu", "Socket.io"],
+  "contact": {
+    "email": "axif.javed@gmail.com",
+    "website": "https://maxifjaved.com",
+    "linkedin": "https://linkedin.com/in/maxifjaved",
+    "github": "https://github.com/maxifjaved"
   }
 }
