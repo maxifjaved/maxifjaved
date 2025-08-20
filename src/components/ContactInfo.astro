@@ -26,16 +26,25 @@ const contactInfoData: ContactInfoType = {
       icon: "fab fa-whatsapp",
       title: "WhatsApp",
       description: "Let's chat on WhatsApp for quick communication.",
-      value: "+92 332 4647331",
+      value: "+92 332 464 7331",
       href: "https://api.whatsapp.com/send?phone=923324647331&text=%F0%9F%93%9E%20Hi%20Asif.%20How%20are%20you%3F",
       delay: 200,
     },
     {
-      icon: "fas fa-map-marker-alt",
-      title: "Location",
-      description: "Based in Walton, Lahore, Pakistan. Available for remote work worldwide.",
-      value: "Walton, Lahore, Pakistan",
+      icon: "fab fa-linkedin",
+      title: "LinkedIn",
+      description: "Connect with me professionally and see my latest updates.",
+      value: "linkedin.com/in/maxifjaved",
+      href: "https://linkedin.com/in/maxifjaved",
       delay: 300,
+    },
+    {
+      icon: "fab fa-github",
+      title: "GitHub",
+      description: "Check out my code repositories and development work.",
+      value: "github.com/maxifjaved",
+      href: "https://github.com/maxifjaved",
+      delay: 400,
     },
   ],
 };
@@ -48,9 +57,10 @@ const contactInfoData: ContactInfoType = {
   <div class="max-w-7xl mx-auto px-6">
     <div
       class="absolute w-96 h-96 bg-cyber-blue/5 rounded-full blur-3xl -bottom-20 -right-20"
-    ></div>
+    >
+    </div>
 
-    <div class="flex justify-center mb-16">
+    <div class="flex justify-center mb-8">
       <div class="relative">
         <h2 class="text-4xl md:text-5xl font-bold text-center">
           {contactInfoData.title.split(" ")[0]}{" "}
@@ -58,46 +68,70 @@ const contactInfoData: ContactInfoType = {
             {contactInfoData.title.split(" ")[1]}
           </span>
         </h2>
-        <div class="h-1 w-24 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>
+        <div class="h-1 w-24 bg-cyber-blue mt-4 mx-auto rounded-full glow">
+        </div>
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {contactInfoData.contacts.map((contact) => (
-        <div
-          class="group relative opacity-0"
-          x-data="{ visible: false }"
-          x-intersect.once="visible = true"
-          x-bind:class={`visible ? 'animated fadeInUp delay${contact.delay}' : 'opacity-0'`}
-        >
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <p class="text-gray-300 text-lg leading-relaxed">
+        Ready to bring your next project to life? I specialize in building
+        enterprise-grade platforms, real-time collaboration systems, and
+        scalable web applications. Whether you need a complete solution from
+        concept to deployment or expert consulting on your existing project, I'm
+        here to help.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {
+        contactInfoData.contacts.map((contact) => (
           <div
-            class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          ></div>
-          <div
-            class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 h-full relative hover:border-cyber-blue/50 transition-all duration-300 text-center"
+            class="group relative opacity-0"
+            x-data="{ visible: false }"
+            x-intersect.once="visible = true"
+            x-bind:class={`visible ? 'animated fadeInUp delay${contact.delay}' : 'opacity-0'`}
           >
-            <div
-              class="w-12 h-12 rounded-full bg-cyber-blue/20 border border-cyber-blue flex items-center justify-center mx-auto mb-4 glow"
-            >
-              <i class={`${contact.icon} text-cyber-blue text-xl`}></i>
+            <div class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 h-full relative hover:border-cyber-blue/50 transition-all duration-300 text-center">
+              <div class="w-12 h-12 rounded-full bg-cyber-blue/20 border border-cyber-blue flex items-center justify-center mx-auto mb-4 glow">
+                <i class={`${contact.icon} text-cyber-blue text-xl`} />
+              </div>
+              <h3 class="text-xl font-bold mb-2 text-cyber-blue">
+                {contact.title}
+              </h3>
+              <p class="text-gray-300 mb-4">{contact.description}</p>
+              {contact.href ? (
+                <a
+                  href={contact.href}
+                  class="text-cyber-blue hover:text-white transition-colors"
+                >
+                  {contact.value}
+                </a>
+              ) : (
+                <p class="text-gray-300">{contact.value}</p>
+              )}
             </div>
-            <h3 class="text-xl font-bold mb-2 text-cyber-blue">
-              {contact.title}
-            </h3>
-            <p class="text-gray-300 mb-4">{contact.description}</p>
-            {contact.href ? (
-              <a
-                href={contact.href}
-                class="text-cyber-blue hover:text-white transition-colors"
-              >
-                {contact.value}
-              </a>
-            ) : (
-              <p class="text-gray-300">{contact.value}</p>
-            )}
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- <div class="max-w-4xl mx-auto mt-16">
+      <div class="border border-cyber-blue/20 bg-cyber-dark/50 backdrop-blur-sm rounded-xl p-8 text-center">
+        <div class="flex justify-center mb-4">
+          <div class="w-12 h-12 rounded-full bg-cyber-blue/20 border border-cyber-blue flex items-center justify-center glow">
+            <i class="fas fa-map-marker-alt text-cyber-blue text-xl"></i>
           </div>
         </div>
-      ))}
-    </div>
+        <h3 class="text-xl font-bold mb-2 text-cyber-blue">Location & Availability</h3>
+        <p class="text-gray-300 mb-4">
+          Based in <span class="text-cyber-blue">Walton, Lahore, Pakistan</span>
+        </p>
+        <p class="text-gray-400 text-sm">
+          Available for remote work worldwide • Flexible with time zones • Long-term project collaborations welcome
+        </p>
+      </div>
+    </div> -->
   </div>
 </section>
