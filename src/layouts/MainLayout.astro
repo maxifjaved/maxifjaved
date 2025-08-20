@@ -5,6 +5,22 @@ import "glightbox/dist/css/glightbox.min.css";
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 import BackToTop from "../components/BackToTop.astro";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title = "Muhammad Asif Javed - Full-Stack Developer & Real-time Systems Expert",
+  description = "Muhammad Asif Javed - Full-Stack Developer & Real-time Systems Expert specializing in WebRTC, cybersecurity platforms, educational technology, and enterprise-grade solutions. 10+ years experience building scalable applications.",
+  keywords = "full-stack developer, WebRTC expert, real-time systems, cybersecurity platforms, educational technology, interactive displays, enterprise solutions, Muhammad Asif Javed, maxifjaved, hire full-stack developer for WebRTC projects, expert in real-time collaboration systems, Lahore Pakistan developer",
+  ogImage = "https://maxifjaved.com/img/og-image.jpg",
+  canonicalUrl = Astro.url.href
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -12,29 +28,103 @@ import BackToTop from "../components/BackToTop.astro";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Muhammad Asif Javed - Full-Stack Developer & Real-time Systems Expert
-    </title>
-    <meta name="description" content="Muhammad Asif Javed - Full-Stack Developer & Real-time Systems Expert specializing in WebRTC, cybersecurity platforms, educational technology, and enterprise-grade solutions. 10+ years experience building scalable applications." />
-    <meta name="keywords" content="full-stack developer, WebRTC expert, real-time systems, cybersecurity platforms, educational technology, interactive displays, enterprise solutions, Muhammad Asif Javed, maxifjaved" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
     <meta name="author" content="Muhammad Asif Javed" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://maxifjaved.com" />
+    <meta name="geo.region" content="PK-PB" />
+    <meta name="geo.placename" content="Lahore, Punjab, Pakistan" />
+    <meta name="geo.position" content="31.5204;74.3587" />
+    <meta name="ICBM" content="31.5204, 74.3587" />
+    <link rel="canonical" href={canonicalUrl} />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://maxifjaved.com" />
-    <meta property="og:title" content="Muhammad Asif Javed - Full-Stack Developer & Real-time Systems Expert" />
-    <meta property="og:description" content="Muhammad Asif Javed - Full-Stack Developer & Real-time Systems Expert specializing in WebRTC, cybersecurity platforms, educational technology, and enterprise-grade solutions." />
-    <meta property="og:image" content="https://maxifjaved.com/img/og-image.jpg" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Muhammad Asif Javed Portfolio" />
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://maxifjaved.com" />
-    <meta property="twitter:title" content="Muhammad Asif Javed - Full-Stack Developer & Real-time Systems Expert" />
-    <meta property="twitter:description" content="Muhammad Asif Javed - Full-Stack Developer & Real-time Systems Expert specializing in WebRTC, cybersecurity platforms, educational technology, and enterprise-grade solutions." />
-    <meta property="twitter:image" content="https://maxifjaved.com/img/og-image.jpg" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+    <meta property="twitter:creator" content="@maxifjaved" />
     
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Muhammad Asif Javed",
+      "jobTitle": "Full-Stack Developer & Real-time Systems Expert",
+      "description": "Full-Stack Developer & Real-time Systems Expert specializing in WebRTC, cybersecurity platforms, educational technology, and enterprise-grade solutions with 10+ years experience.",
+      "url": "https://maxifjaved.com",
+      "image": "https://maxifjaved.com/img/profile-image.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lahore",
+        "addressRegion": "Punjab",
+        "addressCountry": "Pakistan"
+      },
+      "email": "axif.javed@gmail.com",
+      "telephone": "+923324647331",
+      "sameAs": [
+        "https://github.com/maxifjaved",
+        "https://linkedin.com/in/maxifjaved"
+      ],
+      "knowsAbout": [
+        "WebRTC Development",
+        "Real-time Systems",
+        "Cybersecurity Platforms",
+        "Educational Technology",
+        "Interactive Display Technology",
+        "Full-Stack Development",
+        "Enterprise Software Solutions"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Full-Stack Developer",
+        "description": "Specializes in building enterprise-grade platforms, real-time collaboration systems, and cybersecurity intelligence tools"
+      }
+    }
+    </script>
+
+    <!-- Geo-location Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Muhammad Asif Javed - Full-Stack Developer",
+      "description": "Professional full-stack development services specializing in WebRTC, real-time systems, and enterprise solutions in Lahore, Pakistan",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lahore",
+        "addressRegion": "Punjab", 
+        "addressCountry": "Pakistan"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "31.5204",
+        "longitude": "74.3587"
+      },
+      "areaServed": [
+        "Pakistan",
+        "Global Remote Services",
+        "Asia Pacific",
+        "Middle East",
+        "Europe",
+        "North America"
+      ],
+      "serviceType": "Software Development Services"
+    }
+    </script>
+
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&Poppins:wght@400;500;600;700&display=swap"
