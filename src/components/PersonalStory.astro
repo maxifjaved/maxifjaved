@@ -1,0 +1,75 @@
+---
+export interface PersonalStoryType {
+  title: string;
+  story: {
+    beginning: string;
+    growth: string;
+    expertise: string;
+    current: string;
+  };
+  highlights: string[];
+}
+
+const personalStoryData: PersonalStoryType = {
+  title: "My Journey",
+  story: {
+    beginning: "My software development journey began over a decade ago, driven by curiosity about how technology could solve real-world problems. Starting with traditional web development, I quickly discovered my passion for building complex, interactive systems.",
+    growth: "As I took on more challenging projects, I developed expertise in real-time technologies, particularly WebRTC and collaborative platforms. Each project taught me something new about scalability, user experience, and the importance of robust architecture.",
+    expertise: "Working solo on enterprise-grade projects has shaped my approach to development. I've learned to wear many hats - from system architect to full-stack developer, from project manager to quality assurance. This experience has made me uniquely capable of handling complex projects independently.",
+    current: "Today, I specialize in building platforms that connect people and ideas in real-time. Whether it's educational collaboration tools, cybersecurity intelligence systems, or business analytics platforms, I focus on creating solutions that make a genuine impact."
+  },
+  highlights: [
+    "Built my first commercial platform in 2017",
+    "Deployed systems used by thousands of students globally",
+    "Developed cybersecurity tools for enterprise clients",
+    "Specialized in zero-installation browser-based solutions",
+    "Mastered the art of solo enterprise development"
+  ]
+};
+---
+
+<section class="bg-cyber-dark/20 py-24 relative overflow-hidden">
+  <div class="max-w-4xl mx-auto px-6 relative">
+    <div class="flex justify-center mb-16">
+      <div class="relative">
+        <h2 class="text-3xl md:text-4xl font-bold text-center">
+          {personalStoryData.title.split(" ")[0]}{" "}
+          <span class="text-cyber-blue text-shadow-glow">
+            {personalStoryData.title.split(" ").slice(1).join(" ")}
+          </span>
+        </h2>
+        <div class="h-1 w-24 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>
+      </div>
+    </div>
+
+    <div class="space-y-8 mb-16">
+      <div class="border border-cyber-blue/20 bg-cyber-dark/50 backdrop-blur-sm rounded-xl p-8">
+        <p class="text-gray-300 text-lg leading-relaxed">{personalStoryData.story.beginning}</p>
+      </div>
+      
+      <div class="border border-cyber-blue/20 bg-cyber-dark/50 backdrop-blur-sm rounded-xl p-8">
+        <p class="text-gray-300 text-lg leading-relaxed">{personalStoryData.story.growth}</p>
+      </div>
+      
+      <div class="border border-cyber-blue/20 bg-cyber-dark/50 backdrop-blur-sm rounded-xl p-8">
+        <p class="text-gray-300 text-lg leading-relaxed">{personalStoryData.story.expertise}</p>
+      </div>
+      
+      <div class="border border-cyber-blue/20 bg-cyber-dark/50 backdrop-blur-sm rounded-xl p-8">
+        <p class="text-gray-300 text-lg leading-relaxed">{personalStoryData.story.current}</p>
+      </div>
+    </div>
+
+    <div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-8">
+      <h3 class="text-2xl font-bold text-cyber-blue mb-6 text-center">Key Milestones</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {personalStoryData.highlights.map((highlight) => (
+          <div class="flex items-center">
+            <div class="w-2 h-2 rounded-full bg-cyber-blue mr-4 glow"></div>
+            <span class="text-gray-300">{highlight}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

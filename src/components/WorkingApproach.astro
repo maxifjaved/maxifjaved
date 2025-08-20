@@ -1,0 +1,104 @@
+---
+export interface WorkingApproachType {
+  title: string;
+  approach: {
+    icon: string;
+    title: string;
+    description: string;
+  }[];
+  values: {
+    title: string;
+    description: string;
+  }[];
+}
+
+const workingData: WorkingApproachType = {
+  title: "How I Work",
+  approach: [
+    {
+      icon: "fas fa-lightbulb",
+      title: "Discovery & Planning",
+      description: "Deep understanding of requirements, technical constraints, and business goals before writing any code."
+    },
+    {
+      icon: "fas fa-cogs",
+      title: "Architecture Design",
+      description: "Scalable system design with focus on maintainability, performance, and future growth potential."
+    },
+    {
+      icon: "fas fa-rocket",
+      title: "Iterative Development",
+      description: "Rapid prototyping and incremental delivery with regular feedback loops and continuous improvements."
+    },
+    {
+      icon: "fas fa-shield-alt",
+      title: "Quality Assurance",
+      description: "Comprehensive testing, security reviews, and performance optimization before deployment."
+    }
+  ],
+  values: [
+    {
+      title: "Transparency",
+      description: "Clear communication about progress, challenges, and timelines throughout the project lifecycle."
+    },
+    {
+      title: "Ownership",
+      description: "Taking full responsibility for project success from initial concept to final deployment and beyond."
+    },
+    {
+      title: "Innovation",
+      description: "Staying current with latest technologies while choosing proven solutions for production systems."
+    },
+    {
+      title: "Efficiency",
+      description: "Delivering maximum value with clean, maintainable code and optimized development processes."
+    }
+  ]
+};
+---
+
+<section class="bg-cyber-dark/20 py-24 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="flex justify-center mb-16">
+      <div class="relative">
+        <h2 class="text-3xl md:text-4xl font-bold text-center">
+          How I{" "}
+          <span class="text-cyber-blue text-shadow-glow">Work</span>
+        </h2>
+        <div class="h-1 w-24 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>
+      </div>
+    </div>
+
+    <div class="mb-20">
+      <h3 class="text-2xl font-bold text-center mb-12 text-cyber-blue">Development Process</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {workingData.approach.map((step, index) => (
+          <div class="text-center group">
+            <div class="relative mb-6">
+              <div class="w-16 h-16 rounded-full bg-cyber-blue/20 border-2 border-cyber-blue flex items-center justify-center mx-auto glow group-hover:bg-cyber-blue/30 transition-all duration-300">
+                <i class={step.icon + " text-cyber-blue text-2xl"}></i>
+              </div>
+              <div class="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-cyber-blue flex items-center justify-center text-cyber-dark text-sm font-bold">
+                {index + 1}
+              </div>
+            </div>
+            <h4 class="text-lg font-bold mb-3 text-white">{step.title}</h4>
+            <p class="text-gray-300 text-sm leading-relaxed">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <h3 class="text-2xl font-bold text-center mb-12 text-cyber-blue">Core Values</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {workingData.values.map((value) => (
+          <div class="border border-cyber-blue/20 bg-cyber-dark/50 backdrop-blur-sm rounded-xl p-6 hover:border-cyber-blue/50 transition-all duration-300">
+            <h4 class="text-xl font-bold mb-3 text-cyber-blue">{value.title}</h4>
+            <p class="text-gray-300 leading-relaxed">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
