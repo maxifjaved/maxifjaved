@@ -9,27 +9,27 @@ export interface WorkStepType {
 export const workStepsData: WorkStepType[] = [
   {
     step: 1,
-    title: "Discovery",
+    title: "Discovery & Planning",
     description:
-      "We analyze your business needs and identify opportunities for AI-driven transformation.",
+      "I analyze your requirements, technical constraints, and business goals to create a comprehensive project roadmap.",
   },
   {
     step: 2,
-    title: "Design",
+    title: "Architecture Design",
     description:
-      "Our experts craft tailored AI solutions, from models to architectures, to meet your goals.",
+      "I design scalable system architecture with focus on maintainability, performance, and future growth potential.",
   },
   {
     step: 3,
-    title: "Development",
+    title: "Development & Testing",
     description:
-      "We build and test robust AI systems using cutting-edge tools and frameworks.",
+      "I build robust solutions using modern technologies with comprehensive testing and quality assurance throughout.",
   },
   {
     step: 4,
-    title: "Deployment & Support",
+    title: "Deployment & Optimization",
     description:
-      "We deploy solutions and provide ongoing support to ensure long-term success.",
+      "I deploy production-ready systems and provide ongoing optimization and support for long-term success.",
   },
 ];
 
@@ -37,7 +37,7 @@ interface Props {
   title?: string;
 }
 
-const { title = "How We Work" } = Astro.props;
+const { title = "How I Work" } = Astro.props;
 ---
 
 <section id="how-we-work" class="py-24 relative overflow-hidden">

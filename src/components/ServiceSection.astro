@@ -10,46 +10,46 @@ export interface ServiceType {
 
 export const servicesData: ServiceType[] = [
   {
-    title: "Machine Learning",
+    title: "Real-time Collaboration Systems",
     description:
-      "Build predictive models and intelligent systems to optimize operations and uncover insights from your data.",
-    icon: "fas fa-brain",
-    features: ["Predictive Analytics", "Anomaly Detection", "Recommendation Systems"],
+      "Build enterprise-grade platforms with WebRTC, real-time communication, and collaborative features for educational and business applications.",
+    icon: "fas fa-video",
+    features: ["WebRTC Integration", "Screen Sharing", "Multi-user Collaboration"],
   },
   {
-    title: "Natural Language Processing",
+    title: "Cybersecurity Platforms",
     description:
-      "Enhance customer interactions with AI-powered chatbots, sentiment analysis, and text processing solutions.",
-    icon: "fas fa-comment-alt",
-    features: ["Chatbot Development", "Sentiment Analysis", "Text Summarization"],
+      "Develop threat intelligence systems, security dashboards, and cybersecurity tools with enterprise-grade security standards.",
+    icon: "fas fa-shield-alt",
+    features: ["Threat Intelligence", "Security Dashboards", "MISP/OpenCTI Integration"],
   },
   {
-    title: "Computer Vision",
+    title: "Full-Stack Web Applications",
     description:
-      "Leverage image and video analysis to enhance security, automate inspections, and improve user experiences.",
-    icon: "fas fa-eye",
-    features: ["Object Detection", "Image Classification", "Facial Recognition"],
+      "Complete web application development using modern technologies like React, Node.js, and scalable cloud architectures.",
+    icon: "fas fa-laptop-code",
+    features: ["React/Next.js Frontend", "Node.js Backend", "Cloud Deployment"],
   },
   {
-    title: "Generative AI",
+    title: "Cross-Platform Applications",
     description:
-      "Create innovative content and solutions with AI-driven text, image, and media generation technologies.",
-    icon: "fas fa-paint-brush",
-    features: ["Text Generation", "Image Synthesis", "Creative Automation"],
+      "Build applications that work across web, mobile, and desktop platforms using unified development approaches.",
+    icon: "fas fa-mobile-alt",
+    features: ["React Native Apps", "Electron Desktop", "Progressive Web Apps"],
   },
   {
-    title: "Cloud AI Integration",
+    title: "Business Intelligence Dashboards",
     description:
-      "Seamlessly integrate AI solutions with cloud platforms for scalable, secure, and efficient operations.",
-    icon: "fas fa-cloud",
-    features: ["AWS SageMaker", "Azure AI", "Google Cloud AI"],
+      "Create data-driven dashboards and analytics platforms with real-time insights and automated reporting capabilities.",
+    icon: "fas fa-chart-bar",
+    features: ["Custom Dashboards", "Real-time Analytics", "Data Visualization"],
   },
   {
-    title: "Data Analytics",
+    title: "Technical Consulting",
     description:
-      "Transform raw data into actionable insights with advanced analytics and visualization tools.",
-    icon: "fas fa-chart-line",
-    features: ["Data Visualization", "Business Intelligence", "Big Data Processing"],
+      "Expert guidance on technology stack selection, system architecture design, and development strategy for complex projects.",
+    icon: "fas fa-cogs",
+    features: ["Architecture Design", "Tech Stack Selection", "Performance Optimization"],
   },
 ];
 
@@ -57,7 +57,7 @@ interface Props {
   title?: string;
 }
 
-const { title = "Our Expertise" } = Astro.props;
+const { title = "My Services" } = Astro.props;
 ---
 
 <section
