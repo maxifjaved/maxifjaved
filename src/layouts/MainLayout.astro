@@ -39,6 +39,10 @@ const {
     <meta name="ICBM" content="31.5204, 74.3587" />
     <link rel="canonical" href={canonicalUrl} />
     
+    <!-- International Targeting -->
+    <link rel="alternate" hreflang="en" href={canonicalUrl} />
+    <link rel="alternate" hreflang="x-default" href="https://maxifjaved.com" />
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
@@ -91,6 +95,27 @@ const {
         "@type": "Occupation",
         "name": "Full-Stack Developer",
         "description": "Specializes in building enterprise-grade platforms, real-time collaboration systems, and cybersecurity intelligence tools"
+      }
+    }
+    </script>
+
+    <!-- WebSite Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Muhammad Asif Javed - Full-Stack Developer Portfolio",
+      "url": "https://maxifjaved.com",
+      "description": "Professional portfolio of Muhammad Asif Javed, Full-Stack Developer & WebRTC Expert with 10+ years experience",
+      "author": {
+        "@type": "Person",
+        "name": "Muhammad Asif Javed"
+      },
+      "inLanguage": "en",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://maxifjaved.com/projects?search={search_term_string}",
+        "query-input": "required name=search_term_string"
       }
     }
     </script>

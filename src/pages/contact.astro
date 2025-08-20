@@ -2,6 +2,12 @@
 import ContactInfo from "../components/ContactInfo.astro";
 import CTA from "../components/CTA.astro";
 import MainLayout from "../layouts/MainLayout.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://maxifjaved.com" },
+  { name: "Contact", url: "https://maxifjaved.com/contact" }
+];
 ---
 
 <MainLayout
@@ -9,6 +15,7 @@ import MainLayout from "../layouts/MainLayout.astro";
   description="Get in touch with Muhammad Asif Javed for WebRTC development, enterprise software solutions, and real-time systems projects. Based in Lahore, Pakistan, available for remote work globally."
   keywords="contact WebRTC developer, hire full-stack developer, Muhammad Asif Javed contact, Lahore Pakistan developer, remote development services, enterprise software consultation"
 >
+    <Breadcrumb items={breadcrumbItems} />
     <ContactInfo />
     <CTA />
 </MainLayout>
