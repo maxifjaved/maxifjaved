@@ -4,8 +4,7 @@
   "account_id": "ab642e5a0cc145811e59ba69f3d32aaa",
   "compatibility_date": "2025-08-20",
   "assets": {
-    "directory": "./dist",
-    "binding": "ASSETS"
+    "directory": "./dist"
   },
   "observability": {
     "enabled": true
