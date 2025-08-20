@@ -24,6 +24,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "preview:cf": "pnpm run build && pnpm wrangler dev",
+    "deploy": "pnpm run build && pnpm wrangler deploy",
     "astro": "astro"
   },
   "dependencies": {
@@ -37,6 +39,7 @@
     "tailwindcss": "^4.1.12"
   },
   "devDependencies": {
-    "@types/alpinejs": "^3.13.11"
+    "@types/alpinejs": "^3.13.11",
+    "wrangler": "^4.31.0"
   }
 }
