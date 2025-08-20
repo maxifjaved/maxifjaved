@@ -8,6 +8,52 @@ const breadcrumbItems = [
   { name: "Home", url: "https://maxifjaved.com" },
   { name: "Contact", url: "https://maxifjaved.com/contact" }
 ];
+
+// Local Business Schema for enhanced local SEO
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Muhammad Asif Javed - Full-Stack Developer",
+  "description": "Professional WebRTC development, real-time systems, and enterprise software solutions serving global clients from Lahore, Pakistan",
+  "url": "https://maxifjaved.com",
+  "telephone": "+923324647331",
+  "email": "axif.javed@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Walton",
+    "addressLocality": "Lahore",
+    "addressRegion": "Punjab", 
+    "postalCode": "54000",
+    "addressCountry": "Pakistan"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "31.5204",
+    "longitude": "74.3587"
+  },
+  "areaServed": [
+    {
+      "@type": "Country",
+      "name": "United States"
+    },
+    {
+      "@type": "Country", 
+      "name": "United Kingdom"
+    },
+    {
+      "@type": "Country",
+      "name": "Pakistan"
+    },
+    "Global Remote Services"
+  ],
+  "serviceType": ["WebRTC Development", "Full-Stack Development", "Enterprise Software Development"],
+  "sameAs": [
+    "https://github.com/maxifjaved",
+    "https://linkedin.com/in/maxifjaved"
+  ],
+  "openingHours": "Mo,Tu,We,Th,Fr,Sa 09:00-18:00",
+  "priceRange": "$$"
+};
 ---
 
 <MainLayout
@@ -15,6 +61,9 @@ const breadcrumbItems = [
   description="Get in touch with Muhammad Asif Javed for WebRTC development, enterprise software solutions, and real-time systems projects. Based in Lahore, Pakistan, available for remote work globally."
   keywords="contact WebRTC developer, hire full-stack developer, Muhammad Asif Javed contact, Lahore Pakistan developer, remote development services, enterprise software consultation"
 >
+    <!-- Local Business Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)}></script>
+    
     <Breadcrumb items={breadcrumbItems} />
     <ContactInfo />
     <CTA />

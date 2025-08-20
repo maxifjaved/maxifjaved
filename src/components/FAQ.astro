@@ -1,0 +1,84 @@
+---
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs: FAQItem[];
+  title?: string;
+  id?: string;
+}
+
+const { faqs, title = "Frequently Asked Questions", id = "faq" } = Astro.props;
+
+// FAQ Schema for SEO
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<!-- FAQ Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+
+<section id={id} class="bg-cyber-dark/40 py-16 lg:py-24 relative overflow-hidden">
+  <div class="absolute w-96 h-96 bg-cyber-blue/5 rounded-full blur-3xl -top-20 -left-20"></div>
+  
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">
+        <span class="text-cyber-blue text-shadow-glow">Frequently</span> Asked Questions
+      </h2>
+      <div class="h-1 w-24 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>
+    </div>
+
+    <div class="space-y-6">
+      {faqs.map((faq, index) => (
+        <div 
+          class="border border-cyber-blue/20 rounded-lg bg-cyber-dark/60 backdrop-blur-sm overflow-hidden"
+          x-data="{ open: false }"
+        >
+          <button 
+            class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-cyber-blue/5 transition-colors"
+            x-on:click="open = !open"
+            type="button"
+            aria-expanded="false"
+          >
+            <h3 class="text-lg font-semibold text-white pr-4">{faq.question}</h3>
+            <svg 
+              class="w-5 h-5 text-cyber-blue transition-transform duration-200" 
+              x-bind:class="open ? 'rotate-180' : ''"
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div 
+            class="px-6 pb-4 text-gray-300 leading-relaxed"
+            x-show="open"
+            x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0 transform scale-95"
+            x-transition:enter-end="opacity-100 transform scale-100"
+            x-transition:leave="transition ease-in duration-150"
+            x-transition:leave-start="opacity-100 transform scale-100"
+            x-transition:leave-end="opacity-0 transform scale-95"
+            style="display: none;"
+          >
+            <p set:html={faq.answer} />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

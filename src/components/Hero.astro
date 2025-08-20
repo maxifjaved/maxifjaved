@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 export interface HeroType {
   title: string;
   subtitle: string;
@@ -124,10 +126,15 @@ const heroData: HeroType = {
             >
               <div class="absolute inset-0 bg-cyber-dark blur-3xl"></div>
               <div class="relative">
-                <img
+                <Image
                   src={heroData.img}
-                  alt={heroData.title}
-                  class="w-full h-full"
+                  alt={`${heroData.title} - ${heroData.subtitle}`}
+                  width={384}
+                  height={384}
+                  format="webp"
+                  quality={85}
+                  loading="eager"
+                  class="w-full h-full object-cover"
                 />
               </div>
             </div>
