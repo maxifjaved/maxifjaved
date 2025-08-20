@@ -5,7 +5,35 @@ import About from "../components/About.astro";
 import ProjectsSection from "../components/ProjectsSection.astro";
 import CTA from "../components/CTA.astro";
 import WhyChooseUs from "../components/WhyChooseUs.astro";
+import FAQ from "../components/FAQ.astro";
 // import Testimonials from "../components/Testimonials.astro";
+
+const faqs = [
+  {
+    question: "What makes you different from other WebRTC developers?",
+    answer: "I specialize in enterprise-grade WebRTC solutions with 10+ years of experience building scalable real-time systems. I've built educational collaboration platforms supporting 50+ concurrent users, cybersecurity intelligence tools, and complex multi-user interactive systems. My approach focuses on production-ready, secure, and performant solutions."
+  },
+  {
+    question: "Do you work with international clients remotely?",
+    answer: "Yes, I primarily serve US and UK clients remotely from Lahore, Pakistan. I've successfully delivered projects across different time zones with clear communication, regular updates, and flexible scheduling to ensure smooth collaboration."
+  },
+  {
+    question: "What technologies do you specialize in?",
+    answer: "My core expertise includes WebRTC for real-time communication, React/Next.js for frontend, Node.js for backend, and various databases. I also work with cybersecurity frameworks, educational technology platforms, and modern deployment tools like Docker and cloud services."
+  },
+  {
+    question: "Can you handle both frontend and backend development?",
+    answer: "Absolutely! I'm a full-stack developer who can handle complete project development from database design to user interface. This includes API development, real-time features, security implementation, and deployment automation."
+  },
+  {
+    question: "What's your typical project timeline and process?",
+    answer: "Project timelines vary significantly based on complexity, with my projects typically ranging from 5 to 18 months for complete enterprise solutions. My process includes requirement analysis, architecture design, iterative development with regular demos, testing, and deployment. I maintain constant communication throughout the project lifecycle."
+  },
+  {
+    question: "Do you provide ongoing support after project completion?",
+    answer: "Yes, I offer ongoing maintenance, bug fixes, feature enhancements, and technical support. I believe in building long-term partnerships with clients and ensuring their platforms continue to perform optimally as they scale."
+  }
+];
 ---
 
 <MainLayout
@@ -16,7 +44,8 @@ import WhyChooseUs from "../components/WhyChooseUs.astro";
   <Hero />
   <About />
   <ProjectsSection />
-  <CTA />
   <WhyChooseUs />
+  <FAQ faqs={faqs} />
+  <CTA />
   <!-- <Testimonials /> -->
 </MainLayout>
