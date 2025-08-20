@@ -1,15 +1,13 @@
 ---
 import MainLayout from "../../layouts/MainLayout.astro";
 import ProjectHeader from "../../components/ProjectHeader.astro";
-import ArticleContent from "../../components/ArticleContent.astro";
 import SocialShare from "../../components/SocialShare.astro";
 import AuthorInfo from "../../components/AuthorInfo.astro";
-import RelatedPosts from "../../components/RelatedPosts.astro";
-import { portfolioData } from "../../data/projects";
+import { projects } from "../../data/projects.ts";
 
 // Generate static paths for all projects
 export function getStaticPaths() {
-  const paths = portfolioData.projects.map((project) => ({
+  const paths = projects.map((project) => ({
     params: { slug: project.slug },
     props: {
       project: project,
@@ -23,298 +21,190 @@ export function getStaticPaths() {
 
 // Get props from getStaticPaths
 const { project, title, description } = Astro.props;
-
-// Prepare project data
-const projectData = {
-  title: project.title,
-  subtitle: project.description,
-  category: project.category,
-  date: new Date(project.endDate),
-  author: {
-    name: "Muhammad Asif Javed",
-    title: project.role,
-    bio: project.teamSize + " - Experienced Full-Stack Developer with 10 years of professional experience.",
-    avatar: "/profile-image.jpg",
-  },
-  readTime: project.duration,
-  featuredImage: project.images.featuredImage,
-};
-
-// Build content safely using string concatenation
-let projectContent = '<div class="relative overflow-hidden mb-24">';
-projectContent += '<div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-cyber-dark to-transparent"></div>';
-
-// Project Overview Section
-projectContent += '<div class="project-hero mb-16">';
-projectContent += '<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">';
-projectContent += '<div class="lg:col-span-2">';
-projectContent += '<div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-8 glow">';
-projectContent += '<h2 class="text-3xl font-bold text-cyber-blue text-shadow-glow mb-6">Project Overview</h2>';
-projectContent += '<p class="text-lg text-gray-200 leading-relaxed">' + (project.description || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;') + '</p>';
-projectContent += '</div></div>';
-
-// Side info cards
-projectContent += '<div class="space-y-6">';
-projectContent += '<div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6">';
-projectContent += '<h3 class="text-cyber-blue font-bold mb-3 text-shadow-glow">📅 Timeline</h3>';
-projectContent += '<p class="text-gray-300">' + project.startDate + ' - ' + project.endDate + '</p>';
-projectContent += '<p class="text-sm text-gray-400">Duration: ' + project.duration + '</p>';
-projectContent += '</div>';
-projectContent += '<div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6">';
-projectContent += '<h3 class="text-cyber-blue font-bold mb-3 text-shadow-glow">👤 Role</h3>';
-projectContent += '<p class="text-gray-300">' + project.role + '</p>';
-projectContent += '<p class="text-sm text-gray-400">' + project.teamSize + '</p>';
-projectContent += '</div>';
-projectContent += '<div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6">';
-projectContent += '<h3 class="text-cyber-blue font-bold mb-3 text-shadow-glow">📊 Status</h3>';
-projectContent += '<span class="cyber-btn bg-cyber-blue text-cyber-dark px-4 py-2 text-sm">' + project.status + '</span>';
-projectContent += '</div>';
-projectContent += '</div></div></div>';
-
-// Business Context Section
-projectContent += '<div class="business-context mb-16">';
-projectContent += '<div class="flex justify-center mb-12">';
-projectContent += '<div class="relative">';
-projectContent += '<h2 class="text-3xl md:text-4xl font-bold text-center">Business <span class="text-cyber-blue text-shadow-glow">Context</span></h2>';
-projectContent += '<div class="h-1 w-32 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>';
-projectContent += '</div></div>';
-
-projectContent += '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">';
-projectContent += '<div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 text-center hover:border-cyber-blue/50 transition-all duration-300">';
-projectContent += '<i class="fas fa-user-tie text-cyber-blue text-3xl mb-4 glow"></i>';
-projectContent += '<h4 class="font-bold text-white mb-2">Client</h4>';
-projectContent += '<p class="text-gray-300">' + project.businessContext.client + '</p>';
-projectContent += '</div>';
-projectContent += '<div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 text-center hover:border-cyber-blue/50 transition-all duration-300">';
-projectContent += '<i class="fas fa-industry text-cyber-blue text-3xl mb-4 glow"></i>';
-projectContent += '<h4 class="font-bold text-white mb-2">Industry</h4>';
-projectContent += '<p class="text-gray-300">' + project.businessContext.industry + '</p>';
-projectContent += '</div>';
-projectContent += '<div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 text-center hover:border-cyber-blue/50 transition-all duration-300">';
-projectContent += '<i class="fas fa-users text-cyber-blue text-3xl mb-4 glow"></i>';
-projectContent += '<h4 class="font-bold text-white mb-2">User Base</h4>';
-projectContent += '<p class="text-gray-300">' + project.businessContext.userBase + '</p>';
-projectContent += '</div>';
-projectContent += '<div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 text-center hover:border-cyber-blue/50 transition-all duration-300">';
-projectContent += '<i class="fas fa-briefcase text-cyber-blue text-3xl mb-4 glow"></i>';
-projectContent += '<h4 class="font-bold text-white mb-2">Company</h4>';
-projectContent += '<p class="text-gray-300">' + project.businessContext.company + '</p>';
-projectContent += '</div>';
-projectContent += '</div></div></div>';
-
-// Key Achievements Section
-projectContent += '<div class="achievements-section mb-24 relative overflow-hidden">';
-projectContent += '<div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-cyber-dark to-transparent"></div>';
-projectContent += '<div class="flex justify-center mb-12">';
-projectContent += '<div class="relative">';
-projectContent += '<h2 class="text-3xl md:text-4xl font-bold text-center">Key <span class="text-cyber-blue text-shadow-glow">Achievements</span></h2>';
-projectContent += '<div class="h-1 w-32 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>';
-projectContent += '</div></div>';
-projectContent += '<div class="grid gap-6">';
-
-project.keyAchievements.forEach((achievement, index) => {
-  projectContent += '<div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 hover:border-cyber-blue/50 transition-all duration-300 group">';
-  projectContent += '<div class="flex items-start">';
-  projectContent += '<div class="cyber-btn bg-cyber-blue text-cyber-dark rounded-full w-10 h-10 flex items-center justify-center font-bold text-sm mr-4 mt-1 flex-shrink-0 glow">';
-  projectContent += (index + 1);
-  projectContent += '</div>';
-  projectContent += '<p class="text-gray-200 leading-relaxed group-hover:text-white transition-colors duration-300">' + achievement.replace(/"/g, '&quot;').replace(/'/g, '&#39;') + '</p>';
-  projectContent += '</div></div>';
-});
-
-projectContent += '</div>';
-projectContent += '<div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-cyber-dark to-transparent"></div>';
-projectContent += '</div>';
-
-// Technologies Section
-projectContent += '<div class="technologies-section mb-24 relative overflow-hidden">';
-projectContent += '<div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-cyber-dark to-transparent"></div>';
-projectContent += '<div class="flex justify-center mb-12">';
-projectContent += '<div class="relative">';
-projectContent += '<h2 class="text-3xl md:text-4xl font-bold text-center">Technology <span class="text-cyber-blue text-shadow-glow">Stack</span></h2>';
-projectContent += '<div class="h-1 w-32 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>';
-projectContent += '</div></div>';
-projectContent += '<div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-8 glow">';
-projectContent += '<div class="flex flex-wrap justify-center gap-4">';
-
-project.technologies.forEach((tech) => {
-  projectContent += '<span class="cyber-btn bg-transparent border border-cyber-blue text-cyber-blue hover:bg-cyber-blue hover:text-cyber-dark px-4 py-2 text-sm transition-all duration-300">' + tech + '</span>';
-});
-
-projectContent += '</div></div>';
-projectContent += '<div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-cyber-dark to-transparent"></div>';
-projectContent += '</div>';
-
-// Key Features Section
-projectContent += '<div class="features-section mb-24 relative overflow-hidden">';
-projectContent += '<div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-cyber-dark to-transparent"></div>';
-projectContent += '<div class="flex justify-center mb-12">';
-projectContent += '<div class="relative">';
-projectContent += '<h2 class="text-3xl md:text-4xl font-bold text-center">Key <span class="text-cyber-blue text-shadow-glow">Features</span></h2>';
-projectContent += '<div class="h-1 w-32 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>';
-projectContent += '</div></div>';
-projectContent += '<div class="grid gap-6">';
-
-project.keyFeatures.forEach((feature) => {
-  projectContent += '<div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 hover:border-cyber-blue/50 transition-all duration-300 group">';
-  projectContent += '<div class="flex items-start">';
-  projectContent += '<i class="fas fa-check-circle text-cyber-blue mr-4 mt-1 text-xl flex-shrink-0 glow group-hover:scale-110 transition-transform duration-300"></i>';
-  projectContent += '<div><p class="text-gray-200 leading-relaxed group-hover:text-white transition-colors duration-300">' + feature.replace(/"/g, '&quot;').replace(/'/g, '&#39;') + '</p></div>';
-  projectContent += '</div></div>';
-});
-
-projectContent += '</div>';
-projectContent += '<div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-cyber-dark to-transparent"></div>';
-projectContent += '</div>';
-
-// Technical Implementation Section
-projectContent += '<div class="technical-section mb-24 relative overflow-hidden">';
-projectContent += '<div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-cyber-dark to-transparent"></div>';
-projectContent += '<div class="flex justify-center mb-12">';
-projectContent += '<div class="relative">';
-projectContent += '<h2 class="text-3xl md:text-4xl font-bold text-center">Technical <span class="text-cyber-blue text-shadow-glow">Implementation</span></h2>';
-projectContent += '<div class="h-1 w-32 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>';
-projectContent += '</div></div>';
-projectContent += '<div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-8 glow">';
-projectContent += '<p class="text-lg text-gray-200 leading-relaxed whitespace-pre-line">' + (project.technicalImplementation || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;') + '</p>';
-projectContent += '</div>';
-projectContent += '<div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-cyber-dark to-transparent"></div>';
-projectContent += '</div>';
-
-// Impact & Results Section
-projectContent += '<div class="impact-section mb-24 relative overflow-hidden">';
-projectContent += '<div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-cyber-dark to-transparent"></div>';
-projectContent += '<div class="flex justify-center mb-12">';
-projectContent += '<div class="relative">';
-projectContent += '<h2 class="text-3xl md:text-4xl font-bold text-center">Impact & <span class="text-cyber-blue text-shadow-glow">Results</span></h2>';
-projectContent += '<div class="h-1 w-32 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>';
-projectContent += '</div></div>';
-projectContent += '<div class="grid gap-6">';
-
-project.impactResults.forEach((impact) => {
-  projectContent += '<div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 hover:border-cyber-blue/50 transition-all duration-300 group">';
-  projectContent += '<div class="flex items-start">';
-  projectContent += '<i class="fas fa-rocket text-cyber-blue mr-4 mt-1 text-xl flex-shrink-0 glow group-hover:scale-110 transition-transform duration-300"></i>';
-  projectContent += '<p class="text-gray-200 leading-relaxed group-hover:text-white transition-colors duration-300">' + impact.replace(/"/g, '&quot;').replace(/'/g, '&#39;') + '</p>';
-  projectContent += '</div></div>';
-});
-
-projectContent += '</div>';
-projectContent += '<div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-cyber-dark to-transparent"></div>';
-projectContent += '</div>';
-
-// Project Metrics Section (if available)
-if (project.metrics && project.metrics.length > 0) {
-  projectContent += '<div class="metrics-section mb-24 relative overflow-hidden">';
-  projectContent += '<div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-cyber-dark to-transparent"></div>';
-  projectContent += '<div class="flex justify-center mb-12">';
-  projectContent += '<div class="relative">';
-  projectContent += '<h2 class="text-3xl md:text-4xl font-bold text-center">Project <span class="text-cyber-blue text-shadow-glow">Metrics</span></h2>';
-  projectContent += '<div class="h-1 w-32 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>';
-  projectContent += '</div></div>';
-  projectContent += '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-' + Math.min(project.metrics.length, 4) + ' gap-6">';
-  
-  project.metrics.forEach((metric) => {
-    projectContent += '<div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-8 text-center hover:border-cyber-blue/50 transition-all duration-300 group glow">';
-    projectContent += '<div class="text-5xl font-bold text-cyber-blue text-shadow-glow mb-4 group-hover:scale-110 transition-transform duration-300">' + metric.value + '</div>';
-    projectContent += '<div class="text-xl font-bold text-white mb-3">' + metric.label + '</div>';
-    projectContent += '<div class="text-sm text-gray-400">' + metric.description + '</div>';
-    projectContent += '</div>';
-  });
-  
-  projectContent += '</div>';
-  projectContent += '<div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-cyber-dark to-transparent"></div>';
-  projectContent += '</div>';
-}
-
-// Project Links Section (if available)
-const hasLinks = Object.values(project.links).some(link => link !== null);
-if (hasLinks) {
-  projectContent += '<div class="links-section mb-24 relative overflow-hidden">';
-  projectContent += '<div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-cyber-dark to-transparent"></div>';
-  projectContent += '<div class="flex justify-center mb-12">';
-  projectContent += '<div class="relative">';
-  projectContent += '<h2 class="text-3xl md:text-4xl font-bold text-center">Project <span class="text-cyber-blue text-shadow-glow">Links</span></h2>';
-  projectContent += '<div class="h-1 w-32 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>';
-  projectContent += '</div></div>';
-  projectContent += '<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">';
-  
-  if (project.links.liveUrl) {
-    projectContent += '<a href="' + project.links.liveUrl + '" target="_blank" class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 text-center hover:border-cyber-blue/50 transition-all duration-300 group">';
-    projectContent += '<i class="fas fa-globe text-cyber-blue text-3xl mb-4 glow group-hover:scale-110 transition-transform duration-300"></i>';
-    projectContent += '<p class="text-white font-bold">Live Demo</p>';
-    projectContent += '</a>';
-  }
-  
-  if (project.links.companyUrl) {
-    projectContent += '<a href="' + project.links.companyUrl + '" target="_blank" class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 text-center hover:border-cyber-blue/50 transition-all duration-300 group">';
-    projectContent += '<i class="fas fa-building text-cyber-blue text-3xl mb-4 glow group-hover:scale-110 transition-transform duration-300"></i>';
-    projectContent += '<p class="text-white font-bold">Company Page</p>';
-    projectContent += '</a>';
-  }
-  
-  if (project.links.caseStudyUrl) {
-    projectContent += '<a href="' + project.links.caseStudyUrl + '" target="_blank" class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 text-center hover:border-cyber-blue/50 transition-all duration-300 group">';
-    projectContent += '<i class="fas fa-file-alt text-cyber-blue text-3xl mb-4 glow group-hover:scale-110 transition-transform duration-300"></i>';
-    projectContent += '<p class="text-white font-bold">Case Study</p>';
-    projectContent += '</a>';
-  }
-  
-  if (project.links.demoUrl) {
-    projectContent += '<a href="' + project.links.demoUrl + '" target="_blank" class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 text-center hover:border-cyber-blue/50 transition-all duration-300 group">';
-    projectContent += '<i class="fas fa-play text-cyber-blue text-3xl mb-4 glow group-hover:scale-110 transition-transform duration-300"></i>';
-    projectContent += '<p class="text-white font-bold">Demo</p>';
-    projectContent += '</a>';
-  }
-  
-  projectContent += '</div>';
-  projectContent += '<div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-cyber-dark to-transparent"></div>';
-  projectContent += '</div>';
-}
-
-// Project Tags Section
-projectContent += '<div class="tags-section mb-24 relative overflow-hidden">';
-projectContent += '<div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-cyber-dark to-transparent"></div>';
-projectContent += '<div class="flex justify-center mb-12">';
-projectContent += '<div class="relative">';
-projectContent += '<h2 class="text-3xl md:text-4xl font-bold text-center">Project <span class="text-cyber-blue text-shadow-glow">Tags</span></h2>';
-projectContent += '<div class="h-1 w-32 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>';
-projectContent += '</div></div>';
-projectContent += '<div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-8 glow">';
-projectContent += '<div class="flex flex-wrap justify-center gap-4">';
-
-project.tags.forEach((tag) => {
-  projectContent += '<span class="cyber-btn bg-transparent border border-cyber-blue text-cyber-blue hover:bg-cyber-blue hover:text-cyber-dark px-4 py-2 text-sm transition-all duration-300">#' + tag + '</span>';
-});
-
-projectContent += '</div></div>';
-projectContent += '<div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-cyber-dark to-transparent"></div>';
-projectContent += '</div>';
-
-// Create related projects
-const relatedProjects = portfolioData.projects
-  .filter((p) => p.id !== project.id && (p.category === project.category || p.featured))
-  .slice(0, 2)
-  .map((p) => ({
-    slug: p.slug,
-    title: p.title,
-    date: new Date(p.endDate),
-    category: p.category,
-    thumbnail: p.images.thumbnail,
-  }));
+const {
+  title: projectTitle,
+  description: projectDescription,
+  category,
+  duration,
+  role,
+  images,
+  keyFeatures,
+  technicalImplementation,
+  keyAchievements,
+  impactResults,
+} = project;
 
 const currentUrl = new URL(Astro.url).toString();
+
+// Create project content in HTML format similar to blog content
+const projectInfoHtml = `
+  <ul class="space-y-2 mb-6">
+    <li><strong>Role:</strong> ${role}</li>
+    <li><strong>Technologies:</strong> ${project.technologies.join(", ")}</li>
+    <li><strong>Team Size:</strong> ${project.teamSize}</li>
+    <li><strong>Industry:</strong> ${project.businessContext.industry}</li>
+    <li><strong>User Base:</strong> ${project.businessContext.userBase}</li>
+  </ul>
+`;
+
+const keyFeaturesHtml = keyFeatures
+  .map(
+    (feature) =>
+      `<li class="flex items-start gap-3 text-gray-300">
+    <span class="inline-block w-2 h-2 bg-cyber-blue rounded-full mt-2 flex-shrink-0 glow"></span>
+    <span class="leading-relaxed">${feature}</span>
+  </li>`,
+  )
+  .join("");
+
+const keyAchievementsHtml = keyAchievements
+  .map(
+    (achievement) =>
+      `<li class="flex items-start gap-3 text-gray-300">
+    <span class="inline-block w-2 h-2 bg-cyber-blue/70 rounded-full mt-2 flex-shrink-0"></span>
+    <span class="leading-relaxed">${achievement}</span>
+  </li>`,
+  )
+  .join("");
+
+const impactResultsHtml = impactResults
+  .map(
+    (result) =>
+      `<li class="flex items-start gap-3 text-gray-300">
+    <span class="inline-block w-2 h-2 bg-cyber-blue/50 rounded-full mt-2 flex-shrink-0"></span>
+    <span class="leading-relaxed">${result}</span>
+  </li>`,
+  )
+  .join("");
+
+const metricsHtml = project.metrics
+  .map(
+    (metric) =>
+      `<li class="flex items-start gap-3 text-gray-300">
+    <span class="inline-block w-2 h-2 bg-cyber-blue rounded-full mt-2 flex-shrink-0 glow"></span>
+    <span class="leading-relaxed"><span class="text-cyber-blue font-semibold">${metric.label}:</span> ${metric.value}${metric.description ? ` - ${metric.description}` : ""}</span>
+  </li>`,
+  )
+  .join("");
+
+const seoKeywordsHtml =
+  project.seo?.keywords
+    ?.map(
+      (keyword) =>
+        `<span class="px-3 py-1 bg-cyber-blue/10 text-cyber-blue rounded-full text-sm border border-cyber-blue/20">${keyword}</span>`,
+    )
+    .join(" ") || "";
+
+const tagsHtml =
+  project.tags
+    ?.map(
+      (tag) =>
+        `<span class="px-3 py-1 bg-cyber-blue/10 text-cyber-blue rounded-full text-sm border border-cyber-blue/20">#${tag}</span>`,
+    )
+    .join(" ") || "";
+
+const projectContent = `
+  ${projectInfoHtml}
+
+  <div class="project-overview mb-8">
+    <h2 class="text-2xl font-bold text-cyber-blue mb-4 text-shadow-glow">Overview</h2>
+    <p class="text-lg leading-relaxed text-gray-300">${projectDescription}</p>
+  </div>
+
+  <div class="project-section mb-8">
+    <h2 class="text-2xl font-bold text-cyber-blue mb-4 text-shadow-glow">Key Responsibilities & Achievements</h2>
+    <ul class="space-y-4 pl-2">
+      ${keyAchievementsHtml}
+    </ul>
+  </div>
+
+  <div class="project-section mb-8">
+    <h2 class="text-2xl font-bold text-cyber-blue mb-4 text-shadow-glow">Technical Implementation</h2>
+    <div class="border border-cyber-blue/10 bg-cyber-dark/30 rounded-lg p-4">
+      <p class="leading-relaxed text-gray-300">${technicalImplementation}</p>
+    </div>
+  </div>
+
+  <div class="project-section mb-8">
+    <h2 class="text-2xl font-bold text-cyber-blue mb-4 text-shadow-glow">Impact & Results</h2>
+    <ul class="space-y-4 pl-2">
+      ${impactResultsHtml}
+    </ul>
+  </div>
+
+  <div class="project-section mb-8">
+    <h2 class="text-2xl font-bold text-cyber-blue mb-4 text-shadow-glow">Key Features Delivered</h2>
+    <ul class="space-y-4 pl-2">
+      ${keyFeaturesHtml}
+    </ul>
+  </div>
+
+  ${
+    project.metrics && project.metrics.length > 0
+      ? `
+  <div class="project-section mb-8">
+    <h2 class="text-2xl font-bold text-cyber-blue mb-4 text-shadow-glow">Key Metrics</h2>
+    <ul class="space-y-4 pl-2">
+      ${metricsHtml}
+    </ul>
+  </div>
+  `
+      : ""
+  }
+
+  ${
+    seoKeywordsHtml
+      ? `
+  <div class="project-section mb-8">
+    <h2 class="text-2xl font-bold text-cyber-blue mb-4 text-shadow-glow">Related Keywords</h2>
+    <div class="flex flex-wrap gap-2 p-2">
+      ${seoKeywordsHtml}
+    </div>
+  </div>
+  `
+      : ""
+  }
+
+  ${
+    tagsHtml
+      ? `
+  <div class="project-section">
+    <h2 class="text-2xl font-bold text-cyber-blue mb-4 text-shadow-glow">Project Tags</h2>
+    <div class="flex flex-wrap gap-2 p-2">
+      ${tagsHtml}
+    </div>
+  </div>
+  `
+      : ""
+  }
+`;
+
+// Author info similar to blog posts
+const author = {
+  name: "Muhammad Asif Javed",
+  title: "Full-Stack Developer",
+  bio: "Experienced full-stack developer specializing in modern web technologies, real-time applications, and scalable solutions.",
+  avatar: "/profile-image.jpg",
+};
 ---
 
 <MainLayout
-  title={title + " | Muhammad Asif Javed Portfolio"}
+  title={`${title} | Muhammad Asif Javed Portfolio`}
   description={description}
 >
-  <ProjectHeader
-    title={projectData.title}
-  />
-  <ArticleContent content={projectContent} />
-  <SocialShare title={projectData.title} url={currentUrl} />
-  <AuthorInfo author={projectData.author} />
-  <RelatedPosts relatedPosts={relatedProjects} />
+  <ProjectHeader title={projectTitle} image={images.featuredImage} />
+
+  <!-- Project Content (using same structure as ArticleContent) -->
+  <section id="project-content" class="relative mb-6">
+    <div class="mx-auto max-w-4xl px-6">
+      <div
+        class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 text-left backdrop-blur-sm"
+      >
+        <div class="post-content" set:html={projectContent} />
+      </div>
+    </div>
+  </section>
+
+  <!-- <SocialShare title={projectTitle} url={currentUrl} /> -->
+  <AuthorInfo author={author} />
 </MainLayout>
