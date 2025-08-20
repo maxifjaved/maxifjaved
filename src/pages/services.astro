@@ -5,7 +5,11 @@ import CTA from "../components/CTA.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
-<MainLayout>
+<MainLayout
+  title="Expert WebRTC & Full-Stack Development Services | Asif Javed"
+  description="Professional WebRTC development, real-time systems, cybersecurity platforms, and enterprise solutions. Hire expert full-stack developer with 10+ years experience in Lahore, Pakistan."
+  keywords="WebRTC development services, full-stack developer for hire, real-time systems expert, cybersecurity platform development, enterprise software solutions, Lahore Pakistan developer, remote development services"
+>
     <ServiceSection />
     <HowWeWork />
     
@@ -34,3 +38,53 @@ import MainLayout from "../layouts/MainLayout.astro";
     
     <CTA />
 </MainLayout>
+
+<!-- Service Schema Markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Full-Stack Web Development Services",
+  "provider": {
+    "@type": "Person",
+    "name": "Muhammad Asif Javed",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lahore",
+      "addressRegion": "Punjab",
+      "addressCountry": "Pakistan"
+    }
+  },
+  "areaServed": ["Pakistan", "Global Remote Services"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Web Development Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Real-time Collaboration Systems",
+          "description": "WebRTC integration, screen sharing, multi-user collaboration platforms"
+        }
+      },
+      {
+        "@type": "Offer", 
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Cybersecurity Platforms",
+          "description": "Threat intelligence systems, security dashboards, enterprise security tools"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service", 
+          "name": "Full-Stack Web Applications",
+          "description": "Complete web application development with React, Node.js, cloud deployment"
+        }
+      }
+    ]
+  }
+}
+</script>
