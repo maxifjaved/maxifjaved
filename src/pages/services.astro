@@ -3,6 +3,12 @@ import HowWeWork from "../components/HowWeWork.astro";
 import ServiceSection from "../components/ServiceSection.astro";
 import CTA from "../components/CTA.astro";
 import MainLayout from "../layouts/MainLayout.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://maxifjaved.com" },
+  { name: "Services", url: "https://maxifjaved.com/services" }
+];
 ---
 
 <MainLayout
@@ -10,6 +16,7 @@ import MainLayout from "../layouts/MainLayout.astro";
   description="Professional WebRTC development, real-time systems, cybersecurity platforms, and enterprise solutions. Hire expert full-stack developer with 10+ years experience in Lahore, Pakistan."
   keywords="WebRTC development services, full-stack developer for hire, real-time systems expert, cybersecurity platform development, enterprise software solutions, Lahore Pakistan developer, remote development services"
 >
+    <Breadcrumb items={breadcrumbItems} />
     <ServiceSection />
     <HowWeWork />
     

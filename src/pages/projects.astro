@@ -2,6 +2,12 @@
 import ProjectPost from "../components/ProjectPost.astro";
 import CTA from "../components/CTA.astro";
 import MainLayout from "../layouts/MainLayout.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://maxifjaved.com" },
+  { name: "Projects", url: "https://maxifjaved.com/projects" }
+];
 ---
 
 <MainLayout
@@ -9,6 +15,7 @@ import MainLayout from "../layouts/MainLayout.astro";
   description="Explore 9+ enterprise-grade projects including educational platforms, cybersecurity systems, and real-time collaboration tools built by WebRTC expert Muhammad Asif Javed from Lahore, Pakistan."
   keywords="WebRTC projects portfolio, enterprise software examples, educational technology projects, cybersecurity platform development, real-time collaboration systems, full-stack developer portfolio Pakistan"
 >
+    <Breadcrumb items={breadcrumbItems} />
     <ProjectPost />
     <CTA />
 </MainLayout>
