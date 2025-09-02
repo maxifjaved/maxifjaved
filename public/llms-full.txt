@@ -1,14 +1,14 @@
-# Muhammad Asif Javed — Complete Site Content
+# Muhammad Asif Javed – Complete Site Content
 
-> Full content for AI consumption: portfolio, services, projects, FAQ, and contact for a WebRTC-focused full-stack developer.
+> Full content for AI: portfolio, services, projects, FAQ, and contact for a WebRTC-focused full-stack developer.
 
 ## Quick Identity
 
-- **Email:** axif.javed@gmail.com
-- **Phone/WhatsApp:** https://wa.me/923324647331
-- **LinkedIn:** https://linkedin.com/in/maxifjaved
-- **GitHub:** https://github.com/maxifjaved
-- **Location:** Lahore, Pakistan
+- Email: axif.javed@gmail.com
+- Phone/WhatsApp: https://wa.me/923324647331
+- LinkedIn: https://linkedin.com/in/maxifjaved
+- GitHub: https://github.com/maxifjaved
+- Location: Lahore, Pakistan
 
 ## Table of Contents
 
@@ -59,13 +59,13 @@ I help organizations—from educational institutions to enterprises—build scal
 
 ### Core Competencies
 
-1. **Full-Stack Development** — Complete end-to-end solutions from React frontends to scalable cloud architectures, supporting enterprise-scale applications
+1. **Full-Stack Development** – Complete end-to-end solutions from React frontends to scalable cloud architectures, supporting enterprise-scale applications
 
-2. **Real-time Systems & WebRTC** — Live platforms supporting 50+ concurrent users with sub-300ms end-to-end latency
+2. **Real-time Systems & WebRTC** – Live platforms supporting 50+ concurrent users with sub-300ms end-to-end latency
 
-3. **Platform Integration & APIs** — Connected 4000+ apps via Zapier and custom API development with seamless data flow
+3. **Platform Integration & APIs** – Connected 4000+ apps via Zapier and custom API development with seamless data flow
 
-4. **Solo Development & Leadership** — Delivered 9+ enterprise projects independently with complete project lifecycle management
+4. **Solo Development & Leadership** – Delivered 9+ enterprise projects independently with complete project lifecycle management
 
 ### Technical Stack
 
