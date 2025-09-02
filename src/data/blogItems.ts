@@ -222,7 +222,7 @@ export const blogItems: BlogItem[] = [
           "author": {
             "@type": "Person",
             "@id": "https://maxifjaved.com/#person",
-            "name": "Maxif Javed",
+            "name": "Muhammad Asif Javed",
             "jobTitle": "Full Stack Developer & Digital Signage Specialist",
             "description": "Experienced developer specializing in digital signage solutions and real-time communication systems with over a decade of hands-on experience.",
             "url": "https://maxifjaved.com",
@@ -241,7 +241,7 @@ export const blogItems: BlogItem[] = [
           "publisher": {
             "@type": "Organization",
             "@id": "https://maxifjaved.com/#organization",
-            "name": "Maxif Javed Development",
+            "name": "Muhammad Asif Javed Development",
             "description": "Expert software development services specializing in digital signage, real-time applications, and scalable cloud solutions.",
             "url": "https://maxifjaved.com",
             "logo": {
@@ -250,7 +250,7 @@ export const blogItems: BlogItem[] = [
               "contentUrl": "https://maxifjaved.com/img/logo.png",
               "width": 512,
               "height": 512,
-              "caption": "Maxif Javed Development"
+              "caption": "Muhammad Asif Javed Development"
             }
           },
           "image": {
@@ -343,7 +343,7 @@ export const blogItems: BlogItem[] = [
           "@type": "WebSite",
           "@id": "https://maxifjaved.com/#website",
           "url": "https://maxifjaved.com/",
-          "name": "Maxif Javed - Full Stack Developer",
+          "name": "Muhammad Asif Javed - Full Stack Developer",
           "description": "Expert software development services specializing in digital signage, real-time applications, and scalable cloud solutions.",
           "publisher": {
             "@id": "https://maxifjaved.com/#organization"
