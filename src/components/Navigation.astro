@@ -13,6 +13,7 @@ const navItems: NavItemType[] = [
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
   { label: "Contact", href: "/contact" },
+  { label: "Blogs", href: "/blogs" },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -30,17 +31,23 @@ const currentPath = Astro.url.pathname;
 
       <!-- Desktop Menu -->
       <nav class="hidden lg:flex space-x-8 font-future">
-        {navItems.map((item) => (
-          <a
-            href={item.href}
-            class:list={[
-                'text-white hover:text-cyber-blue transition-colors',
-                { '!text-cyber-blue': currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href)) }
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class:list={[
+                "text-white hover:text-cyber-blue transition-colors",
+                {
+                  "!text-cyber-blue":
+                    currentPath === item.href ||
+                    (item.href !== "/" && currentPath.startsWith(item.href)),
+                },
               ]}
-          >
-            {item.label}
-          </a>
-        ))}
+            >
+              {item.label}
+            </a>
+          ))
+        }
       </nav>
 
       <!-- Mobile menu button -->
@@ -49,7 +56,10 @@ const currentPath = Astro.url.pathname;
         class="lg:hidden text-cyber-blue focus:outline-none"
       >
         <i class="fas fa-bars text-2xl" x-show="!mobileMenuOpen"></i>
-        <i class="fas fa-times text-2xl" style="display: none;" x-show="mobileMenuOpen"></i>
+        <i
+          class="fas fa-times text-2xl"
+          style="display: none;"
+          x-show="mobileMenuOpen"></i>
       </button>
     </div>
 
@@ -61,17 +71,23 @@ const currentPath = Astro.url.pathname;
       style="display:none;"
     >
       <nav class="flex flex-col space-y-4">
-        {navItems.map((item) => (
-          <a
-            href={item.href}
-            class:list={[
-                'text-white hover:text-cyber-blue transition-colors',
-                { '!text-cyber-blue': currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href)) }
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class:list={[
+                "text-white hover:text-cyber-blue transition-colors",
+                {
+                  "!text-cyber-blue":
+                    currentPath === item.href ||
+                    (item.href !== "/" && currentPath.startsWith(item.href)),
+                },
               ]}
-          >
-            {item.label}
-          </a>
-        ))}
+            >
+              {item.label}
+            </a>
+          ))
+        }
       </nav>
     </div>
   </div>

@@ -17,13 +17,23 @@ export function getStaticPaths() {
       description: item.metaDescription || item.subtitle,
     },
   }));
-  
+
   return paths;
 }
 
 // Get props from getStaticPaths
 const { blog, title, description } = Astro.props;
-const { title: blogTitle, subtitle, category, date, author, readTime, featuredImage, content, relatedPosts } = blog;
+const {
+  title: blogTitle,
+  subtitle,
+  category,
+  date,
+  author,
+  readTime,
+  featuredImage,
+  content,
+  relatedPosts,
+} = blog;
 
 const currentUrl = new URL(Astro.url).toString();
 ---
@@ -41,5 +51,5 @@ const currentUrl = new URL(Astro.url).toString();
   <ArticleContent content={content} />
   <SocialShare title={blogTitle} url={currentUrl} />
   <AuthorInfo author={author} />
-  <RelatedPosts relatedPosts={relatedPosts} />
+  <!-- <RelatedPosts relatedPosts={relatedPosts} /> -->
 </MainLayout>
