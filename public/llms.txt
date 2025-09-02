@@ -32,10 +32,6 @@
 - **Track Record**: 9+ successful projects, 100% on-time delivery
 - **Support**: Ongoing maintenance and technical support available
 
-## Documentation
-- [Terms of Service](https://maxifjaved.com/terms): Legal terms and conditions
-- [Privacy Policy](https://maxifjaved.com/privacy): Data handling and privacy practices
-
 ## Hiring Information
 **Available for**: WebRTC development, enterprise platform development, cybersecurity systems, educational technology platforms, full-stack development projects
 
@@ -45,3 +41,19 @@
 
 ## Complete Site Content
 For comprehensive content including detailed project descriptions, full FAQ, technical approach, and hiring process, see: [Full Site Content](https://maxifjaved.com/llms-full.txt)
+
+## Optional
+- [Terms of Service](https://maxifjaved.com/terms): Legal terms and conditions
+- [Privacy Policy](https://maxifjaved.com/privacy): Data handling and privacy practices
+
+## Discovery
+- [Sitemap](https://maxifjaved.com/sitemap-index.xml): Complete site structure
+
+## Identity & Profiles
+- [LinkedIn](https://linkedin.com/in/maxifjaved)
+- [GitHub](https://github.com/maxifjaved)
+- [Email](mailto:axif.javed@gmail.com)
+- [WhatsApp](https://wa.me/923324647331)
+
+---
+Last updated: 2025-09-02
