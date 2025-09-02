@@ -2,7 +2,10 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://maxifjaved.com/sitemap.xml
+Sitemap: https://maxifjaved.com/sitemap-0.xml
+
+# LLM Content Files
+# AI agents can access /llms.txt and /llms-full.txt for structured content
 
 # AI/LLM Crawlers
 User-agent: GPTBot
