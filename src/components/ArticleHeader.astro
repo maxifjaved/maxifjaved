@@ -39,11 +39,9 @@ const [titlePart1, titlePart2] = title.split(": ");
 
       <!-- Title -->
       <h1 class="mb-4 text-4xl font-bold text-white lg:text-5xl">
-        {titlePart1}
+        {titlePart2 ? `${titlePart1}:` : titlePart1}
         {titlePart2 && (
-          <>
-            : <span class="text-cyber-blue text-shadow-glow">{titlePart2}</span>
-          </>
+          <span class="text-cyber-blue text-shadow-glow"> {titlePart2}</span>
         )}
       </h1>
 

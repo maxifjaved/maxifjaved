@@ -36,9 +36,21 @@ const {
 } = blog;
 
 const currentUrl = new URL(Astro.url).toString();
+const canonicalUrl = `https://maxifjaved.com/blogs/${blog.slug}`;
+
+// Generate JSON-LD structured data if available
+const jsonLdScript = blog.jsonLd ? JSON.stringify(blog.jsonLd) : null;
 ---
 
-<MainLayout title={`${title} | Futura AI Blog`} description={description}>
+<MainLayout 
+  title={`${title} | Muhammad Asif Javed`} 
+  description={description}
+  ogImage={`https://maxifjaved.com${featuredImage}`}
+  canonicalUrl={canonicalUrl}
+>
+  {jsonLdScript && (
+    <script type="application/ld+json" set:html={jsonLdScript} />
+  )}
   <ArticleHeader
     title={blogTitle}
     subtitle={subtitle}
