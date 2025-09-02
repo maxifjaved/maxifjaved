@@ -1,0 +1,44 @@
+# Muhammad Asif Javed - WebRTC Expert & Enterprise Developer
+
+> Senior Full-Stack Developer from Pakistan serving US, UK & international clients. 10+ years expertise in WebRTC, enterprise platforms, cybersecurity systems. Remote-first with competitive rates. Available for hire for complex real-time communication systems, educational technology platforms, and cybersecurity solutions.
+
+## About Me
+- [Homepage](https://maxifjaved.com): Portfolio overview, services, and contact information
+- [About](https://maxifjaved.com/about): Personal story, technical expertise, and working approach
+- [Contact](https://maxifjaved.com/contact): Direct contact form and communication channels
+
+## Services & Expertise
+- [Services](https://maxifjaved.com/services): Detailed service offerings and technical specializations
+- [Projects](https://maxifjaved.com/projects): Portfolio of completed work and case studies
+
+## Key Specializations
+**WebRTC Development**: Enterprise-grade real-time communication systems supporting 50+ concurrent users
+**Full-Stack Development**: React/Next.js frontend, Node.js backend, various databases
+**Educational Technology**: Interactive learning platforms and collaboration tools
+**Cybersecurity Systems**: Intelligence tools and secure multi-user platforms
+**Remote Collaboration**: Proven track record with US/UK clients across time zones
+
+## Technical Stack
+- **Frontend**: React, Next.js, Alpine.js, TailwindCSS
+- **Backend**: Node.js, WebRTC APIs, Real-time systems
+- **Database**: Multiple database technologies
+- **DevOps**: Docker, Cloud services, Deployment automation
+- **Security**: Cybersecurity frameworks and best practices
+
+## Client Information
+- **Primary Markets**: United States, United Kingdom
+- **Work Style**: Remote-first from Lahore, Pakistan
+- **Project Duration**: Typically 5-18 months for enterprise solutions
+- **Track Record**: 9+ successful projects, 100% on-time delivery
+- **Support**: Ongoing maintenance and technical support available
+
+## Documentation
+- [Terms of Service](https://maxifjaved.com/terms): Legal terms and conditions
+- [Privacy Policy](https://maxifjaved.com/privacy): Data handling and privacy practices
+
+## Hiring Information
+**Available for**: WebRTC development, enterprise platform development, cybersecurity systems, educational technology platforms, full-stack development projects
+
+**Ideal for**: Companies needing experienced WebRTC developers, enterprises requiring scalable real-time systems, startups building educational or communication platforms, organizations needing cybersecurity solutions
+
+**Contact**: Direct inquiries through contact form or email for project discussions and quotes
