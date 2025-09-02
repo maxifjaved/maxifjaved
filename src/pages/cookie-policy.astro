@@ -1,0 +1,87 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import PageSection from '../components/PageSection.astro';
+
+export interface PageData {
+  title: string;
+  subtitle: string;
+  content: string;
+  lastUpdated: string;
+}
+
+const pageData: PageData = {
+  title: "Cookie Policy",
+  subtitle: "How I use cookies to enhance your browsing experience on my website.",
+  lastUpdated: "September 2, 2025",
+  content: `
+    <p>This Cookie Policy explains how Muhammad Asif Javed ("I", "me", or "my") uses cookies and similar technologies on my website. By using this website, you consent to the use of cookies as described in this policy.</p>
+
+    <h2>What Are Cookies?</h2>
+    <p>Cookies are small text files that are placed on your computer or mobile device when you visit a website. They are widely used to make websites work more efficiently and to provide information to website owners.</p>
+
+    <h2>Types of Cookies I Use</h2>
+    <p>I use the following types of cookies on my website:</p>
+    <ul>
+      <li><strong>Necessary Cookies:</strong> These cookies are essential for the website to function properly. They enable basic features like page navigation and access to secure areas of the website.</li>
+      <li><strong>Analytics Cookies:</strong> These cookies help me understand how visitors interact with my website by collecting information about pages visited and how long users spend on each page.</li>
+      <li><strong>Performance Cookies:</strong> These cookies collect information about how my website performs, helping me identify and fix technical issues to improve user experience.</li>
+    </ul>
+
+    <h2>Third-Party Cookies</h2>
+    <p>My website may use third-party services that set their own cookies, including:</p>
+    <ul>
+      <li><strong>Cloudflare:</strong> For content delivery and security purposes</li>
+      <li><strong>Analytics Services:</strong> For website traffic analysis and performance monitoring</li>
+    </ul>
+
+    <h2>How I Use Cookie Information</h2>
+    <p>The information collected through cookies helps me:</p>
+    <ul>
+      <li>Improve website functionality and user experience</li>
+      <li>Analyze website usage patterns and traffic</li>
+      <li>Identify and resolve technical issues</li>
+      <li>Optimize website performance</li>
+    </ul>
+
+    <h2>Managing Your Cookie Preferences</h2>
+    <p>You have several options for managing cookies:</p>
+    <ul>
+      <li><strong>Browser Settings:</strong> Most web browsers allow you to control cookies through their settings. You can set your browser to block or delete cookies, though this may affect website functionality.</li>
+      <li><strong>Opt-Out:</strong> You can opt out of certain third-party analytics cookies by visiting the relevant service's opt-out page.</li>
+    </ul>
+
+    <h3>How to Manage Cookies in Popular Browsers:</h3>
+    <ul>
+      <li><strong>Chrome:</strong> Settings > Privacy and Security > Cookies and other site data</li>
+      <li><strong>Firefox:</strong> Settings > Privacy & Security > Cookies and Site Data</li>
+      <li><strong>Safari:</strong> Safari > Preferences > Privacy > Manage Website Data</li>
+      <li><strong>Edge:</strong> Settings > Site permissions > Cookies and site data</li>
+    </ul>
+
+    <h2>Cookie Retention</h2>
+    <p>Different cookies have different retention periods:</p>
+    <ul>
+      <li><strong>Session Cookies:</strong> Deleted when you close your browser</li>
+      <li><strong>Persistent Cookies:</strong> Remain on your device for a set period or until you delete them</li>
+    </ul>
+
+    <h2>Updates to This Cookie Policy</h2>
+    <p>I may update this Cookie Policy from time to time to reflect changes in technology, legal requirements, or my cookie practices. Any updates will be posted on this page with a revised "Last Updated" date.</p>
+
+    <h2>Contact Me</h2>
+    <p>If you have questions about this Cookie Policy or how I use cookies, please contact me:</p>
+    <ul>
+      <li>Email: <a href="mailto:axif.javed@gmail.com">axif.javed@gmail.com</a></li>
+      <li>Phone: <a href="tel:+923324647331">+92 332 464 7331</a></li>
+      <li>Website: <a href="https://maxifjaved.com/contact">https://maxifjaved.com/contact</a></li>
+      <li>Location: Lahore, Pakistan</li>
+    </ul>
+  `
+};
+
+const title = "Cookie Policy | Muhammad Asif Javed";
+---
+
+<MainLayout title={title}>
+  <PageSection pageData={pageData} />
+</MainLayout>
