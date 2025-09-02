@@ -19,7 +19,7 @@ const {
   description = "Muhammad Asif Javed - Full-Stack Developer & Real-time Systems Expert specializing in WebRTC, cybersecurity platforms, educational technology, and enterprise-grade solutions. 10+ years experience building scalable applications.",
   keywords = "full-stack developer, WebRTC expert, real-time systems, cybersecurity platforms, educational technology, interactive displays, enterprise solutions, Muhammad Asif Javed, maxifjaved, hire full-stack developer for WebRTC projects, expert in real-time collaboration systems, Lahore Pakistan developer",
   ogImage = "https://maxifjaved.com/img/og-image.jpg",
-  canonicalUrl = Astro.url.href
+  canonicalUrl = Astro.url.href,
 } = Astro.props;
 ---
 
@@ -38,11 +38,11 @@ const {
     <meta name="geo.position" content="31.5204;74.3587" />
     <meta name="ICBM" content="31.5204, 74.3587" />
     <link rel="canonical" href={canonicalUrl} />
-    
+
     <!-- International Targeting -->
     <link rel="alternate" hreflang="en" href={canonicalUrl} />
     <link rel="alternate" hreflang="x-default" href="https://maxifjaved.com" />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
@@ -51,7 +51,7 @@ const {
     <meta property="og:image" content={ogImage} />
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Muhammad Asif Javed Portfolio" />
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalUrl} />
@@ -59,92 +59,108 @@ const {
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImage} />
     <meta property="twitter:creator" content="@maxifjaved" />
-    
+
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Muhammad Asif Javed",
-      "jobTitle": "Full-Stack Developer & Real-time Systems Expert",
-      "description": "Full-Stack Developer & Real-time Systems Expert specializing in WebRTC, cybersecurity platforms, educational technology, and enterprise-grade solutions with 10+ years experience.",
-      "url": "https://maxifjaved.com",
-      "image": "https://maxifjaved.com/img/profile-image.jpg",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Lahore",
-        "addressRegion": "Punjab",
-        "addressCountry": "Pakistan"
-      },
-      "email": "axif.javed@gmail.com",
-      "telephone": "+923324647331",
-      "sameAs": [
-        "https://github.com/maxifjaved",
-        "https://linkedin.com/in/maxifjaved"
-      ],
-      "knowsAbout": [
-        "WebRTC Development",
-        "Real-time Systems",
-        "Cybersecurity Platforms",
-        "Educational Technology",
-        "Interactive Display Technology",
-        "Full-Stack Development",
-        "Enterprise Software Solutions"
-      ],
-      "hasOccupation": {
-        "@type": "Occupation",
-        "name": "Full-Stack Developer",
-        "description": "Specializes in building enterprise-grade platforms, real-time collaboration systems, and cybersecurity intelligence tools"
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Muhammad Asif Javed",
+        "jobTitle": "Full-Stack Developer & Real-time Systems Expert",
+        "description": "Full-Stack Developer & Real-time Systems Expert specializing in WebRTC, cybersecurity platforms, educational technology, and enterprise-grade solutions with 10+ years experience.",
+        "url": "https://maxifjaved.com",
+        "image": "https://maxifjaved.com/img/profile-image.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Lahore",
+          "addressRegion": "Punjab",
+          "addressCountry": "Pakistan"
+        },
+        "email": "axif.javed@gmail.com",
+        "telephone": "+923324647331",
+        "sameAs": [
+          "https://github.com/maxifjaved",
+          "https://linkedin.com/in/maxifjaved"
+        ],
+        "knowsAbout": [
+          "WebRTC Development",
+          "Real-time Systems",
+          "Cybersecurity Platforms",
+          "Educational Technology",
+          "Interactive Display Technology",
+          "Full-Stack Development",
+          "Enterprise Software Solutions"
+        ],
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "Full-Stack Developer",
+          "description": "Specializes in building enterprise-grade platforms, real-time collaboration systems, and cybersecurity intelligence tools"
+        }
       }
-    }
     </script>
 
     <!-- WebSite Schema -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Muhammad Asif Javed - Full-Stack Developer Portfolio",
-      "url": "https://maxifjaved.com",
-      "description": "Professional portfolio of Muhammad Asif Javed, Full-Stack Developer & WebRTC Expert with 10+ years experience",
-      "author": {
-        "@type": "Person",
-        "name": "Muhammad Asif Javed"
-      },
-      "inLanguage": "en",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://maxifjaved.com/projects?search={search_term_string}",
-        "query-input": "required name=search_term_string"
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Muhammad Asif Javed - Full-Stack Developer Portfolio",
+        "url": "https://maxifjaved.com",
+        "description": "Professional portfolio of Muhammad Asif Javed, Full-Stack Developer & WebRTC Expert with 10+ years experience",
+        "author": {
+          "@type": "Person",
+          "name": "Muhammad Asif Javed"
+        },
+        "inLanguage": "en",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://maxifjaved.com/projects?search={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
       }
-    }
     </script>
 
     <!-- Professional Service Schema -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Muhammad Asif Javed - Full-Stack Developer",
-      "description": "Full-Stack Developer & WebRTC Expert with 10+ years experience. Specializing in enterprise platforms, real-time systems, and cybersecurity solutions.",
-      "url": "https://maxifjaved.com",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Lahore",
-        "addressCountry": "Pakistan"
-      },
-      "areaServed": ["Global Remote Services"],
-      "serviceType": "Software Development"
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Muhammad Asif Javed - Full-Stack Developer",
+        "description": "Full-Stack Developer & WebRTC Expert with 10+ years experience. Specializing in enterprise platforms, real-time systems, and cybersecurity solutions.",
+        "url": "https://maxifjaved.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Lahore",
+          "addressCountry": "Pakistan"
+        },
+        "areaServed": ["Global Remote Services"],
+        "serviceType": "Software Development"
+      }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VC7TMWR4LZ"
+    ></script>
+    <script>
+      // @ts-ignore
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        // @ts-ignore
+        dataLayer.push(arguments);
+      }
+      // @ts-ignore
+      gtag("js", new Date());
+      // @ts-ignore
+      gtag("config", "G-VC7TMWR4LZ");
     </script>
 
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
-    
+
     <!-- Preload critical fonts for better LCP -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-    
+
     <link
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -223,7 +239,7 @@ const {
         const setActiveLink = (targetId: string) => {
           removeActiveClasses();
           const activeLink = Array.from(navLinks).find(
-            (link) => link.getAttribute("href") === `#${targetId}`
+            (link) => link.getAttribute("href") === `#${targetId}`,
           );
           if (activeLink) activeLink.classList.add("active");
         };
