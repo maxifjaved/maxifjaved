@@ -162,7 +162,7 @@ const {
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
 
     <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&Poppins:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -207,6 +207,13 @@ const {
           },
           startCounting() {
             if (this.counting || this.current >= this.end) return;
+            
+            // Skip animation if user prefers reduced motion
+            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              this.current = this.end;
+              return;
+            }
+            
             this.counting = true;
             const start = this.current;
             const range = this.end - start;
@@ -369,8 +376,11 @@ const {
       }
 
       window.addEventListener("load", () => {
-        createStars();
-        createMatrixEffect();
+        // Only create effects if user hasn't requested reduced motion
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          createStars();
+          createMatrixEffect();
+        }
       });
     </script>
   </body>

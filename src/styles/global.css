@@ -290,3 +290,41 @@ h1, h2, h3, h4, h5, h6 {
 .post-content pre {
     @apply bg-cyber-blue/10 text-sm font-mono overflow-auto p-4 rounded-md border border-cyber-blue/20 mb-6 mt-3;
 }
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  /* Disable all animations and transitions */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Specifically disable problematic animations */
+  .cyber-btn {
+    animation: none !important;
+  }
+  
+  .data-stream,
+  .star,
+  .hologram-ring,
+  .matrix-char {
+    animation: none !important;
+    opacity: 0 !important; /* Hide animated elements entirely */
+  }
+  
+  /* Keep fade-in animations but make them instant */
+  .animated {
+    animation-duration: 0.01ms !important;
+  }
+  
+  /* Disable background animations */
+  .animate-pulse-slow,
+  .animate-pulse,
+  .animate-spin {
+    animation: none !important;
+  }
+}
