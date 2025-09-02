@@ -18,7 +18,7 @@ export interface HeroType {
 }
 
 const heroData: HeroType = {
-  title: "Asif Javed",
+  title: "Muhammad Asif Javed",
   subtitle: "Full-Stack Developer & Real-time Systems Expert",
   description:
     "Building enterprise-grade platforms from educational collaboration systems to cybersecurity intelligence tools | 10+ years experience | Specialized in WebRTC, real-time technologies, and scalable architectures",
@@ -44,7 +44,7 @@ const heroData: HeroType = {
     { icon: "fab fa-linkedin", href: "https://linkedin.com/in/maxifjaved" },
     {
       icon: "fab fa-whatsapp",
-      href: "https://api.whatsapp.com/send?phone=923324647331&text=%F0%9F%93%9E%20Hi%20Asif.%20How%20are%20you%3F",
+      href: "https://wa.me/923324647331",
     },
   ],
 };
@@ -128,12 +128,15 @@ const heroData: HeroType = {
               <div class="relative">
                 <Image
                   src={heroData.img}
-                  alt={`${heroData.title} - ${heroData.subtitle}`}
+                  alt="Muhammad Asif Javed - WebRTC Expert & Full-Stack Developer"
+                  width="384"
+                  height="384"
                   width={384}
                   height={384}
                   format="webp"
                   quality={85}
                   loading="eager"
+                  fetchpriority="high"
                   class="w-full h-full object-cover"
                 />
               </div>
