@@ -1,5 +1,6 @@
 ---
 import ContactInfo from "../components/ContactInfo.astro";
+import ContactForm from "../components/ContactForm.astro";
 import CTA from "../components/CTA.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
@@ -66,5 +67,6 @@ const localBusinessSchema = {
     
     <Breadcrumb items={breadcrumbItems} />
     <ContactInfo />
+    <ContactForm />
     <CTA />
 </MainLayout>
