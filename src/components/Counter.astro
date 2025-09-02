@@ -26,7 +26,7 @@ const counterData: CounterType[] = [
           x-data={`counter(${counter.value}, 3)`}
           x-intersect="startCounting"
         >
-          <span x-text="current"></span>
+          <span x-text="current">{counter.value}</span>
         </h3>
         <p class="text-gray-300 text-sm">{counter.label}</p>
       </div>
