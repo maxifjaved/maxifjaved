@@ -627,13 +627,13 @@ const signedUrl = await getSignedUrl(client, command, { expiresIn: 3600 });</cod
         category: "Digital Signage",
         thumbnail: "/img/blog1.jpg",
       },
-      {
-        slug: "cloud-ai-scaling",
-        title: "Scaling AI with Cloud Integration",
-        date: new Date("2025-01-10"),
-        category: "Cloud AI",
-        thumbnail: "/img/blog5.jpg",
-      },
+      // {
+      //   slug: "cloud-ai-scaling",
+      //   title: "Scaling AI with Cloud Integration",
+      //   date: new Date("2025-01-10"),
+      //   category: "Cloud AI",
+      //   thumbnail: "/img/blog5.jpg",
+      // },
     ],
   },
   {
@@ -651,7 +651,7 @@ const signedUrl = await getSignedUrl(client, command, { expiresIn: 3600 });</cod
       avatar: "/profile-image.jpg",
     },
     readTime: "12 min read",
-    featuredImage: "/img/blog1.jpg",
+    featuredImage: "/img/blogs/digital-signage-realtime-comparison-hero.webp",
     content: `
       <p class="lead text-gray-200 mb-6">When developing digital signage applications, selecting the right real-time communication method is a critical decision that impacts both performance and your bottom line. After extensive experience building and scaling digital signage systems, I've found that the term "real-time" can be misleading. For most digital signage use cases, a delay of 4-5 minutes in content updates is perfectly acceptable and often goes unnoticed by the end-user.</p>
 
@@ -700,7 +700,7 @@ const signedUrl = await getSignedUrl(client, command, { expiresIn: 3600 });</cod
         <li><strong>Server Resource Intensive:</strong> High memory and CPU usage for maintaining many concurrent connections</li>
       </ul>
 
-      <img src="/img/blog6.jpg" alt="Digital Signage Communication Comparison" class="w-full object-cover rounded-xl my-6 border border-cyber-blue/20 glow">
+      <img src="/img/blogs/digital-signage-realtime-comparison-content.webp" alt="Digital Signage Communication Comparison" class="w-full object-cover rounded-xl my-6 border border-cyber-blue/20 glow">
 
       <h2 class="text-2xl font-bold text-cyber-blue mt-8 mb-4">HTTP Polling: The Pragmatic Winner</h2>
       <p>Considering the acceptable delay tolerance in digital signage, the classic method of HTTP polling emerges as a surprisingly effective and efficient solution.</p>
