@@ -215,9 +215,9 @@ export const blogItems: BlogItem[] = [
       "@graph": [
         {
           "@type": "Article",
-          "@id": "https://maxifjaved.com/blog/digital-signage-realtime-comparison#article",
+          "@id": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison#article",
           "isPartOf": {
-            "@id": "https://maxifjaved.com/blog/digital-signage-realtime-comparison"
+            "@id": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison"
           },
           "author": {
             "@type": "Person",
@@ -235,7 +235,7 @@ export const blogItems: BlogItem[] = [
           "datePublished": "2025-09-02T00:00:00+00:00",
           "dateModified": "2025-09-02T00:00:00+00:00",
           "mainEntityOfPage": {
-            "@id": "https://maxifjaved.com/blog/digital-signage-realtime-comparison"
+            "@id": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison"
           },
           "commentCount": 0,
           "publisher": {
@@ -255,7 +255,7 @@ export const blogItems: BlogItem[] = [
           },
           "image": {
             "@type": "ImageObject",
-            "@id": "https://maxifjaved.com/blog/digital-signage-realtime-comparison#primaryimage",
+            "@id": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison#primaryimage",
             "url": "https://maxifjaved.com/img/blog1.jpg",
             "contentUrl": "https://maxifjaved.com/img/blog1.jpg",
             "width": 1200,
@@ -281,43 +281,43 @@ export const blogItems: BlogItem[] = [
             {
               "@type": "ReadAction",
               "target": [
-                "https://maxifjaved.com/blog/digital-signage-realtime-comparison"
+                "https://maxifjaved.com/blogs/digital-signage-realtime-comparison"
               ]
             }
           ]
         },
         {
           "@type": "WebPage",
-          "@id": "https://maxifjaved.com/blog/digital-signage-realtime-comparison",
-          "url": "https://maxifjaved.com/blog/digital-signage-realtime-comparison",
+          "@id": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison",
+          "url": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison",
           "name": "Digital Signage Comms 2025: Firebase vs Socket.IO vs Polling",
           "isPartOf": {
             "@id": "https://maxifjaved.com/#website"
           },
           "about": {
-            "@id": "https://maxifjaved.com/blog/digital-signage-realtime-comparison#article"
+            "@id": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison#article"
           },
           "primaryImageOfPage": {
-            "@id": "https://maxifjaved.com/blog/digital-signage-realtime-comparison#primaryimage"
+            "@id": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison#primaryimage"
           },
           "datePublished": "2025-09-02T00:00:00+00:00",
           "dateModified": "2025-09-02T00:00:00+00:00",
           "breadcrumb": {
-            "@id": "https://maxifjaved.com/blog/digital-signage-realtime-comparison#breadcrumb"
+            "@id": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison#breadcrumb"
           },
           "inLanguage": "en-US",
           "potentialAction": [
             {
               "@type": "ReadAction",
               "target": [
-                "https://maxifjaved.com/blog/digital-signage-realtime-comparison"
+                "https://maxifjaved.com/blogs/digital-signage-realtime-comparison"
               ]
             }
           ]
         },
         {
           "@type": "BreadcrumbList",
-          "@id": "https://maxifjaved.com/blog/digital-signage-realtime-comparison#breadcrumb",
+          "@id": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison#breadcrumb",
           "itemListElement": [
             {
               "@type": "ListItem",
@@ -329,13 +329,13 @@ export const blogItems: BlogItem[] = [
               "@type": "ListItem",
               "position": 2,
               "name": "Blog",
-              "item": "https://maxifjaved.com/blog/"
+              "item": "https://maxifjaved.com/blogs/"
             },
             {
               "@type": "ListItem",
               "position": 3,
               "name": "Digital Signage Real-Time Communication",
-              "item": "https://maxifjaved.com/blog/digital-signage-realtime-comparison"
+              "item": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison"
             }
           ]
         },
@@ -352,7 +352,7 @@ export const blogItems: BlogItem[] = [
         },
         {
           "@type": "FAQPage",
-          "@id": "https://maxifjaved.com/blog/digital-signage-realtime-comparison#faq",
+          "@id": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison#faq",
           "mainEntity": [
             {
               "@type": "Question",
@@ -398,7 +398,7 @@ export const blogItems: BlogItem[] = [
         },
         {
           "@type": "HowTo",
-          "@id": "https://maxifjaved.com/blog/digital-signage-realtime-comparison#howto",
+          "@id": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison#howto",
           "name": "How to Implement HTTP Polling for Digital Signage with Cloudflare",
           "description": "Step-by-step guide to implement cost-effective HTTP polling for digital signage using Cloudflare Workers",
           "totalTime": "PT2H",
@@ -413,42 +413,42 @@ export const blogItems: BlogItem[] = [
               "position": 1,
               "name": "Develop API Endpoints with Cloudflare Workers",
               "text": "Create simple, fast endpoints for players to request content updates",
-              "url": "https://maxifjaved.com/blog/digital-signage-realtime-comparison#implementation"
+              "url": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison#implementation"
             },
             {
               "@type": "HowToStep", 
               "position": 2,
               "name": "Utilize D1 or KV Storage",
               "text": "Choose based on data complexity - KV for simple key-value pairs, D1 for relational data",
-              "url": "https://maxifjaved.com/blog/digital-signage-realtime-comparison#implementation"
+              "url": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison#implementation"
             },
             {
               "@type": "HowToStep",
               "position": 3, 
               "name": "Implement 3-Minute Polling",
               "text": "Configure signage players to send HTTP requests every 3 minutes",
-              "url": "https://maxifjaved.com/blog/digital-signage-realtime-comparison#implementation"
+              "url": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison#implementation"
             },
             {
               "@type": "HowToStep",
               "position": 4,
               "name": "Add Exponential Backoff",
               "text": "Implement retry logic with increasing delays for failed requests", 
-              "url": "https://maxifjaved.com/blog/digital-signage-realtime-comparison#implementation"
+              "url": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison#implementation"
             },
             {
               "@type": "HowToStep",
               "position": 5,
               "name": "Leverage CDN Caching", 
               "text": "Cache static assets and API responses where appropriate",
-              "url": "https://maxifjaved.com/blog/digital-signage-realtime-comparison#implementation"
+              "url": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison#implementation"
             },
             {
               "@type": "HowToStep",
               "position": 6,
               "name": "Add Health Monitoring",
               "text": "Implement basic health checks and error logging",
-              "url": "https://maxifjaved.com/blog/digital-signage-realtime-comparison#implementation"
+              "url": "https://maxifjaved.com/blogs/digital-signage-realtime-comparison#implementation"
             }
           ]
         }
