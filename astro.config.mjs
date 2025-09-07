@@ -2,22 +2,13 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
+import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [sitemap()],
+  integrations: [sitemap(), mdx()],
   site: 'https://maxifjaved.com',
-  image: {
-    domains: ["maxifjaved.com"],
-    formats: ["webp", "avif"],
-    quality: 80,
-    service: {
-      entrypoint: "astro/assets/services/sharp",
-      config: {
-        limitInputPixels: false,
-      },
-    },
-  },
+
   vite: {
     plugins: [tailwindcss()],
   },

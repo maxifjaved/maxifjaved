@@ -1,7 +1,17 @@
 ---
 import BlogCard from "../components/BlogCard.astro";
 import BlogPagination from "../components/BlogPagination.astro";
-import { blogItems } from "../data/blogItems";
+import BlogSearch from "../components/BlogSearch.astro";
+import type { CollectionEntry } from 'astro:content';
+
+export interface Props {
+  posts?: CollectionEntry<'blog'>[];
+  currentPage?: number;
+  totalPages?: number;
+  categories?: string[];
+  selectedCategory?: string | null;
+  searchQuery?: string;
+}
 
 export interface BlogType {
   title: string;
@@ -12,21 +22,30 @@ export interface BlogType {
     title: string;
     excerpt: string;
     link: string;
-    delay: number;
+    delay: string;
   }[];
 }
 
-// Map blogItems to BlogType
+const { 
+  posts = [], 
+  currentPage = 1, 
+  totalPages = 1, 
+  categories = [], 
+  selectedCategory = null,
+  searchQuery = ''
+} = Astro.props;
+
+// Map blog posts to BlogType
 const blogData: BlogType = {
-  title: "Latest Articles",
-  posts: blogItems.map((item, index) => ({
-    image: { src: item.featuredImage, alt: item.title },
-    date: item.date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }),
-    category: item.category,
-    title: item.title,
-    excerpt: item.subtitle,
-    link: `/blogs/${item.slug}`,
-    delay: 100 * (index + 1),
+  title: selectedCategory ? `${selectedCategory} Articles` : "Latest Articles",
+  posts: posts.map((post, index) => ({
+    image: { src: post.data.featuredImage, alt: post.data.title },
+    date: new Date(post.data.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }),
+    category: post.data.category,
+    title: post.data.title,
+    excerpt: post.data.subtitle,
+    link: `/blogs/${post.slug}`,
+    delay: `${100 * (index + 1)}`,
   })),
 };
 ---
@@ -55,12 +74,79 @@ const blogData: BlogType = {
         </div>
       </div>
 
+      <!-- Search -->
+      <BlogSearch searchQuery={searchQuery} selectedCategory={selectedCategory} />
+
+      <!-- Category Filter -->
+      {categories.length > 0 && (
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          <a 
+            href={`/blogs${searchQuery ? `?search=${encodeURIComponent(searchQuery)}` : ''}`}
+            class={`px-4 py-2 rounded-full border transition-all duration-300 ${
+              !selectedCategory 
+                ? 'bg-cyber-blue text-white border-cyber-blue' 
+                : 'border-gray-600 text-gray-300 hover:border-cyber-blue hover:text-cyber-blue'
+            }`}
+          >
+            All
+          </a>
+          {categories.map((category) => (
+            <a 
+              href={`/blogs?category=${encodeURIComponent(category.toLowerCase())}${searchQuery ? `&search=${encodeURIComponent(searchQuery)}` : ''}`}
+              class={`px-4 py-2 rounded-full border transition-all duration-300 ${
+                selectedCategory?.toLowerCase() === category.toLowerCase()
+                  ? 'bg-cyber-blue text-white border-cyber-blue' 
+                  : 'border-gray-600 text-gray-300 hover:border-cyber-blue hover:text-cyber-blue'
+              }`}
+            >
+              {category}
+            </a>
+          ))}
+        </div>
+      )}
+
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogData.posts.map((post) => (
           <BlogCard blog={post} />
         ))}
       </div>
 
-      <!-- <BlogPagination /> -->
+      <!-- Pagination -->
+      {totalPages > 1 && (
+        <div class="flex justify-center mt-16">
+          <div class="flex gap-2">
+            {currentPage > 1 && (
+              <a 
+                href={`/blogs?page=${currentPage - 1}${selectedCategory ? `&category=${encodeURIComponent(selectedCategory)}` : ''}${searchQuery ? `&search=${encodeURIComponent(searchQuery)}` : ''}`}
+                class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-cyber-blue transition-colors"
+              >
+                Previous
+              </a>
+            )}
+            
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <a 
+                href={`/blogs?page=${page}${selectedCategory ? `&category=${encodeURIComponent(selectedCategory)}` : ''}${searchQuery ? `&search=${encodeURIComponent(searchQuery)}` : ''}`}
+                class={`px-4 py-2 rounded transition-colors ${
+                  page === currentPage 
+                    ? 'bg-cyber-blue text-white' 
+                    : 'bg-gray-800 text-white hover:bg-cyber-blue'
+                }`}
+              >
+                {page}
+              </a>
+            ))}
+            
+            {currentPage < totalPages && (
+              <a 
+                href={`/blogs?page=${currentPage + 1}${selectedCategory ? `&category=${encodeURIComponent(selectedCategory)}` : ''}${searchQuery ? `&search=${encodeURIComponent(searchQuery)}` : ''}`}
+                class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-cyber-blue transition-colors"
+              >
+                Next
+              </a>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   </section>
