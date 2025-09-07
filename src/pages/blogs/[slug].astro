@@ -5,45 +5,71 @@ import ArticleContent from "../../components/ArticleContent.astro";
 import SocialShare from "../../components/SocialShare.astro";
 import AuthorInfo from "../../components/AuthorInfo.astro";
 import RelatedPosts from "../../components/RelatedPosts.astro";
-import { blogItems } from "../../data/blogItems";
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 
-// Generate static paths for all blog posts
-export function getStaticPaths() {
-  const paths = blogItems.map((item) => ({
-    params: { slug: item.slug },
-    props: {
-      blog: item,
-      title: item.title,
-      description: item.metaDescription || item.subtitle,
-    },
+export async function getStaticPaths() {
+  const blogPosts = await getCollection('blog');
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
   }));
-
-  return paths;
 }
 
-// Get props from getStaticPaths
-const { blog, title, description } = Astro.props;
+type Props = {
+  post: CollectionEntry<'blog'>;
+};
+
+const { post } = Astro.props;
+const { Content } = await post.render();
 const {
   title: blogTitle,
   subtitle,
-  category,
-  date,
   author,
+  date,
+  category,
   readTime,
   featuredImage,
-  content,
   relatedPosts,
-} = blog;
+  description: metaDescription,
+  tags,
+} = post.data;
+const title = blogTitle;
+const description = metaDescription || subtitle;
 
 const currentUrl = new URL(Astro.url).toString();
-const canonicalUrl = `https://maxifjaved.com/blogs/${blog.slug}`;
+const canonicalUrl = `https://maxifjaved.com/blogs/${post.slug}`;
 
-// Generate JSON-LD structured data if available
-const jsonLdScript = blog.jsonLd ? JSON.stringify(blog.jsonLd) : null;
+// Generate JSON-LD structured data
+const jsonLdScript = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": title,
+  "description": description,
+  "image": `https://maxifjaved.com${featuredImage}`,
+  "author": {
+    "@type": "Person",
+    "name": author.name
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Muhammad Asif Javed",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://maxifjaved.com/img/logo.png"
+    }
+  },
+  "datePublished": new Date(date).toISOString(),
+  "dateModified": new Date(date).toISOString(),
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalUrl
+  }
+});
 ---
 
-<MainLayout 
-  title={`${title} | Muhammad Asif Javed`} 
+<MainLayout
+  title={title}
   description={description}
   ogImage={`https://maxifjaved.com${featuredImage}`}
   canonicalUrl={canonicalUrl}
@@ -60,8 +86,8 @@ const jsonLdScript = blog.jsonLd ? JSON.stringify(blog.jsonLd) : null;
     readTime={readTime}
     featuredImage={featuredImage}
   />
-  <ArticleContent content={content} />
+  <Content />
   <SocialShare title={blogTitle} url={currentUrl} />
   <AuthorInfo author={author} />
-  <RelatedPosts relatedPosts={relatedPosts} />
+  <RelatedPosts relatedPosts={relatedPosts || []} />
 </MainLayout>
