@@ -86,7 +86,20 @@ const jsonLdScript = JSON.stringify({
     readTime={readTime}
     featuredImage={featuredImage}
   />
-  <Content />
+  <section
+    id="article-content"
+    class="relative mb-6"
+  >
+    <div class="mx-auto max-w-4xl px-6">
+      <div
+        class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 text-left backdrop-blur-sm"
+      >
+        <div class="post-content">
+          <Content />
+        </div>
+      </div>
+    </div>
+  </section>
   <SocialShare title={blogTitle} url={currentUrl} />
   <AuthorInfo author={author} />
   <RelatedPosts relatedPosts={relatedPosts || []} />
