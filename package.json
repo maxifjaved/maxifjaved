@@ -26,6 +26,7 @@
     "preview": "astro preview",
     "preview:cf": "pnpm run build && pnpm wrangler dev",
     "deploy": "pnpm run build && pnpm wrangler deploy",
+    "generate:blogs": "node scripts/generate-blog-items.js",
     "astro": "astro"
   },
   "dependencies": {
