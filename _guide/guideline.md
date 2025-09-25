@@ -1,4 +1,6 @@
 # Muhammad Asif Javed - Universal Blog Writing Guidelines (Master Edition)
+# My Website Url: https://maxifjaved.com
+# Online Handler(on all platform): maxifjaved
 
 ## Author Identity & Core Philosophy
 **Muhammad Asif Javed** - Full-Stack Developer & WebRTC Expert with 10+ years experience. Writing decision-focused content that guides readers through complex topics with minimal fluff, maximum value. Each article provides actionable insights, clear reasoning, and practical next steps across any domain.
@@ -136,7 +138,7 @@ Every blog post must include comprehensive SEO metadata:
   "focus_keyword": "primary-keyword-phrase",
   "keywords": ["keyword1", "keyword2", "keyword3", "long-tail-keyword"],
   "slug": "url-friendly-post-slug",
-  "canonical_url": "https://domain.com/post-slug",
+  "canonical_url": "https://maxifjaved.com/post-slug",
   "schema_type": "Article|Tutorial|Review|Guide|NewsArticle",
   "estimated_reading_time": 8,
   "content_freshness": "2024-12-25",
@@ -246,7 +248,7 @@ All blog posts must include JSON+LD structured data for:
     "focus_keyword": "primary-keyword-phrase",
     "keywords": ["keyword1", "keyword2", "keyword3"],
     "slug": "url-friendly-post-slug",
-    "canonical_url": "https://domain.com/post-slug",
+    "canonical_url": "https://maxifjaved.com/post-slug",
     "schema_type": "Article",
     "estimated_reading_time": 8,
     "content_freshness": "2024-12-25",
