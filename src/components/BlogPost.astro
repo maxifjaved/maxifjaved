@@ -2,10 +2,10 @@
 import BlogCard from "../components/BlogCard.astro";
 import BlogPagination from "../components/BlogPagination.astro";
 import BlogSearch from "../components/BlogSearch.astro";
-import type { CollectionEntry } from 'astro:content';
+import type { BlogItem } from '../data/blogItems';
 
 export interface Props {
-  posts?: CollectionEntry<'blog'>[];
+  posts?: BlogItem[];
   currentPage?: number;
   totalPages?: number;
   categories?: string[];
@@ -39,11 +39,11 @@ const {
 const blogData: BlogType = {
   title: selectedCategory ? `${selectedCategory} Articles` : "Latest Articles",
   posts: posts.map((post, index) => ({
-    image: { src: post.data.featuredImage, alt: post.data.title },
-    date: new Date(post.data.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }),
-    category: post.data.category,
-    title: post.data.title,
-    excerpt: post.data.subtitle,
+    image: { src: post.featuredImage, alt: post.title },
+    date: new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" }),
+    category: post.category,
+    title: post.title,
+    excerpt: post.subtitle,
     link: `/blogs/${post.slug}`,
     delay: `${100 * (index + 1)}`,
   })),
