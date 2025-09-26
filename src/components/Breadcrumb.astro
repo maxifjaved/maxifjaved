@@ -10,6 +10,8 @@ interface Props {
 
 const { items } = Astro.props;
 
+const siteUrl = Astro.site || new URL(Astro.url).origin;
+
 // Generate breadcrumb schema
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -18,8 +20,8 @@ const breadcrumbSchema = {
     "@type": "ListItem",
     "position": index + 1,
     "name": item.name,
-    "item": item.url
-  }))
+    "item": item.url ? `${siteUrl}${item.url}` : undefined
+  })).filter(item => item.item)
 };
 ---
 
