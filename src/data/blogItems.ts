@@ -47,7 +47,7 @@ export const blogItems: BlogItem[] = [
     },
     readTime: "9 min read",
     featuredImage:
-      "/img/blogs/digital-signage-storage-architecture-cloudflare-r2-vs-aws-s3-vs-ec2-01.jpeg",
+      "/img/blogs/01-digital-signage-storage-architecture-cloudflare-r2-vs-aws-s3-vs-ec2-01.jpeg",
     content: `// Content will be loaded from 01.json`,
     jsonFile: "01.json",
     relatedPosts: [],

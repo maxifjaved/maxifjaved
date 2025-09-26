@@ -151,7 +151,7 @@
   "title": "Digital Signage Storage Architecture: Cloudflare R2 vs AWS S3 vs EC2",
   "summary_markdown": "**Key Points/Decision Snapshot**\n- Use **object storage + CDN** by default. R2 minimizes surprise bills via zero egress; S3 integrates tightly with CloudFront and AWS tooling.\n- **Cost drivers**: storage $/GB-month, internet egress, request/operation costs, cache hit ratio, and operational overhead.\n- **Durability**: both R2 and S3 publish **11×9** durability; EC2-origin durability depends on your EBS/replication design.\n- **Avoid if:** You need sub-origin compute on R2/S3 (then add Workers@Edge/Lambda@Edge) or you can’t tolerate any vendor edge dependence.",
   "featured_image": {
-    "file": "digital-signage-origin-cdn.png",
+    "file": "01-digital-signage-storage-architecture-cloudflare-r2-vs-aws-s3-vs-ec2-01.jpeg",
     "alt": "Diagram of players pulling media from CDN backed by R2 or S3, with EC2-origin variant",
     "caption": "Digital signage players fetch from CDN; origin choice affects cost, durability, and ops."
   },
@@ -161,7 +161,7 @@
   "practical_guidance_markdown": "## Practical Guidance\n**When to use:**\n- **R2** when your fleet is on Cloudflare CDN or you plan multi-CDN; you want predictable bills and can tune for Class B ops.\n- **S3** when most infra is in AWS; you’ll front with CloudFront and leverage native tools (Lifecycle, Replication, events).\n- **EC2-origin** for custom per-request logic or legacy apps requiring POSIX access.\n\n**Common Pitfalls:**\n- Underestimating **request/operation** costs on object stores (batch small images; use manifests; increase cache TTLs). ([Cloudflare][1])\n- Ignoring **origin availability**: even with CDN, purge waves and cold caches hit origin hard—use rate limiting and staggered invalidations.\n- Forgetting **IPv4/EIP** charges on EC2 and **DTO tiers** when bypassing CloudFront. ([Cloudchipr][9])",
   "real_world_example_markdown": "## Real-World Example\nA retail network (1,500 screens) updates a 2.5 GB media pack weekly (≈150 TB/yr delivered). With a 96% CDN hit ratio and multi-region players:\n- **R2+Cloudflare**: $0 egress from origin; storage and Class B dominate; costs scale cleanly with object count.\n- **S3+CloudFront**: S3 storage + request + CloudFront DTO; origin fetches free; good CloudWatch/athena visibility.\n- **EC2-origin+CloudFront**: workable but ops-heavy; pays for servers 24/7; failover adds complexity. Choose only if you need on-origin dynamic transforms.",
   "mid_article_image": {
-    "file": "origin-comparison-matrix.png",
+    "file": "01-digital-signage-storage-architecture-cloudflare-r2-vs-aws-s3-vs-ec2-02.jpeg",
     "alt": "Matrix plotting storage cost vs egress predictability vs operations burden",
     "caption": "R2 minimizes egress; S3 maximizes ecosystem depth; EC2 maximizes flexibility at ops cost."
   },
