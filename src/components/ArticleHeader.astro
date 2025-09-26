@@ -6,6 +6,12 @@ interface Author {
   avatar: string;
 }
 
+interface FeaturedImageData {
+  src: string;
+  alt: string;
+  caption?: string | null;
+}
+
 interface Props {
   title: string;
   subtitle: string;
@@ -13,10 +19,18 @@ interface Props {
   date: Date;
   author: Author;
   readTime: string;
-  featuredImage: string;
+  featuredImage?: string;
+  featuredImageData?: FeaturedImageData;
 }
 
-const { title, subtitle, category, date, author, readTime, featuredImage } = Astro.props;
+const { title, subtitle, category, date, author, readTime, featuredImage, featuredImageData } = Astro.props;
+
+// Use featuredImageData if provided, otherwise fall back to simple featuredImage string
+const imageData = featuredImageData || {
+  src: featuredImage || '',
+  alt: title,
+  caption: null
+};
 
 // Split title for styling (e.g., "The Future of AI: Trends to Watch")
 const [titlePart1, titlePart2] = title.split(": ");
@@ -68,15 +82,22 @@ const [titlePart1, titlePart2] = title.split(": ");
       </div>
 
       <!-- Featured image -->
-      <div
-        class="h-96 overflow-hidden rounded-xl border border-cyber-blue/20 glow"
-      >
-        <img
-          src={featuredImage}
-          alt={title}
-          class="h-full w-full object-cover"
-        />
-      </div>
+      <figure class="mb-0">
+        <div
+          class="h-96 overflow-hidden rounded-xl border border-cyber-blue/20 glow"
+        >
+          <img
+            src={imageData.src}
+            alt={imageData.alt}
+            class="h-full w-full object-cover"
+          />
+        </div>
+        {imageData.caption && (
+          <figcaption class="mt-3 text-center text-sm text-gray-400 italic">
+            {imageData.caption}
+          </figcaption>
+        )}
+      </figure>
     </div>
   </div>
 </section>

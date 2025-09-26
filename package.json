@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@types/alpinejs": "^3.13.11",
+    "@types/markdown-it": "^14.1.2",
     "wrangler": "^4.31.0"
   }
 }
