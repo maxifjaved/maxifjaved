@@ -38,7 +38,7 @@ const currentUrl = new URL(Astro.url).toString();
 
 // Create project content in HTML format similar to blog content
 const projectInfoHtml = `
-  <ul class="space-y-2 mb-6">
+  <ul class="mb-6">
     <li><strong>Role:</strong> ${role}</li>
     <li><strong>Technologies:</strong> ${project.technologies.join(", ")}</li>
     <li><strong>Team Size:</strong> ${project.teamSize}</li>
@@ -53,7 +53,7 @@ const keyFeaturesHtml = keyFeatures
       `<li class="flex items-start gap-3 text-gray-300">
     <span class="inline-block w-2 h-2 bg-cyber-blue rounded-full mt-2 flex-shrink-0 glow"></span>
     <span class="leading-relaxed">${feature}</span>
-  </li>`,
+  </li>`
   )
   .join("");
 
@@ -63,7 +63,7 @@ const keyAchievementsHtml = keyAchievements
       `<li class="flex items-start gap-3 text-gray-300">
     <span class="inline-block w-2 h-2 bg-cyber-blue/70 rounded-full mt-2 flex-shrink-0"></span>
     <span class="leading-relaxed">${achievement}</span>
-  </li>`,
+  </li>`
   )
   .join("");
 
@@ -73,7 +73,7 @@ const impactResultsHtml = impactResults
       `<li class="flex items-start gap-3 text-gray-300">
     <span class="inline-block w-2 h-2 bg-cyber-blue/50 rounded-full mt-2 flex-shrink-0"></span>
     <span class="leading-relaxed">${result}</span>
-  </li>`,
+  </li>`
   )
   .join("");
 
@@ -83,7 +83,7 @@ const metricsHtml = project.metrics
       `<li class="flex items-start gap-3 text-gray-300">
     <span class="inline-block w-2 h-2 bg-cyber-blue rounded-full mt-2 flex-shrink-0 glow"></span>
     <span class="leading-relaxed"><span class="text-cyber-blue font-semibold">${metric.label}:</span> ${metric.value}${metric.description ? ` - ${metric.description}` : ""}</span>
-  </li>`,
+  </li>`
   )
   .join("");
 
@@ -91,7 +91,7 @@ const seoKeywordsHtml =
   project.seo?.keywords
     ?.map(
       (keyword) =>
-        `<span class="px-3 py-1 bg-cyber-blue/10 text-cyber-blue rounded-full text-sm border border-cyber-blue/20">${keyword}</span>`,
+        `<span class="px-3 py-1 bg-cyber-blue/10 text-cyber-blue rounded-full text-sm border border-cyber-blue/20">${keyword}</span>`
     )
     .join(" ") || "";
 
@@ -99,7 +99,7 @@ const tagsHtml =
   project.tags
     ?.map(
       (tag) =>
-        `<span class="px-3 py-1 bg-cyber-blue/10 text-cyber-blue rounded-full text-sm border border-cyber-blue/20">#${tag}</span>`,
+        `<span class="px-3 py-1 bg-cyber-blue/10 text-cyber-blue rounded-full text-sm border border-cyber-blue/20">#${tag}</span>`
     )
     .join(" ") || "";
 
@@ -191,30 +191,30 @@ const author = {
 const projectSchema = {
   "@context": "https://schema.org",
   "@type": "CreativeWork",
-  "name": projectTitle,
-  "description": projectDescription,
-  "creator": {
+  name: projectTitle,
+  description: projectDescription,
+  creator: {
     "@type": "Person",
-    "name": "Muhammad Asif Javed",
-    "jobTitle": "Full-Stack Developer",
-    "url": "https://maxifjaved.com"
+    name: "Muhammad Asif Javed",
+    jobTitle: "Full-Stack Developer",
+    url: "https://maxifjaved.com",
   },
-  "dateCreated": project.startDate,
-  "datePublished": project.endDate,
-  "keywords": project.tags?.join(", "),
-  "inLanguage": "en",
-  "url": currentUrl,
-  "image": project.images.featuredImage,
-  "genre": project.category,
-  "about": project.businessContext.industry,
-  "workExample": {
+  dateCreated: project.startDate,
+  datePublished: project.endDate,
+  keywords: project.tags?.join(", "),
+  inLanguage: "en",
+  url: currentUrl,
+  image: project.images.featuredImage,
+  genre: project.category,
+  about: project.businessContext.industry,
+  workExample: {
     "@type": "WebApplication",
-    "name": projectTitle,
-    "description": projectDescription,
-    "applicationCategory": project.category,
-    "operatingSystem": "Web",
-    "programmingLanguage": project.technologies
-  }
+    name: projectTitle,
+    description: projectDescription,
+    applicationCategory: project.category,
+    operatingSystem: "Web",
+    programmingLanguage: project.technologies,
+  },
 };
 ---
 
@@ -223,8 +223,8 @@ const projectSchema = {
   description={description}
 >
   <!-- Project Schema -->
-  <script type="application/ld+json" set:html={JSON.stringify(projectSchema)}></script>
-  
+  <script type="application/ld+json" set:html={JSON.stringify(projectSchema)} />
+
   <ProjectHeader title={projectTitle} image={images.featuredImage} />
 
   <!-- Project Content (using same structure as ArticleContent) -->
