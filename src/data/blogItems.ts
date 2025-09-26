@@ -38,7 +38,7 @@ export const blogItems: BlogItem[] = [
     metaDescription:
       "A decision-focused comparison of Cloudflare R2, AWS S3, and EC2-origin storage architectures for digital signage—costs, scalability, durability, CDNs, and real-world scenarios.",
     category: "Architecture & Cost Optimization",
-    date: new Date("2025-09-25"),
+    date: new Date("2025-09-04"),
     author: {
       name: "Muhammad Asif Javed",
       title: "10+ years experience, WebRTC specialist, Full-Stack architect",
@@ -46,7 +46,8 @@ export const blogItems: BlogItem[] = [
       avatar: "author-avatar.jpg",
     },
     readTime: "9 min read",
-    featuredImage: "/img/blogs/digital-signage-origin-cdn.png",
+    featuredImage:
+      "/img/blogs/digital-signage-storage-architecture-cloudflare-r2-vs-aws-s3-vs-ec2-01.jpeg",
     content: `// Content will be loaded from 01.json`,
     jsonFile: "01.json",
     relatedPosts: [],

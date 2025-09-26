@@ -16,7 +16,7 @@
     "canonical_url": "[https://maxifjaved.com/digital-signage-storage-architecture-cloudflare-r2-vs-aws-s3-vs-ec2](https://maxifjaved.com/digital-signage-storage-architecture-cloudflare-r2-vs-aws-s3-vs-ec2)",
     "schema_type": "Article",
     "estimated_reading_time": 9,
-    "content_freshness": "2025-09-25",
+    "content_freshness": "2025-09-04",
     "target_audience": "senior-engineers|developers|architects|managers",
     "difficulty_level": "advanced",
     "related_topics": [
@@ -108,8 +108,8 @@
           "Full-Stack Development"
         ]
       },
-      "datePublished": "2025-09-25",
-      "dateModified": "2025-09-25",
+      "datePublished": "2025-09-04",
+      "dateModified": "2025-09-04",
       "publisher": {
         "@type": "Person",
         "name": "Muhammad Asif Javed"
@@ -171,63 +171,63 @@
       "id": 1,
       "title": "Cloudflare R2 pricing",
       "url": "[https://developers.cloudflare.com/r2/pricing/](https://developers.cloudflare.com/r2/pricing/)",
-      "accessed": "2025-09-25",
+      "accessed": "2025-09-04",
       "type": "official-docs"
     },
     {
       "id": 2,
       "title": "Cloudflare R2 product page (zero egress; ops pricing)",
       "url": "[https://www.cloudflare.com/developer-platform/products/r2/](https://www.cloudflare.com/developer-platform/products/r2/)",
-      "accessed": "2025-09-25",
+      "accessed": "2025-09-04",
       "type": "official-docs"
     },
     {
       "id": 3,
       "title": "AWS S3 pricing (S3→CloudFront origin fetch $0, data transfer)",
       "url": "[https://aws.amazon.com/cloudfront/pricing/](https://aws.amazon.com/cloudfront/pricing/)",
-      "accessed": "2025-09-25",
+      "accessed": "2025-09-04",
       "type": "official-docs"
     },
     {
       "id": 4,
       "title": "AWS S3 storage price reference (S3 Standard $0.023/GB-month)",
       "url": "[https://docs.aws.amazon.com/solutions/latest/live-streaming-on-aws-with-amazon-s3/cost-example-1.html](https://docs.aws.amazon.com/solutions/latest/live-streaming-on-aws-with-amazon-s3/cost-example-1.html)",
-      "accessed": "2025-09-25",
+      "accessed": "2025-09-04",
       "type": "official-docs"
     },
     {
       "id": 5,
       "title": "Amazon S3 durability & availability",
       "url": "[https://docs.aws.amazon.com/AmazonS3/latest/userguide/DataDurability.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/DataDurability.html)",
-      "accessed": "2025-09-25",
+      "accessed": "2025-09-04",
       "type": "official-docs"
     },
     {
       "id": 6,
       "title": "Cloudflare R2 durability",
       "url": "[https://developers.cloudflare.com/r2/reference/durability/](https://developers.cloudflare.com/r2/reference/durability/)",
-      "accessed": "2025-09-25",
+      "accessed": "2025-09-04",
       "type": "official-docs"
     },
     {
       "id": 7,
       "title": "Amazon EC2 data transfer pricing tiers",
       "url": "[https://aws.amazon.com/ec2/pricing/on-demand/](https://aws.amazon.com/ec2/pricing/on-demand/)",
-      "accessed": "2025-09-25",
+      "accessed": "2025-09-04",
       "type": "official-docs"
     },
     {
       "id": 8,
       "title": "Amazon EBS pricing (gp3 ~$0.08/GB-month)",
       "url": "[https://aws.amazon.com/ebs/pricing/](https://aws.amazon.com/ebs/pricing/)",
-      "accessed": "2025-09-25",
+      "accessed": "2025-09-04",
       "type": "official-docs"
     },
     {
       "id": 9,
       "title": "Cloudflare R2 storage classes (2025)",
       "url": "[https://developers.cloudflare.com/r2/buckets/storage-classes/](https://developers.cloudflare.com/r2/buckets/storage-classes/)",
-      "accessed": "2025-09-25",
+      "accessed": "2025-09-04",
       "type": "official-docs"
     }
   ],
@@ -240,6 +240,6 @@
     "cloudflare"
   ],
   "word_count": 1350,
-  "publication_date": "2025-09-25",
-  "last_updated": "2025-09-25"
+  "publication_date": "2025-09-04",
+  "last_updated": "2025-09-04"
 }
