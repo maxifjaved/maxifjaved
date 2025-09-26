@@ -5,23 +5,30 @@ import ArticleContent from "../../components/ArticleContent.astro";
 import SocialShare from "../../components/SocialShare.astro";
 import AuthorInfo from "../../components/AuthorInfo.astro";
 import RelatedPosts from "../../components/RelatedPosts.astro";
-import { getCollection } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
+import BlogFAQ from "../../components/BlogFAQ.astro";
+import BlogCitations from "../../components/BlogCitations.astro";
+import { blogItems, type BlogItem } from '../../data/blogItems';
 
 export async function getStaticPaths() {
-  const blogPosts = await getCollection('blog');
-  return blogPosts.map((post) => ({
+  return blogItems.map((post) => ({
     params: { slug: post.slug },
     props: { post },
   }));
 }
 
 type Props = {
-  post: CollectionEntry<'blog'>;
+  post: BlogItem;
 };
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+
+// Load JSON content if jsonFile is specified
+let jsonContent: any = null;
+if (post.jsonFile) {
+  const jsonModule = await import(`../../data/blogs/${post.jsonFile}`);
+  jsonContent = jsonModule.default;
+}
+
 const {
   title: blogTitle,
   subtitle,
@@ -31,17 +38,31 @@ const {
   readTime,
   featuredImage,
   relatedPosts,
-  description: metaDescription,
-  tags,
-} = post.data;
+  metaDescription,
+} = post;
+
+// Get SEO data from JSON or fallback to post data
+const seoData = jsonContent?.seo;
 const title = blogTitle;
-const description = metaDescription || subtitle;
+const description = seoData?.meta_description || metaDescription || subtitle;
+const keywords = seoData?.keywords?.join(', ') || '';
 
 const currentUrl = new URL(Astro.url).toString();
-const canonicalUrl = `https://maxifjaved.com/blogs/${post.slug}`;
+const canonicalUrl = seoData?.canonical_url || `https://maxifjaved.com/blogs/${post.slug}`;
+
+// Open Graph and Twitter Card data
+const ogTitle = seoData?.social_media?.open_graph?.title || blogTitle;
+const ogDescription = seoData?.social_media?.open_graph?.description || description;
+const ogType = seoData?.social_media?.open_graph?.type || 'article';
+const ogImageUrl = featuredImage.startsWith('http') ? featuredImage : `https://maxifjaved.com${featuredImage}`;
+
+const twitterCard = seoData?.social_media?.twitter_card?.card || 'summary_large_image';
+const twitterTitle = seoData?.social_media?.twitter_card?.title || ogTitle;
+const twitterDescription = seoData?.social_media?.twitter_card?.description || ogDescription;
+const twitterImage = ogImageUrl;
 
 // Generate JSON-LD structured data
-const jsonLdScript = JSON.stringify({
+const articleSchema = jsonContent?.structured_data?.article_schema || {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": title,
@@ -65,17 +86,28 @@ const jsonLdScript = JSON.stringify({
     "@type": "WebPage",
     "@id": canonicalUrl
   }
-});
+};
+
+const faqSchema = jsonContent?.structured_data?.faq_schema;
 ---
 
 <MainLayout
   title={title}
   description={description}
-  ogImage={`https://maxifjaved.com${featuredImage}`}
+  keywords={keywords}
+  ogImage={ogImageUrl}
   canonicalUrl={canonicalUrl}
+  ogTitle={ogTitle}
+  ogDescription={ogDescription}
+  ogType={ogType}
+  twitterCard={twitterCard}
+  twitterTitle={twitterTitle}
+  twitterDescription={twitterDescription}
+  twitterImage={twitterImage}
 >
-  {jsonLdScript && (
-    <script type="application/ld+json" set:html={jsonLdScript} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  {faqSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   )}
   <ArticleHeader
     title={blogTitle}
@@ -95,11 +127,17 @@ const jsonLdScript = JSON.stringify({
         class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 text-left backdrop-blur-sm"
       >
         <div class="post-content">
-          <Content />
+          {jsonContent ? (
+            <ArticleContent content={jsonContent} />
+          ) : (
+            <div set:html={post.content} />
+          )}
         </div>
       </div>
     </div>
   </section>
+  {jsonContent?.faq_section && <BlogFAQ faqs={jsonContent.faq_section} />}
+  {jsonContent?.citations && <BlogCitations citations={jsonContent.citations} />}
   <SocialShare title={blogTitle} url={currentUrl} />
   <AuthorInfo author={author} />
   <RelatedPosts relatedPosts={relatedPosts || []} />
