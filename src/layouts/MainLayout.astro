@@ -70,7 +70,10 @@ const {
     <meta property="twitter:card" content={twitterCard} />
     <meta property="twitter:url" content={canonicalUrl} />
     <meta property="twitter:title" content={twitterTitle || ogTitle || title} />
-    <meta property="twitter:description" content={twitterDescription || ogDescription || description} />
+    <meta
+      property="twitter:description"
+      content={twitterDescription || ogDescription || description}
+    />
     <meta property="twitter:image" content={twitterImage || ogImage} />
     <meta property="twitter:creator" content="@maxifjaved" />
 
@@ -152,6 +155,34 @@ const {
       }
     </script>
 
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Muhammad Asif Javed",
+        "url": "https://maxifjaved.com",
+        "logo": "https://maxifjaved.com/img/og-image.jpg",
+        "description": "Full-Stack Developer & WebRTC Expert specializing in enterprise platforms, real-time systems, and cybersecurity solutions.",
+        "founder": {
+          "@type": "Person",
+          "name": "Muhammad Asif Javed"
+        },
+        "sameAs": [
+          "https://github.com/maxifjaved",
+          "https://linkedin.com/in/maxifjaved"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+923324647331",
+          "contactType": "Customer Service",
+          "email": "axif.javed@gmail.com",
+          "areaServed": "Global",
+          "availableLanguage": "English"
+        }
+      }
+    </script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VC7TMWR4LZ"
     ></script>
@@ -221,13 +252,13 @@ const {
           },
           startCounting() {
             if (this.counting || this.current >= this.end) return;
-            
+
             // Skip animation if user prefers reduced motion
             if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
               this.current = this.end;
               return;
             }
-            
+
             this.counting = true;
             const start = this.current;
             const range = this.end - start;
@@ -260,7 +291,7 @@ const {
         const setActiveLink = (targetId: string) => {
           removeActiveClasses();
           const activeLink = Array.from(navLinks).find(
-            (link) => link.getAttribute("href") === `#${targetId}`,
+            (link) => link.getAttribute("href") === `#${targetId}`
           );
           if (activeLink) activeLink.classList.add("active");
         };

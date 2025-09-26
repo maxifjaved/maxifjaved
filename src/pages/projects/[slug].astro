@@ -187,34 +187,44 @@ const author = {
   avatar: "/profile-image.jpg",
 };
 
-// Project Schema for SEO
+// Project Schema for SEO (using Article for better rich results)
 const projectSchema = {
   "@context": "https://schema.org",
-  "@type": "CreativeWork",
-  name: projectTitle,
+  "@type": "Article",
+  headline: projectTitle,
   description: projectDescription,
-  creator: {
+  image: project.images.featuredImage,
+  author: {
     "@type": "Person",
     name: "Muhammad Asif Javed",
     jobTitle: "Full-Stack Developer",
     url: "https://maxifjaved.com",
   },
-  dateCreated: project.startDate,
-  datePublished: project.endDate,
-  keywords: project.tags?.join(", "),
-  inLanguage: "en",
-  url: currentUrl,
-  image: project.images.featuredImage,
-  genre: project.category,
-  about: project.businessContext.industry,
-  workExample: {
-    "@type": "WebApplication",
-    name: projectTitle,
-    description: projectDescription,
-    applicationCategory: project.category,
-    operatingSystem: "Web",
-    programmingLanguage: project.technologies,
+  publisher: {
+    "@type": "Organization",
+    name: "Muhammad Asif Javed",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://maxifjaved.com/img/og-image.jpg",
+    },
   },
+  datePublished: project.startDate,
+  dateModified: project.endDate,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": currentUrl,
+  },
+  keywords: project.tags?.join(", "),
+  articleSection: project.category,
+  inLanguage: "en",
+  about: {
+    "@type": "Thing",
+    name: project.businessContext.industry,
+  },
+  mentions: project.technologies.map((tech) => ({
+    "@type": "SoftwareApplication",
+    name: tech,
+  })),
 };
 ---
 
