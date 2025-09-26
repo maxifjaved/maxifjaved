@@ -1,0 +1,46 @@
+---
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs: FAQ[];
+}
+
+const { faqs } = Astro.props;
+
+if (!faqs || faqs.length === 0) {
+  return null;
+}
+---
+
+<section id="faq-section" class="relative mb-16">
+  <div class="mx-auto max-w-4xl px-6">
+    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">
+      Frequently Asked <span class="text-cyber-blue">Questions</span>
+    </h2>
+    <div class="space-y-4">
+      {faqs.map((faq, index) => (
+        <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm overflow-hidden">
+          <details class="group">
+            <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-cyber-blue/10 transition-colors">
+              <h3 class="text-lg font-semibold pr-4">{faq.question}</h3>
+              <svg
+                class="w-5 h-5 text-cyber-blue transition-transform group-open:rotate-180"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 pt-2 text-gray-300 leading-relaxed">
+              {faq.answer}
+            </div>
+          </details>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,20 +1,57 @@
 ---
+import MarkdownIt from 'markdown-it';
+
 interface Props {
-  content: string;
+  content: any;
 }
 
 const { content } = Astro.props;
+
+const md = new MarkdownIt();
+
+// Split content into sections for mid-article image placement
+let firstHalfContent = '';
+let secondHalfContent = '';
+let midArticleImage = null;
+
+if (typeof content === 'string') {
+  firstHalfContent = md.render(content);
+} else if (content) {
+  const firstSections = [
+    content.introduction_markdown,
+    content.main_content_markdown,
+  ].filter(Boolean);
+
+  const secondSections = [
+    content.decision_framework_markdown,
+    content.practical_guidance_markdown,
+    content.real_world_example_markdown,
+    content.conclusion_markdown
+  ].filter(Boolean);
+
+  firstHalfContent = md.render(firstSections.join('\n\n'));
+  secondHalfContent = md.render(secondSections.join('\n\n'));
+  midArticleImage = content.mid_article_image;
+}
 ---
 
-<section
-  id="article-content"
-  class="relative mb-6"
->
-  <div class="mx-auto max-w-4xl px-6">
-    <div
-      class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 text-left backdrop-blur-sm"
-    >
-      <div class="post-content" set:html={content} />
-    </div>
-  </div>
-</section>
+<div class="post-content">
+  <div set:html={firstHalfContent} />
+
+  {midArticleImage && (
+    <figure class="my-8">
+      <img
+        src={`/img/blogs/${midArticleImage.file}`}
+        alt={midArticleImage.alt}
+        class="w-full rounded-lg"
+      />
+      {midArticleImage.caption && (
+        <figcaption class="mt-2 text-center text-sm text-gray-400">
+          {midArticleImage.caption}
+        </figcaption>
+      )}
+    </figure>
+  )}
+
+  <div set:html={secondHalfContent} />
+</div>

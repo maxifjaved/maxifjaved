@@ -1,0 +1,54 @@
+---
+interface Citation {
+  id: number;
+  title: string;
+  url: string;
+  accessed: string;
+  type: string;
+}
+
+interface Props {
+  citations: Citation[];
+}
+
+const { citations } = Astro.props;
+
+if (!citations || citations.length === 0) {
+  return null;
+}
+---
+
+<section id="citations-section" class="relative mb-16">
+  <div class="mx-auto max-w-4xl px-6">
+    <h2 class="text-3xl md:text-4xl font-bold mb-8">
+      References & <span class="text-cyber-blue">Citations</span>
+    </h2>
+    <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 backdrop-blur-sm">
+      <ol class="space-y-4 list-none">
+        {citations.map((citation) => (
+          <li class="flex gap-4" id={`citation-${citation.id}`}>
+            <span class="text-cyber-blue font-bold flex-shrink-0">[{citation.id}]</span>
+            <div class="flex-1">
+              <a
+                href={citation.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-white hover:text-cyber-blue transition-colors underline decoration-cyber-blue/30 hover:decoration-cyber-blue"
+              >
+                {citation.title}
+              </a>
+              <div class="text-sm text-gray-400 mt-1">
+                {citation.type && (
+                  <span class="inline-block px-2 py-0.5 rounded bg-cyber-blue/20 text-cyber-blue text-xs mr-2">
+                    {citation.type}
+                  </span>
+                )}
+                Accessed: {citation.accessed}
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>
