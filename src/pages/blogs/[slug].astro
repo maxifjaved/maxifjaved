@@ -12,6 +12,8 @@ import BlogFAQ from "../../components/BlogFAQ.astro";
 import BlogCitations from "../../components/BlogCitations.astro";
 import { blogItems, type BlogItem } from "../../data/blogItems";
 
+const blogJsonFiles = import.meta.glob("../../data/blogs/*.json", { eager: true });
+
 export async function getStaticPaths() {
   return blogItems.map((post) => ({
     params: { slug: post.slug },
@@ -28,8 +30,8 @@ const { post } = Astro.props;
 // Load JSON content if jsonFile is specified
 let jsonContent: any = null;
 if (post.jsonFile) {
-  const jsonModule = await import(`../../data/blogs/${post.jsonFile}`);
-  jsonContent = jsonModule.default;
+  const jsonModule = blogJsonFiles[`../../data/blogs/${post.jsonFile}`];
+  jsonContent = jsonModule ? (jsonModule as any).default : null;
 }
 
 const {
