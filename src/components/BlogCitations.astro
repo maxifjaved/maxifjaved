@@ -16,6 +16,16 @@ const { citations } = Astro.props;
 if (!citations || citations.length === 0) {
   return null;
 }
+
+// Extract actual URLs if they're wrapped in markdown format [url](url)
+const cleanedCitations = citations.map(citation => {
+  let url = citation.url;
+  const markdownLinkMatch = url.match(/\[([^\]]+)\]\(([^)]+)\)/);
+  if (markdownLinkMatch) {
+    url = markdownLinkMatch[2]; // Use the URL from parentheses
+  }
+  return { ...citation, url };
+});
 ---
 
 <section id="citations-section" class="relative mb-16">
@@ -25,7 +35,7 @@ if (!citations || citations.length === 0) {
     </h2>
     <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 backdrop-blur-sm">
       <ol class="space-y-4 list-none">
-        {citations.map((citation) => (
+        {cleanedCitations.map((citation) => (
           <li class="flex gap-4" id={`citation-${citation.id}`}>
             <span class="text-cyber-blue font-bold flex-shrink-0">[{citation.id}]</span>
             <div class="flex-1">
