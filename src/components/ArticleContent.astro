@@ -7,15 +7,59 @@ interface Props {
 
 const { content } = Astro.props;
 
-const md = new MarkdownIt();
+const md = new MarkdownIt({
+  html: true,
+  linkify: true,
+  typographer: true
+});
+
+// Add target="_blank" and rel="noopener noreferrer" to all links
+const defaultRender = md.renderer.rules.link_open || function(tokens, idx, options, env, self) {
+  return self.renderToken(tokens, idx, options);
+};
+
+md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
+  const aIndex = tokens[idx].attrIndex('target');
+
+  if (aIndex < 0) {
+    tokens[idx].attrPush(['target', '_blank']);
+  } else {
+    tokens[idx].attrs[aIndex][1] = '_blank';
+  }
+
+  const relIndex = tokens[idx].attrIndex('rel');
+  if (relIndex < 0) {
+    tokens[idx].attrPush(['rel', 'noopener noreferrer']);
+  } else {
+    tokens[idx].attrs[relIndex][1] = 'noopener noreferrer';
+  }
+
+  return defaultRender(tokens, idx, options, env, self);
+};
 
 // Split content into sections for mid-article image placement
 let firstHalfContent = '';
 let secondHalfContent = '';
 let midArticleImage = null;
 
+// Build citation references for markdown links
+let citationReferences = '';
+if (content?.citations && Array.isArray(content.citations)) {
+  citationReferences = content.citations
+    .map((citation: any) => {
+      // Extract actual URL if it's wrapped in markdown format [url](url)
+      let url = citation.url;
+      const markdownLinkMatch = url.match(/\[([^\]]+)\]\(([^)]+)\)/);
+      if (markdownLinkMatch) {
+        url = markdownLinkMatch[2]; // Use the URL from parentheses
+      }
+      return `[${citation.id}]: ${url} "${citation.title}"`;
+    })
+    .join('\n');
+}
+
 if (typeof content === 'string') {
-  firstHalfContent = md.render(content);
+  firstHalfContent = md.render(content + '\n\n' + citationReferences);
 } else if (content) {
   const firstSections = [
     content.introduction_markdown,
@@ -29,8 +73,12 @@ if (typeof content === 'string') {
     content.conclusion_markdown
   ].filter(Boolean);
 
-  firstHalfContent = md.render(firstSections.join('\n\n'));
-  secondHalfContent = md.render(secondSections.join('\n\n'));
+  // Add citation references to the markdown content
+  const firstContent = firstSections.join('\n\n') + '\n\n' + citationReferences;
+  const secondContent = secondSections.join('\n\n') + '\n\n' + citationReferences;
+
+  firstHalfContent = md.render(firstContent);
+  secondHalfContent = md.render(secondContent);
   midArticleImage = content.mid_article_image;
 }
 ---

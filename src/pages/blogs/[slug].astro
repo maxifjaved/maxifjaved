@@ -10,7 +10,7 @@ import AuthorInfo from "../../components/AuthorInfo.astro";
 import RelatedPosts from "../../components/RelatedPosts.astro";
 import BlogFAQ from "../../components/BlogFAQ.astro";
 import BlogCitations from "../../components/BlogCitations.astro";
-import { blogItems, type BlogItem } from '../../data/blogItems';
+import { blogItems, type BlogItem } from "../../data/blogItems";
 
 export async function getStaticPaths() {
   return blogItems.map((post) => ({
@@ -48,71 +48,79 @@ const {
 const seoData = jsonContent?.seo;
 const title = blogTitle;
 const description = seoData?.meta_description || metaDescription || subtitle;
-const keywords = seoData?.keywords?.join(', ') || '';
+const keywords = seoData?.keywords?.join(", ") || "";
 
 const currentUrl = new URL(Astro.url).toString();
-const canonicalUrl = seoData?.canonical_url || `https://maxifjaved.com/blogs/${post.slug}`;
+const canonicalUrl =
+  seoData?.canonical_url || `https://maxifjaved.com/blogs/${post.slug}`;
 
 // Open Graph and Twitter Card data
 const ogTitle = seoData?.social_media?.open_graph?.title || blogTitle;
-const ogDescription = seoData?.social_media?.open_graph?.description || description;
-const ogType = seoData?.social_media?.open_graph?.type || 'article';
-const ogImageUrl = featuredImage.startsWith('http') ? featuredImage : `https://maxifjaved.com${featuredImage}`;
+const ogDescription =
+  seoData?.social_media?.open_graph?.description || description;
+const ogType = seoData?.social_media?.open_graph?.type || "article";
+const ogImageUrl = featuredImage.startsWith("http")
+  ? featuredImage
+  : `https://maxifjaved.com${featuredImage}`;
 
-const twitterCard = seoData?.social_media?.twitter_card?.card || 'summary_large_image';
+const twitterCard =
+  seoData?.social_media?.twitter_card?.card || "summary_large_image";
 const twitterTitle = seoData?.social_media?.twitter_card?.title || ogTitle;
-const twitterDescription = seoData?.social_media?.twitter_card?.description || ogDescription;
+const twitterDescription =
+  seoData?.social_media?.twitter_card?.description || ogDescription;
 const twitterImage = ogImageUrl;
 
 // Get additional content from JSON
 const tags = jsonContent?.tags || [];
-const summaryMarkdown = jsonContent?.summary_markdown || '';
+const summaryMarkdown = jsonContent?.summary_markdown || "";
 const lastUpdated = jsonContent?.last_updated;
 const publicationDate = jsonContent?.publication_date;
 
 // Get featured image data from JSON if available, otherwise use post data
-const featuredImageData = jsonContent?.featured_image ? {
-  src: `/img/blogs/${jsonContent.featured_image.file}`,
-  alt: jsonContent.featured_image.alt,
-  caption: jsonContent.featured_image.caption
-} : {
-  src: featuredImage,
-  alt: blogTitle,
-  caption: null
-};
+const featuredImageData = jsonContent?.featured_image
+  ? {
+      src: `/img/blogs/${jsonContent.featured_image.file}`,
+      alt: jsonContent.featured_image.alt,
+      caption: jsonContent.featured_image.caption,
+    }
+  : {
+      src: featuredImage,
+      alt: blogTitle,
+      caption: null,
+    };
 
 // Breadcrumb data
 const breadcrumbItems = [
-  { name: 'Home', url: '/' },
-  { name: 'Blog', url: '/blogs' },
-  { name: blogTitle, url: '' }
+  { name: "Home", url: "/" },
+  { name: "Blog", url: "/blogs" },
+  { name: blogTitle, url: "" },
 ];
 
 // Generate JSON-LD structured data
 const articleSchema = jsonContent?.structured_data?.article_schema || {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": title,
-  "description": description,
-  "image": `https://maxifjaved.com${featuredImage}`,
-  "author": {
+  headline: title,
+  description: description,
+  image: `https://maxifjaved.com${featuredImage}`,
+  author: {
     "@type": "Person",
-    "name": author.name
+    name: author.name,
   },
-  "publisher": {
+  publisher: {
     "@type": "Organization",
-    "name": "Muhammad Asif Javed",
-    "logo": {
+    name: "Muhammad Asif Javed",
+    logo: {
       "@type": "ImageObject",
-      "url": "https://maxifjaved.com/img/logo.png"
-    }
+      url: "https://maxifjaved.com/img/logo.png",
+    },
   },
-  "datePublished": new Date(date).toISOString(),
-  "dateModified": new Date(date).toISOString(),
-  "mainEntityOfPage": {
+  datePublished: new Date(date).toISOString(),
+  dateModified: new Date(date).toISOString(),
+  mainEntityOfPage: {
     "@type": "WebPage",
-    "@id": canonicalUrl
-  }
+    "@id": canonicalUrl,
+  },
 };
 
 const faqSchema = jsonContent?.structured_data?.faq_schema;
@@ -133,10 +141,11 @@ const faqSchema = jsonContent?.structured_data?.faq_schema;
   twitterImage={twitterImage}
 >
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
-  {faqSchema && (
-    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
-  )}
-  <Breadcrumb items={breadcrumbItems} />
+  {
+    faqSchema && (
+      <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    )
+  }
   <ArticleHeader
     title={blogTitle}
     subtitle={subtitle}
@@ -146,35 +155,47 @@ const faqSchema = jsonContent?.structured_data?.faq_schema;
     readTime={readTime}
     featuredImageData={featuredImageData}
   />
+  <Breadcrumb items={breadcrumbItems} />
+
   {summaryMarkdown && <BlogSummary summary={summaryMarkdown} />}
-  <section
-    id="article-content"
-    class="relative mb-6"
-  >
+  <section id="article-content" class="relative mb-6">
     <div class="mx-auto max-w-4xl px-6">
       <div
         class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 text-left backdrop-blur-sm"
       >
         <div class="post-content">
-          {jsonContent ? (
-            <ArticleContent content={jsonContent} />
-          ) : (
-            <div set:html={post.content} />
-          )}
+          {
+            jsonContent ? (
+              <ArticleContent content={jsonContent} />
+            ) : (
+              <div set:html={post.content} />
+            )
+          }
         </div>
       </div>
     </div>
   </section>
   {tags.length > 0 && <BlogTags tags={tags} />}
-  {lastUpdated && lastUpdated !== publicationDate && (
-    <div class="mx-auto max-w-4xl px-6 mb-8">
-      <p class="text-sm text-gray-400 text-center">
-        <span class="text-cyber-blue font-semibold">Last Updated:</span> {new Date(lastUpdated).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
-      </p>
-    </div>
-  )}
+  {
+    lastUpdated && lastUpdated !== publicationDate && (
+      <div class="mx-auto max-w-4xl px-6 mb-8">
+        <p class="text-sm text-gray-400 text-center">
+          <span class="text-cyber-blue font-semibold">Last Updated:</span>{" "}
+          {new Date(lastUpdated).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </p>
+      </div>
+    )
+  }
   {jsonContent?.faq_section && <BlogFAQ faqs={jsonContent.faq_section} />}
-  {jsonContent?.citations && <BlogCitations citations={jsonContent.citations} />}
+  {
+    jsonContent?.citations && (
+      <BlogCitations citations={jsonContent.citations} />
+    )
+  }
   <SocialShare title={blogTitle} url={currentUrl} />
   <AuthorInfo author={author} />
   <RelatedPosts relatedPosts={relatedPosts || []} />
