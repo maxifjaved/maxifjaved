@@ -43,12 +43,35 @@ const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
 
 // Get unique categories for filter
 const categories = [...new Set(allPosts.map(post => post.category))];
+
+// ItemList Schema for blog listing page (SEO best practice 2025)
+const blogListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": paginatedPosts.map((post, index) => ({
+    "@type": "ListItem",
+    "position": startIndex + index + 1,
+    "item": {
+      "@type": "BlogPosting",
+      "headline": post.title,
+      "description": post.subtitle,
+      "image": post.featuredImage,
+      "datePublished": new Date(post.date).toISOString(),
+      "author": {
+        "@type": "Person",
+        "name": post.author.name
+      },
+      "url": `https://maxifjaved.com/blogs/${post.slug}`
+    }
+  }))
+};
 ---
 
 <MainLayout
   title="Blog - Muhammad Asif Javed"
   description="Latest articles on WebRTC, real-time systems, cybersecurity, and enterprise development by Muhammad Asif Javed"
 >
+    <script type="application/ld+json" set:html={JSON.stringify(blogListSchema)} />
     <BlogPost posts={paginatedPosts} currentPage={currentPage} totalPages={totalPages} categories={categories} selectedCategory={selectedCategory} searchQuery={searchQuery} />
     <div class="pt-16"></div>
 </MainLayout>

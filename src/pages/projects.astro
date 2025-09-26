@@ -3,11 +3,35 @@ import ProjectPost from "../components/ProjectPost.astro";
 import CTA from "../components/CTA.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
+import { portfolioData } from "../data/projects";
 
 const breadcrumbItems = [
   { name: "Home", url: "https://maxifjaved.com" },
   { name: "Projects", url: "https://maxifjaved.com/projects" }
 ];
+
+const allProjects = portfolioData?.projects || [];
+
+// ItemList Schema for projects listing page (SEO best practice 2025)
+const projectsListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": allProjects.map((project, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "CreativeWork",
+      "name": project.title,
+      "description": project.description,
+      "image": project.images?.featuredImage,
+      "creator": {
+        "@type": "Person",
+        "name": "Muhammad Asif Javed"
+      },
+      "url": `https://maxifjaved.com/projects/${project.slug}`
+    }
+  }))
+};
 ---
 
 <MainLayout
@@ -15,6 +39,7 @@ const breadcrumbItems = [
   description="Explore 9+ enterprise-grade projects including educational platforms, cybersecurity systems, and real-time collaboration tools built by WebRTC expert Muhammad Asif Javed from Lahore, Pakistan."
   keywords="WebRTC projects portfolio, enterprise software examples, educational technology projects, cybersecurity platform development, real-time collaboration systems, full-stack developer portfolio Pakistan"
 >
+    <script type="application/ld+json" set:html={JSON.stringify(projectsListSchema)} />
     <Breadcrumb items={breadcrumbItems} />
     <ProjectPost />
     <CTA />

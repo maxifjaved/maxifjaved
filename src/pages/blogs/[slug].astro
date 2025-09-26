@@ -12,7 +12,9 @@ import BlogFAQ from "../../components/BlogFAQ.astro";
 import BlogCitations from "../../components/BlogCitations.astro";
 import { blogItems, type BlogItem } from "../../data/blogItems";
 
-const blogJsonFiles = import.meta.glob("../../data/blogs/*.json", { eager: true });
+const blogJsonFiles = import.meta.glob("../../data/blogs/*.json", {
+  eager: true,
+});
 
 export async function getStaticPaths() {
   return blogItems.map((post) => ({
@@ -114,7 +116,7 @@ const articleSchema = jsonContent?.structured_data?.article_schema || {
     name: "Muhammad Asif Javed",
     logo: {
       "@type": "ImageObject",
-      url: "https://maxifjaved.com/img/logo.png",
+      url: "https://maxifjaved.com/img/og-image.jpg",
     },
   },
   datePublished: new Date(date).toISOString(),
@@ -125,7 +127,26 @@ const articleSchema = jsonContent?.structured_data?.article_schema || {
   },
 };
 
-const faqSchema = jsonContent?.structured_data?.faq_schema;
+let faqSchema = jsonContent?.structured_data?.faq_schema;
+
+if (
+  !faqSchema &&
+  jsonContent?.faq_section &&
+  jsonContent.faq_section.length > 0
+) {
+  faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: jsonContent.faq_section.map((faq: any) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer.replace(/\s*\(\[.*?\]\[.*?\]\)/g, ""),
+      },
+    })),
+  };
+}
 ---
 
 <MainLayout
