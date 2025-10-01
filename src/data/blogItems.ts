@@ -70,5 +70,24 @@ export const blogItems: BlogItem[] = [
     content: `// Content will be loaded from 02.json`,
     jsonFile: "02.json",
     relatedPosts: [],
+  },
+  {
+    slug: "fail-fast-environment-validation-in-elysiajs",
+    title: "Stop Silent Failures: A Type-Safe, Fail-Fast Environment Validator for Elysia.js",
+    subtitle: "Key Points/Decision Snapshot- Problem: Bun auto-loads `.env` but doesn’t validate or type values—leading to delayed, production-only crashes.- Principle: Fail-fast validation halts startup on misconfi",
+    metaDescription: "Stop silent production failures in Elysia.js. A complete, type-safe, fail-fast env validation guide using TypeBox on Bun—plus a production-ready plugin, @maxifjaved/elysia-env.",
+    category: "Backend Development",
+    date: new Date("2025-10-01"),
+    author: {
+      name: "Muhammad Asif Javed",
+      title: "10+ years experience, WebRTC specialist, Full-Stack architect",
+      bio: "Full-Stack Developer & WebRTC Expert with 10+ years experience specializing in real-time systems and backend reliability.",
+      avatar: "https://maxifjaved.com/author-avatar.jpg",
+    },
+    readTime: "12 min read",
+    featuredImage: "/img/blogs/elysia-env-validator-banner.png",
+    content: `// Content will be loaded from 3.json`,
+    jsonFile: "3.json",
+    relatedPosts: [],
   }
 ];
