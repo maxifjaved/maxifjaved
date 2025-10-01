@@ -85,7 +85,7 @@ export const blogItems: BlogItem[] = [
       avatar: "https://maxifjaved.com/author-avatar.jpg",
     },
     readTime: "12 min read",
-    featuredImage: "/img/blogs/elysia-env-validator-banner.png",
+    featuredImage: "/img/blogs/03-fail-fast-environment-validation-in-elysiajs-01.webp",
     content: `// Content will be loaded from 3.json`,
     jsonFile: "3.json",
     relatedPosts: [],
