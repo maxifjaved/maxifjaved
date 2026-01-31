@@ -89,8 +89,10 @@ const {
         "image": "https://maxifjaved.com/img/profile-image.jpg",
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "Railway Officer Colony, Walton",
           "addressLocality": "Lahore",
           "addressRegion": "Punjab",
+          "postalCode": "54000",
           "addressCountry": "Pakistan"
         },
         "email": "axif.javed@gmail.com",
@@ -147,7 +149,10 @@ const {
         "url": "https://maxifjaved.com",
         "address": {
           "@type": "PostalAddress",
+          "streetAddress": "Railway Officer Colony, Walton",
           "addressLocality": "Lahore",
+          "addressRegion": "Punjab",
+          "postalCode": "54000",
           "addressCountry": "Pakistan"
         },
         "areaServed": ["Global Remote Services"],
@@ -231,6 +236,9 @@ const {
     )}
     {Astro.url.pathname === '/about' && (
       <link rel="preload" as="image" href="/img/future-ai.png" fetchpriority="high" />
+    )}
+    {Astro.url.pathname.startsWith('/blogs/') && ogImage && (
+      <link rel="preload" as="image" href={ogImage} fetchpriority="high" />
     )}
   </head>
   <body class="font-sans text-white overflow-x-hidden">

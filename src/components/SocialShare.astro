@@ -25,6 +25,8 @@ const encodedTitle = encodeURIComponent(title);
       <div class="flex gap-4">
         <a
           href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
+          target="_blank"
+          rel="noopener noreferrer"
           class="text-cyber-blue transition-colors hover:text-white"
           aria-label="Share on Twitter"
         >
@@ -32,6 +34,8 @@ const encodedTitle = encodeURIComponent(title);
         </a>
         <a
           href={`https://www.linkedin.com/shareArticle?url=${encodedUrl}&title=${encodedTitle}`}
+          target="_blank"
+          rel="noopener noreferrer"
           class="text-cyber-blue transition-colors hover:text-white"
           aria-label="Share on LinkedIn"
         >
@@ -39,6 +43,8 @@ const encodedTitle = encodeURIComponent(title);
         </a>
         <a
           href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
+          target="_blank"
+          rel="noopener noreferrer"
           class="text-cyber-blue transition-colors hover:text-white"
           aria-label="Share on Facebook"
         >

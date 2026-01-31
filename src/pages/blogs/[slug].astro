@@ -71,13 +71,7 @@ const articleSchema = {
   "@type": "BlogPosting",
   headline: title,
   description: description,
-  image: {
-    "@type": "ImageObject",
-    url: ogImageUrl,
-    width: "1200",
-    height: "630",
-    caption: featuredImage.alt || title
-  },
+  image: ogImageUrl,
   author: {
     "@type": "Person",
     name: author.name,
@@ -87,6 +81,12 @@ const articleSchema = {
   publisher: {
     "@type": "Person",
     name: author.name,
+    logo: {
+      "@type": "ImageObject",
+      url: "https://maxifjaved.com/img/profile-image.jpg",
+      width: "400",
+      height: "400"
+    }
   },
   datePublished: date.toISOString(),
   dateModified: (lastUpdated || date).toISOString(),

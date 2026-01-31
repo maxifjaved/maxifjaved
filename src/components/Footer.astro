@@ -21,7 +21,11 @@ const footerData: FooterType = {
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ],
-  pages: [],
+  pages: [
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
+    { label: "Cookie Policy", href: "/cookie-policy" },
+  ],
   contact: {
     email: {
       label: "axif.javed@gmail.com",
@@ -35,7 +39,7 @@ const footerData: FooterType = {
   },
   social: [
     { icon: "fab fa-github", href: "https://github.com/maxifjaved" },
-    { icon: "fab fa-linkedin", href: "https://linkedin.com/in/maxifjaved" },
+    { icon: "fab fa-linkedin", href: "https://www.linkedin.com/in/maxifjaved" },
   ],
 };
 ---
@@ -83,6 +87,16 @@ const footerData: FooterType = {
             </a>
           ))
         }
+        {
+          footerData.pages.map((page) => (
+            <a
+              href={page.href}
+              class="text-gray-300 hover:text-cyber-blue transition-colors text-sm"
+            >
+              {page.label}
+            </a>
+          ))
+        }
       </div>
       
       <div class="flex items-center gap-6">
@@ -95,6 +109,7 @@ const footerData: FooterType = {
                 <a
                   href={social.href}
                   target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={`Visit my ${platform} profile`}
                   class="text-cyber-blue hover:text-white transition-colors"
                 >

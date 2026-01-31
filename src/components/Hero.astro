@@ -41,7 +41,7 @@ const heroData: HeroType = {
   ],
   socialLinks: [
     { icon: "fab fa-github", href: "https://github.com/maxifjaved" },
-    { icon: "fab fa-linkedin", href: "https://linkedin.com/in/maxifjaved" },
+    { icon: "fab fa-linkedin", href: "https://www.linkedin.com/in/maxifjaved" },
     {
       icon: "fab fa-whatsapp",
       href: "https://wa.me/923324647331",
@@ -101,6 +101,8 @@ const heroData: HeroType = {
               return (
                 <a
                   href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={`Visit my ${platform} profile`}
                   class="text-cyber-blue hover:text-white transition-colors"
                 >
