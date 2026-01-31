@@ -12,7 +12,9 @@ const { searchQuery = '', selectedCategory = null } = Astro.props;
     {selectedCategory && (
       <input type="hidden" name="category" value={selectedCategory} />
     )}
+    <label for="blog-search" class="sr-only">Search blog articles</label>
     <input
+      id="blog-search"
       type="text"
       name="search"
       value={searchQuery}

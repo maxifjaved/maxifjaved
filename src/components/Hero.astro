@@ -94,14 +94,20 @@ const heroData: HeroType = {
 
         <div class="mt-12 flex gap-6">
           {
-            heroData.socialLinks.map((link) => (
-              <a
-                href={link.href}
-                class="text-cyber-blue hover:text-white transition-colors"
-              >
-                <i class={link.icon + " text-2xl"} />
-              </a>
-            ))
+            heroData.socialLinks.map((link) => {
+              const platform = link.icon.includes('github') ? 'GitHub' :
+                              link.icon.includes('linkedin') ? 'LinkedIn' :
+                              link.icon.includes('whatsapp') ? 'WhatsApp' : 'Social media';
+              return (
+                <a
+                  href={link.href}
+                  aria-label={`Visit my ${platform} profile`}
+                  class="text-cyber-blue hover:text-white transition-colors"
+                >
+                  <i class={link.icon + " text-2xl"} />
+                </a>
+              );
+            })
           }
         </div>
       </div>

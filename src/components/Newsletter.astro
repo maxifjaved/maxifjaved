@@ -56,7 +56,9 @@ const newsletterData: NewsletterType = {
         method={newsletterData.form.method}
         class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto"
       >
+        <label for="newsletter-email" class="sr-only">Your email address</label>
         <input
+          id="newsletter-email"
           type="email"
           name="email"
           required

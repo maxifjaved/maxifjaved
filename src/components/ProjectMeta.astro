@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 interface Props {
   project: any;
 }
@@ -180,9 +182,13 @@ const { project } = Astro.props;
           <div class="grid grid-cols-2 gap-2">
             {project.data.images.map((image: string, index: number) => (
               <div class="aspect-video rounded-lg overflow-hidden border border-cyber-blue/20">
-                <img
+                <Image
                   src={image}
                   alt={`${project.data.title} - Image ${index + 1}`}
+                  width={400}
+                  height={225}
+                  format="webp"
+                  quality={85}
                   class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>

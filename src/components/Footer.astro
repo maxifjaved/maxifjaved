@@ -88,15 +88,20 @@ const footerData: FooterType = {
       <div class="flex items-center gap-6">
         <div class="flex gap-4">
           {
-            footerData.social.map((social) => (
-              <a
-                href={social.href}
-                target="_blank"
-                class="text-cyber-blue hover:text-white transition-colors"
-              >
-                <i class={social.icon + " text-xl"} />
-              </a>
-            ))
+            footerData.social.map((social) => {
+              const platform = social.icon.includes('github') ? 'GitHub' :
+                              social.icon.includes('linkedin') ? 'LinkedIn' : 'Social media';
+              return (
+                <a
+                  href={social.href}
+                  target="_blank"
+                  aria-label={`Visit my ${platform} profile`}
+                  class="text-cyber-blue hover:text-white transition-colors"
+                >
+                  <i class={social.icon + " text-xl"} />
+                </a>
+              );
+            })
           }
         </div>
         <span class="text-gray-400 text-sm">

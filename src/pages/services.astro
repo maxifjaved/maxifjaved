@@ -29,6 +29,15 @@ const servicesSchema = {
   "serviceType": "Software Development",
   "description": "Professional WebRTC development, real-time systems, cybersecurity platforms, and enterprise solutions with 10+ years experience",
   "areaServed": ["Global Remote Services", "United States", "United Kingdom", "Pakistan"],
+  "offers": {
+    "@type": "Offer",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": "45",
+      "priceCurrency": "USD",
+      "unitText": "HOUR"
+    }
+  },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Development Services",
@@ -62,13 +71,16 @@ const servicesSchema = {
       class="bg-cyber-dark/60 py-16 lg:py-24 relative overflow-hidden"
     >
       <div class="absolute w-96 h-96 bg-cyber-blue/5 rounded-full blur-3xl -bottom-20 -right-20"></div>
-      
+
       <div class="max-w-4xl mx-auto px-6 text-center relative">
         <h3 class="text-2xl md:text-3xl font-bold mb-6 text-cyber-blue text-shadow-glow">
           Have a project in mind?
         </h3>
         <p class="text-gray-300 mb-8 text-lg leading-relaxed">
           Whether you need a complex platform built from scratch or expert consulting on your next project, I deliver production-ready solutions that scale.
+        </p>
+        <p class="text-gray-400 mb-8">
+          <span class="text-cyber-blue font-semibold text-xl">$45/hour</span> for consulting and development services
         </p>
         <a
           href="/contact"

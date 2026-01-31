@@ -18,6 +18,10 @@ const faqs = [
     answer: "Yes, I primarily serve US and UK clients remotely from Lahore, Pakistan. I've successfully delivered projects across different time zones with clear communication, regular updates, and flexible scheduling to ensure smooth collaboration."
   },
   {
+    question: "What are your rates?",
+    answer: "My hourly rate is $45/hour for consulting and development services. I offer competitive rates while delivering enterprise-grade quality. This includes full-stack development, WebRTC implementation, architecture consulting, and ongoing support. Contact me for project-based quotes and custom packages."
+  },
+  {
     question: "What technologies do you specialize in?",
     answer: "My core expertise includes WebRTC for real-time communication, React/Next.js for frontend, Node.js for backend, and various databases. I also work with cybersecurity frameworks, educational technology platforms, and modern deployment tools like Docker and cloud services."
   },
@@ -34,6 +38,41 @@ const faqs = [
     answer: "Yes, I offer ongoing maintenance, bug fixes, feature enhancements, and technical support. I believe in building long-term partnerships with clients and ensuring their platforms continue to perform optimally as they scale."
   }
 ];
+
+// Person schema with pricing for SEO
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Muhammad Asif Javed",
+  "jobTitle": "Full-Stack Developer & WebRTC Expert",
+  "url": "https://maxifjaved.com",
+  "sameAs": [
+    "https://github.com/maxifjaved",
+    "https://linkedin.com/in/maxifjaved"
+  ],
+  "knowsAbout": ["WebRTC", "Full-Stack Development", "Real-time Systems", "Cybersecurity Platforms", "Enterprise Software"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Lahore",
+    "addressRegion": "Punjab",
+    "addressCountry": "Pakistan"
+  },
+  "makesOffer": {
+    "@type": "Offer",
+    "itemOffered": {
+      "@type": "Service",
+      "name": "Full-Stack Development & WebRTC Consulting",
+      "description": "Professional WebRTC development, real-time systems, and enterprise software solutions"
+    },
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": "45",
+      "priceCurrency": "USD",
+      "unitText": "HOUR"
+    },
+    "availability": "https://schema.org/InStock"
+  }
+};
 ---
 
 <MainLayout
@@ -41,6 +80,8 @@ const faqs = [
   description="Senior Full-Stack Developer from Pakistan serving US, UK & international clients. 10+ years expertise in WebRTC, enterprise platforms, cybersecurity systems. Remote-first with competitive rates."
   keywords="hire WebRTC developer US clients, Pakistan full-stack developer for US companies, enterprise software development offshore, remote WebRTC expert UK clients, cybersecurity platform developer international, educational technology consultant global"
 >
+  <!-- Person Schema with Pricing -->
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   <Hero />
   <About />
   <ProjectsSection />

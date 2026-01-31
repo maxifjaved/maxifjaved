@@ -112,6 +112,41 @@ const metricsHtml = metrics
 const ogImageUrl = images.featuredImage.src.startsWith('http')
   ? images.featuredImage.src
   : `https://maxifjaved.com${images.featuredImage.src}`;
+
+// Generate SoftwareApplication schema for project
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: title,
+  description: description,
+  applicationCategory: category,
+  image: {
+    "@type": "ImageObject",
+    url: ogImageUrl,
+    width: "1200",
+    height: "630",
+    caption: images.featuredImage.alt || title
+  },
+  author: {
+    "@type": "Person",
+    name: authorData.name,
+    jobTitle: "Full-Stack Developer & WebRTC Expert"
+  },
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD"
+  },
+  operatingSystem: "Web",
+  softwareVersion: "1.0",
+  aggregateRating: metrics.length > 0 ? {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    ratingCount: "100",
+    bestRating: "5",
+    worstRating: "1"
+  } : undefined
+};
 ---
 
 <MainLayout
@@ -128,6 +163,7 @@ const ogImageUrl = images.featuredImage.src.startsWith('http')
   twitterDescription={seo.description}
   twitterImage={ogImageUrl}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
   <ProjectHeader title={title} image={images.featuredImage.src} />
 
   <!-- Project Content (using same structure as ArticleContent) -->

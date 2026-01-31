@@ -65,13 +65,19 @@ const breadcrumbItems = [
   { name: title, url: "" },
 ];
 
-// Generate JSON-LD structured data for BlogPosting
+// Generate JSON-LD structured data for BlogPosting with enhanced ImageObject
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   headline: title,
   description: description,
-  image: ogImageUrl,
+  image: {
+    "@type": "ImageObject",
+    url: ogImageUrl,
+    width: "1200",
+    height: "630",
+    caption: featuredImage.alt || title
+  },
   author: {
     "@type": "Person",
     name: author.name,
@@ -105,6 +111,35 @@ if (faqs && faqs.length > 0) {
         text: faq.answer,
       },
     })),
+  };
+}
+
+// Generate HowTo schema for technical tutorial posts
+let howToSchema = null;
+const isTutorial = category === 'Tutorial' || title.toLowerCase().includes('how to') || title.toLowerCase().includes('guide');
+if (isTutorial && faqs && faqs.length > 0) {
+  howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: title,
+    description: description,
+    image: {
+      "@type": "ImageObject",
+      url: ogImageUrl,
+      width: "1200",
+      height: "630"
+    },
+    estimatedCost: {
+      "@type": "MonetaryAmount",
+      currency: "USD",
+      value: "0"
+    },
+    step: faqs.map((faq, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name: faq.question,
+      text: faq.answer
+    }))
   };
 }
 
@@ -145,6 +180,9 @@ const featuredImageData = {
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   {faqSchema && (
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  )}
+  {howToSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} />
   )}
 
   <ArticleHeader

@@ -62,7 +62,8 @@ const { blog } = Astro.props;
         href={blog.link}
         class="text-cyber-blue hover:text-white transition-colors"
       >
-        Read More <i class="fas fa-arrow-right ml-2"></i>
+        <span class="sr-only">Read article: {blog.title}</span>
+        <span aria-hidden="true">Read More <i class="fas fa-arrow-right ml-2"></i></span>
       </a>
     </div>
   </div>

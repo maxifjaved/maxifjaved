@@ -24,6 +24,18 @@
   button, [role="button"] {
     cursor: pointer;
   }
+  /* Screen reader only utility class for accessibility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
 }
 @custom-variant dark (&:where(.dark, .dark *));
 

@@ -151,7 +151,17 @@ const {
           "addressCountry": "Pakistan"
         },
         "areaServed": ["Global Remote Services"],
-        "serviceType": "Software Development"
+        "serviceType": "Software Development",
+        "priceRange": "$$",
+        "offers": {
+          "@type": "Offer",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "45",
+            "priceCurrency": "USD",
+            "unitText": "HOUR"
+          }
+        }
       }
     </script>
 
@@ -214,10 +224,22 @@ const {
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       rel="stylesheet"
     />
+
+    <!-- Preload LCP images for better performance -->
+    {Astro.url.pathname === '/' && (
+      <link rel="preload" as="image" href="/img/future-ai.png" fetchpriority="high" />
+    )}
+    {Astro.url.pathname === '/about' && (
+      <link rel="preload" as="image" href="/img/future-ai.png" fetchpriority="high" />
+    )}
   </head>
   <body class="font-sans text-white overflow-x-hidden">
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-cyber-blue focus:text-cyber-dark focus:px-4 focus:py-2 focus:rounded">
+      Skip to main content
+    </a>
     <Navigation />
-    <main class="relative z-10">
+    <main id="main-content" class="relative z-10">
       <slot />
     </main>
     <Footer />

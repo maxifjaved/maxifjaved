@@ -59,6 +59,23 @@ const mappedPosts = paginatedPosts.map(post => ({
   metaDescription: post.data.description,
 }));
 
+// Dynamic page title and description based on search/category
+let pageTitle = "Blog Articles | Muhammad Asif Javed";
+let pageDescription = "Technical articles on WebRTC, real-time systems, and full-stack development by Muhammad Asif Javed";
+
+if (searchQuery && selectedCategory) {
+  pageTitle = `"${searchQuery}" in ${selectedCategory} | Blog`;
+  pageDescription = `Search results for "${searchQuery}" in ${selectedCategory} category`;
+} else if (searchQuery) {
+  pageTitle = `Search: "${searchQuery}" | Blog`;
+  pageDescription = `Search results for "${searchQuery}" in blog articles`;
+} else if (selectedCategory) {
+  pageTitle = `${selectedCategory} Articles | Blog`;
+  pageDescription = `Technical articles about ${selectedCategory}`;
+} else if (currentPage > 1) {
+  pageTitle = `Blog Articles - Page ${currentPage} | Muhammad Asif Javed`;
+}
+
 // ItemList Schema for blog listing page (SEO best practice 2025)
 const blogListSchema = {
   "@context": "https://schema.org",
@@ -85,8 +102,8 @@ const blogListSchema = {
 ---
 
 <MainLayout
-  title="Blog - Muhammad Asif Javed"
-  description="Latest articles on WebRTC, real-time systems, cybersecurity, and enterprise development by Muhammad Asif Javed"
+  title={pageTitle}
+  description={pageDescription}
 >
   <script type="application/ld+json" set:html={JSON.stringify(blogListSchema)} />
   <BlogPost
