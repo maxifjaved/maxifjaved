@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 interface Author {
   name: string;
   title: string;
@@ -10,6 +12,8 @@ interface FeaturedImageData {
   src: string;
   alt: string;
   caption?: string | null;
+  width?: number;
+  height?: number;
 }
 
 interface Props {
@@ -29,7 +33,9 @@ const { title, subtitle, category, date, author, readTime, featuredImage, featur
 const imageData = featuredImageData || {
   src: featuredImage || '',
   alt: title,
-  caption: null
+  caption: null,
+  width: 1200,
+  height: 630
 };
 
 // Split title for styling (e.g., "The Future of AI: Trends to Watch")
@@ -81,15 +87,22 @@ const [titlePart1, titlePart2] = title.split(": ");
         </span>
       </div>
 
-      <!-- Featured image -->
+      <!-- Featured image with Astro Image optimization -->
       <figure class="mb-0">
         <div
           class="h-96 overflow-hidden rounded-xl border border-cyber-blue/20 glow"
         >
-          <img
+          <Image
             src={imageData.src}
             alt={imageData.alt}
+            width={imageData.width || 1200}
+            height={imageData.height || 630}
+            format="webp"
+            quality={90}
             class="h-full w-full object-cover"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
           />
         </div>
         {imageData.caption && (

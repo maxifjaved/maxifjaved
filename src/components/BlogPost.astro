@@ -2,7 +2,20 @@
 import BlogCard from "../components/BlogCard.astro";
 import BlogPagination from "../components/BlogPagination.astro";
 import BlogSearch from "../components/BlogSearch.astro";
-import type { BlogItem } from "../data/blogItems";
+
+export interface BlogItem {
+  slug: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  date: string;
+  author: {
+    name: string;
+  };
+  readTime: string;
+  featuredImage: string;
+  metaDescription: string;
+}
 
 export interface Props {
   posts?: BlogItem[];

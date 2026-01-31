@@ -1,14 +1,16 @@
 ---
+import { getCollection } from 'astro:content';
 import BlogPost from "../components/BlogPost.astro";
 import MainLayout from "../layouts/MainLayout.astro";
-import { blogItems } from '../data/blogItems';
 
-// Get all blog posts (filter out any drafts if needed)
-const allPosts = blogItems;
+// Get all blog posts from content collections
+const allPosts = await getCollection('blog', ({ data }) => {
+  return data.draft !== true;
+});
 
 // Sort posts by date (newest first)
 const sortedPosts = allPosts.sort((a, b) =>
-  new Date(b.date).getTime() - new Date(a.date).getTime()
+  b.data.date.getTime() - a.data.date.getTime()
 );
 
 // Search and category filtering
@@ -20,16 +22,16 @@ let filteredPosts = sortedPosts;
 // Apply search filter
 if (searchQuery) {
   filteredPosts = filteredPosts.filter(post =>
-    post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    post.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    post.category.toLowerCase().includes(searchQuery.toLowerCase())
+    post.data.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    post.data.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    post.data.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
 }
 
 // Apply category filter
 if (selectedCategory) {
   filteredPosts = filteredPosts.filter(post =>
-    post.category.toLowerCase() === selectedCategory.toLowerCase()
+    post.data.category.toLowerCase() === selectedCategory.toLowerCase()
   );
 }
 
@@ -42,7 +44,20 @@ const endIndex = startIndex + POSTS_PER_PAGE;
 const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
 
 // Get unique categories for filter
-const categories = [...new Set(allPosts.map(post => post.category))];
+const categories = [...new Set(allPosts.map(post => post.data.category))];
+
+// Map content collection posts to format expected by BlogPost component
+const mappedPosts = paginatedPosts.map(post => ({
+  slug: post.slug,
+  title: post.data.title,
+  subtitle: post.data.subtitle,
+  category: post.data.category,
+  date: post.data.date.toISOString().split('T')[0],
+  author: post.data.author,
+  readTime: post.data.readTime,
+  featuredImage: post.data.featuredImage.src,
+  metaDescription: post.data.description,
+}));
 
 // ItemList Schema for blog listing page (SEO best practice 2025)
 const blogListSchema = {
@@ -53,13 +68,15 @@ const blogListSchema = {
     "position": startIndex + index + 1,
     "item": {
       "@type": "BlogPosting",
-      "headline": post.title,
-      "description": post.subtitle,
-      "image": post.featuredImage,
-      "datePublished": new Date(post.date).toISOString(),
+      "headline": post.data.title,
+      "description": post.data.subtitle,
+      "image": post.data.featuredImage.src.startsWith('http')
+        ? post.data.featuredImage.src
+        : `https://maxifjaved.com${post.data.featuredImage.src}`,
+      "datePublished": post.data.date.toISOString(),
       "author": {
         "@type": "Person",
-        "name": post.author.name
+        "name": post.data.author.name
       },
       "url": `https://maxifjaved.com/blogs/${post.slug}`
     }
@@ -71,7 +88,14 @@ const blogListSchema = {
   title="Blog - Muhammad Asif Javed"
   description="Latest articles on WebRTC, real-time systems, cybersecurity, and enterprise development by Muhammad Asif Javed"
 >
-    <script type="application/ld+json" set:html={JSON.stringify(blogListSchema)} />
-    <BlogPost posts={paginatedPosts} currentPage={currentPage} totalPages={totalPages} categories={categories} selectedCategory={selectedCategory} searchQuery={searchQuery} />
-    <div class="pt-16"></div>
+  <script type="application/ld+json" set:html={JSON.stringify(blogListSchema)} />
+  <BlogPost
+    posts={mappedPosts}
+    currentPage={currentPage}
+    totalPages={totalPages}
+    categories={categories}
+    selectedCategory={selectedCategory}
+    searchQuery={searchQuery}
+  />
+  <div class="pt-16"></div>
 </MainLayout>
