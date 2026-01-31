@@ -14,7 +14,7 @@ import BlogFAQ from "../../components/BlogFAQ.astro";
 import BlogCitations from "../../components/BlogCitations.astro";
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog', ({ data }) => {
+  const blogEntries = await getCollection('blogs', ({ data }) => {
     return data.draft !== true;
   });
 
@@ -25,7 +25,7 @@ export async function getStaticPaths() {
 }
 
 type Props = {
-  entry: CollectionEntry<'blog'>;
+  entry: CollectionEntry<'blogs'>;
 };
 
 const { entry } = Astro.props;

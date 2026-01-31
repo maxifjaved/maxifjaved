@@ -1,11 +1,21 @@
 ---
-import { portfolioData } from "../data/projects";
+import { getCollection } from 'astro:content';
 import ProjectHeader from "./ProjectHeader.astro";
 
-// Get featured projects (limit to 6 for homepage)
-const featuredProjects = portfolioData?.projects
-  ?.filter(project => project?.featured)
-  ?.slice(0, 6) || [];
+// Get featured projects from content collections (limit to 6 for homepage)
+const allProjects = await getCollection('projects');
+const featuredProjects = allProjects
+  .filter(project => project.data.featured)
+  .slice(0, 6)
+  .map(project => ({
+    slug: project.slug,
+    title: project.data.title,
+    description: project.data.description,
+    category: project.data.category,
+    featured: project.data.featured,
+    images: project.data.images,
+    technologies: project.data.technologies,
+  }));
 
 const filterTabs = [
   { label: "All", value: "all" },

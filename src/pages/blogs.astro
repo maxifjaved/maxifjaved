@@ -4,7 +4,7 @@ import BlogPost from "../components/BlogPost.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 
 // Get all blog posts from content collections
-const allPosts = await getCollection('blog', ({ data }) => {
+const allPosts = await getCollection('blogs', ({ data }) => {
   return data.draft !== true;
 });
 

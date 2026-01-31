@@ -1,9 +1,17 @@
 ---
+import { getCollection } from 'astro:content';
 import ProjectHeader from "./ProjectHeader.astro";
-import { portfolioData } from "../data/projects";
 
-// Get all projects for display
-const allProjects = portfolioData?.projects || [];
+// Get all projects from content collections
+const projectEntries = await getCollection('projects');
+const allProjects = projectEntries.map(project => ({
+  slug: project.slug,
+  title: project.data.title,
+  description: project.data.description,
+  category: project.data.category,
+  images: project.data.images,
+  technologies: project.data.technologies,
+}));
 ---
 
 <section
@@ -123,7 +131,7 @@ const allProjects = portfolioData?.projects || [];
 
     <div class="flex flex-wrap justify-center gap-8">
       {
-        portfolioData.projects.map((project, index) => {
+        allProjects.map((project, index) => {
           const categoryDisplay =
             {
               edtech: "EdTech",

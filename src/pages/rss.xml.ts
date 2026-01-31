@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
 
 export async function GET(context: APIContext) {
-  const blog = await getCollection('blog', ({ data }) => {
+  const blog = await getCollection('blogs', ({ data }) => {
     return data.draft !== true;
   });
 
