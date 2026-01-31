@@ -1,49 +1,69 @@
 ---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 import MainLayout from "../../layouts/MainLayout.astro";
 import ProjectHeader from "../../components/ProjectHeader.astro";
 import SocialShare from "../../components/SocialShare.astro";
 import AuthorInfo from "../../components/AuthorInfo.astro";
-import { projects } from "../../data/projects.ts";
 
-// Generate static paths for all projects
-export function getStaticPaths() {
-  const paths = projects.map((project) => ({
-    params: { slug: project.slug },
-    props: {
-      project: project,
-      title: project.title,
-      description: project.seo.seoDescription,
-    },
+export async function getStaticPaths() {
+  const projectEntries = await getCollection('projects');
+
+  return projectEntries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
   }));
-
-  return paths;
 }
 
-// Get props from getStaticPaths
-const { project, title, description } = Astro.props;
+type Props = {
+  entry: CollectionEntry<'projects'>;
+};
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
 const {
-  title: projectTitle,
-  description: projectDescription,
+  title,
+  description,
   category,
   duration,
   role,
-  images,
+  teamSize,
+  technologies,
+  businessContext,
   keyFeatures,
-  technicalImplementation,
   keyAchievements,
   impactResults,
-} = project;
+  metrics,
+  images,
+  seo,
+  links,
+} = entry.data;
 
 const currentUrl = new URL(Astro.url).toString();
 
-// Create project content in HTML format similar to blog content
+// Format author data (from your profile)
+const authorData = {
+  name: "Muhammad Asif Javed",
+  bio: "Full-Stack Developer & WebRTC Expert with 10+ years experience",
+  avatar: "https://maxifjaved.com/author-avatar.jpg",
+  expertise: "WebRTC, System Architecture, Full-Stack Development",
+  social: {
+    twitter: "@maxifjaved",
+    linkedin: "linkedin.com/in/maxifjaved",
+    github: "github.com/maxifjaved"
+  },
+};
+
+// Create project info HTML
 const projectInfoHtml = `
   <ul class="mb-6">
     <li><strong>Role:</strong> ${role}</li>
-    <li><strong>Technologies:</strong> ${project.technologies.join(", ")}</li>
-    <li><strong>Team Size:</strong> ${project.teamSize}</li>
-    <li><strong>Industry:</strong> ${project.businessContext.industry}</li>
-    <li><strong>User Base:</strong> ${project.businessContext.userBase}</li>
+    <li><strong>Technologies:</strong> ${technologies.join(", ")}</li>
+    <li><strong>Team Size:</strong> ${teamSize}</li>
+    <li><strong>Industry:</strong> ${businessContext.industry}</li>
+    <li><strong>User Base:</strong> ${businessContext.userBase}</li>
   </ul>
 `;
 
@@ -77,177 +97,168 @@ const impactResultsHtml = impactResults
   )
   .join("");
 
-const metricsHtml = project.metrics
+const metricsHtml = metrics
   .map(
     (metric) =>
-      `<li class="flex items-start gap-3 text-gray-300">
-    <span class="inline-block w-2 h-2 bg-cyber-blue rounded-full mt-2 flex-shrink-0 glow"></span>
-    <span class="leading-relaxed"><span class="text-cyber-blue font-semibold">${metric.label}:</span> ${metric.value}${metric.description ? ` - ${metric.description}` : ""}</span>
-  </li>`
+      `<div class="p-4 border border-cyber-blue/30 rounded-lg bg-cyber-dark/50">
+    <div class="text-2xl font-bold text-cyber-blue mb-1">${metric.value}</div>
+    <div class="text-sm text-white font-semibold">${metric.label}</div>
+    <div class="text-xs text-gray-400 mt-1">${metric.description}</div>
+  </div>`
   )
   .join("");
 
-const seoKeywordsHtml =
-  project.seo?.keywords
-    ?.map(
-      (keyword) =>
-        `<span class="px-3 py-1 bg-cyber-blue/10 text-cyber-blue rounded-full text-sm border border-cyber-blue/20">${keyword}</span>`
-    )
-    .join(" ") || "";
-
-const tagsHtml =
-  project.tags
-    ?.map(
-      (tag) =>
-        `<span class="px-3 py-1 bg-cyber-blue/10 text-cyber-blue rounded-full text-sm border border-cyber-blue/20">#${tag}</span>`
-    )
-    .join(" ") || "";
-
-const projectContent = `
-  ${projectInfoHtml}
-
-  <div class="project-overview mb-8">
-    <h2 class="text-2xl font-bold text-cyber-blue mb-4 text-shadow-glow">Overview</h2>
-    <p class="text-lg leading-relaxed text-gray-300">${projectDescription}</p>
-  </div>
-
-  <div class="project-section mb-8">
-    <h2 class="text-2xl font-bold text-cyber-blue mb-4 text-shadow-glow">Key Responsibilities & Achievements</h2>
-    <ul class="space-y-4 pl-2">
-      ${keyAchievementsHtml}
-    </ul>
-  </div>
-
-  <div class="project-section mb-8">
-    <h2 class="text-2xl font-bold text-cyber-blue mb-4 text-shadow-glow">Technical Implementation</h2>
-    <div class="border border-cyber-blue/10 bg-cyber-dark/30 rounded-lg p-4">
-      <p class="leading-relaxed text-gray-300">${technicalImplementation}</p>
-    </div>
-  </div>
-
-  <div class="project-section mb-8">
-    <h2 class="text-2xl font-bold text-cyber-blue mb-4 text-shadow-glow">Impact & Results</h2>
-    <ul class="space-y-4 pl-2">
-      ${impactResultsHtml}
-    </ul>
-  </div>
-
-  <div class="project-section mb-8">
-    <h2 class="text-2xl font-bold text-cyber-blue mb-4 text-shadow-glow">Key Features Delivered</h2>
-    <ul class="space-y-4 pl-2">
-      ${keyFeaturesHtml}
-    </ul>
-  </div>
-
-  ${
-    project.metrics && project.metrics.length > 0
-      ? `
-  <div class="project-section mb-8">
-    <h2 class="text-2xl font-bold text-cyber-blue mb-4 text-shadow-glow">Key Metrics</h2>
-    <ul class="space-y-4 pl-2">
-      ${metricsHtml}
-    </ul>
-  </div>
-  `
-      : ""
-  }
-
-  ${
-    seoKeywordsHtml
-      ? `
-  <div class="project-section mb-8">
-    <h2 class="text-2xl font-bold text-cyber-blue mb-4 text-shadow-glow">Related Keywords</h2>
-    <div class="flex flex-wrap gap-2 p-2">
-      ${seoKeywordsHtml}
-    </div>
-  </div>
-  `
-      : ""
-  }
-
-  ${
-    tagsHtml
-      ? `
-  <div class="project-section">
-    <h2 class="text-2xl font-bold text-cyber-blue mb-4 text-shadow-glow">Project Tags</h2>
-    <div class="flex flex-wrap gap-2 p-2">
-      ${tagsHtml}
-    </div>
-  </div>
-  `
-      : ""
-  }
-`;
-
-// Author info similar to blog posts
-const author = {
-  name: "Muhammad Asif Javed",
-  title: "Full-Stack Developer",
-  bio: "Experienced full-stack developer specializing in modern web technologies, real-time applications, and scalable solutions.",
-  avatar: "/profile-image.jpg",
-};
-
-// Project Schema for SEO (using Article for better rich results)
-const projectSchema = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: projectTitle,
-  description: projectDescription,
-  image: project.images.featuredImage,
-  author: {
-    "@type": "Person",
-    name: "Muhammad Asif Javed",
-    jobTitle: "Full-Stack Developer",
-    url: "https://maxifjaved.com",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "Muhammad Asif Javed",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://maxifjaved.com/img/og-image.jpg",
-    },
-  },
-  datePublished: project.startDate,
-  dateModified: project.endDate,
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": currentUrl,
-  },
-  keywords: project.tags?.join(", "),
-  articleSection: project.category,
-  inLanguage: "en",
-  about: {
-    "@type": "Thing",
-    name: project.businessContext.industry,
-  },
-  mentions: project.technologies.map((tech) => ({
-    "@type": "SoftwareApplication",
-    name: tech,
-  })),
-};
+// OG Image URL
+const ogImageUrl = images.featuredImage.src.startsWith('http')
+  ? images.featuredImage.src
+  : `https://maxifjaved.com${images.featuredImage.src}`;
 ---
 
 <MainLayout
-  title={`${title} | Muhammad Asif Javed Portfolio`}
-  description={description}
+  title={seo.title}
+  description={seo.description}
+  keywords={seo.keywords.join(", ")}
+  ogImage={ogImageUrl}
+  canonicalUrl={`https://maxifjaved.com/projects/${entry.slug}`}
+  ogTitle={seo.title}
+  ogDescription={seo.description}
+  ogType="article"
+  twitterCard="summary_large_image"
+  twitterTitle={seo.title}
+  twitterDescription={seo.description}
+  twitterImage={ogImageUrl}
 >
-  <!-- Project Schema -->
-  <script type="application/ld+json" set:html={JSON.stringify(projectSchema)} />
-
-  <ProjectHeader title={projectTitle} image={images.featuredImage} />
+  <ProjectHeader title={title} image={images.featuredImage.src} />
 
   <!-- Project Content (using same structure as ArticleContent) -->
   <section id="project-content" class="relative mb-6">
     <div class="mx-auto max-w-4xl px-6">
+      <!-- Project Info Card -->
       <div
-        class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 text-left backdrop-blur-sm"
+        class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 mb-6 backdrop-blur-sm"
       >
-        <div class="post-content" set:html={projectContent} />
+        <h2 class="text-2xl font-bold text-cyber-blue mb-4">Project Overview</h2>
+        <p class="text-gray-300 mb-4">{description}</p>
+        <div class="text-gray-300" set:html={projectInfoHtml} />
       </div>
+
+      <!-- Key Metrics Grid -->
+      {metrics.length > 0 && (
+        <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 mb-6 backdrop-blur-sm">
+          <h2 class="text-2xl font-bold text-cyber-blue mb-4">Key Metrics</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" set:html={metricsHtml} />
+        </div>
+      )}
+
+      <!-- Technical Implementation (MDX Content) -->
+      <div
+        class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 mb-6 backdrop-blur-sm"
+      >
+        <h2 class="text-2xl font-bold text-cyber-blue mb-4">Technical Implementation</h2>
+        <div class="post-content text-gray-300">
+          <Content />
+        </div>
+      </div>
+
+      <!-- Key Features -->
+      {keyFeatures.length > 0 && (
+        <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 mb-6 backdrop-blur-sm">
+          <h2 class="text-2xl font-bold text-cyber-blue mb-4">Key Features</h2>
+          <ul class="space-y-3" set:html={keyFeaturesHtml} />
+        </div>
+      )}
+
+      <!-- Gallery Images with Optimization -->
+      {images.gallery.length > 0 && (
+        <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 mb-6 backdrop-blur-sm">
+          <h2 class="text-2xl font-bold text-cyber-blue mb-4">Project Gallery</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {images.gallery.map((img) => (
+              <div class="overflow-hidden rounded-lg border border-cyber-blue/20">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  width={img.width}
+                  height={img.height}
+                  format="webp"
+                  quality={85}
+                  class="w-full h-auto"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Key Achievements -->
+      {keyAchievements.length > 0 && (
+        <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 mb-6 backdrop-blur-sm">
+          <h2 class="text-2xl font-bold text-cyber-blue mb-4">Key Achievements</h2>
+          <ul class="space-y-3" set:html={keyAchievementsHtml} />
+        </div>
+      )}
+
+      <!-- Impact & Results -->
+      {impactResults.length > 0 && (
+        <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 mb-6 backdrop-blur-sm">
+          <h2 class="text-2xl font-bold text-cyber-blue mb-4">Impact & Results</h2>
+          <ul class="space-y-3" set:html={impactResultsHtml} />
+        </div>
+      )}
+
+      <!-- Project Links -->
+      {(links.liveUrl || links.companyUrl || links.caseStudyUrl || links.demoUrl) && (
+        <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 mb-6 backdrop-blur-sm">
+          <h2 class="text-2xl font-bold text-cyber-blue mb-4">Project Links</h2>
+          <div class="flex flex-wrap gap-4">
+            {links.liveUrl && (
+              <a
+                href={links.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-4 py-2 bg-cyber-blue text-white rounded-lg hover:bg-cyber-blue/80 transition-colors"
+              >
+                Live Project →
+              </a>
+            )}
+            {links.companyUrl && (
+              <a
+                href={links.companyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-4 py-2 border border-cyber-blue text-cyber-blue rounded-lg hover:bg-cyber-blue/10 transition-colors"
+              >
+                Company Page →
+              </a>
+            )}
+            {links.caseStudyUrl && (
+              <a
+                href={links.caseStudyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-4 py-2 border border-cyber-blue text-cyber-blue rounded-lg hover:bg-cyber-blue/10 transition-colors"
+              >
+                Case Study →
+              </a>
+            )}
+            {links.demoUrl && (
+              <a
+                href={links.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-4 py-2 border border-cyber-blue text-cyber-blue rounded-lg hover:bg-cyber-blue/10 transition-colors"
+              >
+                View Demo →
+              </a>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   </section>
 
-  <!-- <SocialShare title={projectTitle} url={currentUrl} /> -->
-  <AuthorInfo author={author} />
+  <SocialShare title={title} url={currentUrl} />
+  <AuthorInfo author={authorData} />
 </MainLayout>

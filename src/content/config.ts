@@ -78,4 +78,93 @@ const blogCollection = defineCollection({
   }),
 });
 
-export const collections = { blog: blogCollection };
+const projectCollection = defineCollection({
+  type: 'content', // MDX files
+  schema: z.object({
+    // Core metadata
+    title: z.string(),
+    description: z.string(),
+
+    // Classification
+    category: z.enum(['edtech', 'interactive-displays', 'business-intelligence', 'cybersecurity', 'insurance-tech']),
+    featured: z.boolean().default(false),
+    status: z.enum(['completed', 'in-progress', 'archived']).default('completed'),
+
+    // Timeline
+    startDate: z.string(), // YYYY-MM format
+    endDate: z.string(),
+    duration: z.string(),
+
+    // Team & Role
+    role: z.string(),
+    teamSize: z.string(),
+
+    // Tech stack
+    technologies: z.array(z.string()),
+    tags: z.array(z.string()).default([]),
+
+    // Links
+    links: z.object({
+      liveUrl: z.string().url().nullable(),
+      companyUrl: z.string().url().nullable(),
+      caseStudyUrl: z.string().url().nullable(),
+      demoUrl: z.string().url().nullable(),
+    }),
+
+    // Images with optimization support
+    images: z.object({
+      featuredImage: z.object({
+        src: z.string(),
+        alt: z.string(),
+        width: z.number().default(1200),
+        height: z.number().default(630),
+      }),
+      thumbnail: z.object({
+        src: z.string(),
+        alt: z.string(),
+        width: z.number().default(400),
+        height: z.number().default(300),
+      }),
+      gallery: z.array(z.object({
+        src: z.string(),
+        alt: z.string(),
+        width: z.number().default(800),
+        height: z.number().default(600),
+      })).default([]),
+    }),
+
+    // SEO
+    seo: z.object({
+      title: z.string(),
+      description: z.string(),
+      keywords: z.array(z.string()).default([]),
+    }),
+
+    // Business context
+    businessContext: z.object({
+      client: z.string(),
+      company: z.string(),
+      industry: z.string(),
+      userBase: z.string(),
+    }),
+
+    // Achievements & Metrics
+    keyAchievements: z.array(z.string()).default([]),
+    metrics: z.array(z.object({
+      label: z.string(),
+      value: z.string(),
+      description: z.string(),
+    })).default([]),
+
+    // Features (list in frontmatter, details in MDX)
+    keyFeatures: z.array(z.string()).default([]),
+
+    // Impact
+    impactResults: z.array(z.string()).default([]),
+  }),
+});
+
+export const collections = {
+  blog: blogCollection,
+  projects: projectCollection,
+};
