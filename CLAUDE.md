@@ -14,9 +14,11 @@ The official Astro MCP server at `https://mcp.docs.astro.build/mcp` has known co
 
 ## Development Commands
 
-- `npm run dev`: Start development server
-- `npm run build`: Build for production
-- `npm run preview`: Preview production build
+- `bun run dev`: Start development server
+- `bun run build`: Build for production
+- `bun run preview`: Preview production build
+
+**Package Manager**: This project uses Bun for package management and script execution.
 
 ## Project Structure
 

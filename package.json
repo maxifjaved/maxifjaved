@@ -24,28 +24,33 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "preview:cf": "pnpm run build && pnpm wrangler dev",
-    "deploy": "pnpm run build && pnpm wrangler deploy",
-    "generate:blogs": "node scripts/generate-blog-items.js",
+    "preview:cf": "bun run build && bun wrangler dev",
+    "deploy": "bun run build && bun wrangler deploy",
     "astro": "astro"
   },
   "dependencies": {
-    "@alpinejs/intersect": "^3.14.9",
-    "@astrojs/mdx": "^4.3.4",
-    "@astrojs/rss": "^4.0.12",
-    "@astrojs/sitemap": "^3.5.0",
+    "@alpinejs/intersect": "^3.15.6",
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
     "@splidejs/splide": "^4.1.4",
-    "@tailwindcss/vite": "^4.1.12",
-    "alpinejs": "^3.14.9",
-    "astro": "^5.13.2",
+    "@tailwindcss/vite": "^4.1.18",
+    "alpinejs": "^3.15.6",
+    "astro": "^5.17.1",
     "glightbox": "^3.3.1",
     "markdown-it": "^14.1.0",
-    "sharp": "^0.34.3",
-    "tailwindcss": "^4.1.12"
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
     "@types/alpinejs": "^3.13.11",
+    "@types/bun": "^1.1.15",
     "@types/markdown-it": "^14.1.2",
-    "wrangler": "^4.31.0"
-  }
+    "wrangler": "^4.61.1"
+  },
+  "trustedDependencies": [
+    "@tailwindcss/oxide",
+    "esbuild",
+    "sharp"
+  ]
 }
