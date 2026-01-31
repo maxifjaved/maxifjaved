@@ -24,8 +24,6 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "preview:cf": "bun run build && bun wrangler dev",
-    "deploy": "bun run build && bun wrangler deploy",
     "astro": "astro"
   },
   "dependencies": {
@@ -45,8 +43,7 @@
   "devDependencies": {
     "@types/alpinejs": "^3.13.11",
     "@types/bun": "^1.1.15",
-    "@types/markdown-it": "^14.1.2",
-    "wrangler": "^4.61.1"
+    "@types/markdown-it": "^14.1.2"
   },
   "trustedDependencies": [
     "@tailwindcss/oxide",
