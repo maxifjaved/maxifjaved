@@ -61,19 +61,20 @@ const mappedPosts = paginatedPosts.map(post => ({
 
 // Dynamic page title and description based on search/category
 let pageTitle = "Blog Articles | Muhammad Asif Javed";
-let pageDescription = "Technical articles on WebRTC, real-time systems, and full-stack development. Expert insights from 10+ years of experience.";
+let pageDescription = "Technical articles on WebRTC, real-time systems, and full-stack development by Muhammad Asif Javed. Expert insights from 10+ years building enterprise platforms.";
 
 if (searchQuery && selectedCategory) {
-  pageTitle = `"${searchQuery}" in ${selectedCategory} | Blog`;
-  pageDescription = `Search results for "${searchQuery}" in ${selectedCategory} category`;
+  pageTitle = `"${searchQuery}" in ${selectedCategory} | Blog | Muhammad Asif Javed`;
+  pageDescription = `Search results for "${searchQuery}" in ${selectedCategory} category. Technical articles on real-time systems, WebRTC, and full-stack development.`;
 } else if (searchQuery) {
-  pageTitle = `Search: "${searchQuery}" | Blog`;
-  pageDescription = `Search results for "${searchQuery}" in blog articles`;
+  pageTitle = `Search: "${searchQuery}" | Blog | Muhammad Asif Javed`;
+  pageDescription = `Search results for "${searchQuery}" in blog articles by Muhammad Asif Javed. Real-time systems, WebRTC, and full-stack development expertise.`;
 } else if (selectedCategory) {
-  pageTitle = `${selectedCategory} Articles | Blog`;
-  pageDescription = `Technical articles about ${selectedCategory}`;
+  pageTitle = `${selectedCategory} Articles | Blog | Muhammad Asif Javed`;
+  pageDescription = `Technical articles about ${selectedCategory} by Muhammad Asif Javed. Expert insights from 10+ years building enterprise platforms.`;
 } else if (currentPage > 1) {
   pageTitle = `Blog Articles - Page ${currentPage} | Muhammad Asif Javed`;
+  pageDescription = `Technical articles on WebRTC, real-time systems, and full-stack development by Muhammad Asif Javed - Page ${currentPage}.`;
 }
 
 // ItemList Schema for blog listing page (SEO best practice 2025)

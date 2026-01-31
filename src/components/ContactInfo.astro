@@ -74,15 +74,22 @@ const contactInfoData: ContactInfoType = {
     </div>
 
     <div class="max-w-3xl mx-auto text-center mb-16">
-      <p class="text-gray-300 text-lg leading-relaxed">
+      <p class="text-gray-300 text-lg leading-relaxed mb-6">
         Ready to bring your next project to life? I specialize in building
         enterprise-grade platforms, real-time collaboration systems, and
         scalable web applications. Whether you need a complete solution from
         concept to deployment or expert consulting on your existing project, I'm
         here to help.
       </p>
+      <p class="text-gray-300 leading-relaxed mb-6">
+        With over 10 years of experience in full-stack development and real-time systems architecture, I've delivered complex platforms for education, cybersecurity, digital signage, and business intelligence. My expertise includes WebRTC development, system architecture, cloud infrastructure, and building scalable applications that handle thousands of concurrent users.
+      </p>
+      <p class="text-gray-300 leading-relaxed">
+        Based in Lahore, Pakistan, I work with clients globally across the United States, United Kingdom, and beyond. I'm available for remote collaboration, flexible with time zones, and committed to delivering production-ready solutions. Whether you're a startup looking to build your MVP or an established company needing to scale your platform, I can help you achieve your goals with clean, maintainable code and robust architecture.
+      </p>
     </div>
 
+    <h2 class="sr-only">Contact Methods</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {
         contactInfoData.contacts.map((contact) => (
@@ -97,9 +104,9 @@ const contactInfoData: ContactInfoType = {
               <div class="w-12 h-12 rounded-full bg-cyber-blue/20 border border-cyber-blue flex items-center justify-center mx-auto mb-4 glow">
                 <i class={`${contact.icon} text-cyber-blue text-xl`} />
               </div>
-              <h3 class="text-xl font-bold mb-2 text-cyber-blue">
+              <h2 class="text-xl font-bold mb-2 text-cyber-blue">
                 {contact.title}
-              </h3>
+              </h2>
               <p class="text-gray-300 mb-4">{contact.description}</p>
               {contact.href ? (
                 <a

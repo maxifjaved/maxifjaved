@@ -78,125 +78,113 @@ const {
     <meta property="twitter:creator" content="@maxifjaved" />
 
     <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Muhammad Asif Javed",
-        "jobTitle": "Full-Stack Developer & Real-time Systems Expert",
-        "description": "Full-Stack Developer & Real-time Systems Expert specializing in WebRTC, cybersecurity platforms, educational technology, and enterprise-grade solutions with 10+ years experience.",
-        "url": "https://maxifjaved.com",
-        "image": "https://maxifjaved.com/img/profile-image.jpg",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Railway Officer Colony, Walton",
-          "addressLocality": "Lahore",
-          "addressRegion": "Punjab",
-          "postalCode": "54000",
-          "addressCountry": "Pakistan"
-        },
-        "email": "axif.javed@gmail.com",
-        "telephone": "+923324647331",
-        "sameAs": [
-          "https://github.com/maxifjaved",
-          "https://linkedin.com/in/maxifjaved"
-        ],
-        "knowsAbout": [
-          "WebRTC Development",
-          "Real-time Systems",
-          "Cybersecurity Platforms",
-          "Educational Technology",
-          "Interactive Display Technology",
-          "Full-Stack Development",
-          "Enterprise Software Solutions"
-        ],
-        "hasOccupation": {
-          "@type": "Occupation",
-          "name": "Full-Stack Developer",
-          "description": "Specializes in building enterprise-grade platforms, real-time collaboration systems, and cybersecurity intelligence tools"
-        }
-      }
-    </script>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Muhammad Asif Javed",
+      "jobTitle": "Full-Stack Developer & Real-time Systems Expert",
+      "description": "Full-Stack Developer & Real-time Systems Expert specializing in WebRTC, cybersecurity platforms, educational technology, and enterprise-grade solutions with 10+ years experience.",
+      "url": "https://maxifjaved.com",
+      "image": "https://maxifjaved.com/img/profile-image.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Railway Officer Colony, Walton",
+        "addressLocality": "Lahore",
+        "addressRegion": "Punjab",
+        "postalCode": "54000",
+        "addressCountry": "PK"
+      },
+      "email": "axif.javed@gmail.com",
+      "telephone": "+923324647331",
+      "sameAs": [
+        "https://github.com/maxifjaved",
+        "https://linkedin.com/in/maxifjaved"
+      ],
+      "knowsAbout": [
+        "WebRTC Development",
+        "Real-time Systems",
+        "Cybersecurity Platforms",
+        "Educational Technology",
+        "Interactive Display Technology",
+        "Full-Stack Development",
+        "Enterprise Software Solutions"
+      ]
+    })} />
 
     <!-- WebSite Schema -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Muhammad Asif Javed - Full-Stack Developer Portfolio",
-        "url": "https://maxifjaved.com",
-        "description": "Professional portfolio of Muhammad Asif Javed, Full-Stack Developer & WebRTC Expert with 10+ years experience",
-        "author": {
-          "@type": "Person",
-          "name": "Muhammad Asif Javed"
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Muhammad Asif Javed - Full-Stack Developer Portfolio",
+      "url": "https://maxifjaved.com",
+      "description": "Professional portfolio of Muhammad Asif Javed, Full-Stack Developer & WebRTC Expert with 10+ years experience",
+      "author": {
+        "@type": "Person",
+        "name": "Muhammad Asif Javed"
+      },
+      "inLanguage": "en",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://maxifjaved.com/projects?search={search_term_string}"
         },
-        "inLanguage": "en",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://maxifjaved.com/projects?search={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
+        "query-input": "required name=search_term_string"
       }
-    </script>
+    })} />
 
     <!-- Professional Service Schema -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "Muhammad Asif Javed - Full-Stack Developer",
-        "description": "Full-Stack Developer & WebRTC Expert with 10+ years experience. Specializing in enterprise platforms, real-time systems, and cybersecurity solutions.",
-        "url": "https://maxifjaved.com",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Railway Officer Colony, Walton",
-          "addressLocality": "Lahore",
-          "addressRegion": "Punjab",
-          "postalCode": "54000",
-          "addressCountry": "Pakistan"
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Muhammad Asif Javed - Full-Stack Developer",
+      "description": "Full-Stack Developer & WebRTC Expert with 10+ years experience. Specializing in enterprise platforms, real-time systems, and cybersecurity solutions.",
+      "url": "https://maxifjaved.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Railway Officer Colony, Walton",
+        "addressLocality": "Lahore",
+        "addressRegion": "Punjab",
+        "postalCode": "54000",
+        "addressCountry": "PK"
+      },
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "31.5204",
+          "longitude": "74.3587"
         },
-        "areaServed": ["Global Remote Services"],
-        "serviceType": "Software Development",
-        "priceRange": "$$",
-        "offers": {
-          "@type": "Offer",
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": "45",
-            "priceCurrency": "USD",
-            "unitText": "HOUR"
-          }
-        }
-      }
-    </script>
+        "geoRadius": "20000000"
+      },
+      "serviceType": "Software Development",
+      "priceRange": "$$"
+    })} />
 
     <!-- Organization Schema -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Muhammad Asif Javed",
-        "url": "https://maxifjaved.com",
-        "logo": "https://maxifjaved.com/img/og-image.jpg",
-        "description": "Full-Stack Developer & WebRTC Expert specializing in enterprise platforms, real-time systems, and cybersecurity solutions.",
-        "founder": {
-          "@type": "Person",
-          "name": "Muhammad Asif Javed"
-        },
-        "sameAs": [
-          "https://github.com/maxifjaved",
-          "https://linkedin.com/in/maxifjaved"
-        ],
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+923324647331",
-          "contactType": "Customer Service",
-          "email": "axif.javed@gmail.com",
-          "areaServed": "Global",
-          "availableLanguage": "English"
-        }
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Muhammad Asif Javed",
+      "url": "https://maxifjaved.com",
+      "logo": "https://maxifjaved.com/img/og-image.jpg",
+      "description": "Full-Stack Developer & WebRTC Expert specializing in enterprise platforms, real-time systems, and cybersecurity solutions.",
+      "founder": {
+        "@type": "Person",
+        "name": "Muhammad Asif Javed"
+      },
+      "sameAs": [
+        "https://github.com/maxifjaved",
+        "https://linkedin.com/in/maxifjaved"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+923324647331",
+        "contactType": "customer service",
+        "areaServed": "Global",
+        "availableLanguage": "en"
       }
-    </script>
+    })} />
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-VC7TMWR4LZ"
@@ -235,9 +223,12 @@ const {
       <link rel="preload" as="image" href="/img/future-ai.png" fetchpriority="high" />
     )}
     {Astro.url.pathname === '/about' && (
-      <link rel="preload" as="image" href="/img/future-ai.png" fetchpriority="high" />
+      <link rel="preload" as="image" href="/profile-image.jpg" fetchpriority="high" />
     )}
-    {Astro.url.pathname.startsWith('/blogs/') && ogImage && (
+    {Astro.url.pathname.startsWith('/blogs/') && !Astro.url.pathname.endsWith('/blogs/') && ogImage && (
+      <link rel="preload" as="image" href={ogImage} fetchpriority="high" />
+    )}
+    {Astro.url.pathname.startsWith('/projects/') && !Astro.url.pathname.endsWith('/projects/') && ogImage && (
       <link rel="preload" as="image" href={ogImage} fetchpriority="high" />
     )}
   </head>

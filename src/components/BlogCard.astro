@@ -13,9 +13,13 @@ export interface BlogCardType {
 
 interface Props {
   blog: BlogCardType;
+  index?: number; // Optional index to determine if above-fold
 }
 
-const { blog } = Astro.props;
+const { blog, index = 0 } = Astro.props;
+
+// First 3 blog cards are typically above the fold on most screens
+const isAboveFold = index < 3;
 ---
 
 <div
@@ -40,7 +44,8 @@ const { blog } = Astro.props;
           format="webp"
           quality={85}
           class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          loading="lazy"
+          loading={isAboveFold ? "eager" : "lazy"}
+          fetchpriority={isAboveFold ? "high" : undefined}
           decoding="async"
         />
       </a>

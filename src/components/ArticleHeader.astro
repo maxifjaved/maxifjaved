@@ -58,12 +58,19 @@ const [titlePart1, titlePart2] = title.split(": ");
       </div>
 
       <!-- Title -->
-      <h1 class="mb-4 text-4xl font-bold text-white lg:text-5xl">
+      <h1 class="mb-6 text-4xl font-bold text-white lg:text-5xl">
         {titlePart2 ? `${titlePart1}:` : titlePart1}
         {titlePart2 && (
           <span class="text-cyber-blue text-shadow-glow"> {titlePart2}</span>
         )}
       </h1>
+
+      <!-- Author Attribution (Prominent) -->
+      <div class="mb-4 flex items-center justify-center">
+        <span class="text-base text-gray-300">
+          By <span class="font-semibold text-white">{author.name}</span>
+        </span>
+      </div>
 
       <!-- Metadata -->
       <div
@@ -71,15 +78,11 @@ const [titlePart1, titlePart2] = title.split(": ");
       >
         <span>
           <i class="fas fa-calendar-alt mr-2"></i>
-          {date.toLocaleDateString("en-US", {
+          Published {date.toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",
           })}
-        </span>
-        <span>
-          <i class="fas fa-user mr-2"></i>
-          {author.name}
         </span>
         <span>
           <i class="fas fa-clock mr-2"></i>

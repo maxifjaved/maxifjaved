@@ -39,7 +39,7 @@ const pageData: PageData = {
       </li>
       <li><strong>Start Development Server:</strong>
         <pre><code>npm run dev</code></pre>
-        <p>This starts the development server using Browsersync. Open <a href="https://localhost:4321" target="_blank" rel="noopener noreferrer">https://localhost:4321</a> in your browser.</p>
+        <p>This starts the development server using Browsersync. The server will be available at <code>http://localhost:4321</code> in your browser.</p>
       </li>
       <li><strong>Build for Production:</strong>
         <pre><code>npm run build</code></pre>
@@ -127,8 +127,9 @@ const pageData: PageData = {
 };
 
 const title = "Documentation | Muhammad Asif Javed - Portfolio";
+const description = "Portfolio documentation for Muhammad Asif Javed. Setup guide, installation steps, and customization options for my web development work.";
 ---
 
-<MainLayout title={title}>
+<MainLayout title={title} description={description}>
   <PageSection pageData={pageData} />
 </MainLayout>

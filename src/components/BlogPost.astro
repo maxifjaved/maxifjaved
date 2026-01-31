@@ -128,7 +128,7 @@ const blogData: BlogType = {
     } -->
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {blogData.posts.map((post) => <BlogCard blog={post} />)}
+      {blogData.posts.map((post, index) => <BlogCard blog={post} index={index} />)}
     </div>
 
     <!-- Pagination -->

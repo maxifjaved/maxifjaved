@@ -297,4 +297,28 @@ const softwareSchema = {
 
   <SocialShare title={title} url={currentUrl} />
   <AuthorInfo author={authorData} />
+
+  <!-- Related Projects -->
+  <section id="related-projects" class="relative mb-16">
+    <div class="mx-auto max-w-4xl px-6">
+      <h2 class="text-2xl font-bold text-cyber-blue mb-6">Explore More Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <a href="/projects/contribute-signage" class="group border border-cyber-blue/20 bg-cyber-dark/70 rounded-lg p-4 hover:border-cyber-blue/50 transition-colors">
+          <h3 class="text-lg font-semibold text-cyber-blue mb-2 group-hover:text-white">Contribute Signage Platform</h3>
+          <p class="text-gray-300 text-sm">Web-based digital signage with drag-and-drop editor</p>
+        </a>
+        <a href="/projects/touchit-app-store" class="group border border-cyber-blue/20 bg-cyber-dark/70 rounded-lg p-4 hover:border-cyber-blue/50 transition-colors">
+          <h3 class="text-lg font-semibold text-cyber-blue mb-2 group-hover:text-white">TouchIT App Store 3.0</h3>
+          <p class="text-gray-300 text-sm">Custom Android app store for educational displays</p>
+        </a>
+        <a href="/projects/touchit-air" class="group border border-cyber-blue/20 bg-cyber-dark/70 rounded-lg p-4 hover:border-cyber-blue/50 transition-colors">
+          <h3 class="text-lg font-semibold text-cyber-blue mb-2 group-hover:text-white">TouchIT Air - iOS Mirroring</h3>
+          <p class="text-gray-300 text-sm">iOS screen mirroring for TouchIT displays</p>
+        </a>
+        <a href="/projects" class="group border border-cyber-blue/20 bg-cyber-dark/70 rounded-lg p-4 hover:border-cyber-blue/50 transition-colors flex items-center justify-center">
+          <span class="text-cyber-blue group-hover:text-white font-semibold">View All Projects →</span>
+        </a>
+      </div>
+    </div>
+  </section>
 </MainLayout>
