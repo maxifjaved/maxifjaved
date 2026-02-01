@@ -106,4 +106,4 @@ I'm always interested in discussing new opportunities, innovative projects, and 
 
 I bring **10 years of experience**, a **one-man army approach**, and a **proven track record** of delivering complex projects independently. Let's discuss how I can help bring your vision to life.
 
-[![Hire Me](https://img.shields.io/badge/Hire_Me-Available-green?style=for-the-badge)](mailto:axif.javed@gmail.com)
+[![Hire Me](https://img.shields.io/badge/Hire_Me-Available-green?style=for-the-badge)](mailto:axif.javed@gmail.com)# Force rebuild - Sun Feb  1 12:53:25 PKT 2026
