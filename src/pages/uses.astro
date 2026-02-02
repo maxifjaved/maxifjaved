@@ -1,0 +1,356 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+
+const breadcrumbItems = [
+  { name: "Home", url: "https://maxifjaved.com" },
+  { name: "Uses", url: "https://maxifjaved.com/uses" }
+];
+
+const computer = {
+  name: "Mac mini 2024",
+  specs: [
+    { label: "Chip", value: "Apple M4 Pro" },
+    { label: "Memory", value: "48 GB" },
+    { label: "Storage", value: "1 TB SSD" },
+    { label: "OS", value: "macOS Tahoe" }
+  ]
+};
+
+const peripherals = [
+  {
+    name: "Google P2718QC",
+    category: "Monitor (x2)",
+    icon: "fa-display"
+  },
+  {
+    name: "Logitech MX Master 4",
+    category: "Mouse",
+    icon: "fa-computer-mouse"
+  },
+  {
+    name: "Logitech MX Keys Mini",
+    category: "Keyboard",
+    icon: "fa-keyboard"
+  }
+];
+
+const audioVideo = [
+  {
+    name: "Logitech C922 Pro",
+    category: "Webcam",
+    icon: "fa-video"
+  },
+  {
+    name: "Boya PM500",
+    category: "Microphone",
+    icon: "fa-microphone"
+  },
+  {
+    name: "Gionee Handfree",
+    category: "Headphones",
+    icon: "fa-headphones"
+  }
+];
+
+const editors = [
+  {
+    name: "WebStorm",
+    category: "JavaScript/TypeScript IDE",
+    icon: "fa-code"
+  },
+  {
+    name: "PyCharm",
+    category: "Python IDE",
+    icon: "fa-code"
+  },
+  {
+    name: "PhpStorm",
+    category: "PHP IDE",
+    icon: "fa-code"
+  },
+  {
+    name: "DataGrip",
+    category: "Database IDE",
+    icon: "fa-database"
+  },
+  {
+    name: "WezTerm",
+    category: "Terminal Emulator",
+    icon: "fa-terminal"
+  },
+  {
+    name: "Docker",
+    category: "Containerization",
+    icon: "fa-cube"
+  },
+  {
+    name: "Ollama",
+    category: "Local LLMs",
+    icon: "fa-robot"
+  },
+  {
+    name: "MAMP Pro",
+    category: "Local Server Environment",
+    icon: "fa-server"
+  },
+  {
+    name: "Claude Code",
+    category: "AI Coding Assistant",
+    icon: "fa-wand-magic-sparkles"
+  }
+];
+
+const productivity = [
+  {
+    name: "Notion",
+    category: "Notes & Documentation",
+    icon: "fa-book"
+  },
+  {
+    name: "1Password",
+    category: "Password Manager",
+    icon: "fa-key"
+  },
+  {
+    name: "Raycast",
+    category: "Launcher & Productivity",
+    icon: "fa-bolt"
+  },
+  {
+    name: "Karabiner-Elements",
+    category: "Keyboard Customization",
+    icon: "fa-sliders"
+  },
+  {
+    name: "CleanShot X",
+    category: "Screenshot & Recording",
+    icon: "fa-camera"
+  }
+];
+
+const cloud = [
+  {
+    name: "Cloudflare",
+    category: "CDN & DNS",
+    icon: "fa-cloud"
+  },
+  {
+    name: "AWS",
+    category: "Cloud Infrastructure",
+    icon: "fa-cloud"
+  },
+  {
+    name: "Google Cloud Platform",
+    category: "Cloud Services",
+    icon: "fa-cloud"
+  }
+];
+
+const browsers = [
+  {
+    name: "Arc",
+    category: "Primary Browser",
+    icon: "fa-globe"
+  },
+  {
+    name: "Brave",
+    category: "Secondary Browser",
+    icon: "fa-shield"
+  }
+];
+---
+
+<MainLayout
+  title="Uses - My Development Setup | Muhammad Asif Javed"
+  description="Explore my development setup including Mac mini M4 Pro, JetBrains IDEs, productivity tools, and hardware I use for building software."
+  keywords="developer setup, uses page, Mac mini M4 Pro, WebStorm, PyCharm, Raycast, WezTerm, development hardware, coding setup, JetBrains IDE, developer tools"
+>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <!-- Hero Section -->
+  <section class="py-16 lg:py-24 relative overflow-hidden">
+    <div class="absolute w-96 h-96 bg-cyber-blue/5 rounded-full blur-3xl -top-20 -left-20 animate-pulse-slow"></div>
+
+    <div class="max-w-4xl mx-auto px-6 relative">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-cyber-blue text-shadow-glow font-future">
+        /uses
+      </h1>
+      <p class="text-gray-300 text-lg leading-relaxed max-w-2xl">
+        The hardware and software I use daily for development, content creation, and everything in between.
+      </p>
+    </div>
+  </section>
+
+  <!-- Computer Section -->
+  <section class="py-12 lg:py-16 relative">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-xl md:text-2xl font-bold mb-8 text-white flex items-center gap-3">
+        <i class="fas fa-desktop text-cyber-blue" aria-hidden="true"></i>
+        Computer
+      </h2>
+
+      <div class="bg-cyber-dark/40 border border-cyber-blue/20 rounded-lg p-6 md:p-8 hover:border-cyber-blue/40 transition-all duration-300">
+        <h3 class="text-xl font-bold text-cyber-blue mb-4">{computer.name}</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {computer.specs.map((spec) => (
+            <div class="text-center p-4 bg-cyber-dark/60 rounded-lg border border-cyber-blue/10">
+              <p class="text-gray-400 text-sm mb-1">{spec.label}</p>
+              <p class="text-white font-semibold">{spec.value}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Peripherals Section -->
+  <section class="py-12 lg:py-16 relative">
+    <div class="absolute w-64 h-64 bg-cyber-blue/5 rounded-full blur-3xl -bottom-20 -right-20 animate-pulse-slow" style="animation-delay: 1s;"></div>
+
+    <div class="max-w-4xl mx-auto px-6 relative">
+      <h2 class="text-xl md:text-2xl font-bold mb-8 text-white flex items-center gap-3">
+        <i class="fas fa-plug text-cyber-blue" aria-hidden="true"></i>
+        Peripherals
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {peripherals.map((item) => (
+          <div class="bg-cyber-dark/40 border border-cyber-blue/20 rounded-lg p-6 hover:border-cyber-blue/40 transition-all duration-300 flex items-center gap-4">
+            <div class="w-12 h-12 bg-cyber-blue/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <i class={`fas ${item.icon} text-cyber-blue text-xl`} aria-hidden="true"></i>
+            </div>
+            <div>
+              <p class="text-gray-400 text-sm">{item.category}</p>
+              <h3 class="text-white font-semibold">{item.name}</h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Audio/Video Section -->
+  <section class="py-12 lg:py-16 relative">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-xl md:text-2xl font-bold mb-8 text-white flex items-center gap-3">
+        <i class="fas fa-headset text-cyber-blue" aria-hidden="true"></i>
+        Audio / Video
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {audioVideo.map((item) => (
+          <div class="bg-cyber-dark/40 border border-cyber-blue/20 rounded-lg p-6 hover:border-cyber-blue/40 transition-all duration-300 flex items-center gap-4">
+            <div class="w-12 h-12 bg-cyber-blue/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <i class={`fas ${item.icon} text-cyber-blue text-xl`} aria-hidden="true"></i>
+            </div>
+            <div>
+              <p class="text-gray-400 text-sm">{item.category}</p>
+              <h3 class="text-white font-semibold">{item.name}</h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Development Tools Section -->
+  <section class="py-12 lg:py-16 relative">
+    <div class="absolute w-64 h-64 bg-cyber-blue/5 rounded-full blur-3xl -top-20 -left-20 animate-pulse-slow" style="animation-delay: 2s;"></div>
+
+    <div class="max-w-4xl mx-auto px-6 relative">
+      <h2 class="text-xl md:text-2xl font-bold mb-8 text-white flex items-center gap-3">
+        <i class="fas fa-code text-cyber-blue" aria-hidden="true"></i>
+        Development Tools
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {editors.map((item) => (
+          <div class="bg-cyber-dark/40 border border-cyber-blue/20 rounded-lg p-6 hover:border-cyber-blue/40 transition-all duration-300 flex items-center gap-4">
+            <div class="w-12 h-12 bg-cyber-blue/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <i class={`fas ${item.icon} text-cyber-blue text-xl`} aria-hidden="true"></i>
+            </div>
+            <div>
+              <p class="text-gray-400 text-sm">{item.category}</p>
+              <h3 class="text-white font-semibold">{item.name}</h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Productivity Section -->
+  <section class="py-12 lg:py-16 relative">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-xl md:text-2xl font-bold mb-8 text-white flex items-center gap-3">
+        <i class="fas fa-rocket text-cyber-blue" aria-hidden="true"></i>
+        Productivity
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {productivity.map((item) => (
+          <div class="bg-cyber-dark/40 border border-cyber-blue/20 rounded-lg p-6 hover:border-cyber-blue/40 transition-all duration-300 flex items-center gap-4">
+            <div class="w-12 h-12 bg-cyber-blue/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <i class={`fas ${item.icon} text-cyber-blue text-xl`} aria-hidden="true"></i>
+            </div>
+            <div>
+              <p class="text-gray-400 text-sm">{item.category}</p>
+              <h3 class="text-white font-semibold">{item.name}</h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cloud & Hosting Section -->
+  <section class="py-12 lg:py-16 relative">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-xl md:text-2xl font-bold mb-8 text-white flex items-center gap-3">
+        <i class="fas fa-cloud text-cyber-blue" aria-hidden="true"></i>
+        Cloud & Hosting
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {cloud.map((item) => (
+          <div class="bg-cyber-dark/40 border border-cyber-blue/20 rounded-lg p-6 hover:border-cyber-blue/40 transition-all duration-300 flex items-center gap-4">
+            <div class="w-12 h-12 bg-cyber-blue/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <i class={`fas ${item.icon} text-cyber-blue text-xl`} aria-hidden="true"></i>
+            </div>
+            <div>
+              <p class="text-gray-400 text-sm">{item.category}</p>
+              <h3 class="text-white font-semibold">{item.name}</h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Browsers Section -->
+  <section class="py-12 lg:py-16 pb-24 relative">
+    <div class="absolute w-64 h-64 bg-cyber-blue/5 rounded-full blur-3xl -bottom-20 -right-20 animate-pulse-slow" style="animation-delay: 3s;"></div>
+
+    <div class="max-w-4xl mx-auto px-6 relative">
+      <h2 class="text-xl md:text-2xl font-bold mb-8 text-white flex items-center gap-3">
+        <i class="fas fa-compass text-cyber-blue" aria-hidden="true"></i>
+        Browsers
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        {browsers.map((item) => (
+          <div class="bg-cyber-dark/40 border border-cyber-blue/20 rounded-lg p-6 hover:border-cyber-blue/40 transition-all duration-300 flex items-center gap-4">
+            <div class="w-12 h-12 bg-cyber-blue/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <i class={`fas ${item.icon} text-cyber-blue text-xl`} aria-hidden="true"></i>
+            </div>
+            <div>
+              <p class="text-gray-400 text-sm">{item.category}</p>
+              <h3 class="text-white font-semibold">{item.name}</h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</MainLayout>
