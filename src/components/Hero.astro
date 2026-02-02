@@ -7,7 +7,7 @@ export interface HeroType {
   description: string;
   img: string;
   label1: string;
-  label2: string;
+  rotatingLabels: string[];
   buttons: {
     label: string;
     href: string;
@@ -24,7 +24,7 @@ const heroData: HeroType = {
     "Building enterprise-grade platforms from educational collaboration systems to cybersecurity intelligence tools | 10+ years experience | Specialized in WebRTC, real-time technologies, and scalable architectures",
   img: "/img/future-ai.png",
   label1: "WebRTC Expert",
-  label2: "Solo Developer",
+  rotatingLabels: ["10+ Years", "9+ Projects", "Full-Stack Dev", "Enterprise Scale"],
   buttons: [
     {
       label: "View Projects",
@@ -165,13 +165,14 @@ const heroData: HeroType = {
             </div>
           </div>
           <div
-            x-data="{ visible: false }"
+            x-data={`{ visible: false, current: 0, labels: ${JSON.stringify(heroData.rotatingLabels)} }`}
+            x-init="setInterval(() => { current = (current + 1) % labels.length }, 2500)"
             x-intersect.once="visible = true"
             x-bind:class="visible ? 'animated fadeInRight delay100' : 'opacity-0'"
             class="absolute -left-10 md:-left-20 bottom-0 md:bottom-1/3 bg-cyber-dark/80 backdrop-blur-sm border border-cyber-blue/20 p-3 rounded-lg shadow-lg glow"
           >
-            <div class="text-cyber-blue text-sm font-bold font-future">
-              {heroData.label2}
+            <div class="text-cyber-blue text-sm font-bold font-future min-w-[100px]">
+              <span x-text="labels[current]" class="transition-opacity duration-300">{heroData.rotatingLabels[0]}</span>
             </div>
             <div class="w-32 h-2 bg-gray-700 rounded-full mt-1">
               <div id="progress2" class="h-2 bg-cyber-blue rounded-full"></div>
