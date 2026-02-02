@@ -18,7 +18,7 @@ export default defineConfig({
   },
   compressHTML: true,
   prefetch: {
-    prefetchAll: true,
-    defaultStrategy: 'viewport'
+    prefetchAll: false,
+    defaultStrategy: 'hover'
   },
 });

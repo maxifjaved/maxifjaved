@@ -184,31 +184,39 @@ const heroData: HeroType = {
 </section>
 
 <script>
-  // Progress Bar Animation
+  // Progress Bar Animation - only animates when visible for better INP
   function animateProgressBars() {
     const progress1 = document.getElementById("progress1");
     const progress2 = document.getElementById("progress2");
+    if (!progress1 || !progress2) return;
 
-    let width1 = 50;
-    let width2 = 70;
+    let animationId: number;
     const speed1 = 0.15;
     const speed2 = 0.16;
     const range = 20;
     const phaseOffset = Math.PI / 2;
 
     function updateProgress() {
-      width1 = 50 + Math.sin((Date.now() * speed1) / 200) * range;
-      width2 = 70 + Math.sin((Date.now() * speed2) / 150 + phaseOffset) * range;
-      if (progress1) {
-        progress1.style.width = `${width1}%`;
-      }
-      if (progress2) {
-        progress2.style.width = `${width2}%`;
-      }
-      requestAnimationFrame(updateProgress);
+      progress1.style.width = `${50 + Math.sin((Date.now() * speed1) / 200) * range}%`;
+      progress2.style.width = `${70 + Math.sin((Date.now() * speed2) / 150 + phaseOffset) * range}%`;
+      animationId = requestAnimationFrame(updateProgress);
     }
 
-    requestAnimationFrame(updateProgress);
+    // Only animate when visible using IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animationId = requestAnimationFrame(updateProgress);
+        } else {
+          cancelAnimationFrame(animationId);
+        }
+      });
+    });
+
+    const heroSection = progress1.closest('section') || document.getElementById('home');
+    if (heroSection) {
+      observer.observe(heroSection);
+    }
   }
 
   window.addEventListener("load", animateProgressBars);
