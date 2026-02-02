@@ -36,14 +36,14 @@ import MainLayout from "../layouts/MainLayout.astro";
             href="/"
             class="inline-flex items-center justify-center cyber-btn bg-cyber-blue hover:bg-cyber-blue/80 text-cyber-dark font-bold py-3 px-8 transition-all duration-300 glow"
           >
-            <i class="fas fa-home mr-2"></i>
+            <i class="fas fa-home mr-2" aria-hidden="true"></i>
             Return Home
           </a>
           <a
             href="/projects"
             class="inline-flex items-center justify-center cyber-btn bg-transparent border border-cyber-blue text-cyber-blue hover:bg-cyber-blue/10 font-bold py-3 px-8 transition-all duration-300 glow"
           >
-            <i class="fas fa-folder mr-2"></i>
+            <i class="fas fa-folder mr-2" aria-hidden="true"></i>
             View Projects
           </a>
         </div>
@@ -62,12 +62,16 @@ import MainLayout from "../layouts/MainLayout.astro";
   </section>
 
   <script>
-    // Display current timestamp
+    // Display current timestamp using locale-aware formatting
     document.addEventListener("DOMContentLoaded", () => {
       const timestampElement = document.getElementById("timestamp");
       if (timestampElement) {
         const now = new Date();
-        timestampElement.textContent = now.toISOString();
+        const formatter = new Intl.DateTimeFormat(undefined, {
+          dateStyle: "medium",
+          timeStyle: "long",
+        });
+        timestampElement.textContent = formatter.format(now);
       }
     });
   </script>

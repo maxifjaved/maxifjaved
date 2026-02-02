@@ -28,7 +28,7 @@ const contactFormData: ContactFormType = {
         name: "name",
         label: "Full Name",
         type: "text",
-        placeholder: "John Doe",
+        placeholder: "John Doe…",
         required: true,
       },
       {
@@ -36,7 +36,7 @@ const contactFormData: ContactFormType = {
         name: "email",
         label: "Email Address",
         type: "email",
-        placeholder: "you@example.com",
+        placeholder: "you@example.com…",
         required: true,
       },
       {
@@ -44,7 +44,7 @@ const contactFormData: ContactFormType = {
         name: "subject",
         label: "Subject",
         type: "text",
-        placeholder: "Project Inquiry",
+        placeholder: "Project Inquiry…",
         required: true,
       },
       {
@@ -52,7 +52,7 @@ const contactFormData: ContactFormType = {
         name: "message",
         label: "Message",
         type: "textarea",
-        placeholder: "Tell us about your project...",
+        placeholder: "Tell us about your project…",
         required: true,
         rows: 5,
       },
@@ -105,16 +105,17 @@ const contactFormData: ContactFormType = {
                     name={field.name}
                     rows={field.rows}
                     required={field.required}
-                    class="mt-1 w-full px-4 py-3 bg-cyber-dark/50 border border-cyber-blue/20 rounded-md text-gray-300 focus:border-cyber-blue focus:ring-cyber-blue/50 transition-all duration-300"
+                    class="mt-1 w-full px-4 py-3 bg-cyber-dark/50 border border-cyber-blue/20 rounded-md text-gray-300 focus:border-cyber-blue focus-visible:ring-2 focus-visible:ring-cyber-blue/50 transition-all duration-300"
                     placeholder={field.placeholder}
                   />
                 ) : (
                   <input
-                    type={field.type as "text" | "text"}
+                    type={field.type as "text" | "email"}
                     id={field.id}
                     name={field.name}
                     required={field.required}
-                    class="mt-1 w-full px-4 py-3 bg-cyber-dark/50 border border-cyber-blue/20 rounded-md text-gray-300 focus:border-cyber-blue focus:ring-cyber-blue/50 transition-all duration-300"
+                    autocomplete={field.name === "name" ? "name" : field.name === "email" ? "email" : undefined}
+                    class="mt-1 w-full px-4 py-3 bg-cyber-dark/50 border border-cyber-blue/20 rounded-md text-gray-300 focus:border-cyber-blue focus-visible:ring-2 focus-visible:ring-cyber-blue/50 transition-all duration-300"
                     placeholder={field.placeholder}
                   />
                 )}

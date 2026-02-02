@@ -55,13 +55,14 @@ const currentPath = Astro.url.pathname;
         @click="mobileMenuOpen = !mobileMenuOpen"
         :aria-expanded="mobileMenuOpen"
         aria-label="Toggle mobile menu"
-        class="lg:hidden text-cyber-blue focus:outline-none"
+        class="lg:hidden text-cyber-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyber-blue"
       >
-        <i class="fas fa-bars text-2xl" x-show="!mobileMenuOpen"></i>
+        <i class="fas fa-bars text-2xl" x-show="!mobileMenuOpen" aria-hidden="true"></i>
         <i
           class="fas fa-times text-2xl"
           style="display: none;"
-          x-show="mobileMenuOpen"></i>
+          x-show="mobileMenuOpen"
+          aria-hidden="true"></i>
       </button>
     </div>
 

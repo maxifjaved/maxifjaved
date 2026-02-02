@@ -32,7 +32,7 @@ const { service, index } = Astro.props;
     <div
       class="w-12 h-12 rounded-full bg-cyber-blue/20 border border-cyber-blue flex items-center justify-center mb-4 glow"
     >
-      <i class={`${service.icon} text-cyber-blue text-xl`}></i>
+      <i class={`${service.icon} text-cyber-blue text-xl`} aria-hidden="true"></i>
     </div>
     <h3
       class="text-xl font-bold mb-2 text-cyber-blue"
@@ -45,7 +45,7 @@ const { service, index } = Astro.props;
       {
         service.features.map((feature) => (
           <li>
-            <i class="fas fa-check text-cyber-blue mr-2" />
+            <i class="fas fa-check text-cyber-blue mr-2" aria-hidden="true" />
             {feature}
           </li>
         ))
