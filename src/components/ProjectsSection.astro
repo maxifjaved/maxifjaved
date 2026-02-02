@@ -77,10 +77,10 @@ const filterTabs = [
             <div
               x-show={`activeTab === 'all' || activeTab === '${project.category}'`}
               x-transition
-              class="group relative opacity-0 w-full max-w-sm"
-              x-data="{ visible: false }"
+              class="group relative w-full max-w-sm"
+              x-data="{ visible: false, init() { this.$el.classList.add('opacity-0') } }"
               x-intersect.once="visible = true"
-              x-bind:class={`visible ? 'animated fadeInUp delay-${(index + 1) * 100}' : 'opacity-0'`}
+              x-bind:class="visible ? 'animated fadeInUp delay-' + '${(index + 1) * 100}' : 'opacity-0'"
             >
               <div
                 class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"

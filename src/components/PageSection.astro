@@ -49,8 +49,8 @@ const { pageData, sectionId = pageData.title.toLowerCase().replace(/\s+/g, '-') 
 >
   <div class="max-w-7xl mx-auto px-6">
     <div
-      class="max-w-4xl mx-auto border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl py-12 px-8 opacity-0"
-      x-data="{ visible: false }"
+      class="max-w-4xl mx-auto border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl py-12 px-8"
+      x-data="{ visible: false, init() { this.$el.classList.add('opacity-0') } }"
       x-intersect.once="visible = true"
       x-bind:class="visible ? 'animated fadeInUp delay300' : 'opacity-0'"
     >

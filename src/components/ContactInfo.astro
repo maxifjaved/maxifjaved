@@ -94,10 +94,10 @@ const contactInfoData: ContactInfoType = {
       {
         contactInfoData.contacts.map((contact) => (
           <div
-            class="group relative opacity-0"
-            x-data="{ visible: false }"
+            class="group relative"
+            x-data="{ visible: false, init() { this.$el.classList.add('opacity-0') } }"
             x-intersect.once="visible = true"
-            x-bind:class={`visible ? 'animated fadeInUp delay${contact.delay}' : 'opacity-0'`}
+            x-bind:class="visible ? 'animated fadeInUp delay' + '${contact.delay}' : 'opacity-0'"
           >
             <div class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 h-full relative hover:border-cyber-blue/50 transition-all duration-300 text-center">
