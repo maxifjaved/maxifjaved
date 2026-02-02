@@ -91,61 +91,67 @@ const aboutData: AboutType = {
             <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
             <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
             <div class="w-3 h-3 rounded-full bg-green-500"></div>
-            <div class="ml-4 text-cyber-blue text-sm">developer.config.js</div>
+            <div class="ml-4 text-cyber-blue text-sm">developer.toml</div>
           </div>
 
           <div class="font-mono text-sm">
+            <div class="mb-3">
+              <span class="text-gray-500"># Developer Profile</span>
+            </div>
+            <div class="mb-3">
+              <span class="text-orange-400">[developer]</span>
+            </div>
             <div class="mb-2">
-              <span class="text-pink-400">export</span>{" "}
-              <span class="text-pink-400">const</span>{" "}
-              <span class="text-yellow-400">developer</span>{" "}
-              <span class="text-blue-400">=</span>{" "}
-              <span class="text-orange-400">{"{"}</span>
+              <span class="text-green-400">name</span>{" "}
+              <span class="text-gray-400">=</span>{" "}
+              <span class="text-blue-300">"{aboutData.about.name}"</span>
             </div>
-            <div class="mb-2 pl-4">
-              <span class="text-green-400">name</span>:{" "}
-              <span class="text-blue-300">"{aboutData.about.name}"</span>,
+            <div class="mb-2">
+              <span class="text-green-400">location</span>{" "}
+              <span class="text-gray-400">=</span>{" "}
+              <span class="text-blue-300">"{aboutData.about.livesIn}"</span>
             </div>
-            <div class="mb-2 pl-4">
-              <span class="text-green-400">location</span>:{" "}
-              <span class="text-blue-300">"{aboutData.about.livesIn}"</span>,
+            <div class="mb-2">
+              <span class="text-green-400">experience</span>{" "}
+              <span class="text-gray-400">=</span>{" "}
+              <span class="text-blue-300">"{aboutData.about.experience}"</span>
             </div>
-            <div class="mb-2 pl-4">
-              <span class="text-green-400">experience</span>:{" "}
-              <span class="text-blue-300">"{aboutData.about.experience} years"</span>,
+            <div class="mb-4">
+              <span class="text-green-400">projects_delivered</span>{" "}
+              <span class="text-gray-400">=</span>{" "}
+              <span class="text-purple-400">{aboutData.about.projects}</span>
             </div>
-            <div class="mb-2 pl-4">
-              <span class="text-green-400">projects_delivered</span>:{" "}
-              <span class="text-purple-400">{aboutData.about.projects}</span>,
-            </div>
-            <div class="mb-2 pl-4">
-              <span class="text-green-400">stack</span>:{" "}
+            <div class="mb-2">
+              <span class="text-green-400">stack</span>{" "}
+              <span class="text-gray-400">=</span>{" "}
               <span class="text-orange-400">[</span>
             </div>
-            {aboutData.about.expertise.map((tech, index) => (
-              <div class="mb-1 pl-8">
-                <span class="text-blue-300">"{tech}"</span>
-                {index < aboutData.about.expertise.length - 1 && <span class="text-gray-400">,</span>}
-              </div>
-            ))}
             <div class="mb-2 pl-4">
-              <span class="text-orange-400">]</span>,
+              {aboutData.about.expertise.map((tech, index) => (
+                <span>
+                  <span class="text-blue-300">"{tech}"</span>
+                  {index < aboutData.about.expertise.length - 1 && <span class="text-gray-400">, </span>}
+                </span>
+              ))}
             </div>
-            <div class="mb-2 pl-4">
-              <span class="text-green-400">specializes_in</span>:{" "}
-              <span class="text-orange-400">[</span>
-            </div>
-            {aboutData.about.industries.map((industry, index) => (
-              <div class="mb-1 pl-8">
-                <span class="text-blue-300">"{industry}"</span>
-                {index < aboutData.about.industries.length - 1 && <span class="text-gray-400">,</span>}
-              </div>
-            ))}
-            <div class="mb-2 pl-4">
+            <div class="mb-4">
               <span class="text-orange-400">]</span>
             </div>
+            <div class="mb-2">
+              <span class="text-green-400">specializes_in</span>{" "}
+              <span class="text-gray-400">=</span>{" "}
+              <span class="text-orange-400">[</span>
+            </div>
+            <div class="mb-2 pl-4">
+              {aboutData.about.industries.map((industry, index) => (
+                <span>
+                  <span class="text-blue-300">"{industry}"</span>
+                  {index < aboutData.about.industries.length - 1 && <span class="text-gray-400">, </span>}
+                </span>
+              ))}
+            </div>
             <div>
-              <span class="text-orange-400">{"}"}</span>
+              <span class="text-orange-400">]</span>
             </div>
           </div>
         </div>
