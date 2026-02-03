@@ -6,8 +6,8 @@ export interface HeroType {
   subtitle: string;
   description: string;
   img: string;
-  label1: string;
-  rotatingLabels: string[];
+  skillsLabels: string[];
+  experienceLabels: string[];
   buttons: {
     label: string;
     href: string;
@@ -23,8 +23,8 @@ const heroData: HeroType = {
   description:
     "Building enterprise-grade platforms from educational collaboration systems to cybersecurity intelligence tools | 10+ years experience | Specialized in WebRTC, real-time technologies, and scalable architectures",
   img: "/img/future-ai.png",
-  label1: "WebRTC Expert",
-  rotatingLabels: ["10+ Years", "9+ Projects", "Full-Stack Dev", "Enterprise Scale"],
+  skillsLabels: ["WebRTC Expert", "React & Node.js", "TypeScript Pro", "System Architect"],
+  experienceLabels: ["10+ Years Experience", "Digital Signage Expert", "Enterprise Solutions", "RAG & AI Systems"],
   buttons: [
     {
       label: "View Projects",
@@ -152,26 +152,22 @@ const heroData: HeroType = {
           </div>
 
           <div
-            x-data="{ visible: false }"
-            x-intersect.once="visible = true"
-            x-bind:class="visible ? 'animated fadeInLeft delay100' : 'opacity-0'"
-            class="absolute -right-10 md:-right-20 top-0 md:top-1/4 bg-cyber-dark/80 backdrop-blur-sm border border-cyber-blue/20 p-3 rounded-lg shadow-lg glow"
+            id="skills-badge"
+            class="absolute -right-10 md:-right-20 top-0 md:top-1/4 bg-cyber-dark/80 backdrop-blur-sm border border-cyber-blue/20 p-3 rounded-lg shadow-lg glow opacity-0"
           >
-            <div class="text-cyber-blue text-sm font-bold font-future">
-              {heroData.label1}
+            <div class="text-cyber-blue text-sm font-bold font-future min-w-[130px]">
+              <span id="skills-label">{heroData.skillsLabels[0]}</span>
             </div>
             <div class="w-32 h-2 bg-gray-700 rounded-full mt-1">
               <div id="progress1" class="h-2 bg-cyber-blue rounded-full"></div>
             </div>
           </div>
           <div
-            x-data={`rotatingLabels(${JSON.stringify(heroData.rotatingLabels)})`}
-            x-intersect.once="visible = true"
-            x-bind:class="visible ? 'animated fadeInRight delay100' : 'opacity-0'"
-            class="absolute -left-10 md:-left-20 bottom-0 md:bottom-1/3 bg-cyber-dark/80 backdrop-blur-sm border border-cyber-blue/20 p-3 rounded-lg shadow-lg glow"
+            id="experience-badge"
+            class="absolute -left-10 md:-left-20 bottom-0 md:bottom-1/3 bg-cyber-dark/80 backdrop-blur-sm border border-cyber-blue/20 p-3 rounded-lg shadow-lg glow opacity-0"
           >
-            <div class="text-cyber-blue text-sm font-bold font-future min-w-[100px]">
-              <span x-text="labels[current]" class="transition-opacity duration-300">{heroData.rotatingLabels[0]}</span>
+            <div class="text-cyber-blue text-sm font-bold font-future min-w-[150px]">
+              <span id="experience-label">{heroData.experienceLabels[0]}</span>
             </div>
             <div class="w-32 h-2 bg-gray-700 rounded-full mt-1">
               <div id="progress2" class="h-2 bg-cyber-blue rounded-full"></div>
@@ -220,4 +216,51 @@ const heroData: HeroType = {
   }
 
   window.addEventListener("load", animateProgressBars);
+
+  // Rotating Labels - vanilla JS implementation
+  function initRotatingBadges() {
+    const skillsLabels = ["WebRTC Expert", "React & Node.js", "TypeScript Pro", "System Architect"];
+    const experienceLabels = ["10+ Years Experience", "Digital Signage Expert", "Enterprise Solutions", "RAG & AI Systems"];
+
+    // Setup skills badge (right side)
+    const skillsLabel = document.getElementById("skills-label");
+    const skillsBadge = document.getElementById("skills-badge");
+
+    // Setup experience badge (left side)
+    const experienceLabel = document.getElementById("experience-label");
+    const experienceBadge = document.getElementById("experience-badge");
+
+    if (!skillsLabel || !skillsBadge || !experienceLabel || !experienceBadge) return;
+
+    let skillsIndex = 0;
+    let experienceIndex = 0;
+
+    // Fade in badges when visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          skillsBadge.classList.remove("opacity-0");
+          skillsBadge.classList.add("animated", "fadeInLeft", "delay100");
+          experienceBadge.classList.remove("opacity-0");
+          experienceBadge.classList.add("animated", "fadeInRight", "delay100");
+          observer.disconnect();
+        }
+      });
+    });
+    observer.observe(skillsBadge);
+
+    // Rotate skills labels every 2.5 seconds
+    setInterval(() => {
+      skillsIndex = (skillsIndex + 1) % skillsLabels.length;
+      skillsLabel.textContent = skillsLabels[skillsIndex];
+    }, 2500);
+
+    // Rotate experience labels every 3 seconds (offset timing for visual interest)
+    setInterval(() => {
+      experienceIndex = (experienceIndex + 1) % experienceLabels.length;
+      experienceLabel.textContent = experienceLabels[experienceIndex];
+    }, 3000);
+  }
+
+  window.addEventListener("load", initRotatingBadges);
 </script>
