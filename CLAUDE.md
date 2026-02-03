@@ -28,6 +28,12 @@ This is an Astro project with:
 - Content collections for projects and blogs
 - Component-based architecture
 
+## Workflow Rules
+
+- **Do NOT** run `bun run dev` or start the dev server unless explicitly asked
+- **Do NOT** commit changes unless explicitly asked
+- After making changes, wait for user instructions before running any commands
+
 ## AI Development Notes
 
 - Use `astro add` for adding integrations

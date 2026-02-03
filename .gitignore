@@ -18,11 +18,10 @@ bun-debug.log*
 # node_modules is already ignored above
 
 # environment variables
-.env
-.env.production
 
 # macOS-specific files
 .DS_Store
 
 # jetbrains setting folder
 .idea/
+config.bat

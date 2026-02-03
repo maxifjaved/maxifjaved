@@ -18,7 +18,7 @@ const { service, index } = Astro.props;
   class="group relative"
   x-data="{ visible: false, init() { this.$el.classList.add('opacity-0') } }"
   x-intersect.once="visible = true"
-  x-bind:class="visible ? 'animated fadeInUp delay' + '${(index + 1) * 100}' : 'opacity-0'"
+  x-bind:class={`visible ? 'animated fadeInUp delay${(index + 1) * 100}' : 'opacity-0'`}
   role="article"
   aria-labelledby={`service-title-${index}`}
 >

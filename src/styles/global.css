@@ -24,6 +24,10 @@
   button, [role="button"] {
     cursor: pointer;
   }
+  /* Hide Alpine.js elements until initialized (prevents FOUC) */
+  [x-cloak] {
+    display: none !important;
+  }
   /* Screen reader only utility class for accessibility */
   .sr-only {
     position: absolute;

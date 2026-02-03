@@ -57,10 +57,10 @@ const currentPath = Astro.url.pathname;
         aria-label="Toggle mobile menu"
         class="lg:hidden text-cyber-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyber-blue"
       >
-        <i class="fas fa-bars text-2xl" x-show="!mobileMenuOpen" aria-hidden="true"></i>
+        <i class="fas fa-bars text-2xl" x-show="!mobileMenuOpen" x-cloak aria-hidden="true"></i>
         <i
           class="fas fa-times text-2xl"
-          style="display: none;"
+          x-cloak
           x-show="mobileMenuOpen"
           aria-hidden="true"></i>
       </button>
@@ -70,8 +70,8 @@ const currentPath = Astro.url.pathname;
     <div
       x-show="mobileMenuOpen"
       x-transition
+      x-cloak
       class="lg:hidden mt-4 pb-4 font-future"
-      style="display:none;"
     >
       <nav class="flex flex-col space-y-4">
         {

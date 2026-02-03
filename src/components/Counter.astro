@@ -25,6 +25,7 @@ const counterData: CounterType[] = [
           class="text-4xl font-bold text-cyber-blue mb-2"
           x-data={`counter(${counter.value}, 3)`}
           x-intersect="startCounting"
+          x-cloak
         >
           <span x-text="current" class="tabular-nums">{counter.value}</span>
         </h3>
@@ -33,36 +34,3 @@ const counterData: CounterType[] = [
     </div>
   ))}
 </div>
-
-<script>
-  // Counter function
-  function counter(end: number, duration: number) {
-    return {
-      current: 0,
-      counting: false,
-      formatNumber(num: { toString: () => string; }) {
-        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-      },
-      startCounting() {
-        end = parseInt(end.toString().replace(/,/g, ""), 10);
-        if (this.counting || this.current >= end) return;
-        this.counting = true;
-        const start = this.current;
-        const range = end - start;
-        const startTime = performance.now();
-        const update = (now: number) => {
-          const elapsedTime = now - startTime;
-          if (elapsedTime < duration * 1000) {
-            const progress = elapsedTime / (duration * 1000);
-            this.current = Math.round(start + progress * range);
-            requestAnimationFrame(update);
-          } else {
-            this.current = end;
-            this.counting = false;
-          }
-        };
-        requestAnimationFrame(update);
-      },
-    };
-  }
-</script>
