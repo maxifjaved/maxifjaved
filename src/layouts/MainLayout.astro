@@ -271,6 +271,18 @@ const {
 
       // Counter Alpine.js Component
       document.addEventListener("alpine:init", () => {
+        // Rotating Labels Component for Hero badge
+        Alpine.data("rotatingLabels", (labels: string[]) => ({
+          current: 0,
+          visible: false,
+          labels: labels,
+          init() {
+            setInterval(() => {
+              this.current = (this.current + 1) % this.labels.length;
+            }, 2500);
+          }
+        }));
+
         Alpine.data("counter", (endValue: any, duration: number = 2) => ({
           current: 0,
           counting: false,
