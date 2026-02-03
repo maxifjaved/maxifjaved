@@ -247,9 +247,10 @@ const {
     <Footer />
     <BackToTop />
 
-    <script src="/src/scripts/vendors.js" defer></script>
     <script>
-      import Alpine from "alpinejs";
+      import "../scripts/vendors.js";
+    </script>
+    <script>
       import GLightbox from "glightbox";
 
       // Throttle utility for scroll performance
@@ -267,52 +268,6 @@ const {
       // Initialize GLightbox
       const lightbox = GLightbox({
         selector: ".glightbox",
-      });
-
-      // Counter Alpine.js Component
-      document.addEventListener("alpine:init", () => {
-        Alpine.data("counter", (endValue: any, duration: number = 2) => ({
-          current: 0,
-          counting: false,
-          end: parseInt(String(endValue).replace(/,/g, ""), 10),
-          init() {
-            // Trigger counting when element enters viewport
-            this.$root.addEventListener("intersect", () => {
-              if (!this.counting && this.current < this.end) {
-                this.startCounting();
-              }
-            });
-          },
-          formatNumber(num: { toLocaleString: (arg0: string) => any }) {
-            return num.toLocaleString("en-US");
-          },
-          startCounting() {
-            if (this.counting || this.current >= this.end) return;
-
-            // Skip animation if user prefers reduced motion
-            if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-              this.current = this.end;
-              return;
-            }
-
-            this.counting = true;
-            const start = this.current;
-            const range = this.end - start;
-            const startTime = performance.now();
-            const update = (now: number) => {
-              const elapsedTime = now - startTime;
-              if (elapsedTime < duration * 1000) {
-                const progress = elapsedTime / (duration * 1000);
-                this.current = Math.round(start + progress * range);
-                requestAnimationFrame(update.bind(this));
-              } else {
-                this.current = this.end;
-                this.counting = false;
-              }
-            };
-            requestAnimationFrame(update);
-          },
-        }));
       });
 
       // Smooth Scroll and Active Class Handling
