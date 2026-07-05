@@ -24,7 +24,7 @@
 
 ### Hero Section
 
-**Muhammad Asif Javed - Full-Stack Developer & Real-time Systems Expert**
+**Muhammad Asif Javed - WebRTC Expert & Full-Stack Developer**
 
 Building enterprise-grade platforms from educational collaboration systems to cybersecurity intelligence tools. 10+ years experience specialized in WebRTC, real-time technologies, and scalable architectures.
 

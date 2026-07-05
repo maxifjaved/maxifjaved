@@ -11,6 +11,17 @@ const breadcrumbItems = [
   { name: "Home", url: "https://maxifjaved.com" },
   { name: "About", url: "https://maxifjaved.com/about" }
 ];
+
+// ProfilePage marks /about as the canonical profile surface; mainEntity
+// resolves to the Person entity in MainLayout's schema graph.
+const profilePageSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": "https://maxifjaved.com/about#profilepage",
+  "name": "About Muhammad Asif Javed - WebRTC Expert & Full-Stack Developer",
+  "url": "https://maxifjaved.com/about",
+  "mainEntity": { "@id": "https://maxifjaved.com/#person" }
+};
 ---
 
 <MainLayout
@@ -18,6 +29,7 @@ const breadcrumbItems = [
   description="10+ years building enterprise WebRTC platforms, real-time systems, and cybersecurity solutions. Based in Lahore, Pakistan."
   keywords="Muhammad Asif Javed biography, WebRTC expert background, full-stack developer experience, real-time systems specialist, Lahore Pakistan developer story, solo developer expertise"
 >
+    <script type="application/ld+json" set:html={JSON.stringify(profilePageSchema)} />
     <Breadcrumb items={breadcrumbItems} />
     <AboutHero />
     <PersonalStory />
