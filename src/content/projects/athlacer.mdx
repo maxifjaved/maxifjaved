@@ -1,0 +1,111 @@
+---
+title: "Athlacer - Sports Venue Booking Platform"
+description: "Led development of Athlacer, a two-sided sports venue booking platform connecting players with venue owners across padel, cricket, football, and tennis — spanning a 57-screen React Native app, a 35-model Node.js/Prisma backend, and a TanStack Start admin dashboard."
+
+category: "mobile-apps"
+featured: false
+status: "in-progress"
+
+startDate: "2025-03"
+endDate: "2026-07"
+duration: "March 2025 - Present (ongoing)"
+
+role: "Lead Full-Stack & Mobile Developer (Contract)"
+teamSize: "Led development across mobile, backend, and admin; one backend collaborator and two mobile UI contributors assisted"
+
+technologies: ["React Native", "Node.js", "Express", "Prisma", "MySQL", "Firebase", "TanStack Start", "TypeScript"]
+tags: ["Sports Booking", "Mobile App", "React Native", "Marketplace", "Two-Sided Platform", "Booking System"]
+
+links:
+  liveUrl: "https://athlacer.com"
+  companyUrl: null
+  caseStudyUrl: null
+  demoUrl: null
+
+images:
+  featuredImage:
+    src: "/img/projects/athlacer-hero.jpg"
+    alt: "Athlacer sports venue booking mobile app"
+    width: 1200
+    height: 630
+  thumbnail:
+    src: "/img/projects/athlacer-thumb.jpg"
+    alt: "Athlacer app thumbnail"
+    width: 400
+    height: 300
+  gallery: []
+
+seo:
+  title: "Athlacer Sports Venue Booking App | Muhammad Asif Javed"
+  description: "Led mobile, backend, and admin development for Athlacer, a two-sided React Native venue booking app for padel, cricket, football, and tennis."
+  keywords: ["React Native app", "sports venue booking", "two-sided marketplace", "mobile app development", "Node.js Prisma backend", "TanStack Start admin"]
+
+businessContext:
+  client: "Confidential Client"
+  company: "Athlacer"
+  industry: "Sports & Recreation Technology"
+  userBase: "Players and venue owners booking padel, cricket, football, and tennis courts"
+
+keyAchievements:
+  - "Built a 57-screen React Native app serving both players and venue owners in a single codebase"
+  - "Designed a 35-model Prisma/MySQL backend covering venues, bookings, chat, and notifications"
+  - "Implemented slot-based booking with advance/remaining split payments and cancellation flows"
+  - "Integrated Firebase push notifications alongside in-app chat with read-status tracking"
+  - "Delivered a TanStack Start admin dashboard for back-office platform operations"
+  - "Built owner analytics with monthly booking/revenue charts using react-native-gifted-charts"
+
+metrics:
+  - label: "Mobile Screens Built"
+    value: "57"
+    description: "Player and venue-owner flows delivered in one React Native app"
+  - label: "Backend Data Models"
+    value: "35"
+    description: "Prisma schema on MySQL covering the full booking domain"
+  - label: "Sports Supported"
+    value: "4"
+    description: "Padel, cricket, football, and tennis venue bookings"
+  - label: "Platforms Delivered"
+    value: "3"
+    description: "Mobile app, backend API, and admin dashboard"
+
+keyFeatures:
+  - "Cross-platform mobile app for iOS and Android with player and owner roles"
+  - "Map-based venue discovery by location, sport, and availability"
+  - "Slot-based booking with advance/remaining split payments"
+  - "Role-based team access for venue-owner staff management"
+  - "In-app chat with read-receipt tracking between players and owners"
+  - "Firebase push notifications with an in-app notification center"
+  - "Owner analytics with monthly stats and revenue charts"
+  - "JWT and bcrypt authentication with OTP verification and token denylisting"
+
+impactResults:
+  - "Unified players and venue owners in one product, removing the need for separate apps"
+  - "Enabled frictionless booking from map discovery through split-payment checkout"
+  - "Gave venue owners day-to-day operational tooling, not just a booking funnel"
+  - "Kept players and owners connected via in-app chat and push notifications"
+  - "Delivered mobile, API, and admin as one coherent system across a year of active development"
+---
+
+## Overview
+
+Athlacer is a two-sided sports venue booking platform connecting players who want to play with the venue owners who run the courts, spanning padel, cricket, football, and tennis. Players discover venues on a map, pick a sport and an available time slot, then book and pay — with advance and remaining payment splits — directly from their phone. Venue owners list and manage their courts, set operating hours, pricing, amenities, and rules, open and block time slots, take and manage bookings, run a staff team with role-based access, and track their activity and revenue. The product spans a cross-platform mobile app, a Node.js backend API, and a web admin dashboard.
+
+As the contract engineer leading the build, I authored the React Native app covering both the player and owner experiences across 57 screens, the Express/Prisma backend built on a 35-model MySQL data layer with push notifications, OTP authentication, and image processing, and the TanStack Start admin dashboard. A backend collaborator and two mobile UI contributors assisted along the way.
+
+## Key Achievements
+
+The mobile app spans 57 screens and two complete role-based experiences within a single React Native codebase: a player flow covering map search, sport and slot selection, booking, payment, chat, and reviews, and a venue-owner flow covering venue creation, slot management, bookings, team access, and analytics.
+
+On the backend, I designed and built a Node.js/Express API modeling a 35-entity domain — venues, courts, sports, amenities, operating hours, rules, discounts, bookings, blocked slots, conversations and messages, notifications, roles, and team members — secured with JWT and bcrypt authentication, OTP verification, and token denylisting for secure logout. Booking itself uses AM/PM slot grouping with per-court and whole-venue/date blocking, and each booking carries advance, remaining, and final amounts with auto-calculation, validation, and owner- or player-initiated cancellation flows.
+
+Beyond the core booking flow, I built in-app chat with conversation and read-status tracking, integrated Firebase push notifications with device token registration and an in-app notifications center, and delivered owner analytics — activity summaries, monthly booking and revenue stats, and price/earnings charts. Role-based access lets venue owners assign roles to team members and manage staff access, backed by a dedicated roles/user-roles/team-members model. I also developed the TanStack Start web admin dashboard for back-office management, and handled image capture and processing end to end, from in-app camera, crop, and picker tooling on mobile to server-side resizing and optimization with `sharp`.
+
+## Technical Implementation
+
+The mobile app is built with React Navigation (native-stack and bottom-tabs), React Native Reanimated and Gesture Handler for fluid interactions, Zustand and Immer for state, and MMKV for fast local persistence. It uses `react-native-maps` with geolocation for venue discovery, Vision Camera plus image crop/picker tooling for photo capture, FlashList and FastImage for performant lists and imagery, and `react-native-gifted-charts` for owner analytics, with networking over Axios and multi-environment configuration (`local`/`dev`/`production`) for scripted release builds.
+
+The backend REST API is organized into controllers, routes, services, and middlewares over a Prisma schema of 35 models on MySQL, with `multer` and `sharp` handling image upload and processing, `zod` validating input, and the API documented with Swagger UI. The admin dashboard is a TypeScript web app built on the TanStack ecosystem — Start, Router, Query, Table, Form, and Store — with Vite, Tailwind CSS, and Radix UI primitives, Biome for linting and formatting, and Vitest for tests.
+
+## Impact & Results
+
+Athlacer unifies two distinct audiences — players booking courts and owners running them — in one product, removing the need for separate apps. The map-based discovery flow through slot booking and advance/remaining payment gives players a frictionless path to a booked court in a few taps, while slot and pricing management, staff roles, and revenue analytics turn the app into a day-to-day management tool for venue owners rather than just a booking funnel. In-app chat and Firebase push notifications keep both sides connected around bookings, and the mobile app, API, and admin dashboard have been delivered and integrated as one coherent system across a year of active, ongoing development.

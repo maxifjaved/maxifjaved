@@ -1,0 +1,121 @@
+---
+title: "Moburst.ai - Proprietary AI Marketing Tools Platform (Microservices + SSO)"
+description: "Architected and built the unified microservices platform behind Moburst's Growth Labs AI product suite - a centralized authentication service with single sign-on, a dual-language Auth SDK, a role-based portal, and an automated GCP deployment pipeline connecting four proprietary AI marketing tools under one login."
+
+category: "ai-marketing"
+featured: false
+status: "in-progress"
+
+startDate: "2025-12"
+endDate: "2026-07"
+duration: "8 months (ongoing)"
+
+role: "Full-Stack / AI Engineer (Solo)"
+teamSize: "Solo Developer (backend, frontend, database, infrastructure & DevOps - design excluded)"
+
+technologies: ["Python", "FastAPI", "TypeScript", "Bun", "PostgreSQL", "JWT", "Docker", "GCP"]
+tags: ["AI Marketing", "Microservices", "Single Sign-On", "Platform Engineering", "DevOps"]
+
+links:
+  liveUrl: "https://moburst.ai"
+  companyUrl: "https://www.moburst.com/"
+  caseStudyUrl: null
+  demoUrl: null
+
+images:
+  featuredImage:
+    src: "/img/projects/moburst-ai-platform-hero.jpg"
+    alt: "Moburst.ai platform dashboard showing the portal and connected AI tools"
+    width: 1200
+    height: 630
+  thumbnail:
+    src: "/img/projects/moburst-ai-platform-thumb.jpg"
+    alt: "Moburst.ai platform thumbnail"
+    width: 400
+    height: 300
+  gallery: []
+
+seo:
+  title: "Moburst.ai AI Marketing Platform | Muhammad Asif Javed"
+  description: "Microservices platform with SSO, dual-language Auth SDK, and RBAC powering Moburst's suite of proprietary AI marketing tools."
+  keywords: ["microservices architecture", "single sign-on", "Auth SDK", "FastAPI platform", "RBAC", "GCP deployment", "AI marketing platform"]
+
+businessContext:
+  client: "Moburst"
+  company: "Moburst"
+  industry: "AI Marketing / Digital Marketing Agency"
+  userBase: "Moburst internal teams and agency clients (including Samsung, Reddit, Uber, and Google accounts) across four AI tools"
+
+keyAchievements:
+  - "Designed a microservices architecture of six independently deployable services running across three full environments (production, staging, development)"
+  - "Built a centralized authentication service in FastAPI with JWT plus secure session cookies, bcrypt password hashing, and async SQLAlchemy over PostgreSQL"
+  - "Implemented a handoff-token single sign-on flow allowing one login to seamlessly enter any tool via short-lived, single-use tokens"
+  - "Created a reusable Auth SDK in two languages (Python and TypeScript/Bun) so any new tool integrates with platform auth by dropping in the SDK"
+  - "Engineered a five-tier role-based access control model, including restricted client-facing views"
+  - "Standardized deployment with scripted, atomic-swap releases and automatic rollback on failed health checks across all environments"
+
+metrics:
+  - label: "Microservices"
+    value: "6"
+    description: "Auth, portal, and four AI tools, each independently deployable"
+  - label: "Environments"
+    value: "3"
+    description: "Production, staging, and development, each with the same deploy toolchain"
+  - label: "RBAC Tiers"
+    value: "5"
+    description: "Super Admin, Admin, Account Manager, Client, and User"
+  - label: "Backup Retention"
+    value: "30 days"
+    description: "Automated daily backups to cloud storage"
+
+keyFeatures:
+  - "Handoff-token SSO with single-use, short-lived tokens for seamless cross-tool entry"
+  - "JWT plus session-cookie hybrid authentication with bcrypt hashing"
+  - "Cross-domain iframe sessions configured for secure embedded delivery"
+  - "Iframe tool grid composing all assigned tools into one portal dashboard"
+  - "Five-tier RBAC with restricted client-facing views"
+  - "Admin suite with user management, tool registry, and activity logs"
+  - "Dual-language Auth SDK (Python and TypeScript/Bun) with a unified permissions object"
+  - "Atomic-swap deploys with health-gated automatic rollback"
+  - "Automated daily backups with 30-day retention and point-in-time recovery on auth databases"
+  - "Centralized secrets management via GCP Secret Manager"
+
+impactResults:
+  - "Unified four standalone AI products into a single, cohesive platform with one identity, one dashboard, and one operations model"
+  - "Cut new-tool onboarding to a drop-in SDK integration, removing the need to design authentication for each new product"
+  - "Delivered true single sign-on across multiple domains and iframes, eliminating repeated logins as users move between tools"
+  - "Achieved consistent, low-risk deployments through atomic releases with automatic rollback"
+  - "Enabled multi-tenant client access with role-scoped views, so agency clients see only their own reports and opportunities"
+---
+
+## Overview
+
+Moburst.ai is the unified platform that powers Moburst's suite of proprietary AI marketing tools - the engineering behind the agency's "Growth Labs" AI product unit, publicly launched in February 2026 for a mobile-first marketing agency whose clients include Samsung, Reddit, Uber, and Google. The platform brings four distinct AI products (answer-engine visibility analytics, social intelligence, community engagement automation, and automated content publishing) under a single login, a shared design language, and one operations backbone.
+
+The core engineering challenge was not any single tool but the connective tissue: a centralized authentication service with single sign-on, a reusable SDK so each tool can plug into auth in minutes, a portal that composes the tools into one dashboard, and a repeatable deployment and backup model across production, staging, and development. The platform was delivered solo, end to end - service design, databases, frontend, cloud infrastructure, and DevOps.
+
+## Key Achievements
+
+- Designed a microservices architecture of six independently deployable services (auth, portal, and four AI tools) running across production, staging, and development environments
+- Built a centralized authentication service in FastAPI with JWT plus secure session cookies, bcrypt password hashing, async SQLAlchemy over PostgreSQL, and Alembic migrations
+- Implemented a handoff-token SSO flow allowing a user to authenticate once at the portal and seamlessly enter any tool via short-lived, single-use tokens, with no re-login even across separate domains and iframes
+- Created a reusable Auth SDK in two languages (Python middleware/decorators and TypeScript/Bun) so any new tool integrates with platform auth by dropping in the SDK rather than reimplementing security
+- Engineered a five-tier role-based access control model (Super Admin, Admin, Account Manager, Client, User), including restricted client-facing views
+- Established a disaster-recovery posture with automated daily backups (30-day retention) and point-in-time recovery on the authentication databases
+
+## Technical Implementation
+
+The platform follows a clean separation between an authentication core and the products it secures. The Auth Service (FastAPI + PostgreSQL) owns identity, sessions, the tool registry, and activity logging, exposing endpoints for login/registration, session validation, handoff-token issuance, and handoff-token exchange. Every other service is a thin consumer of this core.
+
+The SSO handoff flow is the architectural centerpiece: a user logs in once at the Portal, and when they open a tool, the Portal requests a short-lived, single-use handoff token from the Auth Service and loads the tool with that token. The tool's embedded SDK exchanges the token for the user's profile and permissions, then establishes its own session cookie configured for secure cross-domain iframe use - keeping each tool stateless with respect to credentials while delivering a one-login experience.
+
+The Auth SDK ships in both Python and TypeScript so the polyglot toolset (FastAPI services plus a Bun/TypeScript service) shares one integration contract, surfacing a consistent user object with helpers like `is_admin()` and `has_permission()`. Infrastructure runs on Google Cloud Compute Engine VMs behind Caddy/Nginx reverse proxies, with Cloudflare handling DNS and SSL termination. Stateful data lives in managed Cloud SQL (PostgreSQL for auth/portal, MySQL for the high-volume automation tool) and local SQLite for lighter analytics tools. Releases use a build-package-swap pattern with health-gated rollback, and systemd manages each service process.
+
+## Impact & Results
+
+- Unified four standalone AI products into a single, cohesive platform with one identity, one dashboard, and one operations model
+- Cut new-tool onboarding to a drop-in SDK integration, removing the need to design authentication for each new product
+- Delivered true single sign-on across multiple domains and iframes, eliminating repeated logins as users move between tools
+- Achieved consistent, low-risk deployments through atomic releases with automatic rollback, reducing the blast radius of any bad deploy
+- Hardened data safety with daily off-VM backups (30-day retention) and point-in-time recovery on the critical auth databases
+- Enabled multi-tenant client access with role-scoped views, so agency clients see only their own reports and opportunities

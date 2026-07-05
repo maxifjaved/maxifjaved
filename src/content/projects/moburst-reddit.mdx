@@ -1,0 +1,122 @@
+---
+title: "AI Community Engagement Automation Engine"
+description: "Built an AI-driven community engagement automation engine that lets a marketing team participate in online communities, primarily Reddit, at agency scale - generating contextual AI contributions, scheduling them with human-like timing, enforcing per-community rules, and streaming every automated session live via an embedded noVNC viewer."
+
+category: "ai-marketing"
+featured: false
+status: "in-progress"
+
+startDate: "2026-01"
+endDate: "2026-07"
+duration: "7 months (ongoing)"
+
+role: "Full-Stack / AI Engineer (Solo)"
+teamSize: "Solo Developer (backend, frontend, AI integration, browser automation, infrastructure - design excluded)"
+
+technologies: ["Bun", "TypeScript", "React 19", "Playwright", "Prisma", "MySQL", "Google Gemini", "GCP"]
+tags: ["AI Marketing", "Browser Automation", "Reddit Automation", "Content Generation", "Live Observability"]
+
+links:
+  liveUrl: "https://moburst.ai"
+  companyUrl: "https://www.moburst.com/"
+  caseStudyUrl: null
+  demoUrl: null
+
+images:
+  featuredImage:
+    src: "/img/projects/moburst-reddit-hero.jpg"
+    alt: "Community engagement automation dashboard with live session viewer"
+    width: 1200
+    height: 630
+  thumbnail:
+    src: "/img/projects/moburst-reddit-thumb.jpg"
+    alt: "Community engagement automation engine thumbnail"
+    width: 400
+    height: 300
+  gallery: []
+
+seo:
+  title: "AI Community Engagement Engine | Muhammad Asif Javed"
+  description: "AI-driven community engagement engine generating contextual Reddit contributions with human-like Playwright automation and live session viewing."
+  keywords: ["Reddit automation", "AI content generation", "Playwright automation", "community engagement AI", "Bun React 19", "browser automation platform"]
+
+businessContext:
+  client: "Moburst"
+  company: "Moburst"
+  industry: "AI Marketing / Digital Marketing Agency"
+  userBase: "Moburst agency teams running community engagement campaigns at scale, primarily on Reddit"
+
+keyAchievements:
+  - "Built a full-stack automation platform on Bun with a custom Bun.serve() backend and a React 19 + React Router 7 dashboard"
+  - "Integrated Google Gemini for contextual content generation with randomized style (anecdotes, follow-up questions, practical suggestions)"
+  - "Engineered a managed browser-automation layer with Playwright, using persistent per-account sessions and human-like interaction pacing"
+  - "Built a campaign system targeting specific communities, with parsing and enforcement of each community's rules before any contribution is queued"
+  - "Created a live in-browser session viewer using Xvfb, x11vnc, and noVNC so operators can watch automated sessions in real time"
+  - "Modeled the domain in Prisma over MySQL (Cloud SQL) covering profiles, accounts, campaigns, sessions, and job history"
+
+metrics:
+  - label: "Domain Models"
+    value: "5"
+    description: "Profiles, accounts, campaigns, sessions, and job history in Prisma"
+  - label: "Live Session Displays"
+    value: "2"
+    description: "Separate virtual displays for manual setup and batch automation via noVNC"
+  - label: "Automation Engine"
+    value: "Playwright"
+    description: "Persistent per-account sessions with human-like timing and jitter"
+  - label: "Engineering Team"
+    value: "Solo"
+    description: "Backend, frontend, AI integration, browser automation, and infrastructure by one engineer"
+
+keyFeatures:
+  - "Gemini-generated contributions tailored to the surrounding conversation"
+  - "Style randomization (anecdotes, questions, suggestions) for natural variety"
+  - "Playwright session orchestration with persistent per-account profiles"
+  - "Human-like pacing with timing variance and jitter, not bursty actions"
+  - "Concurrency-limited job queue with naturalized scheduling"
+  - "TOTP/2FA support with Slack-relayed one-time codes"
+  - "Live in-browser session viewer (Xvfb + x11vnc + noVNC) across manual and batch displays"
+  - "Per-community rule parsing and enforcement before queueing"
+  - "Real-time operations dashboard showing profile status, success rates, queue depth, and campaign metrics"
+  - "SSO via the shared Auth SDK, deployed on GCP behind Caddy/Cloudflare with daily backups"
+
+impactResults:
+  - "Scaled hands-on community engagement from a manual, one-at-a-time task to an orchestrated, observable pipeline"
+  - "Produced natural, varied contributions through Gemini generation with deliberate style randomization instead of canned templates"
+  - "Kept humans in control with a live in-browser session viewer and full observe/intervene capability"
+  - "Enforced community rules automatically, reducing the risk of non-compliant participation"
+  - "Delivered real-time operational visibility into success rates, queues, and campaign metrics"
+---
+
+## Overview
+
+This AI-driven community engagement automation engine lets a marketing team participate in online communities, primarily Reddit, at agency scale - generating genuinely contextual contributions with AI, scheduling them with natural, human-like timing, and enforcing per-community rules before anything is published. It replaces hours of manual, repetitive community management with an orchestrated, observable system, while keeping a human firmly in control through a real-time operations dashboard and a live in-browser session viewer.
+
+The engineering centerpiece is reliable browser automation at scale paired with AI content generation. Each engagement is composed by Google Gemini against the surrounding conversation, with deliberate variation in style and intent, then carried out through a managed Playwright browser session with realistic, human-like pacing. The entire system is observable: operators can watch any automated session live, in the browser, via an embedded noVNC stream. The platform was built solo on a modern Bun, React 19, and Prisma stack.
+
+## Key Achievements
+
+- Built a full-stack automation platform on Bun - a custom Bun.serve() backend with a React 19 + React Router 7 dashboard (Ant Design and Tailwind CSS)
+- Integrated Google Gemini for contextual content generation, producing community-appropriate contributions with randomized style to keep output natural and varied
+- Engineered a managed browser-automation layer with Playwright, using persistent per-account sessions and human-like interaction pacing (timing variance, jitter, realistic navigation)
+- Built a campaign system targeting specific communities, with parsing and enforcement of each community's rules before any contribution is queued
+- Created a live in-browser session viewer using Xvfb, x11vnc, and noVNC, so operators can watch automated sessions in real time directly in the dashboard
+- Modeled the domain in Prisma over MySQL (Cloud SQL), covering profiles, accounts, campaigns, sessions, and job history, and implemented TOTP/2FA handling with one-time codes relayed through Slack
+
+## Technical Implementation
+
+The platform is built on Bun end to end - a single runtime serving both the API via custom routing and the React 19 dashboard. State lives in MySQL on Cloud SQL, modeled through Prisma, covering accounts, profiles, campaigns, sessions, and a complete job history that powers the analytics views.
+
+The AI layer handles content generation: every contribution is composed by Google Gemini against the actual surrounding conversation, with explicit style randomization - personal anecdotes, follow-up questions, practical suggestions - so output reads like a real person rather than a template.
+
+Execution runs through Playwright with persistent per-account browser sessions and human-like pacing - timing variance and jitter rather than machine-gun actions. A concurrency-limited job queue schedules work so activity is naturally spaced rather than bursty. Critically, the whole thing is observable: an Xvfb, x11vnc, and noVNC pipeline streams the live browser into the dashboard, with separate virtual displays for one-time manual setup (logins, 2FA) and ongoing batch automation, so a human can watch and intervene at any time. TOTP/2FA is handled with one-time codes relayed via Slack when an account session needs establishing.
+
+Around the engine sits a campaign and compliance system. Each target community's rules are parsed and checked before a contribution is queued, keeping participation within each community's stated norms. The React dashboard ties it together with real-time status, success rates, queue depth, and per-campaign metrics, and the service integrates with Moburst.ai SSO via the platform Auth SDK.
+
+## Impact & Results
+
+- Scaled hands-on community engagement from a manual, one-at-a-time task to an orchestrated, observable pipeline
+- Produced natural, varied contributions through Gemini generation with deliberate style randomization, not canned templates
+- Kept humans in control with a live in-browser session viewer and full observe/intervene capability
+- Enforced community rules automatically, reducing the risk of non-compliant participation
+- Delivered real-time operational visibility - success rates, queues, and campaign metrics at a glance

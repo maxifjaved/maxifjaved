@@ -1,7 +1,7 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from "astro:content";
 
 const blogCollection = defineCollection({
-  type: 'content', // MDX files
+  type: "content", // MDX files
   schema: z.object({
     // Core metadata
     title: z.string(),
@@ -24,11 +24,13 @@ const blogCollection = defineCollection({
       bio: z.string(),
       avatar: z.string().url().optional(),
       expertise_areas: z.array(z.string()).optional(),
-      social_links: z.object({
-        twitter: z.string().optional(),
-        linkedin: z.string().optional(),
-        github: z.string().optional(),
-      }).optional(),
+      social_links: z
+        .object({
+          twitter: z.string().optional(),
+          linkedin: z.string().optional(),
+          github: z.string().optional(),
+        })
+        .optional(),
     }),
 
     // Reading experience
@@ -42,13 +44,15 @@ const blogCollection = defineCollection({
       width: z.number(),
       height: z.number(),
     }),
-    midArticleImage: z.object({
-      src: z.string(),
-      alt: z.string(),
-      caption: z.string().optional(),
-      width: z.number(),
-      height: z.number(),
-    }).optional(),
+    midArticleImage: z
+      .object({
+        src: z.string(),
+        alt: z.string(),
+        caption: z.string().optional(),
+        width: z.number(),
+        height: z.number(),
+      })
+      .optional(),
 
     // SEO
     keywords: z.array(z.string()).default([]),
@@ -56,21 +60,33 @@ const blogCollection = defineCollection({
     focusKeyword: z.string().optional(),
 
     // Enhanced content
-    faqs: z.array(z.object({
-      question: z.string(),
-      answer: z.string(),
-    })).optional(),
-    citations: z.array(z.object({
-      id: z.number(),
-      title: z.string(),
-      url: z.string().url(),
-      accessed: z.string(),
-      type: z.enum(['official-docs', 'reference', 'article']),
-    })).optional(),
-    relatedPosts: z.array(z.object({
-      slug: z.string(),
-      title: z.string(),
-    })).default([]),
+    faqs: z
+      .array(
+        z.object({
+          question: z.string(),
+          answer: z.string(),
+        }),
+      )
+      .optional(),
+    citations: z
+      .array(
+        z.object({
+          id: z.number(),
+          title: z.string(),
+          url: z.string().url(),
+          accessed: z.string(),
+          type: z.enum(["official-docs", "reference", "article"]),
+        }),
+      )
+      .optional(),
+    relatedPosts: z
+      .array(
+        z.object({
+          slug: z.string(),
+          title: z.string(),
+        }),
+      )
+      .default([]),
 
     // Geo/AI optimization
     quickAnswer: z.string().optional(),
@@ -79,16 +95,28 @@ const blogCollection = defineCollection({
 });
 
 const projectCollection = defineCollection({
-  type: 'content', // MDX files
+  type: "content", // MDX files
   schema: z.object({
     // Core metadata
     title: z.string(),
     description: z.string(),
 
     // Classification
-    category: z.enum(['edtech', 'interactive-displays', 'business-intelligence', 'cybersecurity', 'insurance-tech']),
+    category: z.enum([
+      "edtech",
+      "interactive-displays",
+      "business-intelligence",
+      "cybersecurity",
+      "insurance-tech",
+      "ai-marketing",
+      "cloud-infrastructure",
+      "mobile-apps",
+      "3d-visualization",
+    ]),
     featured: z.boolean().default(false),
-    status: z.enum(['completed', 'in-progress', 'archived']).default('completed'),
+    status: z
+      .enum(["completed", "in-progress", "archived"])
+      .default("completed"),
 
     // Timeline
     startDate: z.string(), // YYYY-MM format
@@ -125,12 +153,16 @@ const projectCollection = defineCollection({
         width: z.number().default(400),
         height: z.number().default(300),
       }),
-      gallery: z.array(z.object({
-        src: z.string(),
-        alt: z.string(),
-        width: z.number().default(800),
-        height: z.number().default(600),
-      })).default([]),
+      gallery: z
+        .array(
+          z.object({
+            src: z.string(),
+            alt: z.string(),
+            width: z.number().default(800),
+            height: z.number().default(600),
+          }),
+        )
+        .default([]),
     }),
 
     // SEO
@@ -150,11 +182,15 @@ const projectCollection = defineCollection({
 
     // Achievements & Metrics
     keyAchievements: z.array(z.string()).default([]),
-    metrics: z.array(z.object({
-      label: z.string(),
-      value: z.string(),
-      description: z.string(),
-    })).default([]),
+    metrics: z
+      .array(
+        z.object({
+          label: z.string(),
+          value: z.string(),
+          description: z.string(),
+        }),
+      )
+      .default([]),
 
     // Features (list in frontmatter, details in MDX)
     keyFeatures: z.array(z.string()).default([]),

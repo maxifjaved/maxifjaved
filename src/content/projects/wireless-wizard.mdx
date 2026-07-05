@@ -1,0 +1,107 @@
+---
+title: "Wireless Wizard - Cable-Free Screen Sharing"
+description: "Built the product and integration layer behind Wireless Wizard, a cable-free screen mirroring system for TouchIT interactive LED displays. A Windows PC broadcasts its screen over LAN/Wi-Fi to an Android-powered LED, which sends touch input back, all gated by a custom licensing platform with continuous device verification."
+
+category: "interactive-displays"
+featured: false
+status: "completed"
+
+startDate: "2019-07"
+endDate: "2020-12"
+duration: "18 months (2019-2020)"
+
+role: "Full-Stack Developer / Integrator (Solo)"
+teamSize: "Solo developer (Android client included two branding commits from a colleague)"
+
+technologies: ["Electron", "Node.js/Express", "MongoDB", "React", "C++ (TightVNC)", "Android NDK", "JWT", "Apollo GraphQL"]
+tags: ["Screen Sharing", "Interactive Displays", "Electron", "Licensing Platform", "Android", "Cable-Free Casting"]
+
+links:
+  liveUrl: "https://wirelesswizard.net/"
+  companyUrl: "https://touchittechnologies.com/"
+  caseStudyUrl: null
+  demoUrl: null
+
+images:
+  featuredImage:
+    src: "/img/projects/wireless-wizard-hero.jpg"
+    alt: "Wireless Wizard cable-free screen sharing for interactive LED displays"
+    width: 1200
+    height: 630
+  thumbnail:
+    src: "/img/projects/wireless-wizard-thumb.jpg"
+    alt: "Wireless Wizard thumbnail"
+    width: 400
+    height: 300
+  gallery: []
+
+seo:
+  title: "Wireless Wizard - Screen Sharing | Muhammad Asif Javed"
+  description: "Cable-free screen mirroring for TouchIT interactive displays over LAN/Wi-Fi, with a custom licensing platform and Android viewer."
+  keywords: ["Wireless Wizard", "screen mirroring", "interactive displays", "TouchIT Technologies", "Electron app", "licensing platform", "Android VNC"]
+
+businessContext:
+  client: "TouchIT Technologies"
+  company: "TouchIT Technologies"
+  industry: "Interactive Display Hardware / EdTech"
+  userBase: "Schools and meeting rooms using TouchIT interactive LED displays"
+
+keyAchievements:
+  - "Designed the end-to-end cable-free mirroring architecture spanning a Windows screen server, an Android LED viewer, and a custom licensing backend"
+  - "Built the Electron desktop control app with MAC-bound license registration and one-click launch of the screen server"
+  - "Implemented continuous license enforcement with 20-second re-verification, giving admins real-time revocation control"
+  - "Forked and rebranded the TightVNC server (C++) into the Wireless Wizard screen engine"
+  - "Forked the iiordanov bVNC Android stack into the Wireless Wizard LED viewer"
+  - "Built the licensing/admin backend (Node.js/Express + MongoDB) with JWT auth and a React admin dashboard"
+
+metrics:
+  - label: "License Re-verification"
+    value: "Every 20 seconds"
+    description: "Desktop app continuously re-validates license and device against the backend"
+  - label: "Network Dependency"
+    value: "Zero"
+    description: "Runs entirely over local LAN/Wi-Fi with no internet connection required"
+  - label: "Shared Platform Reuse"
+    value: "2 products"
+    description: "Licensing backend also serves TouchIT Air registration and version checks"
+
+keyFeatures:
+  - "Cable-free screen mirroring and control over LAN/Wi-Fi"
+  - "No extra hardware or internet connection required"
+  - "Electron control app with tray-based registration and one-click launch"
+  - "MAC-bound license activation with continuous re-verification"
+  - "Remote license revocation within seconds"
+  - "TightVNC-based rebranded screen server for Windows"
+  - "bVNC-based Android LED viewer"
+  - "React admin dashboard for license and user management"
+
+impactResults:
+  - "Eliminated cables, dongles, and extra hardware for screen mirroring on TouchIT LED displays"
+  - "Enabled use in offline schools and meeting rooms with no internet dependency"
+  - "Gave administrators real-time control over licensed seats via revocable, MAC-bound activation"
+  - "Reused the licensing/admin backend across the TouchIT product line, reducing duplicated infrastructure"
+---
+
+## Overview
+
+Wireless Wizard lets a teacher or presenter mirror and control their computer on an interactive LED display without any cables and without an internet connection, using only a shared LAN or Wi-Fi network. The presenter's Windows PC broadcasts its screen, and the Android-powered LED connects, displays it, and sends touch input back, turning the board into a fully interactive wireless extension of the computer. It ships as a pair of apps, a "Wizard" on the computer and a receiver on the LED, that find each other on the network and connect with a click.
+
+The product was assembled from proven open-source remote-desktop foundations: a TightVNC-based screen server and a bVNC-based Android viewer, rebranded and wired together into a packaged, license-activated commercial product. The contribution documented here is the product and integration layer, turning those engines into a shippable "Wireless Wizard," building the Electron control app that registers and launches them, and standing up the entire custom licensing and admin platform that gates every install.
+
+## Key Achievements
+
+The end-to-end architecture pairs a Windows screen-broadcast server with an Android LED viewer, both license-gated through a single custom backend, so a PC screen reaches the board over plain LAN/Wi-Fi with no extra hardware or cloud dependency. The Electron desktop control app is a frameless, tray-resident panel that captures the user's license key, email, and device name, reads the machine's MAC address, registers the device against the backend, and launches the bundled screen server via a child process.
+
+License enforcement is continuous rather than one-time: the desktop app re-validates its license and device every 20 seconds against the backend, and if a device is revoked it clears local state and locks the user out, giving administrators true remote control over deployed seats. The TightVNC server was forked and rebranded into the Wireless Wizard screen engine, reworking product naming, registry paths, log names, and setup dialogs, and adjusting runtime defaults for the classroom mirroring scenario. The Android viewer is a fork of the iiordanov remote-desktop-clients (bVNC/aRDP/aSPICE/Opaque) stack, built through the Android NDK/Gradle pipeline with TouchIT branding.
+
+## Technical Implementation
+
+The desktop control app is built on the electron-boilerplate Webpack/Babel toolchain, using `fs-jetpack` for filesystem access. On registration it POSTs the license, email, device name, and MAC address to the backend, persists the result locally, and auto-starts the screen server on subsequent launches. The screen server itself is the rebranded TightVNC fork, shipped as an executable and launched by the Electron app rather than run standalone.
+
+The licensing and admin platform is a Node.js/Express API backed by MongoDB (via Mongoose), exposing authenticated (JWT + Passport) endpoints with Joi validation and Swagger documentation. Its data model captures licenses, users, screens, and devices: a license carries status, a device limit, and temporary/expiry fields, while a screen ties a registered device (MAC address and title) to a license and user. Supporting services include Cloudinary for uploads, Twilio for SMS, Nodemailer for email, and Winston for logging. The React admin dashboard, built on react-boilerplate with styled-components and Apollo GraphQL, is the operator console for issuing license keys and managing users, screens, and settings. The same backend and admin console were extended to serve TouchIT Air registration and an app version-check endpoint, making this the shared activation and update service behind multiple TouchIT products.
+
+## Impact & Results
+
+Wireless Wizard removed the primary barrier to screen mirroring adoption in classrooms and meeting rooms: no cables, no dongles, and no additional hardware, all running over the existing local network. Because it has no internet dependency, it fits schools and meeting rooms with restricted or offline connectivity. The licensing model gives administrators real, revocable control over who can mirror and from which machine, enforced through per-key device limits, expiry support, and the 20-second re-verification loop. By reusing the same licensing and admin backend for TouchIT Air, the project also reduced duplicated infrastructure across the broader TouchIT product line.
+
+The product is an integration built on established open-source foundations, the TightVNC server (GPL) for the Windows screen engine and the iiordanov remote-desktop-clients project (GPL) for the Android viewer, alongside electron-boilerplate and react-boilerplate for the app shells. The work documented here is the TouchIT-specific product layer on top of them: rebranding the VNC server and Android client, the Electron registration-and-launch control app, MAC-bound license activation with continuous re-verification, and the complete custom licensing and admin platform that also served other TouchIT products.

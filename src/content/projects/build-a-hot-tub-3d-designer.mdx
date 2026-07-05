@@ -1,0 +1,111 @@
+---
+title: "Build A Hot Tub - Interactive 3D Pool & Hot Tub Configurator"
+description: "Built a real-time, browser-based 3D configurator letting customers design a custom pool or hot tub visually, featuring a custom WebGL water-rendering pipeline, persistent shareable designs, PDF export, and a full commerce layer."
+
+category: "3d-visualization"
+featured: false
+status: "completed"
+
+startDate: "2024-06"
+endDate: "2024-09"
+duration: "4 months"
+
+role: "Full-Stack & 3D Developer (Solo)"
+teamSize: "Solo Developer (design excluded)"
+
+technologies: ["Next.js", "React", "TypeScript", "Three.js", "React Three Fiber", "GLSL Shaders", "Firebase", "Stripe"]
+tags: ["3D Configurator", "WebGL", "Three.js", "E-commerce", "Product Visualization", "Real-time Rendering"]
+
+links:
+  liveUrl: "https://app.buildahottub.com"
+  companyUrl: "https://buildahottub.com"
+  caseStudyUrl: null
+  demoUrl: null
+
+images:
+  featuredImage:
+    src: "/img/projects/build-a-hot-tub-3d-designer-hero.jpg"
+    alt: "Build A Hot Tub 3D pool and spa configurator interface"
+    width: 1200
+    height: 630
+  thumbnail:
+    src: "/img/projects/build-a-hot-tub-3d-designer-thumb.jpg"
+    alt: "Build A Hot Tub 3D configurator thumbnail"
+    width: 400
+    height: 300
+  gallery: []
+
+seo:
+  title: "Build A Hot Tub 3D Configurator | Muhammad Asif Javed"
+  description: "Solo-built a real-time 3D pool and hot tub configurator with custom WebGL water shaders, Firebase auth, Stripe payments, and PDF export."
+  keywords: ["Three.js configurator", "React Three Fiber", "WebGL water shaders", "3D product visualization", "Next.js commerce app", "Stripe integration"]
+
+businessContext:
+  client: "Confidential Client"
+  company: "Build A Hot Tub"
+  industry: "3D Product Visualization / Home & Leisure E-commerce"
+  userBase: "Customers designing custom pools and hot tubs online before purchase"
+
+keyAchievements:
+  - "Built an interactive 3D design editor with React Three Fiber for real-time water-feature placement"
+  - "Engineered a custom WebGL water-rendering pipeline with hand-written GLSL shaders and Reflector/Refractor passes"
+  - "Implemented published graphics research techniques, including SIGGRAPH water-flow animation and oblique near-plane clipping"
+  - "Built persistent, shareable design state with Redux Toolkit and pako/gzip-compressed serialization"
+  - "Delivered a full commerce layer: Firebase auth, Stripe payments, PDF export, and HubSpot/Drip CRM sync"
+  - "Shipped the entire 3D engine, editor, backend, and commerce layer solo in 4 months"
+
+metrics:
+  - label: "Development Timeline"
+    value: "4 months"
+    description: "Solo-built from 3D engine to commerce layer"
+  - label: "Team Size"
+    value: "1"
+    description: "Sole developer across 3D, backend, and commerce"
+  - label: "CRM Integrations"
+    value: "2"
+    description: "Automated contact sync to HubSpot and Drip"
+  - label: "Rendering Techniques"
+    value: "3"
+    description: "SIGGRAPH water-flow, oblique-clip reflections, and projective texturing"
+
+keyFeatures:
+  - "Interactive 3D scene with real-time placement and arrangement of water-feature models"
+  - "Custom GLSL water shaders with Reflector/Refractor render passes"
+  - "Model library of hot tubs, waterfalls, fountains, jets, steps, and lighting as GLB assets"
+  - "Custom PivotControls gizmos for translate/position interactions in the viewport"
+  - "Persistent, shareable design state via Redux Toolkit and gzip-compressed serialization"
+  - "PDF and print export of completed designs and spec sheets"
+  - "Firebase authentication with protected routes and account management"
+  - "Stripe payments and Cloud Functions-based CRM sync to HubSpot and Drip"
+
+impactResults:
+  - "Delivered a no-install, browser-based 3D configurator replacing static catalogs and quotes"
+  - "Shipped a complete commercial product: 3D editor, auth, payments, PDF export, and CRM in one app"
+  - "Achieved convincing real-time WebGL water rendering based on published graphics research"
+  - "Automated lead capture by syncing customers into HubSpot and Drip"
+  - "Owned the full stack solo: 3D engine, editor UX, backend, payments, and deployment"
+---
+
+## Overview
+
+Build A Hot Tub is a real-time, browser-based 3D configurator that lets customers design a custom pool or hot tub visually, with no software to install. Users assemble a water feature from a library of 3D models — hot tubs, infinity edges, waterblades, wall waterfalls, fountains, jets, steps, and lighting — place and arrange them in an interactive 3D scene with a real WebGL water surface, then save, share, export a PDF spec, and purchase, all in one application. The hard problem was delivering convincing, performant 3D in a browser: an interactive editor with object-placement gizmos, a custom water-rendering pipeline with real reflections and refractions, persistent design state, and shareable saved designs, wrapped in a full commercial product with authentication, payments, PDF generation, and CRM integration. I delivered it end to end as the sole developer — the 3D engine, the editor, the backend, and the commerce layer.
+
+## Key Achievements
+
+The centerpiece of the build is the interactive 3D design editor, built with React Three Fiber and Three.js, supporting real-time placement, arranging, and configuration of water-feature components in a 3D scene. Objects are manipulated through custom `PivotControls` gizmos for intuitive translate/position interactions directly in the viewport, drawing from a model library — hot tubs, infinity edges, waterblades, wall waterfalls, fountains, jets, multiple step styles, and lighting — loaded as GLB assets via drei's `useGLTF` with preloading for responsiveness.
+
+The most specialized achievement is the custom WebGL water-rendering pipeline: hand-written GLSL vertex and fragment shaders paired with dedicated `Reflector` and `Refractor` render passes, implementing real techniques from published graphics research — Vlachos' SIGGRAPH water-flow animation, oblique near-plane clipping for correct planar reflections, and projective texture mapping. This is genuine real-time graphics engineering rather than an off-the-shelf water component.
+
+Beyond the 3D engine, I built persistent, shareable design state using Redux Toolkit and redux-persist, with designs serialized and gzip-compressed via pako so they survive reloads and can be saved, restored, and shared. PDF and print export of completed designs and specifications was implemented with jsPDF, html2canvas, and react-to-print. I also developed the full authentication system on Firebase — sign-up, sign-in, password reset, and account management with protected routes — integrated Stripe for purchasing configured designs, and built Firebase Cloud Functions for backend operations and CRM integration, syncing contacts to HubSpot and Drip.
+
+## Technical Implementation
+
+The application is a Next.js 13 (App Router) TypeScript app whose centerpiece is a React Three Fiber 3D scene. The editor composes a pool or spa from the model library, with each model loaded as a GLB asset through drei's `useGLTF`, and a UI built with Mantine and Tailwind CSS, with GSAP driving animation and transitions.
+
+The water surface is a custom pipeline rather than a flat texture: hand-written GLSL vertex/fragment shaders plus dedicated `Reflector` and `Refractor` render passes produce a believable, animated surface that reacts to the scene, drawing on flow-based surface animation, oblique near-plane clipping for correct planar reflections, and projective texture mapping. State is managed with Redux Toolkit and persisted with redux-persist, with the full design serialized and gzip-compressed with pako (`pako.gzip`/`pako.inflate`) so it can be saved to a file, restored, and shared. Output is handled with jsPDF, html2canvas, and react-to-print, turning a configured design into a downloadable PDF spec sheet.
+
+The backend and commerce layer runs on Firebase for authentication and data, with Firebase Cloud Functions handling server-side operations: Stripe payment flows, secure user-account deletion, and CRM sync pushing contacts into HubSpot and Drip. The whole product is deployed on Vercel with analytics and speed insights.
+
+## Impact & Results
+
+Build A Hot Tub gives customers a no-install, browser-based way to design a custom pool or hot tub visually, instead of relying on static catalogs or quotes. The finished product bundles a 3D editor, authentication, payments, PDF export, and CRM integration into a single application, with convincing real-time water rendering in WebGL achieved through a custom shader and Reflector/Refractor pipeline based on published graphics research. Save, restore, share, and PDF export let designs move smoothly from exploration to purchase to spec sheet, while automated CRM sync to HubSpot and Drip captures leads without manual entry. The entire product — 3D engine, editor UX, backend, payments, and deployment — was owned and delivered solo in four months.

@@ -1,0 +1,109 @@
+---
+title: "Just Annotate - Offline Whiteboard App"
+description: "Shipped Just Annotate, an offline-first annotation and digital-whiteboard app for TouchIT interactive LED displays, tablets, and phones, live on Google Play. Built on open-source drawing and app foundations, extended with custom tools, Pixabay image import, PDF export, Capacitor Android packaging, and a NestJS backend."
+
+category: "interactive-displays"
+featured: false
+status: "completed"
+
+startDate: "2020-10"
+endDate: "2022-10"
+duration: "2 years (intermittent)"
+
+role: "Full-Stack & Mobile Developer (Sole TouchIT Developer)"
+teamSize: "Solo (product assembled on several open-source foundations)"
+
+technologies: ["React", "TypeScript", "Redux Toolkit", "Fabric.js", "Ionic Capacitor", "NestJS", "MongoDB", "Redis"]
+tags: ["Annotation", "Digital Whiteboard", "Interactive Displays", "Android App", "Offline-First", "EdTech"]
+
+links:
+  liveUrl: null
+  companyUrl: "https://touchittechnologies.com/"
+  caseStudyUrl: null
+  demoUrl: null
+
+images:
+  featuredImage:
+    src: "/img/projects/just-annotate-hero.jpg"
+    alt: "Just Annotate offline annotation and whiteboard app for interactive displays"
+    width: 1200
+    height: 630
+  thumbnail:
+    src: "/img/projects/just-annotate-thumb.jpg"
+    alt: "Just Annotate thumbnail"
+    width: 400
+    height: 300
+  gallery: []
+
+seo:
+  title: "Just Annotate - Offline Whiteboard App | Muhammad Asif Javed"
+  description: "Offline-first annotation and whiteboard app for TouchIT interactive displays, tablets, and phones, live on Google Play. Solo build."
+  keywords: ["Just Annotate", "digital whiteboard", "annotation app", "TouchIT Technologies", "offline-first app", "Android app", "interactive displays"]
+
+businessContext:
+  client: "TouchIT Technologies"
+  company: "TouchIT Technologies"
+  industry: "Interactive Display Hardware / EdTech"
+  userBase: "Teachers and presenters using TouchIT interactive LED displays, tablets, and phones"
+
+keyAchievements:
+  - "Shipped a live, multi-platform annotation app on Google Play spanning phones, tablets, and interactive LED panels"
+  - "Integrated and extended a Fabric.js drawing canvas with custom tools including arrow, marker-brush, and eraser"
+  - "Designed an 18-color palette and 13 template backgrounds for instant whiteboarding"
+  - "Made the app offline-first with on-device saves and PDF/image export"
+  - "Implemented in-app APK self-update so deployed display fleets update without manual reinstalls"
+  - "Built the backend's auth and workbook-sync modules on a forked NestJS server"
+
+metrics:
+  - label: "Color Palette"
+    value: "18 colors"
+    description: "Selectable annotation colors with adjustable pen/brush size"
+  - label: "Template Backgrounds"
+    value: "13 templates"
+    description: "Lined, grid, blackboard, music staff, and more"
+  - label: "Platform Reach"
+    value: "Phones, tablets, LED panels"
+    description: "Single codebase serving all three device types"
+  - label: "Availability"
+    value: "Live on Google Play"
+    description: "Published under the TouchIT Technologies account"
+
+keyFeatures:
+  - "Fabric.js drawing canvas with pencil, marker, line, arrow, shapes, and eraser tools"
+  - "Undo/redo history"
+  - "18-color palette with adjustable pen/brush size"
+  - "13 template backgrounds for instant whiteboarding"
+  - "Image annotation with Pixabay search import"
+  - "Split-screen dual-canvas mode"
+  - "PDF and image export"
+  - "Offline-first local saves via Capacitor Filesystem"
+  - "In-app APK self-update for managed display fleets"
+
+impactResults:
+  - "Delivered an offline-first whiteboard usable in classrooms and meeting rooms without reliable connectivity"
+  - "Enabled self-updating display fleets via in-app APK updates, reducing maintenance on deployed hardware"
+  - "Provided a full save-edit-export workflow through reusable workbooks and PDF/image export"
+  - "Owned the product end to end as the sole TouchIT developer across app, mobile packaging, and backend"
+---
+
+## Overview
+
+Just Annotate is an offline-first annotation and digital-whiteboard app for TouchIT Technologies' interactive LED displays, tablets, and phones. Users draw, write, and sketch on a full canvas, choosing from template backgrounds like lined, grid, blackboard, and music staff, annotating over imported images, and exporting finished work to PDF or image before saving it back as a reusable "workbook" for later editing. The entire annotation engine runs on-device and persists to the local filesystem, so it works on classroom and meeting-room panels with no network dependency.
+
+This was a product-integration build rather than a drawing engine and backend written from scratch: the app was assembled, customized, and shipped on top of proven open-source foundations, the react-sketch Fabric.js canvas and salgum1114's react-design-editor for drawing, the react-boilerplate architecture for the app and web portal, and a fork of Surmon's open-source NestJS server (nodepress) for the backend. The work was the integration and product layer: the annotation UX and tools, Pixabay image import, PDF/image export, Capacitor Android packaging with in-app self-update, and the backend's authentication and workbook-sync modules, shipped end to end as the sole TouchIT developer to Google Play.
+
+## Key Achievements
+
+The annotation workspace was built on the open-source react-sketch `SketchField` and salgum1114's react-design-editor, wiring up per-tool classes (pencil, marker/highlighter brush, line, arrow, rectangle, circle, pan, select) plus an undo/redo history stack, and adding original tools including arrow, marker-brush, and an eraser tool added in 2022. The annotation UX includes an 18-color palette and 13 template backgrounds (lined, grid, dotted, triangle, blackboard, square, music staff, handwriting guides, and color tints) for instant whiteboarding, along with image annotation via device upload or the Pixabay API with a search-term blocklist, and a split-screen mode with two canvases side by side.
+
+The app is offline-first: annotations save on-device via Capacitor Filesystem, with export to PDF (jsPDF) and image, so work persists and shares without a network. It's packaged as an Android app with Ionic Capacitor for TouchIT's interactive LED panels as well as phones and tablets, with in-app APK self-update (Ionic/Cordova app-update and app-version plugins) and a custom splash screen so deployed display fleets can update themselves without manual reinstalls.
+
+## Technical Implementation
+
+The frontend is a React + TypeScript app built on the react-boilerplate architecture, using Redux Toolkit slices, Redux-Saga side effects, redux-injectors, i18next localization, and Ant Design with styled-components. The annotation workspace composes the canvas, tool palette, color and background pickers, and import/export modals, with the drawing surface built on the open-source react-sketch `SketchField` (Fabric.js 5); each tool is its own class with a shared history module for undo/redo.
+
+The mobile layer wraps the app as an Android package with Ionic Capacitor, using Capacitor Filesystem for offline local saves and app-update/app-version plugins so panels in the field self-update to new APK builds. The backend is a NestJS service forked from Surmon's open-source nodepress, which provides the NestJS structure, MongoDB (Mongoose/Typegoose), and Redis. Onto that scaffold, a JWT auth module (sign-up/sign-in with validation) and a workbook module were added, the persistence and sync API for saved annotation documents, with CRUD endpoints, validators, and pagination via a custom decorator. A companion web portal, built on the same react-boilerplate stack, consumes this API for managing saved workbooks online.
+
+## Impact & Results
+
+Just Annotate shipped as a live, multi-platform annotation app on Google Play, one codebase serving phones, tablets, and interactive LED panels. Its offline-first design runs entirely on-device, making it well suited to classrooms and meeting rooms without reliable connectivity, while in-app APK self-update reduces the maintenance burden on deployed display fleets. The full save, edit, and export workflow, workbooks for reuse and PDF/image export for sharing, gives users a complete annotation lifecycle. As the sole TouchIT developer, the work spanned integrating open-source drawing, app, and backend foundations into a shipped commercial product, and building the features, mobile packaging, and backend modules that made it one.

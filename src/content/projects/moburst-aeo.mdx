@@ -1,0 +1,121 @@
+---
+title: "AEO Analytics - AI Answer-Engine Brand Visibility Platform"
+description: "Built an Answer Engine Optimization platform that measures how brands show up inside AI answer engines such as ChatGPT, Google Gemini, Claude, and Perplexity, turning brand mentions, ranking position, share of voice, and sentiment into measurable data with per-run cost tracking and AI-generated recommendation reports."
+
+category: "ai-marketing"
+featured: false
+status: "completed"
+
+startDate: "2026-03"
+endDate: "2026-05"
+duration: "3 months"
+
+role: "Full-Stack / AI Engineer (Solo)"
+teamSize: "Solo Developer (backend, frontend, AI integration, infrastructure - design excluded)"
+
+technologies: ["Python", "FastAPI", "OpenAI GPT-5.2", "Google Gemini", "Anthropic Claude", "Perplexity", "SQLite", "GCP"]
+tags: ["AI Marketing", "Answer Engine Optimization", "Multi-LLM", "Brand Analytics", "SaaS Dashboard"]
+
+links:
+  liveUrl: "https://moburst.ai"
+  companyUrl: "https://www.moburst.com/"
+  caseStudyUrl: null
+  demoUrl: null
+
+images:
+  featuredImage:
+    src: "/img/projects/moburst-aeo-hero.jpg"
+    alt: "AEO Analytics dashboard showing brand visibility across AI answer engines"
+    width: 1200
+    height: 630
+  thumbnail:
+    src: "/img/projects/moburst-aeo-thumb.jpg"
+    alt: "AEO Analytics thumbnail"
+    width: 400
+    height: 300
+  gallery: []
+
+seo:
+  title: "AEO Analytics AI Visibility Tool | Muhammad Asif Javed"
+  description: "AI Answer Engine Optimization platform measuring brand visibility across ChatGPT, Gemini, Claude, and Perplexity with cost tracking and reports."
+  keywords: ["Answer Engine Optimization", "AEO", "AI search visibility", "multi-LLM platform", "brand monitoring AI", "FastAPI", "GEO"]
+
+businessContext:
+  client: "Moburst"
+  company: "Moburst"
+  industry: "AI Marketing / Digital Marketing Agency"
+  userBase: "Moburst's internal Growth Labs teams and agency clients tracking brand visibility in AI search"
+
+keyAchievements:
+  - "Built a unified multi-LLM client querying four providers (OpenAI GPT-5.2, Google Gemini, Anthropic Claude, Perplexity) behind one normalized interface"
+  - "Designed the AEO measurement model extracting brand mention rate, ranking position, competitive share of voice, and sentiment from free-form AI answers"
+  - "Implemented batch job groups to run a full prompt set across many brands and providers in one orchestrated pass"
+  - "Engineered per-provider, token-level cost tracking so every analysis run carries an exact dollar figure"
+  - "Built topic-level analytics aggregating visibility scores and average rank across keyword clusters"
+  - "Generated AI-authored recommendation reports comparing brands and prescribing next steps"
+
+metrics:
+  - label: "AI Providers Integrated"
+    value: "4"
+    description: "OpenAI, Google Gemini, Anthropic Claude, and Perplexity behind one interface"
+  - label: "Core AEO Signals"
+    value: "4"
+    description: "Mention rate, ranking position, share of voice, and sentiment"
+  - label: "Build Duration"
+    value: "3 months"
+    description: "Solo-built from March to May 2026"
+  - label: "Engineering Team"
+    value: "Solo"
+    description: "Backend, frontend, AI integration, and infrastructure by one engineer"
+
+keyFeatures:
+  - "Unified four-provider LLM client with a normalized response schema"
+  - "Pluggable model selection for cost/quality tuning per run"
+  - "Visibility dashboard with mention rate, ranking position, and trend over time"
+  - "Competitive share-of-voice analysis across co-occurring brands"
+  - "Sentiment classification of brand mentions"
+  - "Topic-level rollups of visibility and average rank across keyword clusters"
+  - "Batch job groups for many-brand, many-provider analysis runs"
+  - "Token-level cost tracking with exact per-provider pricing"
+  - "AI-generated recommendation reports with comparative analysis"
+  - "Reusable prompt-template system for consistent, repeatable queries"
+
+impactResults:
+  - "Made AI-search visibility measurable for a marketing agency and its clients where no native analytics existed"
+  - "Consolidated four AI providers into one tool and one normalized data model, removing per-provider integration friction"
+  - "Delivered exact cost visibility on every analysis run, enabling deliberate cost/quality trade-offs across models"
+  - "Turned raw model answers into action via AI-generated comparative reports with concrete recommendations"
+  - "Shipped as a first-class member of the Moburst.ai Growth Labs suite with shared SSO and RBAC"
+---
+
+## Overview
+
+AEO Analytics is an Answer Engine Optimization platform built for Moburst that measures how brands show up inside AI answer engines such as ChatGPT, Google Gemini, Claude, and Perplexity. As buyers increasingly ask an AI assistant instead of running a search, ranking no longer means a blue link - it means whether the model mentions a brand, where in the answer, and in what sentiment. AEO Analytics turns that opaque surface into measurable data by querying multiple large language models with brand- and topic-specific prompts, then parsing each response to extract brand mentions, ranking position, share of voice against competitors, and sentiment. Results roll up into visibility dashboards and AI-generated recommendation reports, with full token-level cost tracking per provider. The tool was built solo as one of Moburst's proprietary Growth Labs products.
+
+## Key Achievements
+
+- Built a unified multi-LLM client that queries OpenAI GPT-5.2, Google Gemini, Anthropic Claude, and Perplexity behind one normalized interface and response schema
+- Designed the AEO measurement model that extracts brand mention rate, ranking position, competitive share of voice, and sentiment from free-form model answers
+- Implemented batch "job groups" to run a full prompt set across many brands and providers in one orchestrated pass, with progress and status tracking
+- Engineered per-provider cost tracking at the token level, calculating input/output cost against each model's pricing
+- Built topic-level analytics that aggregate visibility scores and average rank across keyword and topic clusters
+- Integrated the platform's shared Auth SDK for single sign-on and role-based access alongside the rest of the Moburst.ai suite
+
+## Technical Implementation
+
+The heart of the system is a provider-agnostic LLM client. Each answer engine has a different SDK, request shape, and response format; the client wraps all four behind one method so the rest of the application treats "ask every model this prompt" as a single call. Responses are normalized into a common structure before analysis, keeping the measurement logic provider-independent and making it straightforward to add another engine later.
+
+On top of that client sits the measurement layer. For each brand/topic prompt, the system inspects every model's answer to determine whether the brand was mentioned, its position within the response, which competitors appeared alongside it, and the sentiment of the mention. These signals aggregate into per-topic visibility scores and average ranks, giving a quantified picture of brand presence across the AI search landscape.
+
+Cost control is treated as a first-class feature. Because multi-model analysis at scale can get expensive quickly, the platform tracks input and output tokens per call and applies each provider's pricing to produce exact per-run and per-provider costs, letting the team choose faster, cheaper models for breadth and stronger models for depth.
+
+The application is a FastAPI service with server-rendered Jinja2 dashboards, backed by SQLite for analytics storage, and integrated into the Moburst.ai platform via the shared Auth SDK. It runs on GCP behind a reverse proxy with automated daily database backups.
+
+## Impact & Results
+
+- Made AI-search visibility measurable for a marketing agency and its clients, quantifying presence across ChatGPT, Gemini, Claude, and Perplexity where no native analytics exist
+- Consolidated four AI providers into one tool and one normalized data model, removing per-provider integration friction
+- Delivered exact cost visibility on every analysis run, enabling deliberate cost/quality trade-offs across models
+- Turned raw model answers into action via AI-generated comparative reports with concrete recommendations
+- Scaled analysis with batch job groups, letting the team benchmark many brands and topics in a single orchestrated run
+- Shipped as a first-class member of the Moburst.ai Growth Labs suite with shared SSO and RBAC

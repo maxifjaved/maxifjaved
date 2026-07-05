@@ -1,0 +1,110 @@
+---
+title: "Moburst Growth Labs - Automated AI Content Platform"
+description: "Built an end-to-end automated content publishing platform that provisions a fully configured WordPress site, domain, SSL, theme, analytics, and search-engine registration, in roughly 10-15 minutes, then runs an AI content engine publishing structured, SEO-ready articles on a schedule across a network of sites."
+
+category: "ai-marketing"
+featured: false
+status: "completed"
+
+startDate: "2026-03"
+endDate: "2026-03"
+duration: "1 month (focused build, March 2026)"
+
+role: "Full-Stack / AI Engineer (Solo)"
+teamSize: "Solo developer (backend, frontend, AI content pipeline, WordPress, infrastructure and DevOps; design excluded)"
+
+technologies: ["FastAPI", "Celery", "Redis", "PostgreSQL", "WordPress Multisite", "Google Gemini", "Vertex AI Imagen", "React"]
+tags: ["AI Content Generation", "WordPress Multisite", "Marketing Automation", "SEO Automation", "Docker", "Growth Tools"]
+
+links:
+  liveUrl: null
+  companyUrl: "https://www.moburst.com/"
+  caseStudyUrl: null
+  demoUrl: null
+
+images:
+  featuredImage:
+    src: "/img/projects/moburst-satellite-sites-hero.jpg"
+    alt: "Moburst automated AI content publishing platform control panel"
+    width: 1200
+    height: 630
+  thumbnail:
+    src: "/img/projects/moburst-satellite-sites-thumb.jpg"
+    alt: "Moburst AI content platform thumbnail"
+    width: 400
+    height: 300
+  gallery: []
+
+seo:
+  title: "AI Content Publishing Platform | Muhammad Asif Javed"
+  description: "Automated WordPress provisioning and AI content pipeline built for Moburst Growth Labs, publishing SEO-ready articles across a site network, solo build."
+  keywords: ["AI content generation", "WordPress Multisite", "Google Gemini", "marketing automation", "FastAPI", "Celery", "SEO automation"]
+
+businessContext:
+  client: "Moburst"
+  company: "Moburst"
+  industry: "Marketing Technology / AI Growth Tools"
+  userBase: "Internal Moburst Growth Labs team operating a network of AI-content sites"
+
+keyAchievements:
+  - "Designed a nine-stage automated provisioning pipeline that takes a site from bare domain to live in roughly 10-15 minutes"
+  - "Built an AI content engine on Google Gemini 2.0 Flash and Vertex AI Imagen generating up to 40 articles per site per day"
+  - "Automated DNS, SSL, search-engine registration, analytics, and CDN setup with zero manual steps"
+  - "Engineered full JSON-LD structured data and crawler-visible SEO into every published article"
+  - "Containerized the entire stack with Docker Compose across seven services"
+  - "Owned the full stack solo: orchestration backend, WordPress layer, AI pipeline, frontend, and infrastructure"
+
+metrics:
+  - label: "Provisioning Time"
+    value: "~10-15 minutes"
+    description: "From bare domain to a fully live, indexed, analytics-tracked site"
+  - label: "Content Volume"
+    value: "40 articles/site/day"
+    description: "Configurable default AI-generated publishing rate"
+  - label: "Pipeline Stages"
+    value: "9 stages"
+    description: "Automated, resumable provisioning pipeline from DNS to go-live"
+  - label: "Containerized Services"
+    value: "7 services"
+    description: "FastAPI, Celery, React/Vite, WordPress, PostgreSQL, MariaDB, Redis"
+
+keyFeatures:
+  - "Nine-stage automated site provisioning from DNS to go-live"
+  - "AI-generated articles and FAQ sections via Google Gemini 2.0 Flash"
+  - "AI-generated featured images via Vertex AI Imagen"
+  - "Automated SSL issuance via Certbot/Let's Encrypt"
+  - "Automated Google Search Console, Bing Webmaster, and IndexNow registration"
+  - "Automated per-site GA4 property creation"
+  - "Cloudflare CDN auto-provisioning per site"
+  - "JSON-LD structured data and Yoast SEO on every article"
+  - "Layered caching with WebP conversion and critical-CSS optimization"
+  - "React control plane for launching and monitoring the site network"
+
+impactResults:
+  - "Compressed days of manual site setup into roughly 10-15 minutes of automated provisioning per site"
+  - "Sustained high-volume AI content publishing across an entire network of sites from one control plane"
+  - "Automated the entire SEO onboarding path, DNS, SSL, Search Console, Bing, IndexNow, GA4, and CDN, with zero manual steps"
+  - "Optimized every site for Core Web Vitals through layered caching, WebP, and LCP tuning"
+---
+
+## Overview
+
+This platform stands up a fully configured WordPress site, domain, SSL, theme, analytics, search-engine registration, and a running AI content engine, in roughly 10-15 minutes with no manual setup. Once live, each site publishes AI-generated articles on a schedule, a configurable default of 40 per site per day, complete with AI-generated featured imagery, structured data for search, and aggressive performance optimization. A single control plane manages the resulting network of sites.
+
+The problem it solves is a brutally manual one: launching and operating many content sites normally means days of repetitive provisioning per site across DNS, hosting, WordPress, plugins, SSL, analytics, and search console setup, followed by ongoing content production. This platform compresses all of that into an orchestrated, nine-stage pipeline and then keeps the content flowing automatically through Google Gemini and Vertex AI Imagen. It was built solo across the full stack: the orchestration backend, the WordPress layer, the AI content engine, the React control panel, and the Dockerized infrastructure.
+
+## Key Achievements
+
+The core of the platform is a nine-stage automated provisioning pipeline that takes a site from bare domain to live in about 10-15 minutes: DNS configuration, WordPress installation, theme and plugin setup, site customization, SSL issuance, search-engine registration, analytics and plugin configuration, content and author setup, and finalize/go-live. DNS and domain management run through the Namecheap API, WordPress Multisite provisioning creates domain-based sites with a custom multi-variant theme and default plugins with no manual clicks, and SSL is issued automatically via Certbot/Let's Encrypt.
+
+Search-engine onboarding is fully automated too: Google Search Console verification and sitemap submission, bulk Bing Webmaster registration, and IndexNow instant URL submission, alongside per-site GA4 property creation through the Google Analytics Admin API and Cloudflare CDN and edge SSL provisioning. On top of that sits the AI content engine, built on Google Gemini 2.0 Flash for long-form articles and FAQ sections (a configurable default of 40 per site per day) with featured images from Vertex AI Imagen, and structured data engineered throughout: JSON-LD for NewsArticle, FAQPage, Organization, and BreadcrumbList, Yoast SEO, Open Graph, and crawler-visible server-rendered FAQs.
+
+## Technical Implementation
+
+The orchestration backend runs on FastAPI, Celery, and Redis, executing the nine-stage provisioning pipeline as a sequence of asynchronous, resumable tasks defined in code as `PROVISIONING_STAGES`. Application state lives in PostgreSQL 16, while the WordPress layer runs on MariaDB 11. Content isn't generated in isolation: Celery scheduling drives publishing so each site sustains its configured volume, enforced against a per-site daily-articles budget, and every article ships with structured data and metadata rather than having SEO bolted on afterward.
+
+WordPress itself runs as a single Multisite instance with domain-based routing, a custom theme offering multiple visual variants for diversity, and a set of must-use plugins for WebP conversion, page caching, and REST API extensions. Performance is treated as a first-class concern: Nginx proxy caching, Cloudflare edge caching, file-based PHP page caching, WebP images, critical-CSS inlining, and LCP optimizations via preload and fetchpriority. The whole system is packaged with Docker Compose, FastAPI backend, Celery worker, a React 18 + Vite control panel, WordPress, PostgreSQL 16, MariaDB 11, and Redis, deployed behind Nginx with automated daily backups, and a React dashboard provides the control plane for launching and monitoring sites across the network.
+
+## Impact & Results
+
+The platform compressed what would normally be days of manual site setup into roughly 10-15 minutes of fully automated provisioning per site, while sustaining a configurable default of 40 AI-generated articles per site per day on an automated schedule. SEO onboarding, DNS, SSL, Search Console, Bing, IndexNow, GA4, and CDN, runs with zero manual steps, and every article ships with full JSON-LD structured data and crawler-visible FAQs out of the box. Layered caching, WebP conversion, and LCP tuning keep sites optimized for Core Web Vitals, and the entire network is operated from one React control plane and one Dockerized stack, with the full build, orchestration, WordPress, AI pipeline, frontend, and infrastructure, owned solo.

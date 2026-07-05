@@ -35,7 +35,7 @@ I help organizations—from educational institutions to enterprises—build scal
 ### Personal Details
 
 - **Name**: Muhammad Asif Javed
-- **Projects Completed**: 9+
+- **Projects Completed**: 19+
 - **Location**: Walton, Lahore, Pakistan
 - **Experience**: 10+ years
 - **Work Style**: Remote-first, serving global clients
@@ -65,7 +65,7 @@ I help organizations—from educational institutions to enterprises—build scal
 
 3. **Platform Integration & APIs** – Connected 4000+ apps via Zapier and custom API development with seamless data flow
 
-4. **Solo Development & Leadership** – Delivered 9+ enterprise projects independently with complete project lifecycle management
+4. **Solo Development & Leadership** – Delivered 19+ enterprise projects independently with complete project lifecycle management
 
 ### Technical Stack
 
@@ -102,7 +102,7 @@ Custom API development, third-party integrations, webhook implementations, and c
 
 ### Q: What makes you different from other WebRTC developers?
 
-**A:** I specialize in enterprise-grade WebRTC solutions with 10+ years of experience building scalable real-time systems. Built educational collaboration platforms supporting 50+ concurrent users, cybersecurity intelligence tools, and complex multi-user interactive systems. Track record: 9+ successful projects, deployed across multiple countries, serving thousands of users globally.
+**A:** I specialize in enterprise-grade WebRTC solutions with 10+ years of experience building scalable real-time systems. Built educational collaboration platforms supporting 50+ concurrent users, cybersecurity intelligence tools, and complex multi-user interactive systems. Track record: 19+ successful projects, deployed across multiple countries, serving thousands of users globally.
 
 ### Q: Do you work with international clients remotely?
 
@@ -126,7 +126,7 @@ Custom API development, third-party integrations, webhook implementations, and c
 
 ## Project Portfolio Summary
 
-Successfully delivered 9+ enterprise-level projects across various industries:
+Successfully delivered 19+ enterprise-level projects across various industries:
 
 ### Educational Technology Projects
 
@@ -155,6 +155,20 @@ Successfully delivered 9+ enterprise-level projects across various industries:
 - Built Zapier integration platforms for workflow automation
 - Developed webhook systems for real-time data synchronization
 - Created middleware solutions for enterprise system connectivity
+
+### AI Marketing & Automation Projects
+
+- Built an Answer Engine Optimization (AEO) analytics platform measuring brand visibility inside ChatGPT, Gemini, Claude, and Perplexity
+- Developed a proprietary multi-service AI marketing tools platform with SSO (moburst.ai)
+- Created an AI social intelligence and engagement platform with a Chrome extension and Slack alerts
+- Built an AI community engagement automation engine and an automated AI content publishing platform (WordPress Multisite)
+
+### 3D, Mobile & Cloud Projects
+
+- Built an interactive 3D pool and hot tub design configurator with Three.js and Stripe checkout
+- Developed a sports venue booking platform spanning React Native mobile apps, API, and admin
+- Delivered the frontend for an enterprise cloud infrastructure management platform with D3.js network topology visualizations
+- Shipped cable-free screen sharing (Wireless Wizard) and an offline annotation whiteboard app for interactive LED displays
 
 ## Technical Approach
 

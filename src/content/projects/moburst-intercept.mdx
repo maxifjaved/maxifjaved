@@ -1,0 +1,123 @@
+---
+title: "Intercept - AI Social Intelligence & Engagement Platform"
+description: "Built Intercept, the social intelligence tool behind Moburst's real-time social intent scanning capability - monitoring brand mentions and conversation trends across 13+ social networks, ranking engagement opportunities with multi-model AI, and closing the loop with a Chrome extension that can publish humanized replies."
+
+category: "ai-marketing"
+featured: false
+status: "in-progress"
+
+startDate: "2026-03"
+endDate: "2026-07"
+duration: "5 months (ongoing)"
+
+role: "Full-Stack / AI Engineer (Solo)"
+teamSize: "Solo Developer (backend, AI integration, Chrome extension, infrastructure - design excluded)"
+
+technologies: ["Python", "FastAPI", "Google Gemini", "Anthropic Claude", "OpenAI", "Apify", "Chrome Extension (Manifest V3)", "Playwright"]
+tags: ["AI Marketing", "Social Listening", "Chrome Extension", "Multi-LLM", "Engagement Automation"]
+
+links:
+  liveUrl: "https://moburst.ai"
+  companyUrl: "https://www.moburst.com/"
+  caseStudyUrl: null
+  demoUrl: null
+
+images:
+  featuredImage:
+    src: "/img/projects/moburst-intercept-hero.jpg"
+    alt: "Intercept dashboard showing ranked social engagement opportunities"
+    width: 1200
+    height: 630
+  thumbnail:
+    src: "/img/projects/moburst-intercept-thumb.jpg"
+    alt: "Intercept thumbnail"
+    width: 400
+    height: 300
+  gallery: []
+
+seo:
+  title: "Intercept AI Social Intelligence | Muhammad Asif Javed"
+  description: "AI social intelligence platform monitoring 13+ networks, ranking engagement opportunities, and publishing replies via a Chrome extension."
+  keywords: ["social listening AI", "social intelligence platform", "Chrome extension automation", "multi-LLM analysis", "brand monitoring", "engagement automation"]
+
+businessContext:
+  client: "Moburst"
+  company: "Moburst"
+  industry: "AI Marketing / Digital Marketing Agency"
+  userBase: "Moburst agency teams and clients monitoring brand and competitor conversations across social networks"
+
+keyAchievements:
+  - "Built a 13+ platform monitoring pipeline ingesting from X, Instagram, Facebook, Reddit, LinkedIn, YouTube, TikTok, Threads, Quora, and more via Apify actor scrapers"
+  - "Integrated a multi-model AI analysis layer (Google Gemini as primary, plus Anthropic Claude and OpenAI) for sentiment classification, topic extraction, and trend detection"
+  - "Designed an AI opportunity-detection engine that scores and ranks conversations so teams act on the most valuable items first"
+  - "Engineered a Chrome extension (Manifest V3) with a background service worker, a humanizing pacer, and per-platform runners"
+  - "Shipped a complete Reddit runner (login/2FA, state detection, humanized typing, permalink capture) plus Facebook and LinkedIn runners, with X and YouTube scaffolded"
+  - "Added multi-client RBAC so agency clients see only their Reports, Opportunities, and Analytics"
+
+metrics:
+  - label: "Social Platforms Monitored"
+    value: "13+"
+    description: "Including X, Instagram, Facebook, Reddit, LinkedIn, YouTube, TikTok, Threads, and Quora"
+  - label: "AI Models Integrated"
+    value: "3"
+    description: "Google Gemini (primary), Anthropic Claude, and OpenAI"
+  - label: "Engagement Runners Shipped"
+    value: "3"
+    description: "Complete Reddit, Facebook, and LinkedIn runners; X and YouTube scaffolded"
+  - label: "Engineering Team"
+    value: "Solo"
+    description: "Backend, AI integration, Chrome extension, and infrastructure by one engineer"
+
+keyFeatures:
+  - "13+ platform coverage via Apify actor scrapers"
+  - "Real-time dashboard with mention counts, sentiment, and engagement metrics"
+  - "Multi-model AI engine (Gemini primary, plus Claude and OpenAI) for sentiment and topic extraction"
+  - "AI opportunity detection that ranks conversations by response value"
+  - "AI-generated reports plus public lead-generation free reports"
+  - "Queue-driven Chrome extension background worker with humanizing pacer and pause/resume/stop controls"
+  - "Complete Reddit runner with login/2FA handling, state detection, humanized typing, and permalink capture"
+  - "Facebook and LinkedIn runners driving native comment composers"
+  - "Multi-client RBAC scoping clients to Reports, Opportunities, and Analytics"
+  - "Real-time Slack and email alerting for urgent mentions and run health"
+
+impactResults:
+  - "Turned the social firehose into a ranked action list, so teams engage the highest-value conversations instead of scrolling feeds"
+  - "Unified 13+ networks into one monitoring, analysis, and engagement surface"
+  - "Closed the loop from insight to posted reply via the Chrome extension, removing manual copy-paste"
+  - "Enabled agency-scale multi-tenancy with client-scoped views that expose only the right data per role"
+  - "Created a lead-generation channel through public AI-generated free reports"
+---
+
+## Overview
+
+Intercept is the social intelligence tool behind Moburst's "real-time social intent scanning" capability, part of the agency's Growth Labs AI product unit publicly launched in February 2026. It monitors brand mentions, competitor activity, and conversation trends across 13+ social networks in near real time, then uses AI to surface the highest-value engagement opportunities - from large-scale social data collection, through AI analysis, to an assisted engagement workflow that takes an opportunity all the way to a posted reply.
+
+The platform answers a hard question for an agency managing many brands: out of the firehose of social conversation, which mentions actually deserve a response right now? Intercept ingests data from across the social web, classifies sentiment and topics with AI, ranks opportunities by relevance, drafts suggested replies, and - through a purpose-built Chrome extension - can carry those replies through to publication with human-like pacing.
+
+## Key Achievements
+
+- Built a 13+ platform monitoring pipeline ingesting from X, Instagram, Facebook, Reddit, LinkedIn, YouTube, TikTok, Threads, Quora, and more via Apify actor scrapers
+- Integrated a multi-model AI analysis layer - Google Gemini as the primary engine, with Anthropic Claude and OpenAI - for sentiment classification, topic extraction, and trend detection
+- Designed an AI opportunity-detection engine that scores and ranks conversations so teams act on the most valuable items first
+- Built an AI-assisted outreach queue that drafts suggested replies and routes them for review or automated publishing
+- Engineered a Chrome extension (Manifest V3) with a background service worker, a humanizing pacer, and per-platform runners
+- Shipped a complete Reddit runner - login/2FA handling, state detection, humanized typing, and deterministic permalink capture - plus Facebook and LinkedIn runners, with X and YouTube scaffolded
+
+## Technical Implementation
+
+Intercept is structured as a collection pipeline feeding an AI analysis core, with a browser-extension "actuator" closing the loop from insight to action. Data collection is delegated to Apify actors, which provide resilient, maintained scrapers for each social network, keeping the platform out of the brittle business of hand-maintaining 13 separate scrapers.
+
+The AI layer is multi-model: Google Gemini is the primary engine for sentiment, topic extraction, and trend analysis, with Anthropic Claude and OpenAI integrated for additional tasks. On top of raw classification sits the opportunity-detection engine, which ranks conversations by how worthwhile a response would be - weighting signals like direct questions, brand mentions, and sentiment shifts.
+
+The most technically involved component is the Chrome extension (Manifest V3). A background service worker polls the outreach queue, a shared pacer enforces human-like timing, and each item is dispatched to a platform-specific runner. The Reddit runner is the most complete - a multi-module implementation (login, detect, humanize, comment, selectors) that handles login and two-factor states, detects page conditions, types humanly into the native composer, and deterministically captures the resulting permalink. Facebook and LinkedIn runners are implemented as full modules driving each network's native comment composer, with X and YouTube scaffolded for the same runner contract.
+
+The web application itself is FastAPI with Jinja2 dashboards over SQLite, integrated into Moburst.ai via the shared Auth SDK, and deployed on GCP behind a reverse proxy with daily backups. Slack and Resend (email) provide real-time operational and mention alerting.
+
+## Impact & Results
+
+- Turned the social firehose into a ranked action list - teams engage the highest-value conversations instead of scrolling feeds
+- Unified 13+ networks into one monitoring, analysis, and engagement surface
+- Closed the loop from insight to posted reply via the Chrome extension, removing manual copy-paste
+- Enabled agency-scale multi-tenancy with client-scoped views that expose only the right data per role
+- Created a lead-generation channel through public AI-generated "free reports"
+- Kept teams responsive with real-time Slack and email alerts on urgent mentions and run health
