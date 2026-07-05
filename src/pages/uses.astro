@@ -176,8 +176,17 @@ const browsers = [
       <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-cyber-blue text-shadow-glow font-future">
         /uses
       </h1>
-      <p class="text-gray-300 text-lg leading-relaxed max-w-2xl">
+      <p class="text-gray-300 text-lg leading-relaxed max-w-2xl mb-4">
         The hardware and software I use daily for development, content creation, and everything in between.
+      </p>
+      <p class="text-gray-400 leading-relaxed max-w-2xl">
+        After 10+ years of full-stack work — WebRTC platforms, real-time systems, and enterprise
+        backends — this setup has settled into something deliberately boring: one fast desktop
+        machine, JetBrains IDEs for every language I touch, and a small set of tools that remove
+        friction instead of adding it. Everything here earns its place by being used daily; anything
+        that stops getting used gets removed. This page follows the
+        <a href="https://uses.tech" target="_blank" rel="noopener noreferrer" class="text-cyber-blue hover:underline">uses.tech</a>
+        convention and stays current with what is actually installed.
       </p>
     </div>
   </section>
@@ -350,6 +359,38 @@ const browsers = [
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How it fits together -->
+  <section class="py-12 lg:py-16 pb-24 relative">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-xl md:text-2xl font-bold mb-6 text-white flex items-center gap-3">
+        <i class="fas fa-diagram-project text-cyber-blue" aria-hidden="true"></i>
+        How It Fits Together
+      </h2>
+      <div class="bg-cyber-dark/40 border border-cyber-blue/20 rounded-lg p-6 md:p-8 space-y-4 text-gray-300 leading-relaxed">
+        <p>
+          The M4 Pro Mac mini drives two 27-inch displays: code and terminal on one, browser,
+          docs, and running apps on the other. JetBrains IDEs cover each stack — WebStorm for
+          TypeScript and Node.js work, PyCharm for Python services, DataGrip for poking at
+          production-shaped databases — so refactoring and debugging feel identical regardless
+          of language.
+        </p>
+        <p>
+          Day-to-day flow leans on Raycast for launching and window management,
+          Karabiner-Elements for keyboard remaps, and 1Password across every browser and CLI.
+          Docker keeps client environments isolated and reproducible, while Ollama lets me
+          test LLM integrations locally before they touch a paid API. Claude Code handles the
+          repetitive edges of development — scaffolding, refactors, and review passes — with
+          WezTerm as the terminal underneath.
+        </p>
+        <p>
+          Deployment targets are boring on purpose: Cloudflare in front, AWS or Google Cloud
+          behind, chosen per project. The C922 webcam and PM500 microphone cover client calls
+          and the occasional screen recording via CleanShot X.
+        </p>
       </div>
     </div>
   </section>

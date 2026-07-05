@@ -90,6 +90,10 @@ const contactFormData: ContactFormType = {
           method={contactFormData.form.method}
           class="space-y-6"
         >
+          <!-- Formspree honeypot: bots fill this, humans never see it (display:none keeps it out of the a11y tree) -->
+          <div style="display:none">
+            <label>Leave this field empty <input type="text" name="_gotcha" autocomplete="off" /></label>
+          </div>
           {
             contactFormData.form.fields.map((field) => (
               <div>

@@ -71,7 +71,7 @@ const footerData: FooterType = {
         <a href={footerData.contact.email.href} class="hover:text-cyber-blue transition-colors mr-6">
           {footerData.contact.email.label}
         </a>
-        <a href={footerData.contact.phone.href} class="hover:text-cyber-blue transition-colors mr-6">
+        <a href={footerData.contact.phone.href} aria-label={`Chat on WhatsApp: ${footerData.contact.phone.label}`} class="hover:text-cyber-blue transition-colors mr-6">
           {footerData.contact.phone.label}
         </a>
         <span class="text-cyber-blue font-semibold">{footerData.contact.address}</span>

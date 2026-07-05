@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+# Client-side blog filters produce duplicate thin pages - keep crawlers on canonical URLs
+Disallow: /*?search=
+Disallow: /*?category=
+Disallow: /*?page=
 
 # Sitemaps
 Sitemap: https://maxifjaved.com/sitemap-0.xml

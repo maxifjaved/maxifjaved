@@ -1,32 +1,21 @@
 ---
 interface Props {
   title: string;
-  image?: string;
+  // callers pass either a URL string or a content-collection image object
+  image?: string | { src: string; alt?: string };
   variant?: 'hero' | 'card';
   size?: 'sm' | 'md' | 'lg';
 }
 
-const { 
-  title, 
+const {
+  title,
   image,
   variant = 'hero',
   size = 'lg'
 } = Astro.props;
 
-// Simple hash function to select background image based on project name
-function hashString(str: string): number {
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    const char = str.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
-    hash = hash & hash;
-  }
-  return Math.abs(hash);
-}
-
-// Select background image based on project title or use provided image
-const backgroundImages = ['/img/project5.jpg', '/img/blog5.jpg', '/img/blog6.jpg'];
-const selectedBg = image || backgroundImages[hashString(title) % backgroundImages.length];
+const selectedBg =
+  (typeof image === "string" ? image : image?.src) || "/img/og-image.jpg";
 
 // Define size classes
 const sizeClasses = {

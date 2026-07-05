@@ -21,12 +21,20 @@ export interface Props {
   twitterImage?: string;
 }
 
+// Vercel serves pages without trailing slashes; normalize build-time paths
+// so canonical/hreflang/preload URLs match the URLs actually served.
+const pagePath = Astro.url.pathname.replace(/\/+$/, "") || "/";
+const pageUrl =
+  pagePath === "/"
+    ? "https://maxifjaved.com/"
+    : `https://maxifjaved.com${pagePath}`;
+
 const {
   title = "Muhammad Asif Javed - Full-Stack Developer & Real-time Systems Expert",
   description = "Muhammad Asif Javed - Full-Stack Developer & Real-time Systems Expert specializing in WebRTC, cybersecurity platforms, educational technology, and enterprise-grade solutions. 10+ years experience building scalable applications.",
   keywords = "full-stack developer, WebRTC expert, real-time systems, cybersecurity platforms, educational technology, interactive displays, enterprise solutions, Muhammad Asif Javed, maxifjaved, hire full-stack developer for WebRTC projects, expert in real-time collaboration systems, Lahore Pakistan developer",
   ogImage = "https://maxifjaved.com/img/og-image.jpg",
-  canonicalUrl = Astro.url.href,
+  canonicalUrl = pageUrl,
   ogTitle,
   ogDescription,
   ogType = "website",
@@ -55,7 +63,7 @@ const {
 
     <!-- International Targeting -->
     <link rel="alternate" hreflang="en" href={canonicalUrl} />
-    <link rel="alternate" hreflang="x-default" href="https://maxifjaved.com" />
+    <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={ogType} />
@@ -98,7 +106,7 @@ const {
       "telephone": "+923324647331",
       "sameAs": [
         "https://github.com/maxifjaved",
-        "https://linkedin.com/in/maxifjaved"
+        "https://www.linkedin.com/in/maxifjaved"
       ],
       "knowsAbout": [
         "WebRTC Development",
@@ -175,7 +183,7 @@ const {
       },
       "sameAs": [
         "https://github.com/maxifjaved",
-        "https://linkedin.com/in/maxifjaved"
+        "https://www.linkedin.com/in/maxifjaved"
       ],
       "contactPoint": {
         "@type": "ContactPoint",
@@ -210,9 +218,12 @@ const {
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
 
     <link
+      rel="preload"
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" /></noscript>
     <link
       rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -222,16 +233,16 @@ const {
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" /></noscript>
 
     <!-- Preload LCP images for better performance -->
-    {Astro.url.pathname === '/' && (
+    {pagePath === '/' && (
       <link rel="preload" as="image" href="/img/future-ai.png" fetchpriority="high" />
     )}
-    {Astro.url.pathname === '/about' && (
+    {pagePath === '/about' && (
       <link rel="preload" as="image" href="/profile-image.jpg" fetchpriority="high" />
     )}
-    {Astro.url.pathname.startsWith('/blogs/') && !Astro.url.pathname.endsWith('/blogs/') && ogImage && (
+    {pagePath.startsWith('/blogs/') && ogImage && (
       <link rel="preload" as="image" href={ogImage} fetchpriority="high" />
     )}
-    {Astro.url.pathname.startsWith('/projects/') && !Astro.url.pathname.endsWith('/projects/') && ogImage && (
+    {pagePath.startsWith('/projects/') && ogImage && (
       <link rel="preload" as="image" href={ogImage} fetchpriority="high" />
     )}
   </head>
@@ -249,8 +260,6 @@ const {
 
     <script>
       import "../scripts/vendors.js";
-    </script>
-    <script>
       import GLightbox from "glightbox";
 
       // Throttle utility for scroll performance
