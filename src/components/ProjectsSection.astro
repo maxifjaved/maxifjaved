@@ -36,33 +36,28 @@ const filterTabs = [
   ></div>
 
   <div class="max-w-7xl mx-auto px-6 relative">
-    <div class="flex justify-center mb-16">
-      <div class="relative">
-        <h2 class="text-3xl md:text-4xl font-bold text-center">
-          Featured{" "}
-          <span class="text-cyber-blue text-shadow-glow">Projects</span>
-        </h2>
-        <div class="h-1 w-32 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>
-      </div>
+    <div class="text-center mb-12">
+      <p class="section-kicker mb-3">Work</p>
+      <h2 class="text-3xl md:text-4xl font-semibold">Featured Projects</h2>
+      <p class="text-gray-400 mt-3">A selection of platforms I've designed, built, and run in production.</p>
     </div>
 
     <div x-data="{ activeTab: 'all' }">
-      <div class="flex flex-wrap justify-center gap-4 mb-12">
-        {filterTabs.map((tab) => (
-          <button
-            x-on:click={`activeTab = '${tab.value}'`}
-            x-bind:class={`{
-              'bg-cyber-blue text-cyber-dark': activeTab === '${tab.value}', 
-              'bg-transparent border border-cyber-blue text-cyber-blue': activeTab !== '${tab.value}'
-            }`}
-            class="cyber-btn py-2 px-6 transition-all duration-300"
-          >
-            {tab.label}
-          </button>
-        ))}
+      <div class="flex justify-center mb-12">
+        <div class="inline-flex flex-wrap justify-center gap-1 p-1 rounded-full bg-white/5 border border-white/10">
+          {filterTabs.map((tab) => (
+            <button
+              x-on:click={`activeTab = '${tab.value}'`}
+              x-bind:class={`activeTab === '${tab.value}' ? 'bg-cyber-blue text-cyber-dark' : 'text-gray-300 hover:text-white'`}
+              class="py-2 px-5 rounded-full text-sm font-medium transition-colors duration-200"
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <div class="flex flex-wrap justify-center gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {featuredProjects.map((project, index) => {
           const categoryDisplay = {
             'edtech': 'EdTech',
@@ -77,17 +72,14 @@ const filterTabs = [
             <div
               x-show={`activeTab === 'all' || activeTab === '${project.category}'`}
               x-transition
-              class="group relative w-full max-w-sm"
+              class="group relative"
               x-data="{ visible: false, init() { this.$el.classList.add('opacity-0') } }"
               x-intersect.once="visible = true"
-              x-bind:class="visible ? 'animated fadeInUp delay-' + '${(index + 1) * 100}' : 'opacity-0'"
+              x-bind:class={`visible ? 'animated fadeInUp delay${(index + 1) * 100}' : 'opacity-0'`}
             >
-              <div
-                class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              ></div>
-              <a 
+              <a
                 href={`/projects/${project.slug}`}
-                class="flex flex-col border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl overflow-hidden h-full relative hover:border-cyber-blue/50 transition-all duration-300 cursor-pointer group"
+                class="glass-card overflow-hidden h-full flex flex-col cursor-pointer group"
               >
                 <div class="relative">
                   <ProjectHeader 
@@ -97,19 +89,20 @@ const filterTabs = [
                     size="md"
                   />
                   <div
-                    class="absolute top-4 right-4 px-3 py-1 bg-cyber-dark/80 backdrop-blur-sm rounded-full border border-cyber-blue/30 text-xs text-cyber-blue z-10"
+                    class="absolute top-4 right-4 px-3 py-1 bg-cyber-dark/80 border border-white/15 rounded-full text-xs text-gray-200 z-10"
                   >
                     {categoryDisplay}
                   </div>
                 </div>
 
                 <div class="p-6 flex flex-col flex-1">
-                  <p class="text-gray-300 mb-4 flex-grow">{project.description || 'No description available'}</p>
+                  <h3 class="text-lg font-semibold text-white mb-2 line-clamp-2">{project.title || 'Untitled Project'}</h3>
+                  <p class="text-gray-300 text-sm mb-4 flex-grow line-clamp-3">{project.description || 'No description available'}</p>
 
                   <div class="flex flex-wrap gap-2 mt-auto">
                     {(project.technologies || []).slice(0, 4).map((tech) => (
                       <span
-                        class="px-2 py-1 bg-cyber-blue/10 rounded-md text-xs text-cyber-blue"
+                        class="px-2 py-1 bg-white/5 border border-white/10 rounded-md text-xs text-gray-300"
                       >
                         {tech}
                       </span>
@@ -124,9 +117,9 @@ const filterTabs = [
       </div>
 
       <div class="flex justify-center mt-12">
-        <a 
-          href="/projects" 
-          class="cyber-btn bg-cyber-blue text-cyber-dark hover:bg-white transition-all duration-300 px-8 py-3 inline-flex items-center gap-2"
+        <a
+          href="/projects"
+          class="cyber-btn btn-primary px-8 py-3 inline-flex items-center gap-2"
         >
           View All Projects
           <i class="fas fa-arrow-right"></i>

@@ -1,26 +1,26 @@
 ---
-title: "ManageMyLED - Central Remote Management"
-description: "Developed a comprehensive remote management solution for TouchIT Interactive Flat Panels (IFPDs) that combines a client-side Android application with a web-based control portal. Built entirely solo, this platform enables IT administrators to centrally manage, monitor, and control multiple interactive displays from anywhere with an internet connection. The system addresses the critical need for scalable device management in educational institutions and corporate environments where dozens or hundreds of interactive panels require coordinated administration and support."
+title: "ManageMyLED - MDM & Remote-Control Platform"
+description: "Built the web portal for ManageMyLED, a Mobile Device Management (MDM) and remote-control platform for TouchIT interactive flat-panel displays. Solo on the full-stack Next.js portal and co-developer on the Android MDM agent, the system lets IT administrators enrol, monitor, configure, and remotely operate fleets of Android-powered displays from anywhere - including live remote control of a panel's screen and touch input, adapted from the open-source Headwind Remote project."
 
 category: "interactive-displays"
 featured: true
 status: "completed"
 
-startDate: "2018-04"
-endDate: "2019-07"
-duration: "15 months"
+startDate: "2022-01"
+endDate: "2024-12"
+duration: "2022-2024 rebuild (the ManageMyLED product dates to ~2020)"
 
-role: "Full-Stack Developer (Solo)"
-teamSize: "Solo Developer (except design)"
+role: "Full-Stack Developer - solo on the web portal; co-developer on the Android agent"
+teamSize: "Web portal: solo. Android agent: 3-developer team. Remote-control gesture service adapted from the open-source Headwind Remote project. (Design excluded.)"
 
-technologies: ["Node.js", "React", "MongoDB", "Digital Ocean", "Pusher", "Socket.io", "Fabric.js", "OpenVidu", "Agora", "WebRTC", "Kotlin"]
-tags: ["Device Management", "Remote Control", "Real-time Monitoring", "Interactive Displays", "Mass Deployment", "Android Development"]
+technologies: ["Next.js 12", "React 18", "TypeScript", "Prisma", "MongoDB", "NextAuth", "Ant Design", "Zustand", "Socket.IO", "Agora RTC", "OpenVidu", "Fabric.js", "react-simple-keyboard", "Transloadit", "Sharp", "Jimp", "Firebase Cloud Messaging", "Kotlin", "Java", "Android Device Administration", "Android Accessibility Service", "Ansible"]
+tags: ["Device Management", "Remote Control", "MDM", "Interactive Displays", "WebRTC", "Android Development", "Multi-Tenant"]
 
 links:
   liveUrl: "https://managemyled.com/"
   companyUrl: "https://touchittechnologies.com/managemyled/"
   caseStudyUrl: null
-  demoUrl: null
+  demoUrl: "https://www.youtube.com/watch?v=q-JWAz1rXRI"
 
 images:
   featuredImage:
@@ -36,76 +36,77 @@ images:
   gallery: []
 
 seo:
-  title: "ManageMyLED Display Platform | Muhammad Asif Javed"
-  description: "Built centralized remote management platform for TouchIT LED displays with real-time monitoring, mass deployment, and comprehensive device control capabilities."
-  keywords: ["device management", "remote control platform", "LED display management", "real-time monitoring", "mass deployment", "TouchIT technology", "interactive displays"]
+  title: "ManageMyLED MDM Platform | Muhammad Asif Javed"
+  description: "Built the web portal for ManageMyLED, an MDM and remote-control platform for TouchIT interactive displays - fleet dashboard, team-based access control, and Agora/OpenVidu remote screen control."
+  keywords: ["MDM platform", "device fleet management", "remote control platform", "interactive displays", "TouchIT technology", "Next.js", "Prisma", "Agora RTC", "OpenVidu"]
 
 businessContext:
   client: "TouchIT Technologies"
   company: "TouchIT Technologies"
   industry: "Educational Technology / Interactive Displays"
-  userBase: "IT Administrators, Educational Institutions, Corporate Clients"
+  userBase: "IT administrators managing fleets of TouchIT interactive flat-panel displays"
 
 keyAchievements:
-  - "Built centralized management for thousands of global LED displays"
-  - "Implemented real-time device monitoring and health tracking"
-  - "Created mass deployment system for software updates"
-  - "Developed remote troubleshooting and diagnostic capabilities"
-  - "Achieved scalable architecture supporting global installations"
+  - "Delivered the web portal that drives the whole platform - enrol, group, monitor, and remotely manage a fleet of interactive displays from one place (built solo)"
+  - "Enabled MDM-grade operations - remote lock, reboot, and silent app deployment across the fleet (via the team-built Android agent)"
+  - "Enabled true remote support - administrators see and operate a panel's screen live (touch + keyboard) without traveling to the device, integrating Agora/OpenVidu streaming with a Headwind Remote-derived gesture service"
+  - "Centralized fleet operations - grouping, heartbeat monitoring, bulk actions, and per-fleet app/policy standardization"
+  - "Scaled to multi-tenant administration via team-based access control and membership roles"
+  - "Modernized the platform - a 2022-2024 rebuild onto Next.js, Prisma, NextAuth, Socket.IO, Agora, and FCM"
 
 metrics:
-  - label: "Device Management"
-    value: "Global Scale"
-    description: "Thousands of LED displays worldwide"
-  - label: "Real-time Monitoring"
-    value: "24/7"
-    description: "Continuous device health tracking"
-  - label: "Remote Control"
-    value: "WebRTC"
-    description: "Real-time screen streaming and interaction"
-  - label: "Development Approach"
-    value: "100% Solo"
-    description: "Complete solo development"
+  - label: "Web Portal API Routes"
+    value: "29"
+    description: "Next.js API routes covering auth, devices, teams, and remote sessions (solo-built)"
+  - label: "Data Model"
+    value: "12 entities"
+    description: "Prisma/MongoDB schema spanning auth, device fleet, and team/membership models"
+  - label: "Web Portal Commits"
+    value: "132"
+    description: "Solo-authored commits building the Next.js portal"
+  - label: "Android Agent Team"
+    value: "3 developers"
+    description: "Kotlin/Java MDM agent co-developed with two other engineers"
 
 keyFeatures:
-  - "Web-based management portal - Centralized dashboard for all device management operations"
-  - "Kotlin Android service application - Background utility for seamless device management and communication"
-  - "Unique device pairing - Secure ID-based connection system between devices and portal"
-  - "Real-time remote control - WebRTC screen streaming with Fabric.js canvas interaction forwarding"
-  - "Centralized app management - Remote installation/uninstallation across multiple devices"
-  - "Group policy management - Bulk configuration and standardization across device collections"
-  - "Team-based administration - Collaborative management with role-based access controls"
-  - "Notification system - Send messages and alarms to specific devices or groups"
-  - "Real-time device monitoring - Instant status updates via Pusher and Socket.io connections"
-  - "Bulk operations - Efficient management of large-scale device deployments"
-  - "Wallpaper management - Remote customization and branding control"
-  - "TouchIT App Store integration - Seamless app deployment across managed devices"
-  - "Remote shutdown capabilities - Energy management and maintenance controls"
-  - "Device inventory tracking - MongoDB-based serial numbers, locations, and configuration management"
-  - "Credit-based WebRTC optimization - Intelligent switching between OpenVidu and Agora for cost efficiency"
-  - "No subscription model - Complete management solution without recurring costs"
+  - "Fleet dashboard with device grouping and last-active heartbeat monitoring (solo, web portal)"
+  - "Team-based access control - teams, memberships, multi-tenant administration across 7 team API routes (solo, web portal)"
+  - "Device inventory & licensing by serial number; per-fleet pre-install apps (solo, web portal)"
+  - "NextAuth email OTP + password reset; Prisma/MongoDB 12-model data layer; 29 API routes (solo, web portal)"
+  - "Browser remote-control UI - Fabric.js mouse capture + react-simple-keyboard, Agora consumer with server-side token issuance (solo, web portal)"
+  - "Real-time coordination - Socket.IO for control, FCM for push, Agora/OpenVidu for media"
+  - "Remote lock and reboot via Device Administrator, silent APK install/uninstall via PackageInstaller (team-built Android agent)"
+  - "On-device Agora/OpenVidu screen sharing and boot-persistent foreground service with OEM WiFi/Bluetooth control (team-built Android agent)"
+  - "Live screen streaming of a panel into the browser over WebRTC, with remote touch injection via a GestureDispatchService Accessibility Service adapted from the open-source Headwind Remote project"
 
 impactResults:
-  - "Revolutionized IT support efficiency by enabling remote troubleshooting and control without physical presence at device locations"
-  - "Reduced operational overhead through centralized management of multiple interactive displays from a single web interface"
-  - "Enhanced device standardization via group policy management ensuring consistent configurations across educational institutions"
-  - "Improved support response times by eliminating travel time for basic device maintenance and troubleshooting"
-  - "Enabled scalable deployments supporting management of hundreds of devices across multiple locations"
-  - "Eliminated subscription costs by providing comprehensive management capabilities without recurring fees"
-  - "Streamlined app deployment through integration with TouchIT App Store for automated software distribution"
-  - "Enhanced team collaboration with role-based access controls and shared device management capabilities"
+  - "Delivered the web portal that drives the whole platform - enrol, group, monitor, and remotely manage a fleet of interactive displays from one place"
+  - "Enabled MDM-grade operations - remote lock, reboot, and silent app deployment across the fleet"
+  - "Enabled true remote support - administrators see and operate a panel's screen live (touch + keyboard) without traveling to the device"
+  - "Centralized fleet operations through grouping, heartbeat monitoring, bulk actions, and per-fleet app/policy standardization"
+  - "Scaled to multi-tenant administration via team-based access control and membership roles"
 ---
+
+## Overview
+
+ManageMyLED is a Mobile Device Management (MDM) and remote-control platform for TouchIT interactive flat-panel displays (IFPDs). It lets IT administrators enrol, monitor, configure, and remotely operate fleets of Android-powered displays from a single web portal, from anywhere - including live remote control of a panel's screen and touch input. It is effectively a vertical MDM and remote-support suite for interactive displays in schools and corporate environments, where dozens or hundreds of panels need coordinated administration.
+
+The system has three parts: a full-stack Next.js web portal (built solo - 132 commits), an on-device Android MDM agent (`com.managemyled.android`, built by a small team in Kotlin and Java) that registers as a Device Administrator, and a WebRTC remote-control path that streams the panel's screen and injects the administrator's input. The remote-control gesture pipeline is adapted from the open-source Headwind Remote project (Apache-2.0) and integrated with Agora/OpenVidu screen streaming. I owned the web portal end to end and co-developed the Android agent; this entry distinguishes what I built from what was integrated or shared.
+
+## Key Achievements
+
+On the web portal (solo), I built the full-stack Next.js 12 + TypeScript application - 29 API routes backed by Prisma over MongoDB, with a 12-model schema covering NextAuth's auth tables, OTP/reset-token records, `RemoteSessionRequest`, and the fleet entities `Device`, `SerialNumber`, `PreInstallApp`, `Team`, and `Membership`. That includes NextAuth-based authentication with email one-time-password login and password reset, the fleet dashboard (device grouping, heartbeat monitoring, and inventory keyed to licensed serial numbers), remote app and content management (bulk APK deployment, pre-install apps, wallpaper, alarms, notifications), team-based multi-tenant access control across 7 team API routes, and the browser-side remote-control UI - a Fabric.js canvas capturing mouse position/clicks and react-simple-keyboard forwarding keystrokes, alongside server-side Agora token issuance and Ansible-automated deployment.
+
+The Android MDM agent (Kotlin + Java) was co-developed with a 3-person team. It registers as a Device Administrator to perform privileged operations - remote screen lock, reboot, and silent APK install/uninstall via `PackageInstaller` - plus on-device screen sharing over Agora and OpenVidu, an FCM push receiver, and a boot-persistent foreground service with OEM WiFi/Bluetooth control. Remote touch injection uses a gesture-dispatch Accessibility Service adapted from the open-source Headwind Remote project (Apache-2.0), integrated by the team with the Agora/OpenVidu streaming pipeline rather than written from scratch.
 
 ## Technical Implementation
 
-The platform leverages a sophisticated real-time architecture combining Node.js backend with React frontend, deployed on Digital Ocean infrastructure with MongoDB for persistent data storage. The system utilizes dual real-time communication channels: Pusher for instant notifications and Socket.io for bidirectional device communication and control signals.
+The web portal is a full-stack Next.js 12 TypeScript application - server and API in one codebase across 29 API routes - using Prisma over MongoDB. The UI runs on Ant Design with Zustand state, react-hook-form and Yup, and SWR/axios for data fetching. Server-side Agora token issuance lives at `/api/agora/access-token` via the `agora-access-token` RtcTokenBuilder.
 
-The Kotlin Android service application runs as a background utility on TouchIT LED displays, maintaining persistent connections to the management portal through secure pairing IDs. Remote control functionality represents a key technical innovation, utilizing WebRTC technology through OpenVidu or Agora (based on available credits) to stream LED display screens in real-time to the web portal.
+The Android MDM agent (`com.managemyled.android`) registers as a Device Administrator through `DevicePolicyManager`, unlocking privileged operations issued from the portal - lock, reboot, and silent APK install/uninstall through `PackageInstaller`. It runs as a boot-persistent foreground service, auto-starting on `RECEIVE_BOOT_COMPLETED`, and reaches into OEM hardware (MediaTek CTA WiFi/Bluetooth control) for deeper integration with TouchIT panels. On-device screen capture is handled via Agora (`ScreenSharing.kt`) with an OpenVidu alternative, and push/wake comes through a Firebase Cloud Messaging receiver.
 
-## Architecture Highlights
+Remote control streams the panel's screen into the browser over WebRTC (Agora/OpenVidu) while forwarding input the other way: a Fabric.js canvas overlays the stream to capture mouse position/clicks and react-simple-keyboard supplies keystrokes on the portal side. On the device, a gesture-dispatch Accessibility Service (`GestureDispatchService`) turns those into native touch gestures - adapted from the open-source Headwind Remote project (`com.hmdm.control`, Apache-2.0). Coordination uses complementary channels throughout: Socket.IO for live control/state, FCM to push commands and wake the agent, and Agora/OpenVidu for the screen media. Media (wallpapers, uploads) is processed through Transloadit, Sharp, and Jimp.
 
-The credit-based WebRTC optimization intelligently switches between OpenVidu and Agora based on available credits, providing cost-efficient remote control capabilities at global scale. The real-time dual-channel approach ensures both critical notifications (via Pusher) and interactive control (via Socket.io) work reliably across varied network conditions. The MongoDB-based device inventory tracking maintains comprehensive records of all managed displays, enabling sophisticated querying and group management operations.
+## Impact & Results
 
-## Security & Scalability
-
-Secure device pairing through unique IDs prevents unauthorized management access while allowing administrators to onboard new devices rapidly. The scalable architecture supports management of hundreds of devices across multiple locations simultaneously, with WebRTC streaming providing interactive remote control capabilities when needed. The no-subscription model provides comprehensive management capabilities without recurring costs, making IT infrastructure management more predictable and affordable.
+The web portal drives the whole platform - enrolling, grouping, monitoring, and remotely managing a fleet of interactive displays from one place. The combination of the Device-Administrator-privileged Android agent and the WebRTC remote-control path enables genuine MDM-grade operations (remote lock, reboot, silent app deployment) and true remote support, where administrators see and operate a panel's screen live without traveling to the device. Team-based access control scaled the platform to multi-tenant administration, and the 2022-2024 rebuild modernized the stack onto Next.js, Prisma, NextAuth, Socket.IO, Agora, and FCM.

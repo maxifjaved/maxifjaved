@@ -1,20 +1,20 @@
 ---
-title: "TouchIT Air - iOS Screen Mirroring"
-description: "Developed an iOS screen mirroring receiver for TouchIT Interactive LED displays by implementing AirPlay protocol, enabling seamless wireless display from Apple devices. This solution bridges the Apple ecosystem with TouchIT display technology, allowing educators and professionals to share content from iPhones, iPads, and Macs without additional hardware or complex configuration."
+title: "TouchIT Air - Android AirPlay Receiver"
+description: "Built the Android AirPlay receiver behind TouchIT Air, turning TouchIT interactive LED displays into native AirPlay targets. Integrates an open-source AirPlay/RAOP C core via the NDK, adds hardware-accelerated video and audio playback, and wraps it in a license-activated, self-updating commercial product for the TouchIT App Store."
 
 category: "interactive-displays"
 featured: false
 status: "completed"
 
-startDate: "2018-01"
-endDate: "2018-06"
-duration: "5 months"
+startDate: "2019-01"
+endDate: "2020-12"
+duration: "2019–2020 active development; later maintenance"
 
-role: "Full-Stack Developer (Solo)"
-teamSize: "Solo Developer (except design)"
+role: "Lead Developer (primary author)"
+teamSize: "Primary developer — 36 of 38 commits; minor contributions from a colleague (design not handled)"
 
-technologies: ["Java", "Android", "AirPlay Protocol", "AirplayServer", "iOS Integration"]
-tags: ["Screen Mirroring", "AirPlay", "iOS Integration", "Android Development", "Wireless Display", "Apple Ecosystem"]
+technologies: ["Java (Android)", "C/C++ AirPlay/RAOP core (NDK + CMake/JNI)", "Apple mDNSResponder (Bonjour)", "FairPlay/playfair handshake", "curve25519/ed25519 pairing", "Android MediaCodec", "fdk-aac + AudioTrack", "Android Volley", "Node.js"]
+tags: ["AirPlay", "Screen Mirroring", "Android Development", "Interactive Displays", "Wireless Display", "Apple Ecosystem"]
 
 links:
   liveUrl: null
@@ -36,79 +36,69 @@ images:
   gallery: []
 
 seo:
-  title: "TouchIT Air iOS Mirroring | Muhammad Asif Javed"
-  description: "Built iOS screen mirroring receiver implementing AirPlay protocol for TouchIT LED displays, enabling seamless wireless display from Apple devices."
-  keywords: ["iOS screen mirroring", "AirPlay protocol", "wireless display", "Apple integration", "Android development", "TouchIT technology", "screen sharing"]
+  title: "TouchIT Air - AirPlay Receiver | Muhammad Asif Javed"
+  description: "Android AirPlay receiver for TouchIT interactive LED displays: NDK-integrated RAOP/FairPlay core, hardware H.264 decode, license activation, and OTA updates."
+  keywords: ["AirPlay receiver", "Android NDK", "RAOP", "FairPlay", "MediaCodec", "TouchIT Technologies", "screen mirroring", "interactive displays"]
 
 businessContext:
   client: "TouchIT Technologies"
   company: "TouchIT Technologies"
   industry: "Educational Technology / Interactive Displays"
-  userBase: "iOS Users, Educational Institutions"
+  userBase: "Educators and presenters using TouchIT interactive LED displays"
 
 keyAchievements:
-  - "Successfully implemented AirPlay protocol on Android using AirplayServer open source"
-  - "Eliminated hardware dependencies by providing software-only screen mirroring solution"
-  - "Created secure connection management preventing signal interruption from other devices"
-  - "Developed uninterrupted presentation mode ensuring exclusive presenter control"
-  - "Enhanced classroom technology integration enabling iOS device connectivity"
+  - "Integrated the open-source AirplayServer C core into a packaged Android app via the NDK and CMake, loading the native raopserver_android library through JNI and bridging its callbacks into Java"
+  - "Built hardware-accelerated video rendering, decoding the incoming H.264 mirror stream with Android MediaCodec straight onto a Surface with scale-to-fit for large LED panels"
+  - "Implemented audio playback, feeding fdk-aac-decoded PCM packets into an Android AudioTrack tuned for stable playback over classroom Wi-Fi"
+  - "Enforced single-connection, uninterrupted-presentation mode so a second iOS device on the network can't hijack the display mid-presentation"
+  - "Built a license-key activation flow gated behind a splash screen that validates the license against a backend before the receiver starts"
+  - "Added over-the-air self-update so deployed LED units fetch and install the latest TouchITAir.apk without manual reinstalls"
+  - "Stood up the companion Node.js backend serving version-check, license-verification, and APK-distribution endpoints over Volley"
 
 metrics:
-  - label: "Protocol Implementation"
-    value: "AirPlay"
-    description: "Native Apple screen mirroring protocol"
-  - label: "Platform Bridge"
-    value: "iOS to Android"
-    description: "Cross-platform compatibility"
-  - label: "Development Time"
-    value: "5 months"
-    description: "Rapid protocol implementation"
-  - label: "Device Support"
-    value: "All iOS Devices"
-    description: "iPhone, iPad, Mac compatible"
+  - label: "Commit Authorship"
+    value: "36 of 38 commits"
+    description: "Primary author of the TouchIT product layer, with minor colleague contributions"
+  - label: "Extra Hardware Required"
+    value: "Zero"
+    description: "Software-only AirPlay receiver — no Apple TV or dongle needed"
+  - label: "Video Decode"
+    value: "Hardware H.264"
+    description: "MediaCodec hardware-accelerated decode straight to Surface"
 
 keyFeatures:
-  - "Native Android AirPlay receiver - Built on AirplayServer open source with TouchIT customizations"
-  - "Java-based implementation - Native Android performance and integration"
-  - "Automatic device discovery - Seamless iOS device detection and connection"
-  - "Secure connection management - Prevention of signal interruption from other devices"
-  - "Uninterrupted presentation mode - Exclusive presenter control until voluntary disconnection"
-  - "Multi-resolution support - Automatic scaling for various iOS device types"
-  - "Low latency streaming - Optimized performance for interactive presentations"
-  - "Network resilience - Robust handling of WiFi changes and reconnections"
-  - "TouchIT App Store distribution - Easy deployment across LED installations"
-  - "Classroom optimization - Features designed specifically for educational environments"
-  - "Professional presentation support - Corporate boardroom and meeting room integration"
-  - "No additional hardware required - Pure software solution leveraging existing LED capabilities"
-  - "Open source integration - Leveraged and extended AirplayServer library for enterprise use"
-  - "Apple ecosystem integration - Native iOS screen mirroring workflow compatibility"
-  - "Background service operation - Continuous availability without user intervention"
-  - "Error recovery mechanisms - Automatic reconnection and fault tolerance"
+  - "Android AirPlay receiver - turns a TouchIT LED into an AirPlay target for iPhone, iPad, and Mac mirroring"
+  - "No extra hardware - software-only, no Apple TV or AirPlay dongle required"
+  - "Bonjour/mDNS discovery - shows up natively in Apple's Screen Mirroring list"
+  - "Hardware H.264 video - MediaCodec decode to Surface with scale-to-fit for large panels"
+  - "Synchronized audio - fdk-aac to PCM playback via AudioTrack"
+  - "Single-connection lock - uninterrupted presenter control on shared networks"
+  - "License-key activation - registration and validation against a backend"
+  - "Over-the-air updates - in-app version check and APK self-update"
+  - "Companion licensing backend - Node.js version/license/APK distribution service"
+  - "TouchIT App Store distribution - packaged for deployment across LED installations"
 
 impactResults:
-  - "Eliminated hardware dependencies by providing software-only screen mirroring solution without additional equipment"
-  - "Enhanced classroom technology integration enabling seamless iOS device connectivity for educational content delivery"
-  - "Improved presentation reliability through secure, uninterrupted connections designed for professional environments"
-  - "Reduced setup complexity providing one-touch screen mirroring from iOS devices to interactive displays"
-  - "Enabled BYOD initiatives supporting teachers and students using personal Apple devices in classroom settings"
-  - "Streamlined corporate presentations allowing executives to share content directly from personal devices"
-  - "Provided cost-effective solution eliminating need for additional AirPlay hardware in every classroom"
-  - "Enhanced user experience matching Apple's native screen mirroring workflow and interface expectations"
-  - "Supported scalable deployment across multiple TouchIT LED installations without per-device licensing"
+  - "Eliminated dedicated AirPlay hardware, with a software-only receiver on the LED itself replacing an Apple TV or AirPlay dongle per room"
+  - "Delivered a native Apple mirroring workflow that appears in the standard iOS/macOS Screen Mirroring list via Bonjour, with no app required on the presenter's device"
+  - "Kept presentations interruption-free through single-connection locking that keeps one presenter in control on shared classroom and boardroom networks"
+  - "Enabled maintainable fleet deployment, with license activation plus in-app OTA updates letting TouchIT distribute and keep the receiver current across LED installations"
 ---
+
+## Overview
+
+TouchIT Air turns an Android-powered TouchIT interactive LED display into an AirPlay receiver, so teachers and presenters can wirelessly mirror an iPhone, iPad, or Mac screen straight to the board — no Apple TV, no AirPlay dongle, no extra hardware. The app advertises itself on the local network over Bonjour/mDNS, completes Apple's AirPlay pairing and FairPlay handshake, then receives the mirrored video and audio stream and renders it full-screen on the LED. It was built as a packaged, license-activated Android product for the TouchIT App Store.
+
+The AirPlay protocol core is the open-source **AirplayServer** project (originally by *dsafa22*; the bundled C library handles RAOP, FairPlay, pairing, mDNS, and fdk-aac audio decoding under its respective BSD/MIT/LGPL/GPL licenses). The work documented here is the **TouchIT product layer on top of it**: integrating that C core into a real Android app via the NDK and JNI, wiring up hardware video/audio playback, and adding everything needed to ship it commercially — license-key activation, an over-the-air update flow, single-connection presentation locking, and a supporting backend.
 
 ## Technical Implementation
 
-The application leverages native Android development using Java, building upon the open source AirplayServer project as the foundation for AirPlay protocol implementation. The solution integrates and extends this library to create a complete AirPlay receiver that seamlessly integrates with Apple's screen mirroring ecosystem, handling device discovery through Bonjour/mDNS, connection establishment, and real-time screen streaming.
+The AirPlay receiver logic lives in a C library compiled into the app with CMake (`armeabi-v7a`, `-std=c++11`). It implements mDNS service advertisement (Apple's mDNSResponder), the AirPlay pairing/handshake (curve25519 + ed25519), the FairPlay/playfair exchange, the RAOP/RTP streaming endpoints, and fdk-aac audio decoding. Java talks to it through a thin JNI bridge (`RaopServer` loading `raopserver_android`), which hands decoded NAL video packets and PCM audio packets back up to the app.
 
-The Android application runs as a background service on TouchIT LED displays, utilizing the AirplayServer library to continuously advertise its availability as an AirPlay receiver on the local network. Custom modifications were implemented to optimize the library for TouchIT's specific hardware requirements and educational use cases.
+On the Android side, `VideoPlayer` wraps `MediaCodec` as an H.264 decoder configured against the display `Surface` with `VIDEO_SCALING_MODE_SCALE_TO_FIT`, while `AudioPlayer` wraps `AudioTrack` in streaming mode and writes buffered PCM packets; a small model layer (`NALPacket`, `PCMPacket`) carries frames between the native callbacks and the players. On the product side, `KeyActivity` captures the license key and email, and `SplashActivity` uses Volley to hit the licensing backend for version checks, license verification, and `TouchITAir.apk` downloads, gating activation and driving OTA updates. The backend is a Node.js service on a self-managed Linux VPS exposing those version/license/APK endpoints.
 
-## Customization & Optimization
+## Impact & Results
 
-The screen mirroring implementation extends the base AirplayServer functionality to handle various iOS device resolutions and orientations, with custom scaling and optimization logic for large interactive display formats. Additional layers were built on top of the open source foundation to manage TouchIT-specific features, video decoding optimization, and display rendering while maintaining low latency essential for interactive presentations.
+TouchIT Air eliminated the need for dedicated AirPlay hardware: a software-only receiver running on the LED itself replaces an Apple TV or AirPlay dongle per room, and the display appears in the standard iOS/macOS Screen Mirroring list via Bonjour with no app required on the presenter's device. Single-connection locking keeps a presenter in control on shared classroom and boardroom networks, and license activation plus in-app OTA updates let TouchIT distribute and keep the receiver current across LED installations through its App Store.
 
-Security enhancements were added beyond the base library capabilities to prevent unauthorized device connections and implement session management ensuring only the intended presenter maintains control. Custom network handling was implemented to manage topology changes and reconnection logic for seamless user experience across varying WiFi conditions typical in educational institutions.
-
-## Integration & Deployment
-
-The solution leverages the TouchIT App Store for seamless distribution across all managed LED installations, eliminating complex installation and configuration processes. The background service operation ensures the AirPlay receiver remains available without user intervention, supporting spontaneous screen mirroring scenarios common in classroom and boardroom environments. Error recovery mechanisms provide automatic reconnection and fault tolerance, enhancing reliability in environments with variable network conditions.
+The AirPlay/RAOP core is built on the open-source **AirplayServer** project (originally by *dsafa22*), which bundles third-party components — crypto, curve25519, ed25519, fdk-aac, playfair, plist, mDNSResponder, http-parser — under New BSD, MIT, Apache 2.0, LGPLv2.1+, and GPL licenses. The contribution documented here is the TouchIT-specific product layer on top of that foundation: NDK/JNI integration into a shippable Android app, MediaCodec/AudioTrack playback, single-connection locking, license activation, OTA updating, and the companion backend.

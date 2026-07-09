@@ -51,26 +51,26 @@ const sectionId = variant === 'hero' ? 'article-header' : undefined;
 >
   <div class={wrapperClasses}>
     <div class={innerClasses}>
-      <!-- Background image with project name overlay -->
+      <!-- Background image (card images carry their own baked-in title; hero adds an h1 overlay) -->
       <div
         class={`${sizeClasses[size]} overflow-hidden ${variant === 'hero' ? 'rounded-xl border border-cyber-blue/20 glow' : 'rounded-t-xl'} relative ${variant === 'card' ? 'bg-cover bg-center transition-transform duration-500 group-hover:scale-110' : ''}`}
         style={`background-image: url('${selectedBg}'); background-size: cover; background-position: center;`}
+        role={variant === 'card' ? 'img' : undefined}
+        aria-label={variant === 'card' ? title : undefined}
       >
-        <!-- Dark overlay for text readability -->
-        <div class="absolute inset-0 bg-black/50"></div>
-        
-        <!-- Project name overlay -->
-        <div class="absolute inset-0 flex items-center justify-center">
-          {variant === 'hero' ? (
-            <h1 class={`${textSizeClasses[size]} font-bold text-white text-center px-4 drop-shadow-2xl`}>
-              {title}
-            </h1>
-          ) : (
-            <h2 class={`${textSizeClasses[size]} font-bold text-white text-center px-4 drop-shadow-2xl`}>
-              {title}
-            </h2>
-          )}
-        </div>
+        {variant === 'hero' && (
+          <>
+            <!-- Dark overlay for text readability -->
+            <div class="absolute inset-0 bg-black/50"></div>
+
+            <!-- Project name overlay -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <h1 class={`${textSizeClasses[size]} font-bold text-white text-center px-4 drop-shadow-2xl`}>
+                {title}
+              </h1>
+            </div>
+          </>
+        )}
       </div>
     </div>
   </div>

@@ -1,19 +1,19 @@
 ---
-title: "TouchIT App Store 3.0 - Android APK Platform"
-description: "Custom Android app store platform with 1,000+ curated educational apps for TouchIT LED displays lacking Google Play Services."
+title: "TouchIT App Store 3.0 - Custom Android App Distribution Platform"
+description: "Led the second-generation rebuild of TouchIT's custom Android app store for interactive LED displays that ship without Google Play Services — a React/Redux + Ant Design web platform, a Node/Express + MongoDB backend with an automated content-acquisition pipeline, and a native Kotlin Android client."
 
 category: "interactive-displays"
 featured: false
 status: "completed"
 
-startDate: "2017-02"
-endDate: "2017-07"
-duration: "5 months"
+startDate: "2018-01"
+endDate: "2024-12"
+duration: "2018 – 2024 (second-generation rebuild; web platform 2018–2024, Android client 2019–2022)"
 
-role: "Full-Stack Developer (Solo)"
-teamSize: "Solo Developer (except design)"
+role: "Lead Full-Stack Developer"
+teamSize: "Led the build — solo on the backend and the majority of the web frontend; a small team of collaborators contributed to the frontend and the Kotlin Android client (design not handled)"
 
-technologies: ["React", "Node.js", "Java", "React Native", "Android Development", "Digital Ocean", "Digital Ocean Spaces", "Content Acquisition Scripts"]
+technologies: ["React", "Redux", "Ant Design", "Node.js/Express", "MongoDB", "Mongoose", "JWT", "Passport (multi-provider OAuth)", "google-play-scraper", "Kotlin", "Dagger 2", "Retrofit 2", "OkHttp", "RxJava2", "Glide"]
 tags: ["Android Development", "App Distribution", "APK Management", "Content Acquisition", "Educational Apps", "Custom App Store"]
 
 links:
@@ -37,70 +37,75 @@ images:
 
 seo:
   title: "TouchIT App Store Platform | Muhammad Asif Javed"
-  description: "Built a custom Android APK distribution platform with automated content acquisition and curated apps for TouchIT LED displays."
-  keywords: ["Android app store", "APK distribution", "educational apps", "content acquisition", "custom app store", "TouchIT technology", "Android development"]
+  description: "Led the rebuild of a custom Android app-distribution platform — React/Redux + Ant Design web store, Node/Express + MongoDB backend with automated content acquisition, and a native Kotlin Android client for TouchIT LED displays."
+  keywords: ["Android app store", "APK distribution", "educational apps", "content acquisition", "custom app store", "TouchIT technology", "Android development", "React Redux", "Kotlin Android client"]
 
 businessContext:
   client: "TouchIT Technologies"
   company: "TouchIT Technologies"
   industry: "Educational Technology / Interactive Displays"
-  userBase: "Educational Institutions, TouchIT Device Users"
+  userBase: "Schools and businesses using TouchIT interactive LED displays"
 
 keyAchievements:
-  - "Solved critical infrastructure gap by providing app distribution alternative to Google Play Services"
-  - "Curated 1,000+ free educational applications ensuring classroom appropriateness"
-  - "Built one-click installation process simplifying deployment for non-technical users"
-  - "Developed both Java (v1) and React Native (v2) versions for enhanced maintenance"
-  - "Established 24-hour app request response system for user-driven additions"
+  - "Led the full-platform rebuild of the App Store across three codebases — Express/MongoDB backend, React/Redux web app, and a native Kotlin Android client — owning architecture and the bulk of the implementation"
+  - "Built the backend API (Node.js/Express + MongoDB/Mongoose) modeling the store domain (App, User, School, Comment, File) with JWT auth and multi-provider social login via Passport (Google, Facebook, Twitter, Outlook, local accounts)"
+  - "Implemented an automated content-acquisition pipeline — a vendored google-play-scraper layer plus Cheerio scraping — to populate the catalog and back the store's 24-hour app-request promise"
+  - "Built the React/Redux web store with an Ant Design UI: searchable, category- and tag-based browsing, ratings, comments, file/APK uploads, and an admin dashboard"
+  - "Drove the native Android store client (Kotlin) running on the LED itself, with Dagger 2, Retrofit 2 + OkHttp + RxJava2, and Glide implementing the search → download → one-tap install flow"
+  - "Maintained the platform over a multi-year lifecycle (2018–2024), iterating the catalog, store experience, and Android client up through version 3.x"
 
 metrics:
-  - label: "Platform Type"
-    value: "Custom App Store"
-    description: "Alternative to Google Play Store"
-  - label: "App Catalog"
-    value: "1,000+ Apps"
-    description: "Curated educational applications"
-  - label: "Content Acquisition"
-    value: "Automated"
-    description: "Scripted app discovery and cataloging"
-  - label: "Development Versions"
-    value: "Java + React Native"
-    description: "Multiple technology implementations"
+  - label: "Backend Commits"
+    value: "111 commits"
+    description: "Express/MongoDB backend history, 2018–2024"
+  - label: "Android Client Version"
+    value: "v3.0.5"
+    description: "com.android.touchit, minSdk 21 / targetSdk 31"
+  - label: "Auth Providers"
+    value: "5"
+    description: "Google, Facebook, Twitter, Outlook, and local login via Passport + JWT"
+  - label: "Lifecycle"
+    value: "2018–2024"
+    description: "Multi-year platform maintenance across releases up to version 3.x"
 
 keyFeatures:
-  - "Web-based app store - Browser-accessible platform for app discovery and management"
-  - "Native Android app store applications - v1 (Java) and v2 (React Native) for TouchIT LED displays"
-  - "1,000+ curated applications - Free, education-focused app library"
-  - "Subject-based categorization - Organized app discovery by educational subjects"
-  - "One-click installation - Simplified APK deployment process"
-  - "App request system - User-driven app addition with 24-hour response time"
-  - "Content safety curation - Violence and gambling-free app verification"
-  - "User account management - Free registration with personalized collections"
-  - "Compatibility testing - Hardware-specific app validation for TouchIT LEDs"
-  - "Administrative dashboard - Store management and app approval workflows"
-  - "Automated content acquisition - Scalable processes for expanding the application catalog"
-  - "Digital Ocean Spaces storage - Secure CDN-distributed APK hosting and delivery"
-  - "Cross-platform evolution - Migration from Java (v1) to React Native (v2) for improved maintenance"
-  - "Educational standards compliance - Classroom-appropriate content verification"
-  - "Free app ecosystem - No licensing or subscription fees for any applications"
+  - "Web-based app store - searchable React/Redux catalog with Ant Design UI"
+  - "Native Android store client - on-device Kotlin app for search, download, and one-tap install on the LED"
+  - "Automated content acquisition - google-play-scraper + Cheerio pipeline to populate app metadata"
+  - "App request workflow - users request apps; catalog additions in as little as 24 hours"
+  - "Multi-provider authentication - Google, Facebook, Twitter, Outlook, and local login (Passport + JWT)"
+  - "Education-focused model - dedicated School entity; free, classroom-appropriate apps"
+  - "Ratings & comments - star ratings and app comments in the store"
+  - "APK hosting & distribution - server-side file handling and delivery to LEDs"
+  - "Admin dashboard - catalog, request, and store management"
+  - "Free ecosystem - no cost to install any app on the LED"
 
 impactResults:
-  - "Solved critical infrastructure gap by providing app distribution alternative to Google Play Services for TouchIT LED displays"
-  - "Enabled educational technology adoption by making Android apps accessible in classroom environments without complex setup"
-  - "Curated 1,000+ educational applications ensuring content safety and classroom appropriateness"
-  - "Streamlined app installation through one-click deployment reducing technical barriers for educators"
-  - "Supported hardware ecosystem growth by making TouchIT LEDs more versatile and valuable for educational institutions"
-  - "Provided cost-effective solution offering entirely free app ecosystem with no licensing fees"
-  - "Enhanced classroom technology integration by ensuring all apps are tested and optimized for interactive displays"
-  - "Established rapid response system with 24-hour app addition process for user requests"
+  - "Solved the missing-Google-Play problem, giving TouchIT LEDs a first-class way to discover and install Android apps despite the absence of Google Play Services"
+  - "Positioned as the home of thousands of free, classroom-checked apps — all free, all checked and suitable for the classroom — removing cost and content-safety barriers for educators"
+  - "One-tap installation on the panel, with the native Kotlin client reducing app deployment to search → download → install, usable by non-technical staff"
+  - "Fast catalog growth via automation, with the google-play-scraper acquisition pipeline underpinning the 24-hour app-request commitment"
+  - "Sustained product, maintained and iterated over a multi-year lifecycle (2018–2024) through version 3.x"
 ---
+
+## Overview
+
+The TouchIT App Store is a custom Android app-distribution platform that fills a critical gap for TouchIT interactive LED displays: because the panels ship without Google Play Services, there is no standard way to discover and install Android apps on them. The App Store solves this with a web-based catalog plus a native on-device store app — billed as the "home of thousands of free apps for your LED" — letting schools and businesses search for an app, download it to the LED, and install it with a single tap.
+
+This is the **second-generation rebuild** of the platform (product version 3.0 / `TouchIT_App_Store_v3.apk`). I led the rebuild end to end — architecting and writing the Node/Express backend, the React/Redux web frontend, and driving the native Kotlin Android client — with a small team contributing to the frontend and Android app. The backend and frontend were bootstrapped from the well-known RealWorld/Conduit reference apps and then heavily rebuilt into a real product; the Android store client was written natively in Kotlin.
 
 ## Technical Implementation
 
-The platform addresses the fundamental challenge of TouchIT LED displays lacking Google Play Services by providing an alternative app distribution method specifically tailored for educational and corporate interactive displays. The solution leverages a React frontend with Node.js backend, deployed on Digital Ocean infrastructure with Digital Ocean Spaces handling APK file storage and distribution.
+**Backend (Node.js/Express + MongoDB).** A REST API structured around `routes/api/*` (apps, school, tags, users, profiles, dashboard, auth) over Mongoose models (`App`, `User`, `School`, `Comment`, `File`). Authentication uses `express-jwt` + `jsonwebtoken` with Passport strategies for Google, Facebook, Twitter, Outlook, and local login. A `utils/googleapp/` module vendoring **google-play-scraper** (with Cheerio, throttled requests, and node-fetch) drives automated acquisition of app metadata to populate the catalog, while Multer handles file/APK uploads. Bootstrapped from the gothinkster RealWorld/Conduit Express backend and then substantially extended (111 commits, 2018–2024).
 
-The web platform built with React enables administrators and users to browse, search, and manage applications through intuitive category-based navigation. The native Android applications (v1 in Java, v2 migrated to React Native) run directly on TouchIT LED displays, providing local access to the curated app ecosystem through communication with the Node.js API endpoints.
+**Web frontend (React + Redux).** A Redux + react-router-redux SPA with an **Ant Design** component layer, featuring catalog search, category/tag navigation, star ratings, markdown rendering, drag-and-drop uploads, notifications, and an admin/management dashboard. Bootstrapped from the gothinkster `react-redux-realworld-example-app` (Conduit) and rebuilt into the store UI.
+
+**Android store client (Kotlin).** A native app (`com.android.touchit`, `versionName 3.0.5`, minSdk 21 / targetSdk 31) that runs on the LED and presents the on-device store. Built with Kotlin on a reactive, dependency-injected architecture organized into feature packages: **Dagger 2** for dependency injection, **Retrofit 2 + OkHttp + RxJava2** for the API layer, **Glide** for imagery, Sugar ORM for local persistence, and runtime permission handling for the download-and-install flow.
 
 ## Architecture Highlights
 
-The automated content acquisition system uses custom scripts to discover, catalog, and verify educational applications, significantly reducing manual curation overhead. The dual-version approach (Java v1 and React Native v2) demonstrates evolutionary development, maintaining compatibility with older TouchIT devices while providing enhanced maintainability through React Native's cross-platform capabilities. The one-click installation system abstracts the complexity of APK management, empowering non-technical educators to expand their classroom technology capabilities without IT department intervention.
+The store domain is modeled around `App`, `User`, `School`, `Comment`, and `File`, with `School` a first-class entity reflecting the platform's classroom/institution focus — every listed app is free and vetted as classroom-appropriate. The automated content-acquisition pipeline (google-play-scraper + Cheerio) backs the store's "request an app and we'll add it in as little as 24 hours" promise, while server-side file handling (Multer) and the `File` model support hosting and delivering APKs to the LEDs. This documents the second-generation rebuild (the `v2` codebase, shipping as product version 3.x); an earlier first-generation App Store preceded it and was replaced by this React/Express/Kotlin stack.
+
+## Attribution
+
+The web frontend and backend were bootstrapped from the open-source **RealWorld / Conduit** reference applications (gothinkster `react-redux-realworld-example-app` and the Node/Express RealWorld backend) and then heavily rebuilt into the production store; the Android store client was written natively in Kotlin. The work documented here is the TouchIT App Store platform built on top of those foundations — the store domain model and API, the automated Google Play acquisition pipeline, the Ant Design store UI and admin dashboard, and the native on-device Android client — which I led and largely implemented, with a small team contributing to the frontend and Android app.

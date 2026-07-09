@@ -31,31 +31,27 @@ const faqSchema = {
 <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
 
 <section id={id} class="bg-cyber-dark/40 py-16 lg:py-24 relative overflow-hidden">
-  <div class="absolute w-96 h-96 bg-cyber-blue/5 rounded-full blur-3xl -top-20 -left-20"></div>
-  
   <div class="max-w-4xl mx-auto px-6">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">
-        <span class="text-cyber-blue text-shadow-glow">Frequently</span> Asked Questions
-      </h2>
-      <div class="h-1 w-24 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>
+    <div class="text-center mb-12">
+      <p class="section-kicker mb-3">FAQ</p>
+      <h2 class="text-3xl md:text-4xl font-semibold">{title}</h2>
     </div>
 
-    <div class="space-y-6">
+    <div class="space-y-3">
       {faqs.map((faq, index) => (
-        <div 
-          class="border border-cyber-blue/20 rounded-lg bg-cyber-dark/60 backdrop-blur-sm overflow-hidden"
+        <div
+          class="glass-card overflow-hidden"
           x-data="{ open: false }"
         >
           <button
-            class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-cyber-blue/5 transition-colors"
+            class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-white/[0.03] transition-colors"
             x-on:click="open = !open"
             type="button"
             x-bind:aria-expanded="open.toString()"
           >
-            <h3 class="text-lg font-semibold text-white pr-4">{faq.question}</h3>
+            <h3 class="text-base md:text-lg font-medium text-white pr-4">{faq.question}</h3>
             <svg
-              class="w-5 h-5 text-cyber-blue transition-transform duration-200"
+              class="w-5 h-5 text-gray-400 transition-transform duration-200"
               x-bind:class="open ? 'rotate-180' : ''"
               fill="none"
               viewBox="0 0 24 24"

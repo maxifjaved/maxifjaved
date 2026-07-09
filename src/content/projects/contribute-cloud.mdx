@@ -1,19 +1,19 @@
 ---
-title: "Contribute Cloud - EdTech Collaboration Platform"
-description: "Cloud-based educational platform revolutionizing classroom interaction with real-time content sharing, screen casting, and interactive learning tools."
+title: "Contribute Cloud - Browser-Based Classroom Collaboration & Casting Platform"
+description: "Sole developer of Contribute Cloud, a zero-install, browser-based classroom collaboration and screen-casting platform for TouchIT Technologies' interactive LED displays — real-time whiteboarding, casting, polling, and educational games, architected and maintained solo over nearly seven years."
 
 category: "edtech"
 featured: true
 status: "completed"
 
-startDate: "2020-01"
-endDate: "2021-06"
-duration: "18 months"
+startDate: "2016-12"
+endDate: "2024-02"
+duration: "~7 years of active development (Dec 2016 - Feb 2024)"
 
 role: "Full-Stack Developer (Solo)"
-teamSize: "Solo Developer (except design)"
+teamSize: "Solo Developer (sole author of ~99% of commits; a few minor outside contributions)"
 
-technologies: ["Node.js", "React", "MongoDB", "Socket.io", "OpenVidu WebRTC", "Fabric.js", "AWS S3", "Digital Ocean"]
+technologies: ["Node.js", "Express", "MongoDB (Mongoose)", "Socket.io", "OpenVidu (WebRTC)", "Fabric.js", "React", "Redux", "Ant Design", "Uppy + tus", "Firebase Admin SDK", "OpenAI (GPT-3.5-turbo)", "AWS Lambda", "Passport.js", "Chart.js", "Workbox (PWA)", "PM2 + nginx"]
 tags: ["EdTech", "Real-time Collaboration", "WebRTC", "Interactive Learning", "Canvas", "Educational Games", "Cloud Platform"]
 
 links:
@@ -36,71 +36,84 @@ images:
   gallery: []
 
 seo:
-  title: "Contribute Cloud - EdTech Platform | Muhammad Asif Javed"
-  description: "Built a cloud education platform with real-time screen casting, interactive whiteboarding, 40+ learning games, and cross-platform support."
-  keywords: ["educational technology", "classroom collaboration", "real-time screen sharing", "interactive whiteboard", "WebRTC", "educational games", "cloud platform", "K-12 education"]
+  title: "Contribute Cloud - Classroom Collaboration Platform | Muhammad Asif Javed"
+  description: "Sole developer of a browser-based classroom collaboration platform: real-time whiteboarding, WebRTC screen casting, live polling, AI-assisted lessons, and 42 educational games, built solo over ~7 years."
+  keywords: ["educational technology", "classroom collaboration", "real-time screen casting", "WebRTC", "interactive whiteboard", "Socket.io", "OpenVidu", "educational games", "TouchIT Technologies", "K-12 education"]
 
 businessContext:
   client: "TouchIT Technologies"
   company: "TouchIT Technologies"
-  industry: "Educational Technology"
-  userBase: "K-12 Schools, Higher Education, Corporate Training"
+  industry: "Educational Technology / Interactive Displays"
+  userBase: "K-12 schools using TouchIT interactive LED displays"
 
 keyAchievements:
-  - "Deployed across numerous schools as part of TouchIT LED display suite"
-  - "Built 40+ interactive learning games with multi-zone gamification"
-  - "Implemented real-time collaboration supporting 50+ concurrent users"
-  - "Created 1.5 million+ searchable image gallery"
-  - "Achieved ultra-low latency WebRTC video conferencing"
+  - "Architected and built the entire platform solo over ~7 years (Dec 2016 - Feb 2024): the Node.js/Express API, three React front-ends, the real-time collaboration layer, WebRTC casting integration, and production deployment"
+  - "Engineered the real-time collaboration layer on Socket.io - live whiteboard drawing sync, slide/presentation sync, group and private chat, teacher-to-student tool broadcasting, and live voting events"
+  - "Integrated OpenVidu (WebRTC) for live video and screen casting, including a multi-cast mode that displays multiple student streams simultaneously in a scrollable grid"
+  - "Built the Fabric.js collaborative whiteboard and a workbook/lesson builder with server-side PDF export and an AWS Lambda document-to-slide conversion pipeline"
+  - "Added AI-assisted lesson creation via an OpenAI GPT-3.5-turbo endpoint that generates titled slide content from a topic"
+  - "Built 15 in-browser teaching tools and shipped 42 educational games (38 standalone HTML5 bundles plus 4 React games)"
+  - "Implemented Passport.js authentication (local plus Google, Facebook, Twitter, and Outlook OAuth) and integrated the Firebase Admin SDK to tie the platform into TouchIT's device and digital-signage ecosystem"
+  - "Shipped an installable PWA with a Workbox service worker for resilience on classroom networks, with device detection adapting the UI across desktop, Chromebook, and tablet"
 
 metrics:
-  - label: "Concurrent Users"
-    value: "50+ per session"
-    description: "Ultra-low latency WebRTC implementation"
-  - label: "Interactive Games"
-    value: "40+"
-    description: "Multi-zone collaborative gamification"
-  - label: "Image Library"
-    value: "1.5M+"
-    description: "Searchable educational resources"
-  - label: "Development Approach"
-    value: "100% Solo"
-    description: "Complete solo development"
+  - label: "Development Span"
+    value: "~7 years"
+    description: "Dec 2016 - Feb 2024, actively developed and maintained solo"
+  - label: "Sole Authorship"
+    value: "~99% of commits"
+    description: "Backend, three front-ends, real-time infrastructure, and deployment all built solo"
+  - label: "Front-Ends"
+    value: "3 React apps"
+    description: "Teacher client, student join client, and standalone OpenVidu video app on one API"
+  - label: "Teaching Tools & Games"
+    value: "15 tools, 42 games"
+    description: "In-browser teaching tools and educational games, teacher-activated and broadcast to students"
 
 keyFeatures:
-  - "Real-time screen casting and multi-casting - Unlimited simultaneous screen sharing with scrollable view"
-  - "1.5 million+ searchable image gallery - Built-in Content Gallery with live search functionality"
-  - "Live collaborative whiteboarding - Multi-user interaction on shared canvas"
-  - "Student device management - Screen pause, control, and monitoring capabilities"
-  - "Cross-platform file sharing - Seamless transfer between all connected devices"
-  - "Interactive assessment tools - Live voting, polling with graphical results display"
-  - "Session recording and playback - Complete lesson capture for review"
-  - "Multi-zone gamification - Multiple students interacting on same screen simultaneously"
-  - "Chromebook optimization - Chrome browser optimized for education sector"
-  - "Import compatibility - Supports content from other interactive whiteboard platforms"
-  - "Class management system - Email invitations, class lists, and session organization"
-  - "No installation architecture - Pure browser-based access for all users"
-  - "Workbook management - Create, save, and export lessons as PDF documents"
-  - "Unlimited cloud storage - Fair use policy for storing all educational content"
-  - "Multi-language interface - Supporting global educational communities"
-  - "Educational game library - 40+ games organized by subject areas"
-  - "Annotation tools - Drawing, highlighting, and table creation features"
+  - "Real-time screen casting & multi-cast - teacher and student screens over WebRTC, with multiple student streams shown simultaneously in a scrollable grid"
+  - "Collaborative whiteboard - Fabric.js canvas with pen, shapes, text, and eraser, synced live across participants"
+  - "Content Gallery - live web image search (Qwant API) plus uploads and cloud imports"
+  - "Cloud storage imports - Google Drive, Dropbox, OneDrive, webcam, and screen capture via Uppy with tus resumable uploads"
+  - "Workbook/lesson builder - multi-format slides (images, PDFs, videos, Office docs) with PDF export"
+  - "Live voting & polling - real-time bar-chart results with no extra hardware"
+  - "AI slide generation - OpenAI GPT-3.5-turbo endpoint that drafts lesson slides from a topic"
+  - "15 teaching tools - calculator, protractor, abacus, periodic table, dictionary, piano, stopwatch, dice roller, spreadsheet, spotlight, typing tutor, function machine, sum creator, tally marks, content holder"
+  - "42 educational games - math, language, memory, and counting categories"
+  - "Authentication - local plus Google/Facebook/Twitter/Outlook OAuth, email verification, password reset"
+  - "Class & session management - email invitations and code/QR-based session joining"
+  - "Firebase device/signage integration - ties into TouchIT's display ecosystem"
+  - "Installable PWA - Workbox service worker with precaching and runtime image caching"
+  - "Internationalization - English, Spanish, and Portuguese"
 
 impactResults:
-  - "Deployed across numerous schools as an integral part of TouchIT Technologies' LED display suite"
-  - "Eliminated installation barriers by providing a completely browser-based solution, reducing IT overhead for educational institutions"
-  - "Enabled BYOD initiatives allowing schools to utilize existing devices rather than investing in specific hardware"
-  - "Improved classroom engagement through 40+ interactive games and real-time collaboration features"
-  - "Reduced technical complexity for teachers by providing an intuitive, OS-agnostic platform"
-  - "Achieved ultra-low latency video conferencing supporting 50+ concurrent users per session using OpenVidu WebRTC"
-  - "Scaled horizontally to support multiple schools simultaneously on Digital Ocean infrastructure"
-  - "Provided cost-effective solution as a free platform bundled with TouchIT LED displays, making advanced collaboration accessible"
+  - "Long-lived production platform (2016-2024), bundled with TouchIT interactive LED displays and deployed to schools as part of the company's classroom ecosystem"
+  - "Zero-install and OS-agnostic - runs in any modern browser across PC, Mac, Chromebook, and tablet, with no client software to deploy, reducing IT overhead and enabling BYOD classrooms"
+  - "A complete teaching toolkit in one browser tab - screen casting, a collaborative whiteboard, live polling, 15 teaching tools, and 42 games, all real-time"
+  - "Integrated into TouchIT's wider ecosystem - Firebase-driven device signage and scheduling links the collaboration platform to the company's LED display and signage products"
+  - "Maintained and evolved solo for ~7 years, spanning backend and real-time infrastructure, three front-ends, WebRTC integration, AI features, and deployment"
 ---
+
+## Overview
+
+Contribute Cloud is a zero-install, browser-based classroom collaboration and screen-casting platform built as part of TouchIT Technologies' interactive LED display ecosystem. It lets a teacher run a live session that any student can join from a browser on any device - casting screens, drawing on a shared whiteboard, sharing files, running polls, and playing educational games together in real time, with no software to install. The system is three React front-ends (a teacher client, a student "join" client, and a standalone OpenVidu video app) on top of a single Node.js/Express + MongoDB API, with real-time collaboration over Socket.io and live video/casting over OpenVidu WebRTC. Built and maintained solo across roughly seven years, it grew from an initial whiteboard/casting tool into a full digital-classroom suite.
+
+## Key Achievements
+
+The real-time collaboration layer runs on Socket.io: live whiteboard drawing sync, slide/presentation sync, group and private chat, teacher-to-student tool broadcasting (pushing a calculator, abacus, dice roller, and more to student screens), screen-cast quality and audio controls, and live voting events. OpenVidu (WebRTC) handles live video and screen casting - teacher webcam broadcast, screen sharing, and a "multi-cast" mode that displays multiple student streams simultaneously in a scrollable grid.
+
+The interactive whiteboard is built on Fabric.js with pen, shapes, text, eraser, and select/pan tools, synchronized across participants in real time. A Content Gallery combines live web image search (via the Qwant Images API), user uploads, and imports from Google Drive, Dropbox, OneDrive, webcam, and screen capture, powered by Uppy with tus resumable uploads. A workbook/lesson builder stores multi-format slides (images, PDFs, videos, and Office documents) and exports lessons to PDF via a server-side `wkhtmltoimage` + ImageMagick pipeline, backed by an AWS Lambda function (`TouchIT-prod-d2p`) that converts uploaded Office/PDF documents into lesson slides. Live voting and polling pushes real-time bar-chart results (Chart.js) to all participants over sockets, and an OpenAI GPT-3.5-turbo endpoint adds AI-assisted lesson creation, generating titled slide content from a lesson topic.
+
+Beyond the core collaboration features: 15 in-browser teaching tools (calculator, protractor, abacus, periodic table, dictionary, piano, stopwatch, dice roller, spreadsheet, spotlight, typing tutor, function machine, sum creator, tally marks, and a content holder), 42 educational games (38 standalone HTML5 bundles plus 4 React games) across math, language, memory, and counting categories, Passport.js authentication (local plus Google, Facebook, Twitter, and Outlook OAuth) with email verification and password reset, a cloud-drive file manager with hierarchical folders, class/session email invitations and code/QR-based joining, Firebase Admin SDK integration to register devices and push signage/schedule content, internationalization (English, Spanish, and Portuguese), and an installable PWA with a Workbox service worker for resilience on classroom networks.
 
 ## Technical Implementation
 
-The platform leverages a sophisticated tech stack combining Node.js backend with React frontend, orchestrated through a microservices architecture on Digital Ocean infrastructure. Real-time communication is powered by OpenVidu's WebRTC implementation, enabling ultra-low latency video conferencing and screen sharing with support for 50+ concurrent users per room.
+**Backend** - A Node.js/Express server (run via babel-node, managed by PM2 in production) backed by MongoDB through Mongoose. Socket.io drives bidirectional real-time events for drawing, slides, chat, tools, and voting. The OpenVidu Node client manages WebRTC rooms and access tokens, with the media server hosted separately (`cast3.contribute.cloud`). Passport.js handles local and social authentication; nodemailer sends verification, password-reset, and class-invitation emails. The Firebase Admin SDK syncs device/signage data, OpenAI generates slide content, and an AWS Lambda function handles document-to-slide conversion. Uploaded files (workbook attachments, gallery images, lecture attachments) are persisted to disk through symlinked storage directories and served statically over HTTPS.
 
-Socket.io handles bidirectional real-time events for instant messaging, collaborative drawing, and live updates across all connected devices. The collaborative whiteboard features are built using Fabric.js canvas library, enabling smooth multi-user drawing experiences with real-time synchronization.
+**Frontend** - Three Create React App front-ends: the teacher client and the student "join" client (built with react-app-rewired, Redux, and Ant Design), plus a standalone OpenVidu "cloud-call" video app. Fabric.js powers the collaborative whiteboard, Chart.js renders live poll results, Uppy handles uploads and cloud imports, and Workbox provides PWA/offline support. react-device-detect adapts the UI for Chromebooks, tablets, and mobile.
 
-MongoDB provides flexible document storage for user sessions, lesson content, and collaborative data, while AWS S3 handles secure file uploads and content delivery with optimized CDN distribution.
+**Architecture** - Rather than microservices, the platform is a multi-app system: one Express/MongoDB API serving multiple React clients, plus dedicated supporting services on their own subdomains - an OpenVidu media server (`cast3.contribute.cloud`) for WebRTC video and screen casting, and a tus server (`tus.contribute.cloud`) for resumable file uploads. It is deployed to a self-managed Linux VPS, served over HTTPS, and run under PM2 with per-environment configuration.
+
+## Impact & Results
+
+Contribute Cloud has been a long-lived production platform since 2016, bundled with TouchIT interactive LED displays and deployed to schools as part of the company's classroom ecosystem. It is zero-install and OS-agnostic, running in any modern browser across PC, Mac, Chromebook, and tablet with no client software to deploy, which reduces IT overhead and enables BYOD classrooms. It packs a complete teaching toolkit into one browser tab: screen casting, a collaborative whiteboard, live polling, 15 teaching tools, and 42 games, all real-time. Firebase-driven device signage and scheduling ties the collaboration platform into TouchIT's wider LED display and digital-signage ecosystem. Across it all, the platform was maintained and evolved solo for roughly seven years, spanning backend and real-time infrastructure, three front-ends, WebRTC integration, AI features, and production deployment.

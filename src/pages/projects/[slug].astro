@@ -43,13 +43,17 @@ const {
 
 const currentUrl = new URL(Astro.url).toString();
 
-// Related projects: same category first, then most recent others, excluding self
-const allProjectEntries = (await getCollection('projects')).filter(p => p.slug !== entry.slug);
-const sameCategory = allProjectEntries.filter(p => p.data.category === category);
-const others = allProjectEntries
-  .filter(p => p.data.category !== category)
-  .sort((a, b) => b.data.endDate.localeCompare(a.data.endDate));
-const relatedProjects = [...sameCategory, ...others].slice(0, 3);
+// Related projects: the next 3 in a stable rotation. Because selection is a
+// pure rotating window, every project is the "next-N" of exactly 3 predecessors,
+// so each detail page gets exactly 3 inbound links — no orphan pages.
+const orderedProjects = (await getCollection('projects')).sort((a, b) =>
+  b.data.endDate.localeCompare(a.data.endDate) || a.slug.localeCompare(b.slug)
+);
+const selfIndex = orderedProjects.findIndex(p => p.slug === entry.slug);
+const relatedProjects = [
+  ...orderedProjects.slice(selfIndex + 1),
+  ...orderedProjects.slice(0, selfIndex),
+].slice(0, 3);
 
 // Format author data (from your profile)
 const authorData = {

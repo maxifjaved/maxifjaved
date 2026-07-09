@@ -1,26 +1,26 @@
 ---
 title: "JustCastIt - Wireless Screen Casting Platform"
-description: "Developed a revolutionary browser-based wireless screen casting platform eliminating software installation while enabling unlimited simultaneous screen sharing to TouchIT Interactive LED displays. This innovative solution removes barriers to classroom adoption by requiring only a web browser, supporting cross-platform compatibility (PC, Mac, Chromebook, Linux), and providing enterprise-grade real-time streaming capabilities powered by OpenVidu WebRTC."
+description: "Built a zero-install, browser-based wireless screen-casting platform for TouchIT interactive LED displays. A presenter opens the casting page in any browser, enters a short session code, and shares their screen to the LED over WebRTC (via OpenVidu) — no downloads, drivers, or native apps, with multiple participants able to cast into one session."
 
 category: "interactive-displays"
 featured: true
 status: "completed"
 
-startDate: "2019-08"
-endDate: "2020-12"
-duration: "16 months"
+startDate: "2020-01"
+endDate: "2023-01"
+duration: "built early 2020; backend maintained through Jan 2023"
 
 role: "Full-Stack Developer (Solo)"
 teamSize: "Solo Developer (except design)"
 
-technologies: ["React", "Node.js", "OpenVidu WebRTC", "Fabric.js", "PWA", "Digital Ocean"]
+technologies: ["React (CRA)", "Ant Design", "openvidu-browser (WebRTC)", "Node.js/Express", "MongoDB (Mongoose)", "openvidu-node-client", "JWT", "Digital Ocean VPS"]
 tags: ["Screen Casting", "WebRTC", "Real-time Collaboration", "Browser-based", "Cross-platform", "Educational Technology"]
 
 links:
   liveUrl: "https://justcastit.com/"
   companyUrl: "https://touchittechnologies.com/justcastit/"
   caseStudyUrl: null
-  demoUrl: null
+  demoUrl: "https://www.youtube.com/watch?v=W2nKFu7Jjj0"
 
 images:
   featuredImage:
@@ -37,80 +37,73 @@ images:
 
 seo:
   title: "JustCastIt Screen Casting | Muhammad Asif Javed"
-  description: "Built revolutionary wireless screen casting platform with unlimited simultaneous sharing, cross-platform compatibility, and zero software installation required."
-  keywords: ["screen casting", "wireless display", "browser-based casting", "WebRTC", "educational technology", "real-time collaboration", "TouchIT displays"]
+  description: "Browser-based, zero-install wireless screen casting to TouchIT interactive LED displays, built with React and OpenVidu WebRTC, letting multiple presenters cast into one session over LAN or the internet."
+  keywords: ["screen casting", "wireless display", "browser-based casting", "WebRTC", "OpenVidu", "educational technology", "TouchIT displays"]
 
 businessContext:
   client: "TouchIT Technologies"
   company: "TouchIT Technologies"
   industry: "Educational Technology / Interactive Displays"
-  userBase: "Educational Institutions, Corporate Training"
+  userBase: "Schools and organizations using TouchIT interactive LED displays"
 
 keyAchievements:
-  - "Eliminated software installation requirements for screen casting"
-  - "Built unlimited simultaneous screen sharing capabilities"
-  - "Achieved cross-platform compatibility (PC, Mac, Chromebook, Linux)"
-  - "Implemented revolutionary browser-based wireless casting solution"
-  - "Created real-time multi-user collaboration features"
+  - "Built the full platform solo - two React front-ends (the LED-side host/receiver and the casting client) plus the Node.js/Express signaling/token backend"
+  - "Implemented WebRTC screen casting over OpenVidu using openvidu-browser (videoSource: 'screen'), letting presenters share a full screen, window, or tab via the browser's native picker"
+  - "Made it zero-install and cross-platform - a plain browser web app running on PC, Mac, Chromebook, and Linux with no native APK required on the LED"
+  - "Designed a simple pairing flow - a random 6-digit session code plus a scannable QR code (qrcode.react) for casters to join by"
+  - "Built a multi-caster receiver view - the host app tracks all subscriber streams, switches the main stream in real time, and expands any stream to full screen"
+  - "Built the Express backend - an /api/OpenVidu session/token service using openvidu-node-client, hardened with Helmet, with MongoDB (Mongoose), JWT, and nodemailer in the stack, deployed and maintained on a Digital Ocean Linux VPS"
 
 metrics:
-  - label: "Platform Compatibility"
-    value: "Universal Browser-based"
-    description: "Works on any device with web browser"
-  - label: "Simultaneous Casting"
-    value: "Unlimited"
-    description: "Multiple screens casting at once"
+  - label: "Session Pairing"
+    value: "6-digit code + QR"
+    description: "Casters join a session via a short code or a scannable QR code"
   - label: "Installation Required"
     value: "Zero"
-    description: "Completely browser-based solution"
-  - label: "Setup Time"
-    value: "Seconds"
-    description: "No configuration needed"
+    description: "Runs entirely in the browser on both the presenter and LED-receiver side"
+  - label: "Casting Range"
+    value: "Beyond LAN"
+    description: "Sessions run through a deployed OpenVidu media server, enabling casting over the internet, not just the local network"
 
 keyFeatures:
-  - "Browser-based casting platform - Zero-installation screen sharing through web browsers"
-  - "Progressive Web Application (PWA) - LED display receiver app eliminating native installation requirements"
-  - "Cross-platform compatibility - Support for PC, Mac, Chromebook, and Linux devices"
-  - "Unlimited multi-casting - Infinite simultaneous participants in single casting session"
-  - "Chrome and Firefox support - Broad browser compatibility for maximum accessibility"
-  - "Remote casting capability - Internet-based screen sharing beyond local networks"
-  - "Real-time screen switching - Fabric.js canvas-based navigation with double-tap full-screen"
-  - "Application-specific casting - Option to share specific applications instead of full screen"
-  - "Casting ID pairing system - Simple and secure connection establishment"
-  - "Responsive web interface - Consistent experience across browsers and devices"
-  - "No hardware requirements - Pure software solution without additional equipment"
-  - "Free for TouchIT customers - No licensing fees or subscription costs"
-  - "OpenVidu WebRTC infrastructure - Enterprise-grade streaming with adaptive connection management"
-  - "Fabric.js canvas rendering - Efficient multi-stream display and interaction handling"
-  - "PWA deployment - App-like experience without native installation requirements"
-  - "Educational optimization - Designed specifically for classroom and training environments"
+  - "Browser-based casting - zero-install screen sharing from any modern browser"
+  - "Cross-platform - PC, Mac, Chromebook, and Linux"
+  - "WebRTC screen sharing (OpenVidu) - full screen, window, or tab via the browser picker"
+  - "6-digit code + QR pairing - simple, scannable session joining"
+  - "Multi-caster receiver - host view of all streams with main-stream switching and per-stream full screen"
+  - "Remote casting - internet-based sessions beyond the local network"
+  - "No receiver hardware/app - the LED runs the host app in a browser"
+  - "Express OpenVidu backend - session creation and token issuance, Helmet-hardened"
+  - "Solo end-to-end build - both front-ends and the backend"
 
 impactResults:
-  - "Eliminated installation barriers by providing browser-based casting without software downloads or configuration"
-  - "Enabled universal device support across PC, Mac, Chromebook, and Linux platforms through web browser standardization"
-  - "Supported unlimited collaboration with infinite simultaneous casting participants for large classroom environments"
-  - "Enhanced remote learning capabilities by enabling internet-based casting beyond local network restrictions"
-  - "Reduced IT overhead by eliminating software deployment and management requirements across diverse device ecosystems"
-  - "Improved classroom efficiency through seamless screen switching and real-time collaboration features"
-  - "Provided cost-effective solution as free software for TouchIT customers eliminating licensing fees"
-  - "Enabled flexible teaching methods with application-specific casting and multi-participant display capabilities"
-  - "Streamlined user experience through simple web interface requiring only browser access and casting ID"
+  - "Eliminated install barriers - screen casting straight from a browser, no downloads or drivers, on any major desktop OS or Chromebook"
+  - "No receiver hardware or native app - the LED display just opens the host web app, turning any TouchIT panel into a casting target"
+  - "Multi-participant casting - several people can cast into one session; the display switches between them or full-screens any one"
+  - "Works beyond the LAN - internet-based casting through the OpenVidu server supports remote learning and remote support"
+  - "Low-latency by design - media flows peer-to-server over WebRTC, not through the application backend"
 ---
+
+## Overview
+
+JustCastIt is a zero-install, browser-based wireless screen-casting platform for TouchIT interactive LED displays. A presenter opens the casting page in any browser - on PC, Mac, Chromebook, or Linux - enters a short session code, and shares their screen to the LED with nothing to install. Built solo, it uses WebRTC (via OpenVidu) for real-time screen streaming, so multiple participants can cast into one session and the display can switch between them or blow any one up to full screen.
+
+The platform is two React web apps over a Node.js/Express signaling backend. The **Teacher** app runs on the TouchIT LED as the session host and receiver: it generates a **6-digit session code** and a **QR code**, then displays the incoming casts. The **Student** app is the casting client: it joins by code and shares its screen. An Express API backed by the OpenVidu Node client issues the WebRTC sessions and access tokens that connect them.
+
+## Key Achievements
+
+Built the full platform solo, two React front-ends (the LED-side host/receiver and the casting client) plus the Node.js/Express signaling/token backend. The casting client publishes its screen with `openvidu-browser` (`videoSource: 'screen'`), letting the presenter share a full screen, window, or tab via the browser's native picker, while the host app tracks every subscriber stream, lets the display switch the "main" stream in real time, and expand any stream to full screen.
+
+The host generates a random 6-digit session code plus a scannable QR code (`qrcode.react`) for a simple pairing flow, and because sessions run through the deployed OpenVidu media server, casters can connect over the internet rather than just the same LAN, enabling remote casting and remote support scenarios.
 
 ## Technical Implementation
 
-The platform leverages React frontend with Node.js backend deployed on Digital Ocean infrastructure, utilizing OpenVidu's WebRTC framework for robust peer-to-peer screen sharing capabilities. The web application provides universal compatibility across Chrome and Firefox browsers on multiple operating systems without requiring client-side software installation.
+**Frontend** - Two Create React App apps (Ant Design UI), sharing an OpenVidu session model. The **Teacher** (host/receiver) app, intended to run on the TouchIT LED, creates a 6-digit session ID and QR code, subscribes to every caster's stream, maintains a `mainStreamManager` to choose which cast is shown large, and offers full-screen view per stream. The **Student** (caster) app joins by session ID and publishes its screen via `openvidu-browser` with `videoSource: 'screen'`. Both connect to OpenVidu rooms using access tokens fetched from the backend.
 
-The casting functionality utilizes OpenVidu's WebRTC implementation to establish direct connections between browser clients and the Progressive Web Application (PWA) running on TouchIT LED displays. This PWA approach eliminates the need for native Android app installation while providing full casting receiver capabilities through modern web standards.
+**Backend** - A Node.js/Express service whose core is the `/api/OpenVidu` endpoint: it uses the OpenVidu Node client to create sessions and issue connection tokens, so browser clients can join the right WebRTC room. The app is set up with Helmet, compression, CORS, cookie/body parsing, and a health check, with MongoDB (Mongoose), JWT, and nodemailer available in the stack. It runs against an OpenVidu media server that handles the actual WebRTC routing, deployed on a Digital Ocean Linux VPS.
 
-The PWA receiver handles multiple simultaneous incoming streams using Fabric.js canvas for efficient stream rendering and real-time switching capabilities. The platform supports both full-screen and application-specific casting modes, with Fabric.js providing smooth canvas-based display management and interaction handling.
+**Architecture** - Browser clients ⇄ Express token/session API ⇄ OpenVidu media server. Screen frames travel as WebRTC media through OpenVidu rather than through the app server, which keeps casting low-latency; the Express layer only brokers sessions and tokens. The whole thing is delivered as web apps over HTTPS on a self-managed Linux VPS - no client install, and no native receiver app on the LED.
 
-## Architecture & Performance
+## Impact & Results
 
-Remote casting capability extends beyond local network limitations through OpenVidu's signaling server infrastructure, enabling distributed collaboration scenarios such as remote learning and support. The system maintains consistent performance across various network conditions by leveraging OpenVidu's adaptive streaming and connection management capabilities.
-
-The multi-casting architecture supports unlimited simultaneous participants through OpenVidu's scalable WebRTC infrastructure, implementing efficient stream management and display organization to handle large-scale collaborative scenarios typical in educational institutions. The React frontend provides responsive interfaces for both casting clients and PWA receivers, while Node.js orchestrates session management and participant coordination.
-
-## Innovation Highlights
-
-The complete elimination of software installation represents a paradigm shift in screen casting technology, removing the primary barrier to adoption in educational environments. The unlimited multi-casting capability supports flexible teaching methods where multiple students or presenters can share simultaneously without resource constraints. The PWA approach provides an app-like experience while maintaining pure web-based accessibility, offering the best of both worlds for modern classrooms.
+Screen casting works straight from a browser, no downloads or drivers, on any major desktop OS or Chromebook, and the LED display just opens the host web app, turning any TouchIT panel into a casting target with no receiver hardware or native app required. Several people can cast into one session, with the display switching between them or full-screening any one, and internet-based casting through the OpenVidu server supports remote learning and remote support beyond the local network. Because media flows peer-to-server over WebRTC rather than through the application backend, casting stays low-latency by design.

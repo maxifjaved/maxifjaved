@@ -16,7 +16,7 @@ export interface AboutType {
     expertise: string[];
     industries: string[];
   };
-  competencies: { label: string; value: number }[];
+  competencies: { title: string; desc: string }[];
   tools: string[];
 }
 
@@ -49,10 +49,10 @@ const aboutData: AboutType = {
     industries: ["EdTech", "Real-time Systems", "Platform Integration", "Enterprise SaaS", "Interactive Displays", "Cybersecurity", "InsurTech", "Business Intelligence"],
   },
   competencies: [
-    { label: "Full-Stack Development — React to cloud, enterprise-scale", value: 95 },
-    { label: "Real-time Systems — 50+ concurrent users, <300ms latency", value: 92 },
-    { label: "Platform Integration — 4000+ apps connected via APIs", value: 90 },
-    { label: "Solo Development — 9+ enterprise projects delivered", value: 88 },
+    { title: "Full-Stack Development", desc: "React to cloud, enterprise-scale" },
+    { title: "Real-time Systems", desc: "WebRTC casting & Socket.io collaboration" },
+    { title: "Platform Integration", desc: "4000+ apps connected via APIs" },
+    { title: "Solo Development", desc: "Enterprise platforms built & run solo for years" },
   ],
   tools: ["React & Next.js", "Node.js", "MongoDB", "WebRTC & OpenVidu", "DigitalOcean", "Socket.io & Fabric.js"],
 };
@@ -67,16 +67,11 @@ const aboutData: AboutType = {
       class="absolute w-96 h-96 bg-cyber-blue/5 rounded-full blur-3xl -bottom-20 -right-20"
     ></div>
 
-    <div class="flex justify-center mb-16">
-      <div class="relative">
-        <h2 class="text-3xl md:text-4xl font-bold text-center">
-          {aboutData.title.split(" ")[0]}{" "}
-          <span class="text-cyber-blue text-shadow-glow">
-            {aboutData.title.split(" ").slice(1).join(" ")}
-          </span>
-        </h2>
-        <div class="h-1 w-24 bg-cyber-blue mt-4 mx-auto rounded-full glow"></div>
-      </div>
+    <div class="text-center mb-12">
+      <p class="section-kicker mb-3">About</p>
+      <h2 class="text-3xl md:text-4xl font-semibold">
+        {aboutData.title}
+      </h2>
     </div>
 
     <div class="grid md:grid-cols-2 gap-16 items-center mb-24">
@@ -167,31 +162,11 @@ const aboutData: AboutType = {
           Core Competencies
         </h3>
 
-        <div class="space-y-4 mb-8">
+        <div class="grid sm:grid-cols-2 gap-4 mb-8">
           {aboutData.competencies.map((comp) => (
-            <div
-              x-data={`counter(${comp.value}, 3)`}
-              x-intersect="startCounting"
-            >
-              <div class="flex justify-between mb-1">
-                <span class="text-white">{comp.label}</span>
-                <span class="text-cyber-blue">
-                  <span x-text="current">{comp.value}</span>%
-                </span>
-              </div>
-              <div class="w-full h-2 bg-gray-700 rounded-full">
-                <div
-                  role="progressbar"
-                  aria-label={comp.label}
-                  :aria-valuenow="current"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  :aria-valuetext="current + '%'"
-                  style={`width: ${comp.value}%`}
-                  :style="{ width: current + '%' }"
-                  class="h-2 bg-cyber-blue rounded-full"
-                ></div>
-              </div>
+            <div class="glass-card p-4">
+              <div class="text-white font-semibold mb-1">{comp.title}</div>
+              <div class="text-sm text-gray-400">{comp.desc}</div>
             </div>
           ))}
         </div>
