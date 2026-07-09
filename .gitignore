@@ -25,3 +25,6 @@ bun-debug.log*
 # jetbrains setting folder
 .idea/
 config.bat
+
+# claude code local state (agent memory, worktrees)
+.claude/
