@@ -1,13 +1,13 @@
 @import "tailwindcss";
 @theme {
-    --font-sans: 'Poppins', sans-serif;
-    --font-future: 'Orbitron', sans-serif;
-    --color-cyber-blue: #00e5ff;
-    --color-cyber-dark: #001a2c;
-    --color-cyber-light: #0af0ff;
-    --animation-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    --animation-float: float 6s ease-in-out infinite;
-    --animation-data-stream: dataStream 10s linear infinite;
+  --font-sans: "Poppins", sans-serif;
+  --font-future: "Space Grotesk", sans-serif;
+  --color-cyber-blue: #00e5ff;
+  --color-cyber-dark: #060d15;
+  --color-cyber-surface: #0b1622;
+  --color-cyber-light: #7deeff;
+  --animation-pulse-slow: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animation-float: float 6s ease-in-out infinite;
 }
 @layer base {
   *,
@@ -21,7 +21,8 @@
   textarea::placeholder {
     color: theme(--color-gray-400);
   }
-  button, [role="button"] {
+  button,
+  [role="button"] {
     cursor: pointer;
   }
   /* Hide Alpine.js elements until initialized (prevents FOUC) */
@@ -44,311 +45,351 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 body {
-    background-color: var(--color-cyber-dark);
-    background-image: 
-        radial-gradient(circle at 25% 25%, rgba(0, 229, 255, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at 75% 75%, rgba(0, 229, 255, 0.1) 0%, transparent 40%);
-    position: relative;
-    overflow-x: hidden;
+  background-color: var(--color-cyber-dark);
+  background-image: radial-gradient(
+    ellipse 80% 50% at 50% -10%,
+    rgba(0, 229, 255, 0.06) 0%,
+    transparent 60%
+  );
+  position: relative;
+  overflow-x: hidden;
 }
-h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-future);
+
+:focus-visible {
+  outline: 2px solid var(--color-cyber-blue);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-future);
+  letter-spacing: -0.02em;
 }
 .cyber-btn {
-    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
-    position: relative;
-    overflow: hidden;
-    animation: neonPulse 2s infinite;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 200ms ease,
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease,
+    box-shadow 200ms ease;
 }
-
-.cyber-btn::before {
-    content: "";
-    position: absolute;
-    top: 2px;
-    transform: rotate(-45deg);
-    left: -4px;
-    width: 20px;
-    height: 1px;
-    background-color: currentColor;
+.cyber-btn:hover {
+  transform: translateY(-1px);
 }
-
-.cyber-btn::after {
-    content: "";
-    position: absolute;
-    bottom: 2px;
-    transform: rotate(-45deg);
-    right: -3px;
-    width: 20px;
-    height: 1px;
-    background-color: currentColor;
+.cyber-btn:active {
+  transform: translateY(0);
 }
 .text-shadow-glow {
-    text-shadow: 0 0 10px rgba(0, 229, 255, 0.7);
+  text-shadow: 0 0 24px rgba(0, 229, 255, 0.25);
 }
 .glow {
-    box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
-}
-/* Data Stream Styles */
-.data-stream {
-    position: absolute;
-    width: 2px;
-    height: 100px;
-    background: linear-gradient(to bottom, transparent, rgba(0, 229, 255, 0.3), transparent);
-    animation: dataStream 10s linear infinite;
-    z-index: 0;
-}
-/* Twinkling Stars */
-.star {
-    position: fixed;
-    width: 2px;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    animation: softFade linear infinite;
-    animation-duration: inherit; /* Use duration set in JavaScript */
-    animation-delay: inherit; /* Use delay set in JavaScript */
-    z-index: 0;
-}
-@keyframes softFade {
-    0% {
-        opacity: 1; /* Fully visible */
-    }
-    50% {
-        opacity: 0; /* Fully transparent */
-    }
-    100% {
-        opacity: 1; /* Back to fully visible */
-    }
-}
-
-@keyframes floatStar {
-    0% { transform: translateY(100vh) translateX(0); }
-    100% { transform: translateY(-100vh) translateX(calc(10px * var(--direction))); }
-}
-
-/* Hologram Effect */
-.hologram-ring {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 2px solid rgba(0, 229, 255, 0.3);
-    border-radius: 50%;
-    animation: spinHologram 10s linear infinite;
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
-}
-@keyframes spinHologram {
-    0% { transform: rotate(0deg) rotateX(70deg); }
-    100% { transform: rotate(360deg) rotateX(70deg); }
-}
-/* Neon Pulse Button */
-@keyframes neonPulse {
-    0%, 100% { box-shadow: 0 0 10px rgba(0, 229, 255, 0.5); }
-    50% { box-shadow: 0 0 20px rgba(0, 229, 255, 1), 0 0 30px rgba(0, 229, 255, 0.7); }
-}
-/* Matrix Code Effect */
-.matrix-code {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-.matrix-char {
-    position: absolute;
-    color: rgba(0, 229, 255, 0.5);
-    font-family: 'Orbitron', sans-serif;
-    font-size: 14px;
-    animation: matrixFall 5s linear infinite;
-}
-@keyframes matrixFall {
-    0% { transform: translateY(-100vh); opacity: 1; }
-    100% { transform: translateY(100vh); opacity: 0; }
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.35),
+    0 0 20px rgba(0, 229, 255, 0.08);
 }
 
 /*animate css*/
 .animated {
-    animation-duration: 1s;
-    animation-fill-mode: both;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
 }
 
 /* fadeInUp */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translate3d(0, 100px, 0);
-    }
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 .fadeInUp {
-    animation-name: fadeInUp;
+  animation-name: fadeInUp;
 }
 
 /* fadeInLeft */
 @keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translate3d(-100px, 0, 0);
-    }
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
+  from {
+    opacity: 0;
+    transform: translate3d(-24px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 .fadeInLeft {
-    animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
 }
 
 /* fadeInRight */
 @keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translate3d(100px, 0, 0);
-    }
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
+  from {
+    opacity: 0;
+    transform: translate3d(24px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 .fadeInRight {
-    animation-name: fadeInRight;
+  animation-name: fadeInRight;
 }
 
 /* fadeInDown */
 @keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translate3d(0, -100px, 0);
-    }
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
+  from {
+    opacity: 0;
+    transform: translate3d(0, -24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 .fadeInDown {
-    animation-name: fadeInDown;
+  animation-name: fadeInDown;
 }
 
 /* delay */
 .delay100 {
-    animation-delay: 100ms;
+  animation-delay: 100ms;
 }
 .delay200 {
-    animation-delay: 200ms;
+  animation-delay: 200ms;
 }
 .delay300 {
-    animation-delay: 300ms;
+  animation-delay: 300ms;
 }
 .delay400 {
-    animation-delay: 400ms;
+  animation-delay: 400ms;
 }
 .delay500 {
-    animation-delay: 500ms;
+  animation-delay: 500ms;
 }
 .delay600 {
-    animation-delay: 600ms;
+  animation-delay: 600ms;
 }
 .delay700 {
-    animation-delay: 700ms;
+  animation-delay: 700ms;
 }
 .delay800 {
-    animation-delay: 800ms;
+  animation-delay: 800ms;
 }
 .delay900 {
-    animation-delay: 900ms;
+  animation-delay: 900ms;
 }
 .delay1000 {
-    animation-delay: 1000ms;
+  animation-delay: 1000ms;
 }
 .delay1100 {
-    animation-delay: 1100ms;
+  animation-delay: 1100ms;
 }
 .delay1200 {
-    animation-delay: 1200ms;
+  animation-delay: 1200ms;
+}
+
+/* Modern card & section idiom */
+.glass-card {
+  background: color-mix(in srgb, var(--color-cyber-surface) 70%, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  backdrop-filter: blur(8px);
+  transition:
+    border-color 200ms ease,
+    transform 200ms ease,
+    box-shadow 300ms ease;
+}
+.glass-card:hover {
+  border-color: rgba(0, 229, 255, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+.section-kicker {
+  color: var(--color-cyber-blue);
+  font-family: var(--font-future);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.btn-primary {
+  background-color: var(--color-cyber-blue);
+  color: var(--color-cyber-dark);
+  font-weight: 600;
+}
+.btn-primary:hover {
+  background-color: var(--color-cyber-light);
+}
+.btn-ghost {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e8eef4;
+}
+.btn-ghost:hover {
+  border-color: rgba(0, 229, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* Post Content Typography */
 .post-content {
-    @apply text-gray-300 leading-relaxed;
+  @apply text-gray-300 leading-relaxed;
 }
 .post-content h2 {
-    @apply text-3xl font-bold text-white mt-10 mb-6 pb-2 border-b border-cyber-blue/30;
+  @apply text-3xl font-bold text-white mt-10 mb-6 pb-2 border-b border-cyber-blue/30;
 }
 .post-content h2::before {
-    content: "▸ ";
-    @apply text-cyber-blue mr-2;
+  content: "▸ ";
+  @apply text-cyber-blue mr-2;
 }
 .post-content h3 {
-    @apply text-2xl font-semibold text-cyber-blue mt-8 mb-4;
+  @apply text-2xl font-semibold text-cyber-blue mt-8 mb-4;
 }
 .post-content h4 {
-    @apply text-xl font-semibold text-gray-200 mt-6 mb-3;
+  @apply text-xl font-semibold text-gray-200 mt-6 mb-3;
 }
 .post-content h5 {
-    @apply text-lg font-semibold text-gray-200 mt-4 mb-2;
+  @apply text-lg font-semibold text-gray-200 mt-4 mb-2;
 }
 .post-content p {
-    @apply text-gray-300 mb-5 leading-relaxed;
+  @apply text-gray-300 mb-5 leading-relaxed;
 }
 .post-content ul {
-    @apply list-none pl-0 mb-6 space-y-2;
+  @apply list-none pl-0 mb-6 space-y-2;
 }
 .post-content ul li {
-    @apply pl-6 relative;
+  @apply pl-6 relative;
 }
 .post-content ul li::before {
-    content: "▹";
-    @apply absolute left-0 text-cyber-blue font-bold;
+  content: "▹";
+  @apply absolute left-0 text-cyber-blue font-bold;
 }
 .post-content ol {
-    @apply list-decimal pl-6 mb-6 space-y-2;
+  @apply list-decimal pl-6 mb-6 space-y-2;
 }
 .post-content li {
-    @apply text-gray-300;
+  @apply text-gray-300;
 }
 .post-content a {
-    @apply text-cyber-blue hover:text-cyber-light transition-colors underline decoration-cyber-blue/30 hover:decoration-cyber-blue;
+  @apply text-cyber-blue hover:text-cyber-light transition-colors underline decoration-cyber-blue/30 hover:decoration-cyber-blue;
 }
 .post-content strong {
-    @apply font-bold text-white;
+  @apply font-bold text-white;
 }
 .post-content em {
-    @apply italic text-gray-400;
+  @apply italic text-gray-400;
 }
 .post-content code {
-    @apply bg-cyber-blue/10 text-cyber-blue px-2 py-0.5 rounded text-sm font-mono border border-cyber-blue/20;
+  @apply bg-cyber-blue/10 text-cyber-blue px-2 py-0.5 rounded text-sm font-mono border border-cyber-blue/20;
 }
 .post-content pre {
-    @apply bg-cyber-dark/90 text-sm font-mono overflow-auto p-4 rounded-lg border border-cyber-blue/20 mb-6 mt-4 shadow-lg;
+  @apply bg-cyber-dark/90 text-sm font-mono overflow-auto p-4 rounded-lg border border-cyber-blue/20 mb-6 mt-4 shadow-lg;
 }
 .post-content pre code {
-    @apply bg-transparent border-none px-0 py-0;
+  @apply bg-transparent border-none px-0 py-0;
 }
 .post-content blockquote {
-    @apply border-l-4 border-cyber-blue pl-4 py-2 my-6 italic text-gray-400 bg-cyber-blue/5 rounded-r;
+  @apply border-l-4 border-cyber-blue pl-4 py-2 my-6 italic text-gray-400 bg-cyber-blue/5 rounded-r;
 }
 .post-content table {
-    @apply w-full mb-6 border-collapse;
+  @apply w-full mb-6 border-collapse;
 }
 .post-content table thead {
-    @apply bg-cyber-blue/10;
+  @apply bg-cyber-blue/10;
 }
 .post-content table th {
-    @apply border border-cyber-blue/30 px-4 py-3 text-left text-cyber-blue font-semibold;
+  @apply border border-cyber-blue/30 px-4 py-3 text-left text-cyber-blue font-semibold;
 }
 .post-content table td {
-    @apply border border-cyber-blue/20 px-4 py-3 text-gray-300;
+  @apply border border-cyber-blue/20 px-4 py-3 text-gray-300;
 }
 .post-content table tbody tr:hover {
-    @apply bg-cyber-blue/5;
+  @apply bg-cyber-blue/5;
 }
 .post-content hr {
-    @apply border-cyber-blue/30 my-8;
+  @apply border-cyber-blue/30 my-8;
+}
+
+/* Site-wide Three.js stage — one fixed canvas behind all content, created by
+   src/scripts/three/engine.ts only when guards pass (JS + WebGL + no
+   reduced-motion + no save-data). z-index:-1 paints above the body background
+   but below all in-flow content, so no section needs its own z-index. */
+.three-stage {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+/* Once the WebGL layer is live, the CSS aurora fallback would double the
+   glow — hide it. It returns automatically if the context is lost. */
+.three-active .hero-aurora {
+  display: none;
+}
+
+/* Hero aurora — GPU-composited drifting glow. No JS loop; transform/opacity only.
+   Sits behind hero content; decorative, so aria-hidden + pointer-events:none. */
+.hero-aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-aurora__blob {
+  position: absolute;
+  display: block;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.5;
+  will-change: transform;
+}
+.hero-aurora__blob--1 {
+  width: 36rem;
+  height: 36rem;
+  top: -12rem;
+  left: -8rem;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.18), transparent 70%);
+  animation: aurora-drift-1 22s ease-in-out infinite alternate;
+}
+.hero-aurora__blob--2 {
+  width: 28rem;
+  height: 28rem;
+  bottom: -10rem;
+  right: -6rem;
+  background: radial-gradient(
+    circle,
+    rgba(125, 238, 255, 0.12),
+    transparent 70%
+  );
+  animation: aurora-drift-2 28s ease-in-out infinite alternate;
+}
+@keyframes aurora-drift-1 {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(4rem, 3rem, 0) scale(1.12);
+  }
+}
+@keyframes aurora-drift-2 {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-5rem, -2.5rem, 0) scale(1.08);
+  }
 }
 
 /* Reduced Motion Support */
@@ -362,25 +403,12 @@ h1, h2, h3, h4, h5, h6 {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  
-  /* Specifically disable problematic animations */
-  .cyber-btn {
-    animation: none !important;
-  }
-  
-  .data-stream,
-  .star,
-  .hologram-ring,
-  .matrix-char {
-    animation: none !important;
-    opacity: 0 !important; /* Hide animated elements entirely */
-  }
-  
+
   /* Keep fade-in animations but make them instant */
   .animated {
     animation-duration: 0.01ms !important;
   }
-  
+
   /* Disable background animations */
   .animate-pulse-slow,
   .animate-pulse,

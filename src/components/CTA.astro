@@ -13,39 +13,28 @@ const ctaData: CTAType = {
 };
 ---
 
-<section id="cta" class="bg-cyber-dark/50 py-24 relative overflow-hidden">
-  <div
-    class="absolute w-96 h-96 bg-cyber-blue/10 rounded-full blur-3xl top-0 left-0 animate-pulse-slow"
-  >
-  </div>
-  <div
-    class="absolute w-64 h-64 bg-cyber-blue/10 rounded-full blur-3xl bottom-0 right-0 animate-pulse-slow"
-    style="animation-delay: 2s;"
-  >
-  </div>
-
-  <div class="max-w-7xl mx-auto px-6 relative text-center">
-    <h2 class="text-4xl lg:text-5xl font-bold mb-6">
-      <span class="text-cyber-blue text-shadow-glow">
-        {ctaData.title.split(" ")[0]}
-      </span>{" "}
-      {ctaData.title.slice(ctaData.title.indexOf(" ") + 1)}
-    </h2>
-    <p class="text-gray-300 text-lg mb-8 max-w-4xl mx-auto">
-      {ctaData.description}
-    </p>
-
-    <div
-      x-data="{ visible: false }"
-      x-intersect.once="visible = true"
-      x-bind:class="visible ? 'animated fadeInUp delay100' : 'opacity-0'"
-    >
-      <a
-        href={ctaData.button.href}
-        class="inline-flex items-center justify-center cyber-btn bg-cyber-blue hover:bg-cyber-blue/80 text-cyber-dark font-bold py-4 px-10 text-lg transition-all duration-300 glow"
-      >
-        {ctaData.button.label}
-      </a>
+<section id="cta" data-scene="network" class="py-24 relative overflow-hidden">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="relative overflow-hidden rounded-3xl border border-white/10 bg-cyber-surface/60 px-8 py-16 md:px-16 text-center">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+        style="background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(0,229,255,0.12) 0%, transparent 70%);">
+      </div>
+      <div class="relative">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6">{ctaData.title}</h2>
+        <p class="text-gray-300 text-lg mb-10 max-w-3xl mx-auto">{ctaData.description}</p>
+        <div
+          x-data="{ visible: false }"
+          x-intersect.once="visible = true"
+          x-bind:class="visible ? 'animated fadeInUp delay100' : 'opacity-0'"
+        >
+          <a
+            href={ctaData.button.href}
+            class="inline-flex items-center justify-center cyber-btn btn-primary py-4 px-10 text-lg"
+          >
+            {ctaData.button.label}
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>

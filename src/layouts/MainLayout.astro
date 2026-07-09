@@ -222,11 +222,11 @@ const schemaGraph = {
 
     <link
       rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
       as="style"
       onload="this.onload=null;this.rel='stylesheet'"
     />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" /></noscript>
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" /></noscript>
     <link
       rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -236,9 +236,6 @@ const schemaGraph = {
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" /></noscript>
 
     <!-- Preload LCP images for better performance -->
-    {pagePath === '/' && (
-      <link rel="preload" as="image" href="/img/future-ai.png" fetchpriority="high" />
-    )}
     {pagePath === '/about' && (
       <link rel="preload" as="image" href="/profile-image.jpg" fetchpriority="high" />
     )}
@@ -260,6 +257,33 @@ const schemaGraph = {
     </main>
     <Footer />
     <BackToTop />
+
+    <script>
+      // Three.js creative layer — pure progressive enhancement. Loaded after
+      // `load` (idle) so it never touches the critical path; skipped entirely
+      // for reduced-motion, save-data, and non-WebGL browsers. The CSS
+      // aurora/gradients remain the fallback in every skipped case.
+      const loadThree = () => {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        // @ts-expect-error: connection is non-standard
+        if (navigator.connection?.saveData) return;
+        const probe = document.createElement("canvas");
+        if (!(probe.getContext("webgl2") || probe.getContext("webgl"))) return;
+        import("../scripts/three/index");
+      };
+      const loadWhenIdle = () => {
+        if ("requestIdleCallback" in window) {
+          window.requestIdleCallback(loadThree);
+        } else {
+          setTimeout(loadThree, 200);
+        }
+      };
+      if (document.readyState === "complete") {
+        loadWhenIdle();
+      } else {
+        window.addEventListener("load", loadWhenIdle, { once: true });
+      }
+    </script>
 
     <script>
       import "../scripts/vendors.js";
@@ -393,53 +417,6 @@ const schemaGraph = {
         }
       });
 
-      // Twinkling Stars and Matrix Code - using DocumentFragment for batch DOM insertion
-      function createStars() {
-        const fragment = document.createDocumentFragment();
-        const starCount = 50;
-        for (let i = 0; i < starCount; i++) {
-          const star = document.createElement("div");
-          star.className = "star";
-          star.style.cssText = `left:${Math.random()*100}vw;top:${Math.random()*100}vh;animation-delay:${Math.random()*5}s;animation-duration:${3+Math.random()*7}s`;
-          fragment.appendChild(star);
-        }
-        document.body.appendChild(fragment);
-      }
-
-      function createMatrixEffect() {
-        const matrixContainer = document.createElement("div");
-        matrixContainer.className = "matrix-code";
-        const fragment = document.createDocumentFragment();
-
-        const charCount = 100;
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*+-=<>?";
-        for (let i = 0; i < charCount; i++) {
-          const char = document.createElement("span");
-          char.className = "matrix-char";
-          char.textContent = chars[Math.floor(Math.random() * chars.length)];
-          char.style.cssText = `left:${Math.random()*100}vw;animation-delay:${Math.random()*5}s;animation-duration:${3+Math.random()*3}s`;
-          fragment.appendChild(char);
-        }
-        matrixContainer.appendChild(fragment);
-        document.body.appendChild(matrixContainer);
-      }
-
-      // Defer visual effects to idle time for better INP
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => {
-          if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            createStars();
-            createMatrixEffect();
-          }
-        }, { timeout: 2000 });
-      } else {
-        setTimeout(() => {
-          if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            createStars();
-            createMatrixEffect();
-          }
-        }, 1000);
-      }
     </script>
   </body>
 </html>
