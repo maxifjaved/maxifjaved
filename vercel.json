@@ -1,8 +1,14 @@
 {
+  "trailingSlash": false,
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.maxifjaved.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.maxifjaved.com"
+        }
+      ],
       "destination": "https://maxifjaved.com/:path*",
       "permanent": true
     },
@@ -21,9 +27,18 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
         {
           "key": "Referrer-Policy",
           "value": "strict-origin-when-cross-origin"

@@ -38,6 +38,7 @@ const channels = [
     {channels.map((channel) => (
       <a
         href={channel.href}
+        aria-label={`${channel.title}: ${channel.value}`}
         rel={channel.href.startsWith("http") ? "noopener" : undefined}
         class="group flex items-baseline gap-4 border-t border-line py-4"
       >

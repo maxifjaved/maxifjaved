@@ -16,6 +16,7 @@ const encodedTitle = encodeURIComponent(title);
   <span class="eyebrow">Share</span>
   <a
     href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
+    aria-label="Share on LinkedIn"
     target="_blank"
     rel="noopener noreferrer"
     class="inline-flex items-center gap-1.5 text-sm text-ink-2 hover:text-ink transition-colors"
@@ -24,6 +25,7 @@ const encodedTitle = encodeURIComponent(title);
   </a>
   <a
     href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
+    aria-label="Share on X"
     target="_blank"
     rel="noopener noreferrer"
     class="text-sm text-ink-2 hover:text-ink transition-colors"

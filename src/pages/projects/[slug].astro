@@ -83,8 +83,8 @@ const projectLinks = [
 ].filter((l) => l.href);
 
 const breadcrumbItems = [
-  { name: "Home", url: "https://maxifjaved.com" },
-  { name: "Work", url: "https://maxifjaved.com/projects" },
+  { name: "Home", url: "/" },
+  { name: "Work", url: "/projects" },
   { name: name, url: canonicalUrl },
 ];
 
@@ -179,10 +179,10 @@ const meta = [
     {metrics.length > 0 && (
       <dl class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-4">
         {metrics.map((metric) => (
-          <div class="bg-paper-2 p-5">
-            <dd class="figure-value text-2xl">{metric.value}</dd>
-            <dt class="mt-1.5 figure-label">{metric.label}</dt>
-            <p class="mt-1.5 text-xs leading-relaxed text-ink-2">{metric.description}</p>
+          <div class="flex flex-col bg-paper-2 p-5">
+            <dt class="order-2 mt-1.5 figure-label">{metric.label}</dt>
+            <dd class="order-1 figure-value text-2xl">{metric.value}</dd>
+            <dd class="order-3 mt-1.5 text-xs leading-relaxed text-ink-2">{metric.description}</dd>
           </div>
         ))}
       </dl>
