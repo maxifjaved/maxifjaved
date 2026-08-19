@@ -1,4 +1,6 @@
 ---
+import Icon from "./Icon.astro";
+
 export interface FAQItem {
   question: string;
   answer: string;
@@ -10,7 +12,7 @@ interface Props {
   id?: string;
 }
 
-const { faqs, title = "Frequently Asked Questions", id = "faq" } = Astro.props;
+const { faqs, title = "Common questions", id = "faq" } = Astro.props;
 
 // FAQ Schema for SEO
 const faqSchema = {
@@ -27,55 +29,23 @@ const faqSchema = {
 };
 ---
 
-<!-- FAQ Schema -->
 <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
 
-<section id={id} class="bg-cyber-dark/40 py-16 lg:py-24 relative overflow-hidden">
-  <div class="max-w-4xl mx-auto px-6">
-    <div class="text-center mb-12">
-      <p class="section-kicker mb-3">FAQ</p>
-      <h2 class="text-3xl md:text-4xl font-semibold">{title}</h2>
-    </div>
-
-    <div class="space-y-3">
-      {faqs.map((faq, index) => (
-        <div
-          class="glass-card overflow-hidden"
-          x-data="{ open: false }"
-        >
-          <button
-            class="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-white/[0.03] transition-colors"
-            x-on:click="open = !open"
-            type="button"
-            x-bind:aria-expanded="open.toString()"
-          >
-            <h3 class="text-base md:text-lg font-medium text-white pr-4">{faq.question}</h3>
-            <svg
-              class="w-5 h-5 text-gray-400 transition-transform duration-200"
-              x-bind:class="open ? 'rotate-180' : ''"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          <div 
-            class="px-6 pb-4 text-gray-300 leading-relaxed"
-            x-show="open"
-            x-transition:enter="transition ease-out duration-200"
-            x-transition:enter-start="opacity-0 transform scale-95"
-            x-transition:enter-end="opacity-100 transform scale-100"
-            x-transition:leave="transition ease-in duration-150"
-            x-transition:leave-start="opacity-100 transform scale-100"
-            x-transition:leave-end="opacity-0 transform scale-95"
-            style="display: none;"
-          >
-            <p set:html={faq.answer} />
-          </div>
-        </div>
-      ))}
-    </div>
+<section id={id} aria-labelledby={`${id}-title`}>
+  <h2 id={`${id}-title`} class="display text-2xl sm:text-3xl text-ink">{title}</h2>
+  <div class="mt-5 max-w-3xl border-b border-line">
+    {faqs.map((faq) => (
+      <details class="group border-t border-line">
+        <summary class="flex cursor-pointer items-baseline justify-between gap-4 py-4 font-medium text-ink transition-colors hover:text-accent [&::-webkit-details-marker]:hidden">
+          {faq.question}
+          <Icon
+            name="chevron-down"
+            size={16}
+            class="shrink-0 translate-y-0.5 text-ink-3 transition-transform group-open:rotate-180"
+          />
+        </summary>
+        <p class="pb-5 pr-8 text-[0.9375rem] leading-relaxed text-ink-2" set:html={faq.answer} />
+      </details>
+    ))}
   </div>
 </section>

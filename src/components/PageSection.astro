@@ -15,52 +15,20 @@ const { pageData, sectionId = pageData.title.toLowerCase().replace(/\s+/g, '-') 
 ---
 
 <section
-  id={`${sectionId}-hero`}
-  class="bg-cyber-dark/50 pb-16 lg:pb-24 pt-32 lg:pt-40 relative overflow-hidden"
+  id={sectionId}
+  class="shell pb-20"
+  aria-labelledby={`${sectionId}-title`}
 >
-  <div
-    class="absolute w-96 h-96 bg-cyber-blue/10 rounded-full blur-3xl top-0 left-0 animate-pulse-slow"
-  ></div>
-  <div
-    class="absolute w-64 h-64 bg-cyber-blue/10 rounded-full blur-3xl bottom-0 right-0 animate-pulse-slow"
-    style="animation-delay: 2s;"
-  ></div>
-
-  <div class="max-w-7xl mx-auto px-6 relative text-center">
-    <h1
-      class="text-4xl lg:text-5xl font-bold mb-6">
-      {pageData.title.split(" ")[0]}{" "}
-      <span class="text-cyber-blue text-shadow-glow">
-        {pageData.title.split(" ").slice(1).join(" ")}
-      </span>
+  <header class="max-w-3xl pt-10 sm:pt-14">
+    <h1 id={`${sectionId}-title`} class="display text-4xl sm:text-5xl text-ink">
+      {pageData.title}
     </h1>
-    <p
-      class="text-gray-300 text-lg max-w-2xl mx-auto">
+    <p class="mt-5 max-w-2xl font-display text-lg leading-relaxed text-ink-2">
       {pageData.subtitle}
     </p>
-  </div>
-</section>
-
-<section
-  id={`${sectionId}-content`}
-  class="pb-12 relative overflow-hidden"
-  role="region"
-  aria-labelledby={`${sectionId}-content-title`}
->
-  <div class="max-w-7xl mx-auto px-6">
-    <div
-      class="max-w-4xl mx-auto border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl py-12 px-8"
-      x-data="{ visible: false, init() { this.$el.classList.add('opacity-0') } }"
-      x-intersect.once="visible = true"
-      x-bind:class="visible ? 'animated fadeInUp delay300' : 'opacity-0'"
-    >
-      <h2 id={`${sectionId}-content-title`} class="sr-only">
-        {pageData.title}
-      </h2>
-      <p class="text-sm text-gray-400 mb-8">
-        Last Updated: {pageData.lastUpdated}
-      </p>
-      <div class="post-content" set:html={pageData.content} />
-    </div>
-  </div>
+    <p class="mt-4 font-mono text-xs text-ink-3">
+      <span class="uppercase tracking-wide">Last updated</span> {pageData.lastUpdated}
+    </p>
+  </header>
+  <div class="post-content mt-10" set:html={pageData.content} />
 </section>

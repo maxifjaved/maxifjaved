@@ -1,400 +1,333 @@
 @import "tailwindcss";
+
+/* Self-hosted fonts (replaces Google Fonts CDN) */
+@import "@fontsource-variable/newsreader";
+@import "@fontsource-variable/newsreader/wght-italic.css";
+@import "@fontsource-variable/inter";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+
+/*
+  Editorial-light design system.
+  Warm paper, ink text, one deep-blue accent. Newsreader carries the
+  editorial voice; Inter does UI work; JetBrains Mono renders the
+  "verified figures" — every metric on this site traces to source code,
+  and the mono treatment is that audit trail made visible.
+*/
 @theme {
-  --font-sans: "Poppins", sans-serif;
-  --font-future: "Space Grotesk", sans-serif;
-  --color-cyber-blue: #00e5ff;
-  --color-cyber-dark: #060d15;
-  --color-cyber-surface: #0b1622;
-  --color-cyber-light: #7deeff;
-  --animation-pulse-slow: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --animation-float: float 6s ease-in-out infinite;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Newsreader Variable", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Surfaces (warm) */
+  --color-paper: #fcfcf9;
+  --color-paper-2: #f5f4ef;
+  --color-paper-3: #edece4;
+
+  /* Ink (warm near-black, 4 tiers) */
+  --color-ink: #1b1a17;
+  --color-ink-2: #55524a;
+  --color-ink-3: #8b8779;
+  --color-ink-faint: #b5b1a4;
+
+  /* Single accent — links, CTAs, active states only */
+  --color-accent: #1d50b8;
+  --color-accent-deep: #163e92;
+
+  /* Hairlines (warm, matching ink temperature) */
+  --color-line: #e3e1d8;
+  --color-line-strong: #c9c6b9;
+
+  /* Inverse (dark CTA band / footer) */
+  --color-well: #23221e;
+  --color-well-2: #2e2d28;
+  --color-paper-inverse: #f4f3ee;
 }
+
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-neutral-200, currentColor);
+    border-color: var(--color-line, currentColor);
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-accent) 14%, transparent);
+  }
+
   input::placeholder,
   textarea::placeholder {
-    color: theme(--color-gray-400);
+    color: var(--color-ink-3);
   }
+
   button,
   [role="button"] {
     cursor: pointer;
   }
-  /* Hide Alpine.js elements until initialized (prevents FOUC) */
-  [x-cloak] {
-    display: none !important;
-  }
-  /* Screen reader only utility class for accessibility */
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
   }
 }
-@custom-variant dark (&:where(.dark, .dark *));
 
-body {
-  background-color: var(--color-cyber-dark);
-  background-image: radial-gradient(
-    ellipse 80% 50% at 50% -10%,
-    rgba(0, 229, 255, 0.06) 0%,
-    transparent 60%
-  );
-  position: relative;
-  overflow-x: hidden;
+/* ---------- Editorial primitives ---------- */
+
+/* Page shell */
+.shell {
+  max-width: 72rem; /* 1152px */
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 640px) {
+  .shell {
+    padding-inline: 2rem;
+  }
 }
 
-:focus-visible {
-  outline: 2px solid var(--color-cyber-blue);
-  outline-offset: 2px;
+/* Display type: Newsreader, tight leading, negative tracking */
+.display {
+  font-family: var(--font-display);
+  font-weight: 460;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+.display em,
+.display .accent-italic {
+  font-style: italic;
+  font-weight: 420;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-future);
+/* Mono eyebrow label — section signposts */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+}
+
+/* Verified figure — the site's signature metric treatment */
+.figure-value {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
   letter-spacing: -0.02em;
+  color: var(--color-ink);
 }
-.cyber-btn {
-  border-radius: 10px;
-  position: relative;
-  overflow: hidden;
+.figure-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.375rem;
   transition:
-    transform 200ms ease,
     background-color 150ms ease,
     border-color 150ms ease,
-    color 150ms ease,
-    box-shadow 200ms ease;
-}
-.cyber-btn:hover {
-  transform: translateY(-1px);
-}
-.cyber-btn:active {
-  transform: translateY(0);
-}
-.text-shadow-glow {
-  text-shadow: 0 0 24px rgba(0, 229, 255, 0.25);
-}
-.glow {
-  box-shadow:
-    0 8px 30px rgba(0, 0, 0, 0.35),
-    0 0 20px rgba(0, 229, 255, 0.08);
-}
-
-/*animate css*/
-.animated {
-  animation-duration: 0.5s;
-  animation-fill-mode: both;
-}
-
-/* fadeInUp */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 24px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-.fadeInUp {
-  animation-name: fadeInUp;
-}
-
-/* fadeInLeft */
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translate3d(-24px, 0, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-.fadeInLeft {
-  animation-name: fadeInLeft;
-}
-
-/* fadeInRight */
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translate3d(24px, 0, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-.fadeInRight {
-  animation-name: fadeInRight;
-}
-
-/* fadeInDown */
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translate3d(0, -24px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-.fadeInDown {
-  animation-name: fadeInDown;
-}
-
-/* delay */
-.delay100 {
-  animation-delay: 100ms;
-}
-.delay200 {
-  animation-delay: 200ms;
-}
-.delay300 {
-  animation-delay: 300ms;
-}
-.delay400 {
-  animation-delay: 400ms;
-}
-.delay500 {
-  animation-delay: 500ms;
-}
-.delay600 {
-  animation-delay: 600ms;
-}
-.delay700 {
-  animation-delay: 700ms;
-}
-.delay800 {
-  animation-delay: 800ms;
-}
-.delay900 {
-  animation-delay: 900ms;
-}
-.delay1000 {
-  animation-delay: 1000ms;
-}
-.delay1100 {
-  animation-delay: 1100ms;
-}
-.delay1200 {
-  animation-delay: 1200ms;
-}
-
-/* Modern card & section idiom */
-.glass-card {
-  background: color-mix(in srgb, var(--color-cyber-surface) 70%, transparent);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1rem;
-  backdrop-filter: blur(8px);
-  transition:
-    border-color 200ms ease,
-    transform 200ms ease,
-    box-shadow 300ms ease;
-}
-.glass-card:hover {
-  border-color: rgba(0, 229, 255, 0.35);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-}
-.section-kicker {
-  color: var(--color-cyber-blue);
-  font-family: var(--font-future);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+    color 150ms ease;
 }
 .btn-primary {
-  background-color: var(--color-cyber-blue);
-  color: var(--color-cyber-dark);
-  font-weight: 600;
+  background-color: var(--color-accent);
+  color: #fff;
 }
 .btn-primary:hover {
-  background-color: var(--color-cyber-light);
+  background-color: var(--color-accent-deep);
 }
-.btn-ghost {
-  background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #e8eef4;
+.btn-primary:active {
+  transform: scale(0.98);
 }
-.btn-ghost:hover {
-  border-color: rgba(0, 229, 255, 0.5);
-  background-color: rgba(255, 255, 255, 0.05);
+.btn-quiet {
+  border: 1px solid var(--color-line-strong);
+  color: var(--color-ink);
+  background: transparent;
+}
+.btn-quiet:hover {
+  border-color: var(--color-ink-2);
 }
 
-/* Post Content Typography */
+/* Quiet inline link */
+.link {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 150ms ease;
+}
+.link:hover {
+  text-decoration-color: var(--color-accent);
+}
+
+/* ---------- Long-form typography (all MDX bodies) ---------- */
+
 .post-content {
-  @apply text-gray-300 leading-relaxed;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  line-height: 1.72;
+  color: var(--color-ink);
+  max-width: 65ch;
 }
 .post-content h2 {
-  @apply text-3xl font-bold text-white mt-10 mb-6 pb-2 border-b border-cyber-blue/30;
-}
-.post-content h2::before {
-  content: "▸ ";
-  @apply text-cyber-blue mr-2;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-line);
 }
 .post-content h3 {
-  @apply text-2xl font-semibold text-cyber-blue mt-8 mb-4;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.375rem;
+  line-height: 1.25;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
 }
-.post-content h4 {
-  @apply text-xl font-semibold text-gray-200 mt-6 mb-3;
-}
+.post-content h4,
 .post-content h5 {
-  @apply text-lg font-semibold text-gray-200 mt-4 mb-2;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
 }
 .post-content p {
-  @apply text-gray-300 mb-5 leading-relaxed;
+  margin-bottom: 1.25rem;
+}
+.post-content ul,
+.post-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.375rem;
 }
 .post-content ul {
-  @apply list-none pl-0 mb-6 space-y-2;
-}
-.post-content ul li {
-  @apply pl-6 relative;
-}
-.post-content ul li::before {
-  content: "▹";
-  @apply absolute left-0 text-cyber-blue font-bold;
+  list-style: disc;
 }
 .post-content ol {
-  @apply list-decimal pl-6 mb-6 space-y-2;
+  list-style: decimal;
 }
 .post-content li {
-  @apply text-gray-300;
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+}
+.post-content li::marker {
+  color: var(--color-ink-3);
 }
 .post-content a {
-  @apply text-cyber-blue hover:text-cyber-light transition-colors underline decoration-cyber-blue/30 hover:decoration-cyber-blue;
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  text-underline-offset: 3px;
+}
+.post-content a:hover {
+  text-decoration-color: var(--color-accent);
 }
 .post-content strong {
-  @apply font-bold text-white;
+  font-weight: 600;
 }
 .post-content em {
-  @apply italic text-gray-400;
+  font-style: italic;
 }
 .post-content code {
-  @apply bg-cyber-blue/10 text-cyber-blue px-2 py-0.5 rounded text-sm font-mono border border-cyber-blue/20;
+  font-family: var(--font-mono);
+  font-size: 0.8125em;
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-line);
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.375rem;
 }
 .post-content pre {
-  @apply bg-cyber-dark/90 text-sm font-mono overflow-auto p-4 rounded-lg border border-cyber-blue/20 mb-6 mt-4 shadow-lg;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  background: var(--color-well);
+  color: var(--color-paper-inverse);
+  overflow-x: auto;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
 }
 .post-content pre code {
-  @apply bg-transparent border-none px-0 py-0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: inherit;
 }
 .post-content blockquote {
-  @apply border-l-4 border-cyber-blue pl-4 py-2 my-6 italic text-gray-400 bg-cyber-blue/5 rounded-r;
+  border-left: 2px solid var(--color-line-strong);
+  padding-left: 1.25rem;
+  margin: 1.75rem 0;
+  font-style: italic;
+  color: var(--color-ink-2);
 }
 .post-content table {
-  @apply w-full mb-6 border-collapse;
-}
-.post-content table thead {
-  @apply bg-cyber-blue/10;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.75rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.5;
 }
 .post-content table th {
-  @apply border border-cyber-blue/30 px-4 py-3 text-left text-cyber-blue font-semibold;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-2);
+  text-align: left;
+  padding: 0.625rem 1rem 0.625rem 0;
+  border-bottom: 1px solid var(--color-line-strong);
 }
 .post-content table td {
-  @apply border border-cyber-blue/20 px-4 py-3 text-gray-300;
-}
-.post-content table tbody tr:hover {
-  @apply bg-cyber-blue/5;
+  padding: 0.75rem 1rem 0.75rem 0;
+  border-bottom: 1px solid var(--color-line);
+  vertical-align: top;
 }
 .post-content hr {
-  @apply border-cyber-blue/30 my-8;
+  border: 0;
+  border-top: 1px solid var(--color-line);
+  margin: 2.5rem 0;
+}
+.post-content img {
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-line);
+  margin: 1.5rem 0;
 }
 
-/* Site-wide Three.js stage — one fixed canvas behind all content, created by
-   src/scripts/three/engine.ts only when guards pass (JS + WebGL + no
-   reduced-motion + no save-data). z-index:-1 paints above the body background
-   but below all in-flow content, so no section needs its own z-index. */
-.three-stage {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: -1;
-}
-/* Once the WebGL layer is live, the CSS aurora fallback would double the
-   glow — hide it. It returns automatically if the context is lost. */
-.three-active .hero-aurora {
-  display: none;
-}
-
-/* Hero aurora — GPU-composited drifting glow. No JS loop; transform/opacity only.
-   Sits behind hero content; decorative, so aria-hidden + pointer-events:none. */
-.hero-aurora {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-.hero-aurora__blob {
-  position: absolute;
-  display: block;
-  border-radius: 9999px;
-  filter: blur(90px);
-  opacity: 0.5;
-  will-change: transform;
-}
-.hero-aurora__blob--1 {
-  width: 36rem;
-  height: 36rem;
-  top: -12rem;
-  left: -8rem;
-  background: radial-gradient(circle, rgba(0, 229, 255, 0.18), transparent 70%);
-  animation: aurora-drift-1 22s ease-in-out infinite alternate;
-}
-.hero-aurora__blob--2 {
-  width: 28rem;
-  height: 28rem;
-  bottom: -10rem;
-  right: -6rem;
-  background: radial-gradient(
-    circle,
-    rgba(125, 238, 255, 0.12),
-    transparent 70%
-  );
-  animation: aurora-drift-2 28s ease-in-out infinite alternate;
-}
-@keyframes aurora-drift-1 {
-  from {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  to {
-    transform: translate3d(4rem, 3rem, 0) scale(1.12);
-  }
-}
-@keyframes aurora-drift-2 {
-  from {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  to {
-    transform: translate3d(-5rem, -2.5rem, 0) scale(1.08);
-  }
-}
-
-/* Reduced Motion Support */
+/* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
-  /* Disable all animations and transitions */
   *,
   *::before,
   *::after {
@@ -402,17 +335,5 @@ h6 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-
-  /* Keep fade-in animations but make them instant */
-  .animated {
-    animation-duration: 0.01ms !important;
-  }
-
-  /* Disable background animations */
-  .animate-pulse-slow,
-  .animate-pulse,
-  .animate-spin {
-    animation: none !important;
   }
 }

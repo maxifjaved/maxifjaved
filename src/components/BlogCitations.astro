@@ -22,43 +22,32 @@ const cleanedCitations = citations.map(citation => {
   let url = citation.url;
   const markdownLinkMatch = url.match(/\[([^\]]+)\]\(([^)]+)\)/);
   if (markdownLinkMatch) {
-    url = markdownLinkMatch[2]; // Use the URL from parentheses
+    url = markdownLinkMatch[2];
   }
   return { ...citation, url };
 });
 ---
 
-<section id="citations-section" class="relative mb-16">
-  <div class="mx-auto max-w-4xl px-6">
-    <h2 class="text-3xl md:text-4xl font-bold mb-8">
-      References & <span class="text-cyber-blue">Citations</span>
-    </h2>
-    <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 backdrop-blur-sm">
-      <ol class="space-y-4 list-none">
-        {cleanedCitations.map((citation) => (
-          <li class="flex gap-4" id={`citation-${citation.id}`}>
-            <span class="text-cyber-blue font-bold flex-shrink-0">[{citation.id}]</span>
-            <div class="flex-1">
-              <a
-                href={citation.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-white hover:text-cyber-blue transition-colors underline decoration-cyber-blue/30 hover:decoration-cyber-blue"
-              >
-                {citation.title}
-              </a>
-              <div class="text-sm text-gray-400 mt-1">
-                {citation.type && (
-                  <span class="inline-block px-2 py-0.5 rounded bg-cyber-blue/20 text-cyber-blue text-xs mr-2">
-                    {citation.type}
-                  </span>
-                )}
-                Accessed: {citation.accessed}
-              </div>
-            </div>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </div>
+<section class="max-w-3xl">
+  <h2 class="eyebrow">References</h2>
+  <ol class="mt-4 space-y-3">
+    {cleanedCitations.map((citation) => (
+      <li class="flex gap-3 text-sm" id={`citation-${citation.id}`}>
+        <span class="figure-value shrink-0 text-sm">[{citation.id}]</span>
+        <span class="min-w-0">
+          <a
+            href={citation.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link"
+          >
+            {citation.title}
+          </a>
+          <span class="mt-0.5 block text-xs text-ink-3">
+            {citation.type} · accessed {citation.accessed}
+          </span>
+        </span>
+      </li>
+    ))}
+  </ol>
 </section>

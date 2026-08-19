@@ -1,4 +1,6 @@
 ---
+import Icon from "./Icon.astro";
+
 interface Props {
   title: string;
   url: string;
@@ -10,59 +12,55 @@ const encodedUrl = encodeURIComponent(url);
 const encodedTitle = encodeURIComponent(title);
 ---
 
-<section
-  id="social-share"
-  class="relative mb-6"
-  x-data="{ visible: false }"
-  x-intersect.once="visible = true"
-  x-bind:class="visible ? 'animated fadeInUp delay300' : 'opacity-0'"
->
-  <div class="mx-auto max-w-4xl px-6">
-    <div
-      class="flex items-center justify-between gap-2 border-t border-cyber-blue/20 py-6"
-    >
-      <h3 class="text-xl font-bold text-cyber-blue">Share</h3>
-      <div class="flex gap-4">
-        <a
-          href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-cyber-blue transition-colors hover:text-white"
-          aria-label="Share on Twitter"
-        >
-          <i class="fab fa-twitter text-2xl"></i>
-        </a>
-        <a
-          href={`https://www.linkedin.com/shareArticle?url=${encodedUrl}&title=${encodedTitle}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-cyber-blue transition-colors hover:text-white"
-          aria-label="Share on LinkedIn"
-        >
-          <i class="fab fa-linkedin text-2xl"></i>
-        </a>
-        <a
-          href={`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-cyber-blue transition-colors hover:text-white"
-          aria-label="Share on Facebook"
-        >
-          <i class="fab fa-facebook text-2xl"></i>
-        </a>
-        <a
-          href="#"
-          class="text-cyber-blue transition-colors hover:text-white"
-          aria-label="Copy link"
-          x-data="{ copied: false }"
-          @click="navigator.clipboard.writeText(window.location.href); copied = true; setTimeout(() => copied = false, 2000)"
-        >
-          <i
-            class="fas text-2xl"
-            x-bind:class="copied ? 'fa-check' : 'fa-link'"
-          ></i>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-line pt-5">
+  <span class="eyebrow">Share</span>
+  <a
+    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-flex items-center gap-1.5 text-sm text-ink-2 hover:text-ink transition-colors"
+  >
+    <Icon name="linkedin" size={15} /> LinkedIn
+  </a>
+  <a
+    href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="text-sm text-ink-2 hover:text-ink transition-colors"
+  >
+    X / Twitter
+  </a>
+  <a
+    href={`https://wa.me/?text=${encodedTitle}%20${encodedUrl}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-flex items-center gap-1.5 text-sm text-ink-2 hover:text-ink transition-colors"
+  >
+    <Icon name="whatsapp" size={15} /> WhatsApp
+  </a>
+  <button
+    type="button"
+    data-copy-url={url}
+    class="inline-flex items-center gap-1.5 text-sm text-ink-2 hover:text-ink transition-colors"
+  >
+    <Icon name="link" size={15} /> <span data-copy-label>Copy link</span>
+  </button>
+</div>
+
+<script>
+  // Progressive enhancement: the share links above work without JS.
+  document.querySelectorAll<HTMLButtonElement>("[data-copy-url]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copyUrl || "");
+        const label = btn.querySelector("[data-copy-label]");
+        if (label) {
+          label.textContent = "Copied";
+          setTimeout(() => (label.textContent = "Copy link"), 2000);
+        }
+      } catch {
+        /* clipboard unavailable — the URL is already in the address bar */
+      }
+    });
+  });
+</script>

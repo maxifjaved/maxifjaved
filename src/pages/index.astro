@@ -1,17 +1,14 @@
 ---
+import { getCollection } from "astro:content";
 import MainLayout from "../layouts/MainLayout.astro";
-import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
-import ProjectsSection from "../components/ProjectsSection.astro";
-import CTA from "../components/CTA.astro";
-import WhyChooseUs from "../components/WhyChooseUs.astro";
+import WorkRow from "../components/WorkRow.astro";
 import FAQ from "../components/FAQ.astro";
-// import Testimonials from "../components/Testimonials.astro";
+import Icon from "../components/Icon.astro";
 
 const faqs = [
   {
-    question: "What makes you different from other WebRTC developers?",
-    answer: "I specialize in enterprise-grade WebRTC solutions with 10+ years of experience building scalable real-time systems. I've built zero-install classroom collaboration and screen-casting platforms, cybersecurity intelligence tools, and complex multi-user interactive systems. My approach focuses on production-ready, secure, and performant solutions. Track record: 19 documented projects deployed across multiple countries, including platforms maintained solo for 7+ years."
+    question: "What makes you different from other full-stack developers?",
+    answer: "I build entire platforms alone — backend, frontend, database, infrastructure, and deployment. Recent work includes the microservices platform behind an agency's AI product suite (clients include Samsung, Reddit, Uber, and Google) and a WebRTC classroom platform I built and maintained solo for about seven years. Track record: 19 documented projects, each case study written from the source code."
   },
   {
     question: "Do you work with international clients remotely?",
@@ -19,11 +16,11 @@ const faqs = [
   },
   {
     question: "What are your rates?",
-    answer: "My hourly rate is $45/hour for consulting and development services. I offer competitive rates while delivering enterprise-grade quality. This includes full-stack development, WebRTC implementation, architecture consulting, and ongoing support. Contact me for project-based quotes and custom packages."
+    answer: "My hourly rate is $45/hour for consulting and development services. I offer competitive rates while delivering enterprise-grade quality. This includes AI integration, full-stack development, WebRTC implementation, architecture consulting, and ongoing support. Contact me for project-based quotes and custom packages."
   },
   {
     question: "What technologies do you specialize in?",
-    answer: "My core expertise includes WebRTC for real-time communication, React/Next.js for frontend, Node.js for backend, and various databases. I also work with cybersecurity frameworks, educational technology platforms, and modern deployment tools like Docker and cloud services."
+    answer: "AI platform engineering (FastAPI microservices, multi-LLM integrations across OpenAI, Gemini, Claude, and Perplexity), WebRTC and Socket.io for real-time communication, React/Next.js on the frontend, Node.js and Python on the backend, PostgreSQL and MongoDB, and GCP/Docker deployment pipelines."
   },
   {
     question: "Can you handle both frontend and backend development?",
@@ -31,7 +28,7 @@ const faqs = [
   },
   {
     question: "What's your typical project timeline and process?",
-    answer: "Project timelines vary significantly based on complexity, with my projects typically ranging from 5 to 18 months for complete enterprise solutions. My process includes requirement analysis, architecture design, iterative development with regular demos, testing, and deployment. I maintain constant communication throughout the project lifecycle. Delivery record: 100% on-time completion with consistent communication and regular progress updates."
+    answer: "Project timelines vary significantly based on complexity, with my projects typically ranging from 5 to 18 months for complete enterprise solutions. My process includes requirement analysis, architecture design, iterative development with regular demos, testing, and deployment. I maintain constant communication throughout the project lifecycle."
   },
   {
     question: "Do you provide ongoing support after project completion?",
@@ -39,18 +36,172 @@ const faqs = [
   }
 ];
 
+// Verified figures — every number traces to ../portfolio grounding docs.
+const facts = [
+  { value: "10+", label: "years engineering" },
+  { value: "19", label: "documented platforms" },
+  { value: "~7 yrs", label: "longest solo-run system" },
+  { value: "4", label: "AI products on one SSO" },
+];
+
+const featuredSlugs = [
+  "moburst-ai-platform",
+  "contribute-cloud",
+  "tipx-threat-intelligence",
+  "crystalball-pro",
+  "justcastit",
+  "build-a-hot-tub-3d-designer",
+];
+
+const allProjects = await getCollection("projects");
+const featured = featuredSlugs
+  .map((slug) => allProjects.find((p) => p.slug === slug))
+  .filter(Boolean);
+
+const posts = (
+  await getCollection("blogs", ({ data }) => data.draft !== true)
+).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const capabilities = [
+  {
+    title: "AI integration & platforms",
+    body: "Multi-LLM systems across OpenAI, Gemini, Claude, and Perplexity; microservices with SSO and role-based access; structured-output pipelines and self-verification layers. Built as production platforms, not demos.",
+  },
+  {
+    title: "Real-time systems",
+    body: "WebRTC casting and video (OpenVidu), Socket.io collaboration, live whiteboards, and browser-based remote control of device fleets. A decade of shipping systems where latency is the product.",
+  },
+  {
+    title: "Full-stack delivery, solo",
+    body: "Backend, frontend, database, infrastructure, and DevOps from one architect. React/Next.js, Node and Python, PostgreSQL and MongoDB, GCP and Docker — with deploys, backups, and rollbacks handled.",
+  },
+];
 ---
 
 <MainLayout
-  title="Muhammad Asif Javed - WebRTC & Enterprise Developer"
-  description="Senior Full-Stack Developer - WebRTC & enterprise platforms expert. 10+ years experience serving US, UK & global clients."
-  keywords="hire WebRTC developer US clients, Pakistan full-stack developer for US companies, enterprise software development offshore, remote WebRTC expert UK clients, cybersecurity platform developer international, educational technology consultant global"
+  title="Muhammad Asif Javed - AI Platform Engineer & Full-Stack Developer"
+  description="AI platform engineer & full-stack developer. Solo-architected the AI platform behind an agency serving Samsung, Reddit, Uber & Google. 10+ years of real-time and enterprise systems."
+  keywords="hire AI integration developer, AI platform engineer, full-stack developer US clients, WebRTC expert, multi-LLM systems, enterprise software development remote, Lahore Pakistan developer"
 >
-  <Hero />
-  <About />
-  <ProjectsSection />
-  <WhyChooseUs />
-  <FAQ faqs={faqs} />
-  <CTA />
-  <!-- <Testimonials /> -->
+  <!-- Hero -->
+  <section class="shell pt-16 sm:pt-24">
+    <p class="eyebrow">Muhammad Asif Javed · Lahore → worldwide</p>
+    <h1 class="display mt-5 max-w-4xl text-[2.6rem] leading-[1.06] sm:text-6xl text-ink">
+      I build production platforms — <em>AI systems, real-time collaboration</em> — end to end, solo.
+    </h1>
+    <p class="mt-7 max-w-2xl font-display text-lg sm:text-xl leading-relaxed text-ink-2">
+      Most recently: the microservices platform behind Moburst&rsquo;s AI
+      marketing suite — an agency whose clients include Samsung, Reddit, Uber,
+      and Google. Before that, a decade of WebRTC classrooms, threat
+      intelligence, and enterprise systems, each one built and run by me alone.
+    </p>
+    <div class="mt-9 flex flex-wrap items-center gap-4">
+      <a href="/projects" class="btn btn-primary">View the work</a>
+      <a href="/contact" class="btn btn-quiet">Contact me</a>
+      <span class="ml-1 inline-flex items-center gap-2 text-sm text-ink-2">
+        <span class="h-2 w-2 rounded-full bg-accent" aria-hidden="true"></span>
+        Available for projects
+      </span>
+    </div>
+
+    <!-- Verified figures -->
+    <dl class="mt-14 grid grid-cols-2 gap-y-6 border-y border-line py-6 sm:grid-cols-4">
+      {facts.map((fact) => (
+        <div class="pr-6">
+          <dd class="figure-value text-2xl sm:text-[1.75rem]">{fact.value}</dd>
+          <dt class="mt-1 figure-label">{fact.label}</dt>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <!-- Selected work -->
+  <section class="shell mt-20 sm:mt-24" aria-labelledby="work-title">
+    <div class="flex items-baseline justify-between gap-4">
+      <h2 id="work-title" class="display text-2xl sm:text-3xl text-ink">Selected work</h2>
+      <a href="/projects" class="link text-sm">All {allProjects.length} projects</a>
+    </div>
+    <div class="mt-5 border-b border-line">
+      {featured.map((project) => (
+        <WorkRow
+          slug={project.slug}
+          title={project.data.title}
+          summary={project.data.seo.description}
+          category={project.data.category}
+          startDate={project.data.startDate}
+          endDate={project.data.endDate}
+          status={project.data.status}
+          technologies={project.data.technologies}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="mt-20 sm:mt-24 bg-paper-2 py-16" aria-labelledby="capabilities-title">
+    <div class="shell">
+      <h2 id="capabilities-title" class="display text-2xl sm:text-3xl text-ink">
+        What I&rsquo;m hired for
+      </h2>
+      <div class="mt-8 grid gap-10 sm:grid-cols-3">
+        {capabilities.map((cap) => (
+          <div class="border-t border-line-strong pt-5">
+            <h3 class="font-medium text-ink">{cap.title}</h3>
+            <p class="mt-2.5 text-[0.9375rem] leading-relaxed text-ink-2">{cap.body}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-10 text-[0.9375rem] text-ink-2">
+        Consulting and development at
+        <span class="figure-value text-base">$45/hour</span>, or project-based —
+        <a href="/contact" class="link">ask for a quote</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Writing -->
+  <section class="shell mt-20 sm:mt-24" aria-labelledby="writing-title">
+    <div class="flex items-baseline justify-between gap-4">
+      <h2 id="writing-title" class="display text-2xl sm:text-3xl text-ink">Writing</h2>
+      <a href="/blogs" class="link text-sm">All writing</a>
+    </div>
+    <div class="mt-5 border-b border-line">
+      {posts.map((post) => (
+        <a
+          href={`/blogs/${post.slug}`}
+          class="group flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t border-line py-4"
+        >
+          <span class="display min-w-0 text-lg text-ink transition-colors group-hover:text-accent">
+            {post.data.title}
+          </span>
+          <time datetime={post.data.date.toISOString()} class="figure-label">
+            {post.data.date.toLocaleDateString("en-US", { year: "numeric", month: "short" })}
+          </time>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <div class="shell mt-20 sm:mt-24">
+    <FAQ faqs={faqs} />
+  </div>
+
+  <!-- Contact band -->
+  <section class="shell mt-20 sm:mt-24" aria-labelledby="contact-title">
+    <div class="rounded-lg bg-well px-8 py-12 sm:px-12 sm:py-14 text-paper-inverse">
+      <p class="eyebrow !text-paper-inverse/60">Currently building AI &amp; digital-signage systems</p>
+      <h2 id="contact-title" class="display mt-4 max-w-2xl text-3xl sm:text-4xl">
+        Have a platform that needs <em>one engineer who does all of it?</em>
+      </h2>
+      <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+        <a href="/contact" class="btn bg-paper text-ink hover:bg-paper-2 transition-colors">
+          Start a conversation <Icon name="arrow-right" size={16} />
+        </a>
+        <a href="mailto:axif.javed@gmail.com" class="text-[0.9375rem] text-paper-inverse/80 underline decoration-paper-inverse/30 underline-offset-4 hover:decoration-paper-inverse transition-colors">
+          axif.javed@gmail.com
+        </a>
+      </div>
+    </div>
+  </section>
 </MainLayout>

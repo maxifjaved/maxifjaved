@@ -1,97 +1,47 @@
 ---
-import Logo from "./Logo.astro";
+const pagePath = Astro.url.pathname.replace(/\/+$/, "") || "/";
 
-export interface NavItemType {
-  label: string;
-  href: string;
-  isActive?: boolean;
-}
-
-const navItems: NavItemType[] = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Projects", href: "/projects" },
-  { label: "Contact", href: "/contact" },
-  { label: "Blogs", href: "/blogs" },
+const items = [
+  { href: "/projects", label: "Work" },
+  { href: "/blogs", label: "Writing" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
-const currentPath = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/" ? pagePath === "/" : pagePath.startsWith(href);
 ---
 
-<header
-  x-data="{ mobileMenuOpen: false }"
-  class="fixed w-full z-40 bg-cyber-dark/80 backdrop-blur-md border-b border-cyber-blue/20"
->
-  <div class="max-w-7xl mx-auto px-6 py-4">
-    <div class="flex justify-between items-center">
-      <a href="/" class="flex items-center font-future">
-        <Logo />
-      </a>
-
-      <!-- Desktop Menu -->
-      <nav class="hidden lg:flex space-x-8 font-future">
-        {
-          navItems.map((item) => (
-            <a
-              href={item.href}
-              class:list={[
-                "text-white hover:text-cyber-blue transition-colors",
-                {
-                  "!text-cyber-blue":
-                    currentPath === item.href ||
-                    (item.href !== "/" && currentPath.startsWith(item.href)),
-                },
-              ]}
-            >
-              {item.label}
-            </a>
-          ))
-        }
-      </nav>
-
-      <!-- Mobile menu button -->
-      <button
-        @click="mobileMenuOpen = !mobileMenuOpen"
-        :aria-expanded="mobileMenuOpen"
-        aria-label="Toggle mobile menu"
-        class="lg:hidden text-cyber-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyber-blue"
-      >
-        <i class="fas fa-bars text-2xl" x-show="!mobileMenuOpen" x-cloak aria-hidden="true"></i>
-        <i
-          class="fas fa-times text-2xl"
-          x-cloak
-          x-show="mobileMenuOpen"
-          aria-hidden="true"></i>
-      </button>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div
-      x-show="mobileMenuOpen"
-      x-transition
-      x-cloak
-      class="lg:hidden mt-4 pb-4 font-future"
+<header class="border-b border-line bg-paper/90 backdrop-blur-sm sticky top-0 z-40">
+  <div class="shell flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-4 sm:py-5">
+    <a
+      href="/"
+      class="display text-xl leading-none text-ink hover:text-accent transition-colors"
+      aria-label="Muhammad Asif Javed — home"
     >
-      <nav class="flex flex-col space-y-4">
+      Asif&nbsp;Javed
+    </a>
+    <nav aria-label="Main">
+      <ul class="flex items-baseline gap-5 sm:gap-7">
         {
-          navItems.map((item) => (
-            <a
-              href={item.href}
-              class:list={[
-                "text-white hover:text-cyber-blue transition-colors",
-                {
-                  "!text-cyber-blue":
-                    currentPath === item.href ||
-                    (item.href !== "/" && currentPath.startsWith(item.href)),
-                },
-              ]}
-            >
-              {item.label}
-            </a>
+          items.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={isActive(item.href) ? "page" : undefined}
+                class:list={[
+                  "text-[0.9375rem] font-medium transition-colors underline-offset-[6px]",
+                  isActive(item.href)
+                    ? "text-ink underline decoration-accent decoration-2"
+                    : "text-ink-2 hover:text-ink",
+                ]}
+              >
+                {item.label}
+              </a>
+            </li>
           ))
         }
-      </nav>
-    </div>
+      </ul>
+    </nav>
   </div>
 </header>

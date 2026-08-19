@@ -13,14 +13,15 @@ export async function GET(context: APIContext) {
   );
 
   return rss({
-    title: 'Muhammad Asif Javed - Blog',
-    description: 'Latest articles on WebRTC, real-time systems, and enterprise development',
+    title: 'Muhammad Asif Javed - Writing',
+    description: 'Engineering notes on AI platforms, WebRTC, real-time systems, and enterprise development',
     site: context.site ?? 'https://maxifjaved.com',
+    trailingSlash: false,
     items: sortedPosts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.date,
       description: post.data.subtitle,
-      link: `/blogs/${post.slug}/`,
+      link: `/blogs/${post.slug}`,
       author: post.data.author.name,
       categories: [post.data.category],
     })),

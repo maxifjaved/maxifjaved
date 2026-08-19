@@ -1,11 +1,7 @@
 ---
-import AboutHero from "../components/AboutHero.astro";
-import PersonalStory from "../components/PersonalStory.astro";
-import TechnicalExpertise from "../components/TechnicalExpertise.astro";
-import WorkingApproach from "../components/WorkingApproach.astro";
-import CTA from "../components/CTA.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
+import Icon from "../components/Icon.astro";
 
 const breadcrumbItems = [
   { name: "Home", url: "https://maxifjaved.com" },
@@ -18,22 +14,188 @@ const profilePageSchema = {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
   "@id": "https://maxifjaved.com/about#profilepage",
-  "name": "About Muhammad Asif Javed - WebRTC Expert & Full-Stack Developer",
+  "name": "About Muhammad Asif Javed - AI Platform Engineer & Full-Stack Developer",
   "url": "https://maxifjaved.com/about",
   "mainEntity": { "@id": "https://maxifjaved.com/#person" }
 };
+
+const eras = [
+  {
+    period: "2024 — present",
+    title: "AI & digital signage",
+    description:
+      "Currently building the microservices platform behind Moburst's AI marketing suite — four AI tools under one SSO, multi-LLM integrations across OpenAI, Gemini, Claude, and Perplexity — alongside next-generation digital-signage systems.",
+  },
+  {
+    period: "2022 — 2024",
+    title: "AI & business intelligence",
+    description:
+      "Led development of the CrystalBall.pro AI-powered analytics platform, the ManageMyLED MDM & remote-control portal for display fleets, and the LifeMIB insurance lead-management CRM.",
+  },
+  {
+    period: "2020 — 2022",
+    title: "Real-time collaboration & security",
+    description:
+      "Built the TIPX cybersecurity intelligence system and the JustCastIt wireless casting platform while expanding Contribute Cloud into a full digital-classroom suite with 15 teaching tools and 42 educational games.",
+  },
+  {
+    period: "2017 — 2020",
+    title: "Interactive display innovation",
+    description:
+      "Pioneered Contribute Signage digital display solutions, developed TouchIT Air wireless technology, and created the TouchIT App Store ecosystem for interactive LED displays.",
+  },
+];
+
+const expertise = [
+  {
+    name: "Real-time & communication",
+    stack: "WebRTC · OpenVidu · Socket.io · Agora · Pusher",
+    note: "Casting, live video, and collaboration platforms deployed to schools and enterprises.",
+  },
+  {
+    name: "AI & platforms",
+    stack: "FastAPI · OpenAI · Gemini · Claude · Perplexity · SSO/RBAC",
+    note: "Multi-LLM products with structured output, auth SDKs, and health-gated deploys.",
+  },
+  {
+    name: "Frontend",
+    stack: "React · Next.js · Vue.js · Astro · Fabric.js",
+    note: "Component architectures with a bias for performance and progressive enhancement.",
+  },
+  {
+    name: "Backend",
+    stack: "Node.js · Express · Python · Laravel · PHP",
+    note: "Server architectures handling enterprise workloads and real-time data.",
+  },
+  {
+    name: "Data & storage",
+    stack: "MongoDB · PostgreSQL · MySQL · AWS S3 · R2/Spaces",
+    note: "Schema design and optimization for high-throughput applications.",
+  },
+  {
+    name: "Cloud, DevOps & mobile",
+    stack: "GCP · AWS · DigitalOcean · Docker · React Native · Kotlin · PWA",
+    note: "Deploys, backups, rollbacks, and cross-platform clients — handled end to end.",
+  },
+];
+
+const milestones = [
+  "Built my first commercial platform in 2017",
+  "Deployed systems used by thousands of students globally",
+  "Maintained one production platform solo for ~7 years",
+  "Developed cybersecurity tools for enterprise clients",
+  "Specialized in zero-installation, browser-based solutions",
+];
 ---
 
 <MainLayout
-  title="About Muhammad Asif Javed - WebRTC Expert"
-  description="10+ years building enterprise WebRTC platforms, real-time systems, and cybersecurity solutions. Based in Lahore, Pakistan."
-  keywords="Muhammad Asif Javed biography, WebRTC expert background, full-stack developer experience, real-time systems specialist, Lahore Pakistan developer story, solo developer expertise"
+  title="About Muhammad Asif Javed - AI Platform Engineer"
+  description="10+ years building AI platforms, enterprise WebRTC systems, and real-time collaboration tools - solo, end to end. Based in Lahore, Pakistan."
+  keywords="Muhammad Asif Javed biography, AI platform engineer background, full-stack developer experience, real-time systems specialist, Lahore Pakistan developer story, solo developer expertise"
+  canonicalUrl="https://maxifjaved.com/about"
 >
-    <script type="application/ld+json" set:html={JSON.stringify(profilePageSchema)} />
-    <Breadcrumb items={breadcrumbItems} />
-    <AboutHero />
-    <PersonalStory />
-    <TechnicalExpertise />
-    <WorkingApproach />
-    <CTA />
+  <script type="application/ld+json" set:html={JSON.stringify(profilePageSchema)} />
+  <Breadcrumb items={breadcrumbItems} />
+
+  <article class="shell pb-20">
+    <!-- Intro -->
+    <header class="grid gap-10 pt-10 sm:pt-14 lg:grid-cols-[minmax(0,1fr)_16rem]">
+      <div>
+        <p class="eyebrow">About</p>
+        <h1 class="display mt-3 max-w-2xl text-4xl sm:text-5xl text-ink">
+          A one-person <em>engineering department.</em>
+        </h1>
+        <div class="mt-7 max-w-2xl space-y-5 font-display text-lg leading-relaxed text-ink">
+          <p>
+            I&rsquo;m Muhammad Asif Javed — an AI platform engineer and
+            full-stack developer in Lahore, Pakistan. For over a decade I&rsquo;ve
+            built production platforms the unusual way: alone. Backend, frontend,
+            database, infrastructure, deployment — one architect, accountable
+            for all of it.
+          </p>
+          <p>
+            That path started with traditional web development and quickly bent
+            toward hard problems: real-time collaboration, WebRTC casting,
+            systems where latency is the product. I spent seven years building
+            and running a browser-based classroom platform used in schools —
+            fifteen teaching tools, forty-two educational games, zero installs.
+          </p>
+          <p>
+            Today the same end-to-end discipline goes into AI platforms: I
+            solo-architected the microservices system behind Moburst&rsquo;s AI
+            marketing suite — an agency whose clients include Samsung, Reddit,
+            Uber, and Google — with single sign-on, a dual-language auth SDK,
+            and five-tier access control.
+          </p>
+          <p>
+            Every case study on this site is written from the source code, not
+            from memory. If a number is here, it&rsquo;s in the repository.
+          </p>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="/maxifjaved.pdf" class="btn btn-quiet">
+            <Icon name="download" size={16} /> Résumé (PDF)
+          </a>
+          <a href="/contact" class="btn btn-primary">Get in touch</a>
+        </div>
+      </div>
+      <figure class="order-first lg:order-none">
+        <img
+          src="/profile-image.jpg"
+          alt="Muhammad Asif Javed"
+          width="400"
+          height="400"
+          class="w-40 rounded-lg border border-line lg:w-full"
+          fetchpriority="high"
+        />
+        <figcaption class="mt-3 font-mono text-xs text-ink-3">
+          Lahore, Pakistan · working worldwide
+        </figcaption>
+      </figure>
+    </header>
+
+    <!-- Milestones -->
+    <section class="mt-16" aria-labelledby="milestones-title">
+      <h2 id="milestones-title" class="eyebrow">Milestones</h2>
+      <ul class="mt-4 grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
+        {milestones.map((m) => (
+          <li class="border-t border-line pt-2.5 text-[0.9375rem] leading-relaxed text-ink-2">
+            {m}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Journey -->
+    <section class="mt-16" aria-labelledby="journey-title">
+      <h2 id="journey-title" class="display text-2xl sm:text-3xl text-ink">The journey</h2>
+      <div class="mt-6 border-b border-line">
+        {eras.map((era) => (
+          <div class="grid gap-x-8 gap-y-1 border-t border-line py-6 sm:grid-cols-[10rem_minmax(0,1fr)]">
+            <p class="figure-value text-sm">{era.period}</p>
+            <div>
+              <h3 class="font-medium text-ink">{era.title}</h3>
+              <p class="mt-1.5 max-w-2xl text-[0.9375rem] leading-relaxed text-ink-2">
+                {era.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Expertise -->
+    <section class="mt-16" aria-labelledby="expertise-title">
+      <h2 id="expertise-title" class="display text-2xl sm:text-3xl text-ink">Technical range</h2>
+      <div class="mt-6 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+        {expertise.map((area) => (
+          <div class="border-t border-line pt-4">
+            <h3 class="font-medium text-ink">{area.name}</h3>
+            <p class="mt-1.5 font-mono text-xs leading-relaxed text-ink-2">{area.stack}</p>
+            <p class="mt-2 text-sm leading-relaxed text-ink-2">{area.note}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </article>
 </MainLayout>

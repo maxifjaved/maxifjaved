@@ -1,48 +1,50 @@
-# Muhammad Asif Javed - WebRTC Expert & Full-Stack Developer
+# Muhammad Asif Javed - AI Platform Engineer & Full-Stack Developer
 
-> Senior Full-Stack Developer from Pakistan serving US, UK & international clients. 10+ years expertise in WebRTC, enterprise platforms, cybersecurity systems. Remote-first with competitive rates. Available for hire for complex real-time communication systems, educational technology platforms, and cybersecurity solutions.
+> AI platform engineer and full-stack developer from Lahore, Pakistan, serving US, UK & international clients. Solo-architected the microservices platform behind Moburst's AI marketing suite (agency clients include Samsung, Reddit, Uber, and Google). 10+ years building real-time systems (WebRTC, Socket.io), educational technology, cybersecurity platforms, and enterprise software - end to end, as one architect.
 
-## About Me
-- [Homepage](https://maxifjaved.com): Portfolio overview, services, and contact information
-- [About](https://maxifjaved.com/about): Personal story, technical expertise, and working approach
-- [Contact](https://maxifjaved.com/contact): Direct contact form and communication channels
+## About
+- [Homepage](https://maxifjaved.com): Positioning, selected work, capabilities, and contact
+- [About](https://maxifjaved.com/about): Personal story, career timeline, and technical range
+- [Contact](https://maxifjaved.com/contact): Contact form and direct channels
 
-## Services & Expertise
-- [Services](https://maxifjaved.com/services): Detailed service offerings and technical specializations
-- [Projects](https://maxifjaved.com/projects): Portfolio of completed work and case studies
+## Work
+- [Work index](https://maxifjaved.com/projects): 19 documented platforms with case studies written from source code
+- [Writing](https://maxifjaved.com/blogs): Engineering notes and architecture comparisons
 
 ## Key Specializations
-**WebRTC Development**: Enterprise-grade real-time communication systems supporting 50+ concurrent users
-**Full-Stack Development**: React/Next.js frontend, Node.js backend, various databases
-**Educational Technology**: Interactive learning platforms and collaboration tools
-**Cybersecurity Systems**: Intelligence tools and secure multi-user platforms
-**Remote Collaboration**: Proven track record with US/UK clients across time zones
+**AI Integration & Platforms**: Multi-LLM systems (OpenAI, Gemini, Claude, Perplexity), microservices with SSO and 5-tier RBAC, dual-language auth SDKs, health-gated GCP deployments
+**Real-time Systems**: WebRTC casting (OpenVidu), Socket.io collaboration, live whiteboards, browser-based remote control of device fleets
+**Full-Stack Development**: React/Next.js frontend, Node.js and Python backends, PostgreSQL/MongoDB/MySQL
+**Educational Technology**: Zero-install classroom collaboration platform built and maintained solo for ~7 years (15 teaching tools, 42 educational games)
+**Cybersecurity Systems**: TIPX threat-intelligence platform integrating MISP + OpenCTI, built solo in 14 months
 
 ## Technical Stack
-- **Frontend**: React, Next.js, Alpine.js, TailwindCSS
-- **Backend**: Node.js, WebRTC APIs, Real-time systems
-- **Database**: Multiple database technologies
-- **DevOps**: Docker, Cloud services, Deployment automation
-- **Security**: Cybersecurity frameworks and best practices
+- **Frontend**: React, Next.js, Vue.js, Astro, Fabric.js
+- **Backend**: Node.js, Express, Python, FastAPI, Laravel
+- **AI**: OpenAI, Gemini, Claude, Perplexity APIs; structured output; SSO-integrated AI product suites
+- **Data**: PostgreSQL, MongoDB, MySQL, AWS S3, Cloudflare R2
+- **DevOps**: GCP, AWS, DigitalOcean, Docker, atomic-swap deploys with automatic rollback
 
 ## Client Information
-- **Primary Markets**: United States, United Kingdom
-- **Work Style**: Remote-first from Lahore, Pakistan
+- **Primary Markets**: United States, United Kingdom, global remote
+- **Work Style**: Remote-first from Lahore, Pakistan; flexible with time zones
 - **Project Duration**: Typically 5-18 months for enterprise solutions
-- **Track Record**: 19+ successful projects, 100% on-time delivery
+- **Track Record**: 19 documented projects; case studies verified against source code
+- **Rate**: $45/hour or project-based quotes
 - **Support**: Ongoing maintenance and technical support available
 
 ## Hiring Information
-**Available for**: WebRTC development, enterprise platform development, cybersecurity systems, educational technology platforms, full-stack development projects
+**Available for**: AI integration and platform engineering, WebRTC and real-time systems, enterprise platform development, educational technology, cybersecurity systems, full-stack development
 
-**Ideal for**: Companies needing experienced WebRTC developers, enterprises requiring scalable real-time systems, startups building educational or communication platforms, organizations needing cybersecurity solutions
+**Ideal for**: Companies that want one senior engineer to own an entire platform - architecture, code, infrastructure, and deployment
 
-**Contact**: Direct inquiries through contact form or email for project discussions and quotes
+**Contact**: Direct inquiries through the contact form or email for project discussions and quotes
 
 ## Complete Site Content
 For comprehensive content including detailed project descriptions, full FAQ, technical approach, and hiring process, see: [Full Site Content](https://maxifjaved.com/llms-full.txt)
 
 ## Optional
+- [Uses](https://maxifjaved.com/uses): Hardware and software setup
 - [Terms of Service](https://maxifjaved.com/terms): Legal terms and conditions
 - [Privacy Policy](https://maxifjaved.com/privacy): Data handling and privacy practices
 
@@ -56,4 +58,4 @@ For comprehensive content including detailed project descriptions, full FAQ, tec
 - [WhatsApp](https://wa.me/923324647331)
 
 ---
-Last updated: 2026-07-05
+Last updated: 2026-08-19

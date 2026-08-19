@@ -1,7 +1,6 @@
 ---
 import ContactInfo from "../components/ContactInfo.astro";
 import ContactForm from "../components/ContactForm.astro";
-import CTA from "../components/CTA.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
 
@@ -14,8 +13,8 @@ const breadcrumbItems = [
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "Muhammad Asif Javed - Full-Stack Developer",
-  "description": "Professional WebRTC development, real-time systems, and enterprise software solutions serving global clients from Lahore, Pakistan",
+  "name": "Muhammad Asif Javed - AI & Full-Stack Development",
+  "description": "AI integration, full-stack development, and real-time systems for global clients, delivered end to end from Lahore, Pakistan",
   "url": "https://maxifjaved.com",
   "telephone": "+923324647331",
   "email": "axif.javed@gmail.com",
@@ -23,7 +22,7 @@ const localBusinessSchema = {
     "@type": "PostalAddress",
     "streetAddress": "Walton",
     "addressLocality": "Lahore",
-    "addressRegion": "Punjab", 
+    "addressRegion": "Punjab",
     "postalCode": "54000",
     "addressCountry": "Pakistan"
   },
@@ -38,7 +37,7 @@ const localBusinessSchema = {
       "name": "United States"
     },
     {
-      "@type": "Country", 
+      "@type": "Country",
       "name": "United Kingdom"
     },
     {
@@ -47,7 +46,7 @@ const localBusinessSchema = {
     },
     "Global Remote Services"
   ],
-  "serviceType": ["WebRTC Development", "Full-Stack Development", "Enterprise Software Development"],
+  "serviceType": ["AI Integration", "Full-Stack Development", "WebRTC Development", "Enterprise Software Development"],
   "sameAs": [
     "https://github.com/maxifjaved",
     "https://linkedin.com/in/maxifjaved"
@@ -67,15 +66,33 @@ const localBusinessSchema = {
 ---
 
 <MainLayout
-  title="Contact Muhammad Asif Javed - WebRTC Developer"
-  description="Get in touch for WebRTC development, enterprise software, and real-time systems projects. Based in Lahore, available globally."
-  keywords="contact WebRTC developer, hire full-stack developer, Muhammad Asif Javed contact, Lahore Pakistan developer, remote development services, enterprise software consultation"
+  title="Contact Muhammad Asif Javed - AI & Full-Stack Developer"
+  description="Get in touch for AI integration, full-stack platforms, and real-time systems projects. Based in Lahore, available globally."
+  keywords="contact AI developer, hire full-stack developer, Muhammad Asif Javed contact, Lahore Pakistan developer, remote development services, enterprise software consultation"
+  canonicalUrl="https://maxifjaved.com/contact"
 >
-    <!-- Local Business Schema -->
-    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)}></script>
-    
-    <Breadcrumb items={breadcrumbItems} />
-    <ContactInfo />
-    <ContactForm />
-    <CTA />
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)}></script>
+  <Breadcrumb items={breadcrumbItems} />
+
+  <section class="shell pb-20">
+    <header class="max-w-3xl pt-10 sm:pt-14">
+      <p class="eyebrow">Contact</p>
+      <h1 class="display mt-3 text-4xl sm:text-5xl text-ink">
+        Tell me what you&rsquo;re <em>building.</em>
+      </h1>
+      <p class="mt-5 max-w-2xl font-display text-lg leading-relaxed text-ink-2">
+        Whether it&rsquo;s an AI platform, a real-time system, or a product
+        that needs one engineer to own the whole stack — describe where it
+        stands and I&rsquo;ll reply within 24 hours.
+      </p>
+    </header>
+
+    <div class="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
+      <ContactInfo />
+      <div>
+        <h2 class="eyebrow mb-4">Send a message</h2>
+        <ContactForm />
+      </div>
+    </div>
+  </section>
 </MainLayout>

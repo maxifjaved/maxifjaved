@@ -25,32 +25,21 @@ const breadcrumbSchema = {
 };
 ---
 
-<!-- Breadcrumb Schema -->
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
 
-<!-- Breadcrumb Navigation -->
-<nav aria-label="Breadcrumb" class="mb-6">
-  <div class="mx-auto max-w-4xl px-6">
-    <ol class="flex items-center gap-2 text-sm">
-      {items.map((item, index) => (
-        <li class="flex items-center gap-2">
-          {index > 0 && (
-            <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          )}
-          {index < items.length - 1 ? (
-            <a
-              href={item.url}
-              class="text-gray-400 hover:text-cyber-blue transition-colors"
-            >
-              {item.name}
-            </a>
-          ) : (
-            <span class="text-white font-semibold">{item.name}</span>
-          )}
-        </li>
-      ))}
-    </ol>
-  </div>
+<nav aria-label="Breadcrumb" class="shell pt-8">
+  <ol class="flex flex-wrap items-baseline gap-x-2 gap-y-1 font-mono text-xs tracking-wide text-ink-3">
+    {items.map((item, index) => (
+      <li class="flex items-baseline gap-2">
+        {index > 0 && <span aria-hidden="true">/</span>}
+        {index < items.length - 1 ? (
+          <a href={item.url} class="hover:text-ink-2 transition-colors uppercase">
+            {item.name}
+          </a>
+        ) : (
+          <span aria-current="page" class="text-ink-2 uppercase">{item.name}</span>
+        )}
+      </li>
+    ))}
+  </ol>
 </nav>

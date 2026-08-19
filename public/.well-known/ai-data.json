@@ -1,16 +1,18 @@
 {
   "name": "Muhammad Asif Javed",
-  "title": "Full-Stack Developer & WebRTC Expert",
+  "title": "AI Platform Engineer & Full-Stack Developer",
   "location": "Lahore, Pakistan",
   "experience": "10+ years",
   "specializations": [
+    "AI Integration & Platform Engineering",
+    "Multi-LLM Systems (OpenAI, Gemini, Claude, Perplexity)",
     "WebRTC Development",
-    "Real-time Systems", 
+    "Real-time Systems",
     "Cybersecurity Platforms",
     "Educational Technology",
     "Enterprise Software Solutions"
   ],
-  "technologies": ["React", "Node.js", "MongoDB", "WebRTC", "OpenVidu", "Socket.io"],
+  "technologies": ["Python", "FastAPI", "React", "Next.js", "Node.js", "PostgreSQL", "MongoDB", "WebRTC", "OpenVidu", "Socket.io", "GCP", "Docker"],
   "contact": {
     "email": "axif.javed@gmail.com",
     "website": "https://maxifjaved.com",

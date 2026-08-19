@@ -1,131 +1,73 @@
 ---
-import Logo from "./Logo.astro";
-
-export interface FooterType {
-  description: string;
-  links: { label: string; href: string }[];
-  pages: { label: string; href: string }[];
-  contact: {
-    email: { label: string; href: string };
-    phone: { label: string; href: string };
-    address: string;
-  };
-  social: { icon: string; href: string }[];
-}
-
-const footerData: FooterType = {
-  description:
-    "WebRTC Expert & Full-Stack Developer specializing in real-time communication, cybersecurity platforms, and enterprise-grade solutions.",
-  links: [
-    { label: "Projects", href: "/projects" },
-    { label: "About", href: "/about" },
-    { label: "Blogs", href: "/blogs" },
-    { label: "Contact", href: "/contact" },
-    { label: "Documentation", href: "/docs" },
-    { label: "Uses", href: "/uses" },
-  ],
-  pages: [
-    { label: "Privacy Policy", href: "/privacy" },
-    { label: "Terms of Service", href: "/terms" },
-    { label: "Cookie Policy", href: "/cookie-policy" },
-  ],
-  contact: {
-    email: {
-      label: "axif.javed@gmail.com",
-      href: "mailto:axif.javed@gmail.com",
-    },
-    phone: {
-      label: "+92 332 464 7331",
-      href: "https://wa.me/923324647331",
-    },
-    address: "Walton, Lahore, PK",
-  },
-  social: [
-    { icon: "fab fa-github", href: "https://github.com/maxifjaved" },
-    { icon: "fab fa-linkedin", href: "https://www.linkedin.com/in/maxifjaved" },
-  ],
-};
+import Icon from "./Icon.astro";
+const year = new Date().getFullYear();
 ---
 
-<footer
-  class="z-10 bg-cyber-dark py-16 relative border-t border-cyber-blue/20 overflow-hidden"
->
-  <div
-    class="absolute w-96 h-96 bg-cyber-blue/5 rounded-full blur-3xl -top-20 -left-20"
-  >
-  </div>
-  <div
-    class="absolute w-64 h-64 bg-cyber-blue/5 rounded-full blur-3xl -bottom-20 -right-20"
-    style="animation-delay: 2s;"
-  >
-  </div>
+<footer class="mt-24 border-t border-line bg-paper-2">
+  <div class="shell py-14">
+    <div class="grid gap-10 sm:grid-cols-[1.6fr_1fr_1fr]">
+      <div>
+        <p class="display text-xl text-ink">Muhammad Asif Javed</p>
+        <p class="mt-3 max-w-sm text-[0.9375rem] leading-relaxed text-ink-2">
+          AI platform engineer &amp; full-stack developer. Ten years of
+          building production systems end to end, solo.
+        </p>
+        <div class="mt-5 flex flex-col gap-1.5 text-[0.9375rem]">
+          <a href="mailto:axif.javed@gmail.com" class="link">axif.javed@gmail.com</a>
+          <a href="https://wa.me/923324647331" rel="noopener" class="link">WhatsApp +92 332 464 7331</a>
+        </div>
+      </div>
 
-  <div class="max-w-7xl mx-auto px-6 relative">
-    <div class="text-center">
-      <div class="mb-6 font-future flex justify-center">
-        <Logo />
-      </div>
-      <p class="text-gray-300 mb-4 max-w-2xl mx-auto">{footerData.description}</p>
-      
-      <div class="text-gray-400 text-sm mb-8">
-        <a href={footerData.contact.email.href} class="hover:text-cyber-blue transition-colors mr-6">
-          {footerData.contact.email.label}
-        </a>
-        <a href={footerData.contact.phone.href} aria-label={`Chat on WhatsApp: ${footerData.contact.phone.label}`} class="hover:text-cyber-blue transition-colors mr-6">
-          {footerData.contact.phone.label}
-        </a>
-        <span class="text-cyber-blue font-semibold">{footerData.contact.address}</span>
-      </div>
+      <nav aria-label="Site index">
+        <h2 class="eyebrow">Index</h2>
+        <ul class="mt-4 space-y-2 text-[0.9375rem]">
+          <li><a href="/projects" class="text-ink-2 hover:text-ink transition-colors">Work</a></li>
+          <li><a href="/blogs" class="text-ink-2 hover:text-ink transition-colors">Writing</a></li>
+          <li><a href="/about" class="text-ink-2 hover:text-ink transition-colors">About</a></li>
+          <li><a href="/contact" class="text-ink-2 hover:text-ink transition-colors">Contact</a></li>
+          <li><a href="/uses" class="text-ink-2 hover:text-ink transition-colors">Uses</a></li>
+          <li>
+            <a href="/maxifjaved.pdf" class="text-ink-2 hover:text-ink transition-colors inline-flex items-center gap-1.5">
+              Résumé <span class="figure-label normal-case">(PDF)</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Elsewhere">
+        <h2 class="eyebrow">Elsewhere</h2>
+        <ul class="mt-4 space-y-2 text-[0.9375rem]">
+          <li>
+            <a href="https://github.com/maxifjaved" rel="noopener" class="inline-flex items-center gap-2 text-ink-2 hover:text-ink transition-colors">
+              <Icon name="github" size={16} /> GitHub
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/maxifjaved" rel="noopener" class="inline-flex items-center gap-2 text-ink-2 hover:text-ink transition-colors">
+              <Icon name="linkedin" size={16} /> LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href="/rss.xml" class="inline-flex items-center gap-2 text-ink-2 hover:text-ink transition-colors">
+              <Icon name="rss" size={16} /> RSS
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
 
-    <div class="pt-8 border-t border-cyber-blue/20 flex flex-col md:flex-row justify-between items-center">
-      <div class="flex flex-wrap gap-6 mb-4 md:mb-0">
-        {
-          footerData.links.map((link) => (
-            <a
-              href={link.href}
-              class="text-gray-300 hover:text-cyber-blue transition-colors text-sm"
-            >
-              {link.label}
-            </a>
-          ))
-        }
-        {
-          footerData.pages.map((page) => (
-            <a
-              href={page.href}
-              class="text-gray-300 hover:text-cyber-blue transition-colors text-sm"
-            >
-              {page.label}
-            </a>
-          ))
-        }
-      </div>
-      
-      <div class="flex items-center gap-6">
-        <div class="flex gap-4">
-          {
-            footerData.social.map((social) => {
-              const platform = social.icon.includes('github') ? 'GitHub' :
-                              social.icon.includes('linkedin') ? 'LinkedIn' : 'Social media';
-              return (
-                <a
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Visit my ${platform} profile`}
-                  class="text-cyber-blue hover:text-white transition-colors"
-                >
-                  <i class={social.icon + " text-xl"} aria-hidden="true" />
-                </a>
-              );
-            })
-          }
-        </div>
-        <span class="text-gray-400 text-sm">
-          © {new Date().getFullYear()} Muhammad Asif Javed
-        </span>
-      </div>
+    <div class="mt-12 flex flex-wrap items-baseline justify-between gap-4 border-t border-line pt-6">
+      <p class="text-sm text-ink-3">
+        © {year} Muhammad Asif Javed
+      </p>
+      <p class="text-sm text-ink-3">
+        Set in Newsreader &amp; Inter · Built with Astro
+      </p>
+      <ul class="flex gap-4 text-sm">
+        <li><a href="/privacy" class="text-ink-3 hover:text-ink-2 transition-colors">Privacy</a></li>
+        <li><a href="/terms" class="text-ink-3 hover:text-ink-2 transition-colors">Terms</a></li>
+        <li><a href="/cookie-policy" class="text-ink-3 hover:text-ink-2 transition-colors">Cookies</a></li>
+      </ul>
     </div>
   </div>
 </footer>

@@ -1,144 +1,68 @@
 ---
-export interface ContactInfoType {
-  title: string;
-  contacts: {
-    icon: string;
-    title: string;
-    description: string;
-    value: string;
-    href?: string;
-    delay: number;
-  }[];
-}
+import Icon from "./Icon.astro";
 
-const contactInfoData: ContactInfoType = {
-  title: "Get in Touch",
-  contacts: [
-    {
-      icon: "fas fa-envelope",
-      title: "Email Me",
-      description: "Drop me a line, and I'll get back to you within 24 hours.",
-      value: "axif.javed@gmail.com",
-      href: "mailto:axif.javed@gmail.com",
-      delay: 100,
-    },
-    {
-      icon: "fab fa-whatsapp",
-      title: "WhatsApp",
-      description: "Let's chat on WhatsApp for quick communication.",
-      value: "+92 332 464 7331",
-      href: "https://wa.me/923324647331",
-      delay: 200,
-    },
-    {
-      icon: "fab fa-linkedin",
-      title: "LinkedIn",
-      description: "Connect with me professionally and see my latest updates.",
-      value: "linkedin.com/in/maxifjaved",
-      href: "https://www.linkedin.com/in/maxifjaved",
-      delay: 300,
-    },
-    {
-      icon: "fab fa-github",
-      title: "GitHub",
-      description: "Check out my code repositories and development work.",
-      value: "github.com/maxifjaved",
-      href: "https://github.com/maxifjaved",
-      delay: 400,
-    },
-  ],
-};
+const channels = [
+  {
+    icon: "email" as const,
+    title: "Email",
+    value: "axif.javed@gmail.com",
+    href: "mailto:axif.javed@gmail.com",
+    note: "Replies within 24 hours",
+  },
+  {
+    icon: "whatsapp" as const,
+    title: "WhatsApp",
+    value: "+92 332 464 7331",
+    href: "https://wa.me/923324647331",
+    note: "Quickest for short questions",
+  },
+  {
+    icon: "linkedin" as const,
+    title: "LinkedIn",
+    value: "linkedin.com/in/maxifjaved",
+    href: "https://www.linkedin.com/in/maxifjaved",
+    note: "Professional profile",
+  },
+  {
+    icon: "github" as const,
+    title: "GitHub",
+    value: "github.com/maxifjaved",
+    href: "https://github.com/maxifjaved",
+    note: "Code and repositories",
+  },
+];
 ---
 
-<section
-  id="contact-info"
-  class="bg-cyber-dark/60 pb-16 lg:pb-24 pt-32 lg:pt-40 relative overflow-hidden"
->
-  <div class="max-w-7xl mx-auto px-6">
-    <div
-      class="absolute w-96 h-96 bg-cyber-blue/5 rounded-full blur-3xl -bottom-20 -right-20"
-    >
-    </div>
-
-    <div class="flex justify-center mb-8">
-      <div class="relative">
-        <h1 class="text-4xl md:text-5xl font-bold text-center">
-          {contactInfoData.title.split(" ")[0]}{" "}
-          <span class="text-cyber-blue text-shadow-glow">
-            {contactInfoData.title.split(" ")[1]}
+<div>
+  <div class="space-y-1">
+    {channels.map((channel) => (
+      <a
+        href={channel.href}
+        rel={channel.href.startsWith("http") ? "noopener" : undefined}
+        class="group flex items-baseline gap-4 border-t border-line py-4"
+      >
+        <Icon name={channel.icon} size={16} class="shrink-0 translate-y-0.5 text-ink-3" />
+        <span class="min-w-0">
+          <span class="block font-medium text-ink transition-colors group-hover:text-accent">
+            {channel.value}
           </span>
-        </h1>
-        <div class="h-1 w-24 bg-cyber-blue mt-4 mx-auto rounded-full glow">
-        </div>
-      </div>
-    </div>
-
-    <div class="max-w-3xl mx-auto text-center mb-16">
-      <p class="text-gray-300 text-lg leading-relaxed mb-6">
-        Ready to bring your next project to life? I specialize in building
-        enterprise-grade platforms, real-time collaboration systems, and
-        scalable web applications. Whether you need a complete solution from
-        concept to deployment or expert consulting on your existing project, I'm
-        here to help.
-      </p>
-      <p class="text-gray-300 leading-relaxed mb-6">
-        With over 10 years of experience in full-stack development and real-time systems architecture, I've delivered complex platforms for education, cybersecurity, digital signage, and business intelligence. My expertise includes WebRTC development, system architecture, cloud infrastructure, and building scalable applications that handle thousands of concurrent users.
-      </p>
-      <p class="text-gray-300 leading-relaxed">
-        Based in Lahore, Pakistan, I work with clients globally across the United States, United Kingdom, and beyond. I'm available for remote collaboration, flexible with time zones, and committed to delivering production-ready solutions. Whether you're a startup looking to build your MVP or an established company needing to scale your platform, I can help you achieve your goals with clean, maintainable code and robust architecture.
-      </p>
-    </div>
-
-    <h2 class="sr-only">Contact Methods</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {
-        contactInfoData.contacts.map((contact) => (
-          <div
-            class="group relative"
-            x-data="{ visible: false, init() { this.$el.classList.add('opacity-0') } }"
-            x-intersect.once="visible = true"
-            x-bind:class={`visible ? 'animated fadeInUp delay${contact.delay}' : 'opacity-0'`}
-          >
-            <div class="absolute inset-0 bg-cyber-blue/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <div class="border border-cyber-blue/20 bg-cyber-dark/70 backdrop-blur-sm rounded-xl p-6 h-full relative hover:border-cyber-blue/50 transition-all duration-300 text-center">
-              <div class="w-12 h-12 rounded-full bg-cyber-blue/20 border border-cyber-blue flex items-center justify-center mx-auto mb-4 glow">
-                <i class={`${contact.icon} text-cyber-blue text-xl`} />
-              </div>
-              <h2 class="text-xl font-bold mb-2 text-cyber-blue">
-                {contact.title}
-              </h2>
-              <p class="text-gray-300 mb-4">{contact.description}</p>
-              {contact.href ? (
-                <a
-                  href={contact.href}
-                  class="text-cyber-blue hover:text-white transition-colors"
-                >
-                  {contact.value}
-                </a>
-              ) : (
-                <p class="text-gray-300">{contact.value}</p>
-              )}
-            </div>
-          </div>
-        ))
-      }
-    </div>
-
-    <!-- <div class="max-w-4xl mx-auto mt-16">
-      <div class="border border-cyber-blue/20 bg-cyber-dark/50 backdrop-blur-sm rounded-xl p-8 text-center">
-        <div class="flex justify-center mb-4">
-          <div class="w-12 h-12 rounded-full bg-cyber-blue/20 border border-cyber-blue flex items-center justify-center glow">
-            <i class="fas fa-map-marker-alt text-cyber-blue text-xl"></i>
-          </div>
-        </div>
-        <h3 class="text-xl font-bold mb-2 text-cyber-blue">Location & Availability</h3>
-        <p class="text-gray-300 mb-4">
-          Based in <span class="text-cyber-blue">Walton, Lahore, Pakistan</span>
-        </p>
-        <p class="text-gray-400 text-sm">
-          Available for remote work worldwide • Flexible with time zones • Long-term project collaborations welcome
-        </p>
-      </div>
-    </div> -->
+          <span class="mt-0.5 block text-sm text-ink-2">{channel.note}</span>
+        </span>
+      </a>
+    ))}
   </div>
-</section>
+  <dl class="mt-6 space-y-3 border-t border-line pt-5">
+    <div>
+      <dt class="figure-label">Location</dt>
+      <dd class="mt-0.5 text-sm text-ink">Lahore, Pakistan — working with US, UK &amp; global clients</dd>
+    </div>
+    <div>
+      <dt class="figure-label">Rate</dt>
+      <dd class="mt-0.5 text-sm text-ink">$45/hour, or project-based quotes</dd>
+    </div>
+    <div>
+      <dt class="figure-label">Availability</dt>
+      <dd class="mt-0.5 text-sm text-ink">Open to new projects · flexible with time zones</dd>
+    </div>
+  </dl>
+</div>

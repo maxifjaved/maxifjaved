@@ -1,0 +1,70 @@
+---
+// One project as an editorial index row. Shared by the home page and /projects.
+import Icon from "./Icon.astro";
+
+interface Props {
+  slug: string;
+  title: string;
+  summary: string;
+  category: string;
+  startDate: string; // YYYY-MM
+  endDate: string; // YYYY-MM
+  status: string;
+  technologies: string[];
+}
+
+const CATEGORY_LABELS: Record<string, string> = {
+  "edtech": "EdTech",
+  "interactive-displays": "Interactive displays",
+  "business-intelligence": "Business intelligence",
+  "cybersecurity": "Cybersecurity",
+  "insurance-tech": "Insurance",
+  "ai-marketing": "AI marketing",
+  "cloud-infrastructure": "Cloud infrastructure",
+  "mobile-apps": "Mobile",
+  "3d-visualization": "3D",
+};
+
+const { slug, title, summary, category, startDate, endDate, status, technologies } =
+  Astro.props;
+
+// Titles are stored as "Name - Long descriptor"; the row shows the name.
+const name = title.split(" - ")[0];
+
+const startYear = startDate.slice(0, 4);
+const endYear = endDate.slice(0, 4);
+const span =
+  status === "in-progress"
+    ? `${startYear} — now`
+    : startYear === endYear
+      ? endYear
+      : `${startYear} — ${endYear}`;
+---
+
+<article class="work-row group border-t border-line" data-category={category}>
+  <a
+    href={`/projects/${slug}`}
+    class="grid gap-x-6 gap-y-1 py-5 sm:grid-cols-[minmax(0,1fr)_11rem] sm:py-6"
+  >
+    <div class="min-w-0">
+      <h3 class="display text-xl sm:text-2xl text-ink group-hover:text-accent transition-colors inline-flex items-baseline gap-2">
+        {name}
+        <Icon
+          name="arrow-right"
+          size={16}
+          class="shrink-0 translate-y-px opacity-0 -translate-x-1 transition-all group-hover:opacity-100 group-hover:translate-x-0 motion-reduce:opacity-100"
+        />
+      </h3>
+      <p class="mt-1.5 max-w-xl text-[0.9375rem] leading-relaxed text-ink-2">
+        {summary}
+      </p>
+      <p class="mt-2 font-mono text-xs text-ink-3">
+        {technologies.slice(0, 4).join(" · ")}
+      </p>
+    </div>
+    <div class="row-start-1 sm:row-auto flex sm:flex-col sm:items-end gap-x-4 gap-y-1 sm:text-right">
+      <span class="figure-value text-sm">{span}</span>
+      <span class="figure-label">{CATEGORY_LABELS[category] ?? category}</span>
+    </div>
+  </a>
+</article>

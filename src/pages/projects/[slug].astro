@@ -1,11 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import { Image } from 'astro:assets';
 import MainLayout from "../../layouts/MainLayout.astro";
-import ProjectHeader from "../../components/ProjectHeader.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
 import SocialShare from "../../components/SocialShare.astro";
 import AuthorInfo from "../../components/AuthorInfo.astro";
+import Icon from "../../components/Icon.astro";
 
 export async function getStaticPaths() {
   const projectEntries = await getCollection('projects');
@@ -27,21 +27,35 @@ const {
   title,
   description,
   category,
+  status,
+  startDate,
+  endDate,
   duration,
   role,
   teamSize,
   technologies,
   businessContext,
   keyFeatures,
-  keyAchievements,
-  impactResults,
   metrics,
   images,
   seo,
   links,
 } = entry.data;
 
-const currentUrl = new URL(Astro.url).toString();
+const canonicalUrl = `https://maxifjaved.com/projects/${entry.slug}`;
+
+// Titles are stored as "Name - Long descriptor"
+const [name, ...titleRest] = title.split(" - ");
+const subtitle = titleRest.join(" - ");
+
+const startYear = startDate.slice(0, 4);
+const endYear = endDate.slice(0, 4);
+const span =
+  status === "in-progress"
+    ? `${startYear} — ongoing`
+    : startYear === endYear
+      ? endYear
+      : `${startYear} — ${endYear}`;
 
 // Related projects: the next 3 in a stable rotation. Because selection is a
 // pure rotating window, every project is the "next-N" of exactly 3 predecessors,
@@ -55,77 +69,30 @@ const relatedProjects = [
   ...orderedProjects.slice(0, selfIndex),
 ].slice(0, 3);
 
-// Format author data (from your profile)
 const authorData = {
   name: "Muhammad Asif Javed",
-  bio: "Full-Stack Developer & WebRTC Expert with 10+ years experience",
+  bio: "AI platform engineer & full-stack developer with 10+ years of solo, end-to-end platform work",
   avatar: "https://maxifjaved.com/profile-image.jpg",
-  expertise: "WebRTC, System Architecture, Full-Stack Development",
-  social: {
-    twitter: "@maxifjaved",
-    linkedin: "linkedin.com/in/maxifjaved",
-    github: "github.com/maxifjaved"
-  },
 };
 
-// Create project info HTML
-const projectInfoHtml = `
-  <ul class="mb-6">
-    <li><strong>Role:</strong> ${role}</li>
-    <li><strong>Technologies:</strong> ${technologies.join(", ")}</li>
-    <li><strong>Team Size:</strong> ${teamSize}</li>
-    <li><strong>Industry:</strong> ${businessContext.industry}</li>
-    <li><strong>User Base:</strong> ${businessContext.userBase}</li>
-  </ul>
-`;
+const projectLinks = [
+  { href: links.liveUrl, label: "Live project" },
+  { href: links.companyUrl, label: "Company" },
+  { href: links.caseStudyUrl, label: "Case study" },
+  { href: links.demoUrl, label: "Demo" },
+].filter((l) => l.href);
 
-const keyFeaturesHtml = keyFeatures
-  .map(
-    (feature) =>
-      `<li class="flex items-start gap-3 text-gray-300">
-    <span class="inline-block w-2 h-2 bg-cyber-blue rounded-full mt-2 flex-shrink-0 glow"></span>
-    <span class="leading-relaxed">${feature}</span>
-  </li>`
-  )
-  .join("");
+const breadcrumbItems = [
+  { name: "Home", url: "https://maxifjaved.com" },
+  { name: "Work", url: "https://maxifjaved.com/projects" },
+  { name: name, url: canonicalUrl },
+];
 
-const keyAchievementsHtml = keyAchievements
-  .map(
-    (achievement) =>
-      `<li class="flex items-start gap-3 text-gray-300">
-    <span class="inline-block w-2 h-2 bg-cyber-blue/70 rounded-full mt-2 flex-shrink-0"></span>
-    <span class="leading-relaxed">${achievement}</span>
-  </li>`
-  )
-  .join("");
-
-const impactResultsHtml = impactResults
-  .map(
-    (result) =>
-      `<li class="flex items-start gap-3 text-gray-300">
-    <span class="inline-block w-2 h-2 bg-cyber-blue/50 rounded-full mt-2 flex-shrink-0"></span>
-    <span class="leading-relaxed">${result}</span>
-  </li>`
-  )
-  .join("");
-
-const metricsHtml = metrics
-  .map(
-    (metric) =>
-      `<div class="p-4 border border-cyber-blue/30 rounded-lg bg-cyber-dark/50">
-    <div class="text-2xl font-bold text-cyber-blue mb-1">${metric.value}</div>
-    <div class="text-sm text-white font-semibold">${metric.label}</div>
-    <div class="text-xs text-gray-400 mt-1">${metric.description}</div>
-  </div>`
-  )
-  .join("");
-
-// OG Image URL
+// OG Image URL (frontmatter card images live on as social images only)
 const ogImageUrl = images.featuredImage.src.startsWith('http')
   ? images.featuredImage.src
   : `https://maxifjaved.com${images.featuredImage.src}`;
 
-// Generate SoftwareApplication schema for project
 const softwareSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -142,7 +109,7 @@ const softwareSchema = {
   author: {
     "@type": "Person",
     name: authorData.name,
-    jobTitle: "Full-Stack Developer & WebRTC Expert"
+    jobTitle: "AI Platform Engineer & Full-Stack Developer"
   },
   offers: {
     "@type": "Offer",
@@ -152,6 +119,15 @@ const softwareSchema = {
   operatingSystem: "Web",
   softwareVersion: "1.0"
 };
+
+const meta = [
+  { label: "Role", value: role },
+  { label: "Timeline", value: `${span} · ${duration}` },
+  { label: "Team", value: teamSize },
+  { label: "Industry", value: businessContext.industry },
+  { label: "Client", value: businessContext.client },
+  { label: "Users", value: businessContext.userBase },
+];
 ---
 
 <MainLayout
@@ -159,7 +135,7 @@ const softwareSchema = {
   description={seo.description}
   keywords={seo.keywords.join(", ")}
   ogImage={ogImageUrl}
-  canonicalUrl={`https://maxifjaved.com/projects/${entry.slug}`}
+  canonicalUrl={canonicalUrl}
   ogTitle={seo.title}
   ogDescription={seo.description}
   ogType="article"
@@ -169,155 +145,111 @@ const softwareSchema = {
   twitterImage={ogImageUrl}
 >
   <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
-  <ProjectHeader title={title} image={images.featuredImage.src} />
+  <Breadcrumb items={breadcrumbItems} />
 
-  <!-- Project Content (using same structure as ArticleContent) -->
-  <section id="project-content" class="relative mb-6">
-    <div class="mx-auto max-w-4xl px-6">
-      <!-- Project Info Card -->
-      <div
-        class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 mb-6 backdrop-blur-sm"
-      >
-        <h2 class="text-2xl font-bold text-cyber-blue mb-4">Project Overview</h2>
-        <p class="text-gray-300 mb-4">{description}</p>
-        <div class="text-gray-300" set:html={projectInfoHtml} />
+  <article class="shell pb-20">
+    <!-- Header -->
+    <header class="max-w-3xl pt-10 sm:pt-14">
+      <h1 class="display text-4xl sm:text-5xl text-ink">{name}</h1>
+      {subtitle && (
+        <p class="display mt-3 text-xl sm:text-2xl text-ink-2"><em>{subtitle}</em></p>
+      )}
+      <p class="mt-6 font-display text-lg leading-relaxed text-ink-2">
+        {description}
+      </p>
+    </header>
+
+    <!-- Meta grid -->
+    <dl class="mt-10 grid grid-cols-2 gap-x-8 gap-y-5 border-t border-line pt-6 sm:grid-cols-3">
+      {meta.map((m) => (
+        <div>
+          <dt class="figure-label">{m.label}</dt>
+          <dd class="mt-1 text-sm leading-relaxed text-ink">{m.value}</dd>
+        </div>
+      ))}
+      <div class="col-span-2 sm:col-span-3">
+        <dt class="figure-label">Stack</dt>
+        <dd class="mt-1 font-mono text-xs leading-relaxed text-ink-2">
+          {technologies.join(" · ")}
+        </dd>
       </div>
+    </dl>
 
-      <!-- Key Metrics Grid -->
-      {metrics.length > 0 && (
-        <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 mb-6 backdrop-blur-sm">
-          <h2 class="text-2xl font-bold text-cyber-blue mb-4">Key Metrics</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" set:html={metricsHtml} />
-        </div>
-      )}
-
-      <!-- Technical Implementation (MDX Content) -->
-      <div
-        class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 mb-6 backdrop-blur-sm"
-      >
-        <h2 class="text-2xl font-bold text-cyber-blue mb-4">Technical Implementation</h2>
-        <div class="post-content text-gray-300">
-          <Content />
-        </div>
-      </div>
-
-      <!-- Key Features -->
-      {keyFeatures.length > 0 && (
-        <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 mb-6 backdrop-blur-sm">
-          <h2 class="text-2xl font-bold text-cyber-blue mb-4">Key Features</h2>
-          <ul class="space-y-3" set:html={keyFeaturesHtml} />
-        </div>
-      )}
-
-      <!-- Gallery Images with Optimization -->
-      {images.gallery.length > 0 && (
-        <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 mb-6 backdrop-blur-sm">
-          <h2 class="text-2xl font-bold text-cyber-blue mb-4">Project Gallery</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {images.gallery.map((img) => (
-              <div class="overflow-hidden rounded-lg border border-cyber-blue/20">
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  width={img.width}
-                  height={img.height}
-                  format="webp"
-                  quality={85}
-                  class="w-full h-auto"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            ))}
+    <!-- Verified figures -->
+    {metrics.length > 0 && (
+      <dl class="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-4">
+        {metrics.map((metric) => (
+          <div class="bg-paper-2 p-5">
+            <dd class="figure-value text-2xl">{metric.value}</dd>
+            <dt class="mt-1.5 figure-label">{metric.label}</dt>
+            <p class="mt-1.5 text-xs leading-relaxed text-ink-2">{metric.description}</p>
           </div>
-        </div>
-      )}
+        ))}
+      </dl>
+    )}
 
-      <!-- Key Achievements -->
-      {keyAchievements.length > 0 && (
-        <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 mb-6 backdrop-blur-sm">
-          <h2 class="text-2xl font-bold text-cyber-blue mb-4">Key Achievements</h2>
-          <ul class="space-y-3" set:html={keyAchievementsHtml} />
-        </div>
-      )}
-
-      <!-- Impact & Results -->
-      {impactResults.length > 0 && (
-        <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 mb-6 backdrop-blur-sm">
-          <h2 class="text-2xl font-bold text-cyber-blue mb-4">Impact & Results</h2>
-          <ul class="space-y-3" set:html={impactResultsHtml} />
-        </div>
-      )}
-
-      <!-- Project Links -->
-      {(links.liveUrl || links.companyUrl || links.caseStudyUrl || links.demoUrl) && (
-        <div class="rounded-xl border border-cyber-blue/20 bg-cyber-dark/70 p-6 mb-6 backdrop-blur-sm">
-          <h2 class="text-2xl font-bold text-cyber-blue mb-4">Project Links</h2>
-          <div class="flex flex-wrap gap-4">
-            {links.liveUrl && (
-              <a
-                href={links.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="px-4 py-2 bg-cyber-blue text-white rounded-lg hover:bg-cyber-blue/80 transition-colors"
-              >
-                Live Project →
-              </a>
-            )}
-            {links.companyUrl && (
-              <a
-                href={links.companyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="px-4 py-2 border border-cyber-blue text-cyber-blue rounded-lg hover:bg-cyber-blue/10 transition-colors"
-              >
-                Company Page →
-              </a>
-            )}
-            {links.caseStudyUrl && (
-              <a
-                href={links.caseStudyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="px-4 py-2 border border-cyber-blue text-cyber-blue rounded-lg hover:bg-cyber-blue/10 transition-colors"
-              >
-                Case Study →
-              </a>
-            )}
-            {links.demoUrl && (
-              <a
-                href={links.demoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="px-4 py-2 border border-cyber-blue text-cyber-blue rounded-lg hover:bg-cyber-blue/10 transition-colors"
-              >
-                View Demo →
-              </a>
-            )}
-          </div>
-        </div>
-      )}
-    </div>
-  </section>
-
-  <SocialShare title={title} url={currentUrl} />
-  <AuthorInfo author={authorData} />
-
-  <!-- Related Projects -->
-  <section id="related-projects" class="relative mb-16">
-    <div class="mx-auto max-w-4xl px-6">
-      <h2 class="text-2xl font-bold text-cyber-blue mb-6">Explore More Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {relatedProjects.map((rp) => (
-          <a href={`/projects/${rp.slug}`} class="group border border-cyber-blue/20 bg-cyber-dark/70 rounded-lg p-4 hover:border-cyber-blue/50 transition-colors">
-            <h3 class="text-lg font-semibold text-cyber-blue mb-2 group-hover:text-white">{rp.data.title}</h3>
-            <p class="text-gray-300 text-sm">{rp.data.seo.description}</p>
+    {projectLinks.length > 0 && (
+      <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2">
+        {projectLinks.map((l) => (
+          <a
+            href={l.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link inline-flex items-center gap-1.5 text-[0.9375rem]"
+          >
+            {l.label} <Icon name="external" size={14} />
           </a>
         ))}
-        <a href="/projects" class="group border border-cyber-blue/20 bg-cyber-dark/70 rounded-lg p-4 hover:border-cyber-blue/50 transition-colors flex items-center justify-center">
-          <span class="text-cyber-blue group-hover:text-white font-semibold">View All Projects →</span>
-        </a>
-      </div>
+      </p>
+    )}
+
+    <!-- Case study body -->
+    <div class="post-content mt-12">
+      <Content />
     </div>
-  </section>
+
+    <!-- Feature index -->
+    {keyFeatures.length > 0 && (
+      <section class="mt-14 max-w-3xl">
+        <h2 class="eyebrow">Feature index</h2>
+        <ul class="mt-4 grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
+          {keyFeatures.map((feature) => (
+            <li class="border-t border-line pt-2.5 text-sm leading-relaxed text-ink-2">
+              {feature}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <div class="mt-14 max-w-3xl space-y-8">
+      <SocialShare title={title} url={canonicalUrl} />
+      <AuthorInfo author={authorData} />
+    </div>
+
+    <!-- More work -->
+    <section class="mt-16">
+      <div class="flex items-baseline justify-between gap-4">
+        <h2 class="eyebrow">More work</h2>
+        <a href="/projects" class="link text-sm">All work</a>
+      </div>
+      <div class="mt-4">
+        {relatedProjects.map((rp) => (
+          <a
+            href={`/projects/${rp.slug}`}
+            class="group flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t border-line py-4"
+          >
+            <span class="display text-lg text-ink group-hover:text-accent transition-colors">
+              {rp.data.title.split(" - ")[0]}
+            </span>
+            <span class="figure-label">
+              {rp.data.status === "in-progress"
+                ? `${rp.data.startDate.slice(0, 4)} — now`
+                : rp.data.endDate.slice(0, 4)}
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </article>
 </MainLayout>

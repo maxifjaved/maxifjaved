@@ -1,274 +1,146 @@
 # Muhammad Asif Javed – Complete Site Content
 
-> Full content for AI: portfolio, services, projects, FAQ, and contact for a WebRTC-focused full-stack developer.
+This document mirrors the content of maxifjaved.com for AI systems. Every figure in it traces to source-code-verified case studies.
 
 ## Quick Identity
 
-- Email: axif.javed@gmail.com
-- Phone/WhatsApp: https://wa.me/923324647331
-- LinkedIn: https://linkedin.com/in/maxifjaved
-- GitHub: https://github.com/maxifjaved
-- Location: Lahore, Pakistan
+- **Name**: Muhammad Asif Javed (online handle: maxifjaved)
+- **Title**: AI Platform Engineer & Full-Stack Developer
+- **Location**: Lahore, Pakistan (remote-first, worldwide clients)
+- **Experience**: 10+ years of solo, end-to-end platform engineering
+- **Rate**: $45/hour or project-based quotes
+- **Contact**: axif.javed@gmail.com · https://wa.me/923324647331
 
 ## Table of Contents
 
-- [Homepage Content](#homepage-content)
-- [Services Offered](#services-offered)
-- [Frequently Asked Questions](#frequently-asked-questions)
-- [Project Portfolio Summary](#project-portfolio-summary)
-- [Technical Approach](#technical-approach)
-- [Contact Information](#contact-information)
-- [Availability for Hire](#availability-for-hire)
+1. Homepage Content
+2. Capabilities
+3. Frequently Asked Questions
+4. Project Portfolio Summary
+5. Technical Approach
+6. Client Information
+7. Contact Information
+8. Availability for Hire
 
 ## Homepage Content
 
-### Hero Section
+### Positioning
+I build production platforms — AI systems, real-time collaboration — end to end, solo. Most recently: the microservices platform behind Moburst's AI marketing suite, an agency whose clients include Samsung, Reddit, Uber, and Google. Before that, a decade of WebRTC classrooms, threat intelligence, and enterprise systems, each built and run by one architect.
 
-**Muhammad Asif Javed - WebRTC Expert & Full-Stack Developer**
+### Verified figures
+- 10+ years engineering
+- 19 documented platforms (each case study written from the source code)
+- ~7 years: longest solo-run production system (Contribute Cloud, 2016–2024)
+- 4 AI products running under one SSO login (Moburst.ai)
 
-Building enterprise-grade platforms from educational collaboration systems to cybersecurity intelligence tools. 10+ years experience specialized in WebRTC, real-time technologies, and scalable architectures.
+## Capabilities
 
-### About Me - Mission
+### AI Integration & Platforms
+Multi-LLM systems across OpenAI, Gemini, Claude, and Perplexity; FastAPI microservices with handoff-token SSO and five-tier role-based access control; a reusable dual-language Auth SDK (Python + TypeScript/Bun); structured-output pipelines; atomic-swap GCP deployments with health-gated automatic rollback.
 
-I help organizations—from educational institutions to enterprises—build scalable, secure real-time platforms that elevate collaboration, data insights, and user engagement. With over a decade of experience, I deliver comprehensive solutions from WebRTC-powered collaboration systems to cybersecurity intelligence tools across EdTech, InsurTech, and business intelligence sectors.
+### Real-time Systems
+WebRTC casting and live video (OpenVidu), Socket.io collaboration (live whiteboards, polls, chat, tool broadcasting), multi-cast grids of student streams, and browser-based remote control of Android display fleets. A decade of shipping systems where latency is the product.
 
-### Personal Details
-
-- **Name**: Muhammad Asif Javed
-- **Projects Completed**: 19+
-- **Location**: Walton, Lahore, Pakistan
-- **Experience**: 10+ years
-- **Work Style**: Remote-first, serving global clients
-
-### Core Expertise
-
-- Full-Stack Development
-- WebRTC & Real-time Systems
-- Interactive Display Technology
-- Platform Integration
-- Solo Project Leadership
-- Cross-platform Development
-
-### Industries Served
-
-- EdTech (Educational Technology)
-- Interactive Displays
-- Cybersecurity
-- InsurTech
-- Business Intelligence
-
-### Core Competencies
-
-1. **Full-Stack Development** – Complete end-to-end solutions from React frontends to scalable cloud architectures, supporting enterprise-scale applications
-
-2. **Real-time Systems & WebRTC** – Live platforms supporting 50+ concurrent users with sub-300ms end-to-end latency
-
-3. **Platform Integration & APIs** – Connected 4000+ apps via Zapier and custom API development with seamless data flow
-
-4. **Solo Development & Leadership** – Delivered 19+ enterprise projects independently with complete project lifecycle management
-
-### Technical Stack
-
-- React & Next.js
-- Node.js
-- MongoDB
-- WebRTC & OpenVidu
-- DigitalOcean
-- Socket.io & Fabric.js
-
-## Services Offered
-
-### WebRTC Development
-
-Enterprise-grade real-time communication systems supporting 50+ concurrent users with features like video calling, screen sharing, collaborative whiteboards, and live streaming.
-
-### Full-Stack Development
-
-Complete web application development using modern technologies: React/Next.js frontends, Node.js backends, database design, API development, and cloud deployment.
-
-### Educational Technology
-
-Interactive learning platforms, collaboration tools, virtual classrooms, and educational content management systems designed for scalability and user engagement.
-
-### Cybersecurity Systems
-
-Secure intelligence tools, threat monitoring platforms, and cybersecurity dashboards with real-time data processing and visualization capabilities.
-
-### Platform Integration
-
-Custom API development, third-party integrations, webhook implementations, and connecting disparate systems for seamless data flow.
+### Full-Stack Delivery, Solo
+Backend, frontend, database, infrastructure, and DevOps from one architect: React/Next.js, Node.js and Python, PostgreSQL and MongoDB, GCP/AWS/DigitalOcean with Docker, deploys, backups, and rollbacks handled end to end.
 
 ## Frequently Asked Questions
 
-### Q: What makes you different from other WebRTC developers?
-
-**A:** I specialize in enterprise-grade WebRTC solutions with 10+ years of experience building scalable real-time systems. Built educational collaboration platforms supporting 50+ concurrent users, cybersecurity intelligence tools, and complex multi-user interactive systems. Track record: 19+ successful projects, deployed across multiple countries, serving thousands of users globally.
+### Q: What makes you different from other full-stack developers?
+I build entire platforms alone — backend, frontend, database, infrastructure, and deployment. Recent work includes the microservices platform behind an agency's AI product suite (clients include Samsung, Reddit, Uber, and Google) and a WebRTC classroom platform I built and maintained solo for about seven years. Track record: 19 documented projects, each case study written from the source code.
 
 ### Q: Do you work with international clients remotely?
+Yes — primarily US and UK clients, remotely from Lahore, Pakistan, with clear communication and flexible scheduling across time zones.
 
-**A:** Yes, I primarily serve US and UK clients remotely from Lahore, Pakistan. Successfully delivered projects across different time zones with clear communication, regular updates, and flexible scheduling.
+### Q: What are your rates?
+$45/hour for consulting and development, or project-based quotes.
 
 ### Q: What technologies do you specialize in?
-
-**A:** Core expertise: WebRTC for real-time communication, React/Next.js frontend, Node.js backend, various databases. Also work with cybersecurity frameworks, educational technology platforms, and modern deployment tools like Docker and cloud services.
+AI platform engineering (FastAPI microservices, multi-LLM integrations), WebRTC and Socket.io for real-time communication, React/Next.js, Node.js and Python, PostgreSQL and MongoDB, GCP/Docker deployment pipelines.
 
 ### Q: Can you handle both frontend and backend development?
-
-**A:** Yes, full-stack developer handling complete project development from database design to user interface. Includes API development, real-time features, security implementation, and deployment automation.
+Yes — complete project development from database design to user interface, including APIs, real-time features, security, and deployment automation.
 
 ### Q: What's your typical project timeline and process?
-
-**A:** Projects typically range from 5-18 months for complete enterprise solutions. Process: requirement analysis, architecture design, iterative development with regular demos, testing, deployment. 100% on-time completion record with consistent communication.
+Enterprise projects typically run 5–18 months: requirement analysis, architecture design, iterative development with regular demos, testing, and deployment, with constant communication throughout.
 
 ### Q: Do you provide ongoing support after project completion?
-
-**A:** Yes, ongoing maintenance, bug fixes, feature enhancements, and technical support. Focus on long-term partnerships ensuring platforms continue performing optimally as they scale.
+Yes — maintenance, bug fixes, feature enhancements, and technical support as long-term partnerships.
 
 ## Project Portfolio Summary
 
-Successfully delivered 19+ enterprise-level projects across various industries:
+19 documented platforms at https://maxifjaved.com/projects — highlights:
 
-### Educational Technology Projects
+### AI Marketing & Platforms (Moburst)
+- **Moburst.ai** — Microservices platform behind Moburst's Growth Labs AI suite: centralized FastAPI auth, handoff-token SSO, dual-language Auth SDK, five-tier RBAC, GCP deploys with health-gated rollback. Four AI tools under one login.
+- **AEO Analytics** — AI answer-engine brand-visibility analytics: unified multi-LLM client across OpenAI, Gemini, Claude, and Perplexity.
+- **Intercept** — AI social intelligence & engagement platform.
+- **AI Community Engagement Automation Engine** — Reddit community automation.
+- **Moburst Growth Labs Satellite Sites** — automated AI content platform.
 
-- Built collaborative learning platforms supporting 50+ concurrent users
-- Developed interactive whiteboards with real-time synchronization
-- Created virtual classroom systems with WebRTC video integration
-- Implemented educational content management systems
+### Educational Technology & Interactive Displays
+- **Contribute Cloud** — zero-install, browser-based classroom collaboration and screen-casting platform (WebRTC/OpenVidu + Socket.io), built and maintained solo for ~7 years; 15 teaching tools and 42 educational games; deployed to schools.
+- **Contribute Signage** — cloud digital signage platform.
+- **TouchIT App Store 3.0** — custom Android app distribution: native Kotlin client (Dagger2, Retrofit2, RxJava2), React/Redux web, Node/Express backend.
+- **TouchIT Air** — Android AirPlay receiver.
+- **JustCastIt / Wireless Wizard** — browser-based wireless screen casting for interactive LED displays.
+- **Just Annotate** — offline whiteboard app.
 
-### Cybersecurity Projects
+### Cybersecurity & Infrastructure
+- **TIPX** — threat-intelligence platform integrating MISP + OpenCTI with custom APIs and world-globe visualization; built solo in 14 months; white-label ready.
+- **ManageMyLED** — MDM & remote-control portal for fleets of Android interactive displays (dozens to hundreds of panels): remote lock, reboot, silent APK install, live browser-based remote control over WebRTC. Web portal built solo (132 commits, 29 API routes, 12-model schema).
+- **Altconsole** — enterprise cloud infrastructure management frontend.
 
-- Developed cybersecurity intelligence tools with real-time threat monitoring
-- Built secure data visualization dashboards
-- Created threat assessment platforms with automated reporting
-- Implemented security monitoring systems with alert mechanisms
-
-### Business Intelligence Projects
-
-- Built data analytics platforms with real-time reporting
-- Developed business intelligence dashboards with interactive visualizations
-- Created automated reporting systems with scheduled delivery
-- Implemented data integration solutions connecting multiple sources
-
-### Platform Integration Projects
-
-- Connected 4000+ applications via custom API development
-- Built Zapier integration platforms for workflow automation
-- Developed webhook systems for real-time data synchronization
-- Created middleware solutions for enterprise system connectivity
-
-### AI Marketing & Automation Projects
-
-- Built an Answer Engine Optimization (AEO) analytics platform measuring brand visibility inside ChatGPT, Gemini, Claude, and Perplexity
-- Developed a proprietary multi-service AI marketing tools platform with SSO (moburst.ai)
-- Created an AI social intelligence and engagement platform with a Chrome extension and Slack alerts
-- Built an AI community engagement automation engine and an automated AI content publishing platform (WordPress Multisite)
-
-### 3D, Mobile & Cloud Projects
-
-- Built an interactive 3D pool and hot tub design configurator with Three.js and Stripe checkout
-- Developed a sports venue booking platform spanning React Native mobile apps, API, and admin
-- Delivered the frontend for an enterprise cloud infrastructure management platform with D3.js network topology visualizations
-- Shipped cable-free screen sharing (Wireless Wizard) and an offline annotation whiteboard app for interactive LED displays
+### Business Intelligence & SaaS
+- **CrystalBall.pro** — AI-powered marketing analytics with automated GA annotations and AI insights; 4,000+ app integrations via Zapier; AppSumo-listed. Joined at V2 and evolved into lead developer.
+- **LifeMIB** — insurance lead-management CRM with a custom Zapier app integrating 8,000+ apps and Twilio automation.
+- **Athlacer** — sports venue booking: React Native app (57 screens) with split-payment booking flows.
+- **Build A Hot Tub** — browser-based 3D pool & hot-tub configurator (Three.js/R3F, custom GLSL water shaders) with Stripe payments and PDF export.
 
 ## Technical Approach
 
 ### Development Philosophy
-
-- **Security First**: All projects implement industry-standard security practices
-- **Scalability**: Designed for growth from day one
-- **Performance**: Optimized for speed and efficiency
-- **User Experience**: Intuitive interfaces with responsive design
-- **Maintainability**: Clean, documented code for long-term sustainability
+- End-to-end ownership: one architect accountable for backend, frontend, data, infrastructure, and deployment
+- Production-first: real deploy pipelines, backups, rollbacks, and monitoring — not demos
+- Verified claims: every metric in these case studies traces to the source code
+- Progressive enhancement: platforms work without heavy client-side dependencies
 
 ### Project Management
-
-- **Agile Methodology**: Iterative development with regular client feedback
-- **Transparent Communication**: Daily progress updates and weekly demos
-- **Quality Assurance**: Comprehensive testing before deployment
-- **Documentation**: Detailed technical documentation and user guides
-- **Post-Launch Support**: Ongoing maintenance and feature enhancement
+- Requirement analysis and architecture design before code
+- Iterative development with regular demos
+- Clear written communication across time zones
+- Long-term maintenance partnerships after launch
 
 ## Client Information
 
 ### Target Markets
-
-- **Primary**: United States, United Kingdom
-- **Secondary**: Global remote clients
-- **Industries**: Technology, Education, Healthcare, Finance, Security
+- United States and United Kingdom (primary), global remote
+- Startups building platforms; enterprises needing real-time or AI systems; agencies productizing AI
 
 ### Working Arrangement
-
-- **Remote-First**: Based in Lahore, Pakistan, serving global clients
-- **Time Zones**: Flexible scheduling across US, UK, and Asian time zones
-- **Communication**: English (fluent), regular video calls, project management tools
-- **Availability**: Monday-Saturday, 9 AM to 6 PM local time (flexible for client needs)
+- Remote-first from Lahore, Pakistan (PKT), flexible overlap with US/UK hours
+- Communication via email, WhatsApp, and scheduled calls
 
 ### Engagement Models
-
-1. **Project-Based**: Fixed scope with defined deliverables and timeline
-2. **Retainer**: Ongoing development and maintenance arrangements
-3. **Consultation**: Technical advisory and architecture planning
-4. **Team Augmentation**: Integration with client's existing development team
+- Hourly consulting and development at $45/hour
+- Project-based quotes for defined scopes
+- Ongoing maintenance retainers
 
 ## Contact Information
 
 ### Direct Contact
-
-- **Email**: axif.javed@gmail.com
-- **Phone/WhatsApp**: https://wa.me/923324647331
+- Email: axif.javed@gmail.com
+- WhatsApp: +92 332 464 7331
+- Contact form: https://maxifjaved.com/contact
 
 ### Professional Profiles
-
-- **GitHub**: https://github.com/maxifjaved
-- **LinkedIn**: https://linkedin.com/in/maxifjaved
-- **Website**: https://maxifjaved.com
-
-### Business Details
-
-- **Location**: Walton, Lahore, Punjab 54000, Pakistan
-- **Time Zone**: PKT (UTC+5)
-- **Languages**: English (Fluent), Urdu (Native)
-- **Legal Status**: Independent contractor available for international projects
-
-## Hiring Process
-
-### Initial Contact
-
-1. **Inquiry**: Contact via email or WhatsApp with project details
-2. **Discovery Call**: 30-minute video call to discuss requirements
-3. **Proposal**: Detailed project proposal with timeline and pricing
-4. **Contract**: Agreement signing and project kickoff
-
-### Project Phases
-
-1. **Planning**: Requirements analysis and technical architecture
-2. **Design**: UI/UX mockups and technical specifications
-3. **Development**: Iterative development with regular demos
-4. **Testing**: Quality assurance and performance optimization
-5. **Deployment**: Production launch and go-live support
-6. **Maintenance**: Ongoing support and feature enhancement
-
-### What Clients Receive
-
-- **Complete Source Code**: Full ownership of all developed code
-- **Documentation**: Technical documentation and user guides
-- **Training**: System administration and usage training
-- **Support**: 30-day post-launch support included
-- **Warranty**: Bug fixes and minor adjustments covered
+- GitHub: https://github.com/maxifjaved
+- LinkedIn: https://linkedin.com/in/maxifjaved
+- Website: https://maxifjaved.com
 
 ## Availability for Hire
 
-**Currently Available**: Open to new projects starting Q4 2025
-
-**Ideal Projects**: WebRTC applications, real-time systems, educational platforms, cybersecurity tools, enterprise integrations
-
-**Project Size**: Medium to large-scale enterprise projects (5-18 month duration)
-
-**Budget Range**: Competitive rates for international clients, quote provided based on requirements
-
-**Response Time**: All inquiries responded to within 24 hours
-
-**Ready to Start**: Contact directly for project discussions, technical consultation, and detailed proposals.
+Available for AI integration and platform engineering, WebRTC and real-time systems, enterprise platform development, educational technology, cybersecurity systems, and full-stack projects. Best fit: teams that want one senior engineer to own an entire platform.
 
 ---
-_Last updated: 2025-09-02_
+Last updated: 2026-08-19

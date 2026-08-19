@@ -28,3 +28,4 @@ config.bat
 
 # claude code local state (agent memory, worktrees)
 .claude/
+.playwright-mcp/

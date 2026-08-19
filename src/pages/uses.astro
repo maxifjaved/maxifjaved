@@ -17,381 +17,100 @@ const computer = {
   ]
 };
 
-const peripherals = [
+const sections = [
   {
-    name: "Google P2718QC",
-    category: "Monitor (x2)",
-    icon: "fa-display"
+    title: "Desk",
+    items: [
+      { name: "Google P2718QC", category: "Monitor ×2" },
+      { name: "Logitech MX Master 4", category: "Mouse" },
+      { name: "Logitech MX Keys Mini", category: "Keyboard" },
+      { name: "Logitech C922 Pro", category: "Webcam" },
+      { name: "Boya PM500", category: "Microphone" },
+      { name: "Gionee Handfree", category: "Headphones" }
+    ]
   },
   {
-    name: "Logitech MX Master 4",
-    category: "Mouse",
-    icon: "fa-computer-mouse"
+    title: "Development",
+    items: [
+      { name: "WebStorm", category: "JavaScript/TypeScript IDE" },
+      { name: "PyCharm", category: "Python IDE" },
+      { name: "PhpStorm", category: "PHP IDE" },
+      { name: "DataGrip", category: "Database IDE" },
+      { name: "WezTerm", category: "Terminal emulator" },
+      { name: "Docker", category: "Containerization" },
+      { name: "Ollama", category: "Local LLMs" },
+      { name: "MAMP Pro", category: "Local server environment" },
+      { name: "Claude Code", category: "AI coding assistant" }
+    ]
   },
   {
-    name: "Logitech MX Keys Mini",
-    category: "Keyboard",
-    icon: "fa-keyboard"
-  }
-];
-
-const audioVideo = [
-  {
-    name: "Logitech C922 Pro",
-    category: "Webcam",
-    icon: "fa-video"
+    title: "Productivity",
+    items: [
+      { name: "Notion", category: "Notes & documentation" },
+      { name: "1Password", category: "Password manager" },
+      { name: "Raycast", category: "Launcher & productivity" },
+      { name: "Karabiner-Elements", category: "Keyboard customization" },
+      { name: "CleanShot X", category: "Screenshots & recording" }
+    ]
   },
   {
-    name: "Boya PM500",
-    category: "Microphone",
-    icon: "fa-microphone"
-  },
-  {
-    name: "Gionee Handfree",
-    category: "Headphones",
-    icon: "fa-headphones"
-  }
-];
-
-const editors = [
-  {
-    name: "WebStorm",
-    category: "JavaScript/TypeScript IDE",
-    icon: "fa-code"
-  },
-  {
-    name: "PyCharm",
-    category: "Python IDE",
-    icon: "fa-code"
-  },
-  {
-    name: "PhpStorm",
-    category: "PHP IDE",
-    icon: "fa-code"
-  },
-  {
-    name: "DataGrip",
-    category: "Database IDE",
-    icon: "fa-database"
-  },
-  {
-    name: "WezTerm",
-    category: "Terminal Emulator",
-    icon: "fa-terminal"
-  },
-  {
-    name: "Docker",
-    category: "Containerization",
-    icon: "fa-cube"
-  },
-  {
-    name: "Ollama",
-    category: "Local LLMs",
-    icon: "fa-robot"
-  },
-  {
-    name: "MAMP Pro",
-    category: "Local Server Environment",
-    icon: "fa-server"
-  },
-  {
-    name: "Claude Code",
-    category: "AI Coding Assistant",
-    icon: "fa-wand-magic-sparkles"
-  }
-];
-
-const productivity = [
-  {
-    name: "Notion",
-    category: "Notes & Documentation",
-    icon: "fa-book"
-  },
-  {
-    name: "1Password",
-    category: "Password Manager",
-    icon: "fa-key"
-  },
-  {
-    name: "Raycast",
-    category: "Launcher & Productivity",
-    icon: "fa-bolt"
-  },
-  {
-    name: "Karabiner-Elements",
-    category: "Keyboard Customization",
-    icon: "fa-sliders"
-  },
-  {
-    name: "CleanShot X",
-    category: "Screenshot & Recording",
-    icon: "fa-camera"
-  }
-];
-
-const cloud = [
-  {
-    name: "Cloudflare",
-    category: "CDN & DNS",
-    icon: "fa-cloud"
-  },
-  {
-    name: "AWS",
-    category: "Cloud Infrastructure",
-    icon: "fa-cloud"
-  },
-  {
-    name: "Google Cloud Platform",
-    category: "Cloud Services",
-    icon: "fa-cloud"
-  }
-];
-
-const browsers = [
-  {
-    name: "Arc",
-    category: "Primary Browser",
-    icon: "fa-globe"
-  },
-  {
-    name: "Brave",
-    category: "Secondary Browser",
-    icon: "fa-shield"
+    title: "Cloud & browsers",
+    items: [
+      { name: "Cloudflare", category: "CDN & DNS" },
+      { name: "AWS", category: "Cloud infrastructure" },
+      { name: "Google Cloud Platform", category: "Cloud services" },
+      { name: "Arc", category: "Primary browser" },
+      { name: "Brave", category: "Secondary browser" }
+    ]
   }
 ];
 ---
 
 <MainLayout
-  title="Uses - My Development Setup | Muhammad Asif Javed"
-  description="Explore my development setup including Mac mini M4 Pro, JetBrains IDEs, productivity tools, and hardware I use for building software."
-  keywords="developer setup, uses page, Mac mini M4 Pro, WebStorm, PyCharm, Raycast, WezTerm, development hardware, coding setup, JetBrains IDE, developer tools"
+  title="Uses - Muhammad Asif Javed | Hardware & Software Setup"
+  description="The hardware, software, and services Muhammad Asif Javed uses daily: Mac mini M4 Pro, JetBrains IDEs, Docker, Ollama, and more."
+  keywords="developer setup, uses page, Mac mini M4 Pro, WebStorm setup, developer tools 2026"
+  canonicalUrl="https://maxifjaved.com/uses"
 >
   <Breadcrumb items={breadcrumbItems} />
 
-  <!-- Hero Section -->
-  <section class="py-16 lg:py-24 relative overflow-hidden">
-    <div class="absolute w-96 h-96 bg-cyber-blue/5 rounded-full blur-3xl -top-20 -left-20 animate-pulse-slow"></div>
-
-    <div class="max-w-4xl mx-auto px-6 relative">
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-cyber-blue text-shadow-glow font-future">
-        /uses
+  <section class="shell pb-20">
+    <header class="max-w-3xl pt-10 sm:pt-14">
+      <p class="eyebrow">Uses</p>
+      <h1 class="display mt-3 text-4xl sm:text-5xl text-ink">
+        The tools I <em>work with.</em>
       </h1>
-      <p class="text-gray-300 text-lg leading-relaxed max-w-2xl mb-4">
-        The hardware and software I use daily for development, content creation, and everything in between.
+      <p class="mt-5 max-w-2xl font-display text-lg leading-relaxed text-ink-2">
+        Hardware, software, and services in daily rotation — the whole stack
+        behind the work on this site.
       </p>
-      <p class="text-gray-400 leading-relaxed max-w-2xl">
-        After 10+ years of full-stack work — WebRTC platforms, real-time systems, and enterprise
-        backends — this setup has settled into something deliberately boring: one fast desktop
-        machine, JetBrains IDEs for every language I touch, and a small set of tools that remove
-        friction instead of adding it. Everything here earns its place by being used daily; anything
-        that stops getting used gets removed. This page follows the
-        <a href="https://uses.tech" target="_blank" rel="noopener noreferrer" class="text-cyber-blue hover:underline">uses.tech</a>
-        convention and stays current with what is actually installed.
-      </p>
-    </div>
-  </section>
+    </header>
 
-  <!-- Computer Section -->
-  <section class="py-12 lg:py-16 relative">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-xl md:text-2xl font-bold mb-8 text-white flex items-center gap-3">
-        <i class="fas fa-desktop text-cyber-blue" aria-hidden="true"></i>
-        Computer
-      </h2>
+    <!-- Machine -->
+    <section class="mt-12" aria-labelledby="machine-title">
+      <h2 id="machine-title" class="eyebrow">Machine · {computer.name}</h2>
+      <dl class="mt-4 grid grid-cols-2 gap-y-5 border-y border-line py-5 sm:grid-cols-4">
+        {computer.specs.map((spec) => (
+          <div class="pr-6">
+            <dd class="figure-value text-lg">{spec.value}</dd>
+            <dt class="mt-1 figure-label">{spec.label}</dt>
+          </div>
+        ))}
+      </dl>
+    </section>
 
-      <div class="bg-cyber-dark/40 border border-cyber-blue/20 rounded-lg p-6 md:p-8 hover:border-cyber-blue/40 transition-all duration-300">
-        <h3 class="text-xl font-bold text-cyber-blue mb-4">{computer.name}</h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {computer.specs.map((spec) => (
-            <div class="text-center p-4 bg-cyber-dark/60 rounded-lg border border-cyber-blue/10">
-              <p class="text-gray-400 text-sm mb-1">{spec.label}</p>
-              <p class="text-white font-semibold">{spec.value}</p>
-            </div>
+    {sections.map((section) => (
+      <section class="mt-12" aria-label={section.title}>
+        <h2 class="eyebrow">{section.title}</h2>
+        <ul class="mt-4 grid gap-x-10 sm:grid-cols-2">
+          {section.items.map((item) => (
+            <li class="flex flex-wrap items-baseline justify-between gap-x-4 border-t border-line py-2.5">
+              <span class="font-medium text-ink">{item.name}</span>
+              <span class="text-sm text-ink-2">{item.category}</span>
+            </li>
           ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Peripherals Section -->
-  <section class="py-12 lg:py-16 relative">
-    <div class="absolute w-64 h-64 bg-cyber-blue/5 rounded-full blur-3xl -bottom-20 -right-20 animate-pulse-slow" style="animation-delay: 1s;"></div>
-
-    <div class="max-w-4xl mx-auto px-6 relative">
-      <h2 class="text-xl md:text-2xl font-bold mb-8 text-white flex items-center gap-3">
-        <i class="fas fa-plug text-cyber-blue" aria-hidden="true"></i>
-        Peripherals
-      </h2>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        {peripherals.map((item) => (
-          <div class="bg-cyber-dark/40 border border-cyber-blue/20 rounded-lg p-6 hover:border-cyber-blue/40 transition-all duration-300 flex items-center gap-4">
-            <div class="w-12 h-12 bg-cyber-blue/10 rounded-lg flex items-center justify-center flex-shrink-0">
-              <i class={`fas ${item.icon} text-cyber-blue text-xl`} aria-hidden="true"></i>
-            </div>
-            <div>
-              <p class="text-gray-400 text-sm">{item.category}</p>
-              <h3 class="text-white font-semibold">{item.name}</h3>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Audio/Video Section -->
-  <section class="py-12 lg:py-16 relative">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-xl md:text-2xl font-bold mb-8 text-white flex items-center gap-3">
-        <i class="fas fa-headset text-cyber-blue" aria-hidden="true"></i>
-        Audio / Video
-      </h2>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        {audioVideo.map((item) => (
-          <div class="bg-cyber-dark/40 border border-cyber-blue/20 rounded-lg p-6 hover:border-cyber-blue/40 transition-all duration-300 flex items-center gap-4">
-            <div class="w-12 h-12 bg-cyber-blue/10 rounded-lg flex items-center justify-center flex-shrink-0">
-              <i class={`fas ${item.icon} text-cyber-blue text-xl`} aria-hidden="true"></i>
-            </div>
-            <div>
-              <p class="text-gray-400 text-sm">{item.category}</p>
-              <h3 class="text-white font-semibold">{item.name}</h3>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Development Tools Section -->
-  <section class="py-12 lg:py-16 relative">
-    <div class="absolute w-64 h-64 bg-cyber-blue/5 rounded-full blur-3xl -top-20 -left-20 animate-pulse-slow" style="animation-delay: 2s;"></div>
-
-    <div class="max-w-4xl mx-auto px-6 relative">
-      <h2 class="text-xl md:text-2xl font-bold mb-8 text-white flex items-center gap-3">
-        <i class="fas fa-code text-cyber-blue" aria-hidden="true"></i>
-        Development Tools
-      </h2>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        {editors.map((item) => (
-          <div class="bg-cyber-dark/40 border border-cyber-blue/20 rounded-lg p-6 hover:border-cyber-blue/40 transition-all duration-300 flex items-center gap-4">
-            <div class="w-12 h-12 bg-cyber-blue/10 rounded-lg flex items-center justify-center flex-shrink-0">
-              <i class={`fas ${item.icon} text-cyber-blue text-xl`} aria-hidden="true"></i>
-            </div>
-            <div>
-              <p class="text-gray-400 text-sm">{item.category}</p>
-              <h3 class="text-white font-semibold">{item.name}</h3>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Productivity Section -->
-  <section class="py-12 lg:py-16 relative">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-xl md:text-2xl font-bold mb-8 text-white flex items-center gap-3">
-        <i class="fas fa-rocket text-cyber-blue" aria-hidden="true"></i>
-        Productivity
-      </h2>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        {productivity.map((item) => (
-          <div class="bg-cyber-dark/40 border border-cyber-blue/20 rounded-lg p-6 hover:border-cyber-blue/40 transition-all duration-300 flex items-center gap-4">
-            <div class="w-12 h-12 bg-cyber-blue/10 rounded-lg flex items-center justify-center flex-shrink-0">
-              <i class={`fas ${item.icon} text-cyber-blue text-xl`} aria-hidden="true"></i>
-            </div>
-            <div>
-              <p class="text-gray-400 text-sm">{item.category}</p>
-              <h3 class="text-white font-semibold">{item.name}</h3>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Cloud & Hosting Section -->
-  <section class="py-12 lg:py-16 relative">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-xl md:text-2xl font-bold mb-8 text-white flex items-center gap-3">
-        <i class="fas fa-cloud text-cyber-blue" aria-hidden="true"></i>
-        Cloud & Hosting
-      </h2>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        {cloud.map((item) => (
-          <div class="bg-cyber-dark/40 border border-cyber-blue/20 rounded-lg p-6 hover:border-cyber-blue/40 transition-all duration-300 flex items-center gap-4">
-            <div class="w-12 h-12 bg-cyber-blue/10 rounded-lg flex items-center justify-center flex-shrink-0">
-              <i class={`fas ${item.icon} text-cyber-blue text-xl`} aria-hidden="true"></i>
-            </div>
-            <div>
-              <p class="text-gray-400 text-sm">{item.category}</p>
-              <h3 class="text-white font-semibold">{item.name}</h3>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Browsers Section -->
-  <section class="py-12 lg:py-16 pb-24 relative">
-    <div class="absolute w-64 h-64 bg-cyber-blue/5 rounded-full blur-3xl -bottom-20 -right-20 animate-pulse-slow" style="animation-delay: 3s;"></div>
-
-    <div class="max-w-4xl mx-auto px-6 relative">
-      <h2 class="text-xl md:text-2xl font-bold mb-8 text-white flex items-center gap-3">
-        <i class="fas fa-compass text-cyber-blue" aria-hidden="true"></i>
-        Browsers
-      </h2>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        {browsers.map((item) => (
-          <div class="bg-cyber-dark/40 border border-cyber-blue/20 rounded-lg p-6 hover:border-cyber-blue/40 transition-all duration-300 flex items-center gap-4">
-            <div class="w-12 h-12 bg-cyber-blue/10 rounded-lg flex items-center justify-center flex-shrink-0">
-              <i class={`fas ${item.icon} text-cyber-blue text-xl`} aria-hidden="true"></i>
-            </div>
-            <div>
-              <p class="text-gray-400 text-sm">{item.category}</p>
-              <h3 class="text-white font-semibold">{item.name}</h3>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- How it fits together -->
-  <section class="py-12 lg:py-16 pb-24 relative">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-xl md:text-2xl font-bold mb-6 text-white flex items-center gap-3">
-        <i class="fas fa-diagram-project text-cyber-blue" aria-hidden="true"></i>
-        How It Fits Together
-      </h2>
-      <div class="bg-cyber-dark/40 border border-cyber-blue/20 rounded-lg p-6 md:p-8 space-y-4 text-gray-300 leading-relaxed">
-        <p>
-          The M4 Pro Mac mini drives two 27-inch displays: code and terminal on one, browser,
-          docs, and running apps on the other. JetBrains IDEs cover each stack — WebStorm for
-          TypeScript and Node.js work, PyCharm for Python services, DataGrip for poking at
-          production-shaped databases — so refactoring and debugging feel identical regardless
-          of language.
-        </p>
-        <p>
-          Day-to-day flow leans on Raycast for launching and window management,
-          Karabiner-Elements for keyboard remaps, and 1Password across every browser and CLI.
-          Docker keeps client environments isolated and reproducible, while Ollama lets me
-          test LLM integrations locally before they touch a paid API. Claude Code handles the
-          repetitive edges of development — scaffolding, refactors, and review passes — with
-          WezTerm as the terminal underneath.
-        </p>
-        <p>
-          Deployment targets are boring on purpose: Cloudflare in front, AWS or Google Cloud
-          behind, chosen per project. The C922 webcam and PM500 microphone cover client calls
-          and the occasional screen recording via CleanShot X.
-        </p>
-      </div>
-    </div>
+        </ul>
+      </section>
+    ))}
   </section>
 </MainLayout>
