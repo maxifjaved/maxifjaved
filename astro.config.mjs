@@ -8,6 +8,7 @@ import mdx from "@astrojs/mdx";
 export default defineConfig({
   integrations: [sitemap(), mdx()],
   site: 'https://maxifjaved.com',
+  trailingSlash: 'never',
 
   vite: {
     plugins: [tailwindcss()],
