@@ -55,7 +55,7 @@ const featuredSlugs = [
 
 const allProjects = await getCollection("projects");
 const featured = featuredSlugs
-  .map((slug) => allProjects.find((p) => p.slug === slug))
+  .map((slug) => allProjects.find((p) => p.id === slug))
   .filter(Boolean);
 
 const posts = (
@@ -124,7 +124,7 @@ const capabilities = [
     <div class="mt-5 border-b border-line">
       {featured.map((project) => (
         <WorkRow
-          slug={project.slug}
+          slug={project.id}
           title={project.data.title}
           summary={project.data.seo.description}
           category={project.data.category}
@@ -168,7 +168,7 @@ const capabilities = [
     <div class="mt-5 border-b border-line">
       {posts.map((post) => (
         <a
-          href={`/blogs/${post.slug}`}
+          href={`/blogs/${post.id}`}
           class="group flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t border-line py-4"
         >
           <span class="display min-w-0 text-lg text-ink transition-colors group-hover:text-accent">

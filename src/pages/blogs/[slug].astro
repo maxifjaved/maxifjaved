@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import MainLayout from "../../layouts/MainLayout.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
   });
 
   return blogEntries.map(entry => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
@@ -28,7 +28,7 @@ type Props = {
 };
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 
 const {
   title,
@@ -52,7 +52,7 @@ const {
 
 // SEO data
 const keywordsString = keywords.join(", ");
-const pageUrl = canonicalUrl || `https://maxifjaved.com/blogs/${entry.slug}`;
+const pageUrl = canonicalUrl || `https://maxifjaved.com/blogs/${entry.id}`;
 const ogImageUrl = featuredImage.src.startsWith("http")
   ? featuredImage.src
   : `https://maxifjaved.com${featuredImage.src}`;

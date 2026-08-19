@@ -22,7 +22,7 @@ const CATEGORY_LABELS: Record<string, string> = {
 };
 
 const allProjects = (await getCollection('projects')).sort((a, b) =>
-  b.data.endDate.localeCompare(a.data.endDate) || a.slug.localeCompare(b.slug)
+  b.data.endDate.localeCompare(a.data.endDate) || a.id.localeCompare(b.id)
 );
 
 const categories = [...new Set(allProjects.map((p) => p.data.category))].sort();
@@ -49,7 +49,7 @@ const projectsListSchema = {
         "@type": "Person",
         "name": "Muhammad Asif Javed"
       },
-      "url": `https://maxifjaved.com/projects/${project.slug}`
+      "url": `https://maxifjaved.com/projects/${project.id}`
     }
   }))
 };
@@ -102,7 +102,7 @@ const projectsListSchema = {
     <div class="mt-6 border-b border-line" data-work-list>
       {allProjects.map((project) => (
         <WorkRow
-          slug={project.slug}
+          slug={project.id}
           title={project.data.title}
           summary={project.data.seo.description}
           category={project.data.category}

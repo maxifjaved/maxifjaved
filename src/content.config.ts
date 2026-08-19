@@ -1,7 +1,8 @@
 import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
 
 const blogCollection = defineCollection({
-  type: "content", // MDX files
+  loader: glob({ pattern: "**/[^_]*.mdx", base: "./src/content/blogs" }),
   schema: z.object({
     // Core metadata
     title: z.string(),
@@ -22,7 +23,7 @@ const blogCollection = defineCollection({
       name: z.string(),
       title: z.string(),
       bio: z.string(),
-      avatar: z.string().url().optional(),
+      avatar: z.url().optional(),
       expertise_areas: z.array(z.string()).optional(),
       social_links: z
         .object({
@@ -56,7 +57,7 @@ const blogCollection = defineCollection({
 
     // SEO
     keywords: z.array(z.string()).default([]),
-    canonicalUrl: z.string().url().optional(),
+    canonicalUrl: z.url().optional(),
     focusKeyword: z.string().optional(),
 
     // Enhanced content
@@ -73,7 +74,7 @@ const blogCollection = defineCollection({
         z.object({
           id: z.number(),
           title: z.string(),
-          url: z.string().url(),
+          url: z.url(),
           accessed: z.string(),
           type: z.enum(["official-docs", "reference", "article"]),
         }),
@@ -95,7 +96,7 @@ const blogCollection = defineCollection({
 });
 
 const projectCollection = defineCollection({
-  type: "content", // MDX files
+  loader: glob({ pattern: "**/[^_]*.mdx", base: "./src/content/projects" }),
   schema: z.object({
     // Core metadata
     title: z.string(),
@@ -133,10 +134,10 @@ const projectCollection = defineCollection({
 
     // Links
     links: z.object({
-      liveUrl: z.string().url().nullable(),
-      companyUrl: z.string().url().nullable(),
-      caseStudyUrl: z.string().url().nullable(),
-      demoUrl: z.string().url().nullable(),
+      liveUrl: z.url().nullable(),
+      companyUrl: z.url().nullable(),
+      caseStudyUrl: z.url().nullable(),
+      demoUrl: z.url().nullable(),
     }),
 
     // Images with optimization support

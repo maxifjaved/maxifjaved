@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import MainLayout from "../../layouts/MainLayout.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
@@ -11,7 +11,7 @@ export async function getStaticPaths() {
   const projectEntries = await getCollection('projects');
 
   return projectEntries.map(entry => ({
-    params: { slug: entry.slug },
+    params: { slug: entry.id },
     props: { entry },
   }));
 }
@@ -21,7 +21,7 @@ type Props = {
 };
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 
 const {
   title,
@@ -42,7 +42,7 @@ const {
   links,
 } = entry.data;
 
-const canonicalUrl = `https://maxifjaved.com/projects/${entry.slug}`;
+const canonicalUrl = `https://maxifjaved.com/projects/${entry.id}`;
 
 // Titles are stored as "Name - Long descriptor"
 const [name, ...titleRest] = title.split(" - ");
@@ -61,9 +61,9 @@ const span =
 // pure rotating window, every project is the "next-N" of exactly 3 predecessors,
 // so each detail page gets exactly 3 inbound links — no orphan pages.
 const orderedProjects = (await getCollection('projects')).sort((a, b) =>
-  b.data.endDate.localeCompare(a.data.endDate) || a.slug.localeCompare(b.slug)
+  b.data.endDate.localeCompare(a.data.endDate) || a.id.localeCompare(b.id)
 );
-const selfIndex = orderedProjects.findIndex(p => p.slug === entry.slug);
+const selfIndex = orderedProjects.findIndex(p => p.id === entry.id);
 const relatedProjects = [
   ...orderedProjects.slice(selfIndex + 1),
   ...orderedProjects.slice(0, selfIndex),
@@ -236,7 +236,7 @@ const meta = [
       <div class="mt-4">
         {relatedProjects.map((rp) => (
           <a
-            href={`/projects/${rp.slug}`}
+            href={`/projects/${rp.id}`}
             class="group flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t border-line py-4"
           >
             <span class="display text-lg text-ink group-hover:text-accent transition-colors">
