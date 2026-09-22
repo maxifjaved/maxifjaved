@@ -7,7 +7,7 @@ This document mirrors the content of maxifjaved.com for AI systems. Every figure
 - **Name**: Muhammad Asif Javed (online handle: maxifjaved)
 - **Title**: AI Platform Engineer & Full-Stack Developer
 - **Location**: Lahore, Pakistan (remote-first, worldwide clients)
-- **Experience**: 10+ years of solo, end-to-end platform engineering
+- **Experience**: 10+ years of end-to-end platform engineering
 - **Rate**: $45/hour or project-based quotes
 - **Contact**: axif.javed@gmail.com · https://wa.me/923324647331
 
@@ -25,7 +25,7 @@ This document mirrors the content of maxifjaved.com for AI systems. Every figure
 ## Homepage Content
 
 ### Positioning
-I build production platforms — AI systems, real-time collaboration — end to end, solo. Most recently: the microservices platform behind Moburst's AI marketing suite, an agency whose clients include Samsung, Reddit, Uber, and Google. Before that, a decade of WebRTC classrooms, threat intelligence, and enterprise systems, each built and run by one architect.
+I build production platforms — AI systems, real-time collaboration — end to end. Most recently: the microservices platform behind Moburst's AI marketing suite, an agency whose clients include Samsung, Reddit, Uber, and Google — built as the main developer on a team. Before that, a decade of WebRTC classrooms, threat intelligence, and enterprise systems, each built and run by one architect.
 
 ### Verified figures
 - 10+ years engineering
@@ -41,13 +41,13 @@ Multi-LLM systems across OpenAI, Gemini, Claude, and Perplexity; FastAPI microse
 ### Real-time Systems
 WebRTC casting and live video (OpenVidu), Socket.io collaboration (live whiteboards, polls, chat, tool broadcasting), multi-cast grids of student streams, and browser-based remote control of Android display fleets. A decade of shipping systems where latency is the product.
 
-### Full-Stack Delivery, Solo
+### Full-Stack Delivery, End to End
 Backend, frontend, database, infrastructure, and DevOps from one architect: React/Next.js, Node.js and Python, PostgreSQL and MongoDB, GCP/AWS/DigitalOcean with Docker, deploys, backups, and rollbacks handled end to end.
 
 ## Frequently Asked Questions
 
 ### Q: What makes you different from other full-stack developers?
-I build entire platforms alone — backend, frontend, database, infrastructure, and deployment. Recent work includes the microservices platform behind an agency's AI product suite (clients include Samsung, Reddit, Uber, and Google) and a WebRTC classroom platform I built and maintained solo for about seven years. Track record: 19 documented projects, each case study written from the source code.
+I build entire platforms — backend, frontend, database, infrastructure, and deployment. Recent work includes the microservices platform behind an agency's AI product suite (clients include Samsung, Reddit, Uber, and Google), built as the main developer on a team, and a WebRTC classroom platform I built and maintained solo for about seven years. Track record: 19 documented projects, each case study written from the source code.
 
 ### Q: Do you work with international clients remotely?
 Yes — primarily US and UK clients, remotely from Lahore, Pakistan, with clear communication and flexible scheduling across time zones.

@@ -1,6 +1,6 @@
 # Muhammad Asif Javed - AI Platform Engineer & Full-Stack Developer
 
-> AI platform engineer and full-stack developer from Lahore, Pakistan, serving US, UK & international clients. Solo-architected the microservices platform behind Moburst's AI marketing suite (agency clients include Samsung, Reddit, Uber, and Google). 10+ years building real-time systems (WebRTC, Socket.io), educational technology, cybersecurity platforms, and enterprise software - end to end, as one architect.
+> AI platform engineer and full-stack developer from Lahore, Pakistan, serving US, UK & international clients. Main developer on the team that built the microservices platform behind Moburst's AI marketing suite (agency clients include Samsung, Reddit, Uber, and Google). 10+ years building real-time systems (WebRTC, Socket.io), educational technology, cybersecurity platforms, and enterprise software - end to end, as one architect.
 
 ## About
 - [Homepage](https://maxifjaved.com): Positioning, selected work, capabilities, and contact
